@@ -321,5 +321,250 @@
             canvas.height = window.innerHeight;
         });
     </script>
+    <!-- ===== PROFESSIONAL SUPPORT POPUP ===== -->
+<div id="support-popup">
+    <div class="popup-box">
+        
+        <button class="close-popup" onclick="closePopup()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <img src="logo.png" alt="Phantomix Logo" class="popup-logo">
+
+        <h2>Welcome to Phantomix</h2>
+        <p class="popup-text">
+            Need help or want to stay connected with the Phantomix community?
+        </p>
+
+        <div class="support-mail-box">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:phantomix.00@gmail.com">
+                phantomix.00@gmail.com
+            </a>
+        </div>
+
+        <div class="popup-socials">
+            <a href="https://instagram.com/shrikantxprajapati" target="_blank" class="popup-social instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://www.youtube.com/@Phantomix_SP" target="_blank" class="popup-social youtube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank" class="popup-social whatsapp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a href="YOUR_TELEGRAM_LINK_HERE" target="_blank" class="popup-social telegram">
+                <i class="fa-brands fa-telegram"></i>
+            </a>
+        </div>
+
+        <button class="enter-btn" onclick="closePopup()">
+            ENTER SYSTEM
+        </button>
+
+    </div>
+</div>
+
+<style>
+/* ===== POPUP BACKGROUND ===== */
+#support-popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    animation: fadeIn 0.5s ease;
+}
+
+/* ===== POPUP BOX ===== */
+.popup-box{
+    width: 90%;
+    max-width: 400px;
+    background: rgba(20,20,20,0.85);
+    border: 1px solid rgba(0,255,255,0.3);
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0,255,255,0.2);
+    animation: popupAnim 0.5s ease;
+}
+
+/* ===== LOGO ===== */
+.popup-logo{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px #00ffff;
+}
+
+/* ===== TITLE ===== */
+.popup-box h2{
+    color: #00ffff;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+/* ===== TEXT ===== */
+.popup-text{
+    color: #cfcfcf;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+/* ===== EMAIL BOX ===== */
+.support-mail-box{
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,255,255,0.2);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.support-mail-box i{
+    color: #00ffff;
+    font-size: 18px;
+}
+
+.support-mail-box a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.popup-socials{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.popup-social{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+/* COLORS */
+.popup-social.instagram{
+    color: #E1306C;
+    border: 2px solid #E1306C;
+}
+
+.popup-social.youtube{
+    color: #FF0000;
+    border: 2px solid #FF0000;
+}
+
+.popup-social.whatsapp{
+    color: #25D366;
+    border: 2px solid #25D366;
+}
+
+.popup-social.telegram{
+    color: #0088cc;
+    border: 2px solid #0088cc;
+}
+
+/* HOVER */
+.popup-social:hover{
+    transform: translateY(-5px) scale(1.08);
+}
+
+.popup-social.instagram:hover{
+    box-shadow: 0 0 15px #E1306C;
+}
+
+.popup-social.youtube:hover{
+    box-shadow: 0 0 15px #FF0000;
+}
+
+.popup-social.whatsapp:hover{
+    box-shadow: 0 0 15px #25D366;
+}
+
+.popup-social.telegram:hover{
+    box-shadow: 0 0 15px #0088cc;
+}
+
+/* ===== ENTER BUTTON ===== */
+.enter-btn{
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg,#00ffff,#b026ff);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.enter-btn:hover{
+    transform: scale(1.03);
+    box-shadow: 0 0 20px #00ffff;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.close-popup{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes popupAnim{
+    from{
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+</style>
+
+<script>
+function closePopup(){
+    document.getElementById("support-popup").style.display = "none";
+}
+</script>
 </body>
 </html>
