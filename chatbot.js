@@ -26,7 +26,7 @@ document.getElementById("phantomix-messages");
 ========================================== */
 
 const API_URL =
-"https://YOUR-CLOUDFLARE-WORKER.workers.dev";
+"https://phantomix-ai.gk2929913.workers.dev/";
 
 /* ==========================================
    OPEN / CLOSE CHAT
