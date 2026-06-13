@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="chatbot.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phantomix | DiamondMax</title>
@@ -322,6 +323,67 @@ drops[i]++;
 setInterval(draw,33);
 
 </script>
+<!-- PHANTOMIX AI BUTTON -->
+<button id="phantomix-chat-toggle">
+    <img src="assets/phantomix-logo.png" alt="Phantomix AI">
+</button>
 
+<!-- PHANTOMIX CHAT WINDOW -->
+<div id="phantomix-chat">
+
+    <div class="phantomix-header">
+
+        <div class="phantomix-brand">
+            <img src="assets/phantomix-logo.png" alt="Logo">
+
+            <div>
+                <h3>Phantomix AI</h3>
+                <span>Online</span>
+            </div>
+        </div>
+
+        <button
+        id="phantomix-close"
+        class="phantomix-close">
+            ✕
+        </button>
+
+    </div>
+
+    <div
+    id="phantomix-messages"
+    class="phantomix-messages">
+
+        <div class="phantomix-welcome">
+            <h4>Welcome to Phantomix</h4>
+
+            <p>
+                Ask about Phantomix,
+                DiamondMax, software development,
+                AI solutions, or any general question.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="phantomix-input">
+
+        <input
+        id="phantomix-input"
+        type="text"
+        placeholder="Ask Phantomix AI...">
+
+        <button
+        id="phantomix-send"
+        class="phantomix-send">
+            ➤
+        </button>
+
+    </div>
+
+</div>
+<script src="phantomix-data.js"></script>
+<script src="chatbot.js"></script>
 </body>
+  
 </html>
