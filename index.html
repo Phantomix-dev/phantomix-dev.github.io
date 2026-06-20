@@ -34,26 +34,26 @@
         }
         .glow-shape {
             position: absolute;
-            filter: blur(80px); /* Creates the soft premium glow */
+            filter: blur(80px);
             opacity: 0.5;
             animation: float 10s infinite alternate ease-in-out;
             border-radius: 50%;
         }
         .shape1 {
             width: 400px; height: 400px;
-            background: #0ea5e9; /* Neon Blue */
+            background: #0ea5e9;
             top: -10%; left: -10%;
             animation-duration: 12s;
         }
         .shape2 {
             width: 500px; height: 500px;
-            background: #8b5cf6; /* Cyber Purple */
+            background: #8b5cf6;
             bottom: -20%; right: -10%;
             animation-duration: 15s;
         }
         .shape3 {
             width: 300px; height: 300px;
-            background: #3b82f6; /* Deep Blue */
+            background: #3b82f6;
             top: 40%; left: 40%;
             animation-duration: 18s;
         }
@@ -189,11 +189,6 @@
         }
         .btn:hover { box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6); transform: translateY(-2px); }
 
-        /* Scroll Reveal Animation */
-        .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
-        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
-        /* --- Yahan se Investor aur Support ka CSS start hota hai --- */
-
         /* Investor Section Styling */
         .investor-container {
             background: rgba(30, 41, 59, 0.6);
@@ -221,18 +216,20 @@
             box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
             display: inline-block;
             text-decoration: none;
+            color: #ffffff;
         }
         .btn-investor:hover {
             box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
             background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: #ffffff;
         }
 
-        /* Floating Support Button */
+        /* Floating Support Button (Email) */
         .floating-support {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #25D366;
+            background: #0ea5e9; /* Neon Blue to match theme */
             color: white;
             width: 60px;
             height: 60px;
@@ -240,18 +237,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 32px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            font-size: 26px;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
             z-index: 9999;
             transition: all 0.3s ease;
             text-decoration: none;
         }
         .floating-support:hover {
-            transform: scale(1.1) rotate(-10deg);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 6px 25px rgba(14, 165, 233, 0.6);
             color: white;
         }
-        /* --- CSS yahan khatam hota hai --- */
+
+        /* Scroll Reveal Animation */
+        .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 
@@ -279,7 +279,7 @@
         <div id="timer">Calculating...</div>
 
         <div class="social">
-            <a href="https://instagram.com/shrikantxprajapati" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://instagram.com/shrikantxprajapatii" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.youtube.com/@Phantomix_SP" target="_blank"><i class="fab fa-youtube"></i></a>
             <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="https://t.me/diamondmax_india" target="_blank"><i class="fab fa-telegram"></i></a>
@@ -308,7 +308,21 @@
             </div>
         </div>
     </section>
+
     <section class="phantomix-section scroll-reveal">
+        <div class="waitlist-container">
+            <h2 style="margin-top: 0;">Get Exclusive Early Access ⏳</h2>
+            <p style="color: #94a3b8; margin-bottom: 25px;">Join the waitlist today and unlock premium benefits on launch day.</p>
+            
+            <div>
+                <input type="email" id="emailInput" placeholder="Enter your email address..." required class="waitlist-input">
+                <button onclick="joinWaitlist()" class="btn">Join Waitlist 🚀</button>
+            </div>
+            <p id="msg" style="color: #10b981; font-weight: bold; margin-top: 15px; display: none;">✅ Successfully added to the waitlist!</p>
+        </div>
+    </section>
+
+    <section class="phantomix-section scroll-reveal" style="margin-bottom: 80px;">
         <div class="investor-container">
             <h2 style="margin-top: 0; color: #c084fc;">Partner With Phantomix 🚀</h2>
             <p style="color: #cbd5e1; margin-bottom: 25px;">We are building the future of digital experiences. As an early-stage startup, we are open to strategic partnerships and angel investments.</p>
@@ -324,28 +338,13 @@
                 </div>
             </div>
 
-            <a href="mailto:your-email@gmail.com?subject=Investment%20Inquiry%20-%20Phantomix" class="btn btn-investor">Request Pitch Deck</a>
+            <a href="https://wa.me/918168350829?text=Hi%20Shrikant!%20I'm%20interested%20in%20partnering%20with%20Phantomix/DiamondMax." class="btn btn-investor" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
     </section>
 
-    <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank" class="floating-support">
-        <i class="fab fa-whatsapp"></i>
+    <a href="mailto:phantomix.00@gmail.com?subject=Support%20Request%20-%20Phantomix" class="floating-support" target="_blank" title="Email Support">
+        <i class="fas fa-envelope"></i>
     </a>
-    
-
- 
-    <section class="phantomix-section scroll-reveal">
-        <div class="waitlist-container">
-            <h2 style="margin-top: 0;">Get Exclusive Early Access ⏳</h2>
-            <p style="color: #94a3b8; margin-bottom: 25px;">Join the waitlist today and unlock premium benefits on launch day.</p>
-            
-            <div>
-                <input type="email" id="emailInput" placeholder="Enter your email address..." required class="waitlist-input">
-                <button onclick="joinWaitlist()" class="btn">Join Waitlist 🚀</button>
-            </div>
-            <p id="msg" style="color: #10b981; font-weight: bold; margin-top: 15px; display: none;">✅ Successfully added to the waitlist!</p>
-        </div>
-    </section>
 
     <script src="phantomix-data.js"></script>
     <script src="chatbot.js"></script>
