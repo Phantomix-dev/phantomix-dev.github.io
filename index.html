@@ -192,6 +192,66 @@
         /* Scroll Reveal Animation */
         .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
         .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        /* --- Yahan se Investor aur Support ka CSS start hota hai --- */
+
+        /* Investor Section Styling */
+        .investor-container {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(15px);
+            padding: 50px 30px;
+            border-radius: 15px;
+            border: 1px solid #8b5cf6;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+            margin-top: 40px;
+        }
+        .investor-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-box {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 15px 25px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+        .btn-investor {
+            background: linear-gradient(135deg, #8b5cf6, #c084fc);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-investor:hover {
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+        }
+
+        /* Floating Support Button */
+        .floating-support {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .floating-support:hover {
+            transform: scale(1.1) rotate(-10deg);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+            color: white;
+        }
+        /* --- CSS yahan khatam hota hai --- */
     </style>
 </head>
 
@@ -248,7 +308,32 @@
             </div>
         </div>
     </section>
+    <section class="phantomix-section scroll-reveal">
+        <div class="investor-container">
+            <h2 style="margin-top: 0; color: #c084fc;">Partner With Phantomix 🚀</h2>
+            <p style="color: #cbd5e1; margin-bottom: 25px;">We are building the future of digital experiences. As an early-stage startup, we are open to strategic partnerships and angel investments.</p>
+            
+            <div class="investor-stats">
+                <div class="stat-box">
+                    <h3 style="margin:0; color:#fff;">Solo</h3>
+                    <p style="margin:0; color:#94a3b8; font-size:12px;">Founder Driven</p>
+                </div>
+                <div class="stat-box">
+                    <h3 style="margin:0; color:#fff;">Pre-Seed</h3>
+                    <p style="margin:0; color:#94a3b8; font-size:12px;">Stage</p>
+                </div>
+            </div>
 
+            <a href="mailto:your-email@gmail.com?subject=Investment%20Inquiry%20-%20Phantomix" class="btn btn-investor">Request Pitch Deck</a>
+        </div>
+    </section>
+
+    <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank" class="floating-support">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+
+ 
     <section class="phantomix-section scroll-reveal">
         <div class="waitlist-container">
             <h2 style="margin-top: 0;">Get Exclusive Early Access ⏳</h2>
