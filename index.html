@@ -1,408 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="chatbot.css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phantomix | DiamondMax</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantomix | DiamondMax</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="chatbot.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Base Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a; /* Premium Dark Slate */
+            color: #ffffff;
+            text-align: center;
+            overflow-x: hidden;
+        }
 
-<style>
-    /* Top Left Navigation Styling */
-.top-left-nav {
-    position: absolute; /* Page ke sabse upar fix karne ke liye */
-    top: 20px;
-    left: 20px;
-    z-index: 1000; /* Taaki yeh kisi aur cheez ke piche na chhupe */
-}
+        /* Top Left Navigation */
+        .top-left-nav {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .nav-link {
+            color: #0ea5e9;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            border: 1px solid #0ea5e9;
+            padding: 8px 18px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
+        .nav-link:hover {
+            background-color: #0ea5e9;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+        }
 
-.nav-link {
-    color: #0ea5e9; /* Neon Blue */
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    border: 1px solid #0ea5e9;
-    padding: 8px 18px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    background-color: transparent;
-}
+        /* Hero Section */
+        .hero-section {
+            padding: 100px 20px 50px;
+        }
+        .logo-img {
+            width: 120px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.6);
+            margin-bottom: 20px;
+        }
+        h1 { font-size: 36px; margin: 0 0 10px 0; }
+        .tagline { color: #94a3b8; font-size: 16px; margin-bottom: 30px; }
+        
+        h2 { color: #0ea5e9; font-size: 28px; margin-top: 40px; }
 
-.nav-link:hover {
-    background-color: #0ea5e9;
-    color: #ffffff;
-    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); /* Hover par glow effect */
-}
-body{
-margin:0;
-font-family:Segoe UI, sans-serif;
-background:#0d0d0d;
-color:#fff;
-text-align:center;
-overflow-x:hidden;
-}
+        /* Countdown */
+        #timer {
+            font-size: 24px;
+            font-weight: 700;
+            color: #38bdf8;
+            margin: 15px 0 30px;
+            letter-spacing: 2px;
+        }
 
-/* MATRIX */
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-}
+        /* Social Icons */
+        .social { margin-top: 40px; margin-bottom: 20px; }
+        .social a {
+            color: #0ea5e9;
+            margin: 0 15px;
+            font-size: 28px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .social a:hover {
+            color: #ffffff;
+            transform: scale(1.2) translateY(-3px);
+        }
 
-/* POPUP */
-#popup{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.75);
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:99999;
-}
-.box{
-background:#111;
-padding:25px;
-border-radius:15px;
-width:300px;
-box-shadow:0 0 25px rgba(0,255,255,0.2);
-}
+        /* Features Section */
+        .phantomix-section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+        .features-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 30px; }
+        .feature-card {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            width: 280px;
+            border: 1px solid #334155;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #0ea5e9;
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
+            transform: translateY(-5px);
+        }
+        .feature-icon { font-size: 40px; margin-bottom: 15px; }
+        .feature-card h3 { margin-bottom: 10px; }
+        .feature-card p { color: #cbd5e1; font-size: 14px; line-height: 1.6; margin: 0; }
 
-/* LOADER */
-#loader{
-position:fixed;
-inset:0;
-background:#050505;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:99999;
-}
-#loader-bar{
-width:220px;
-height:10px;
-background:#222;
-border-radius:10px;
-overflow:hidden;
-margin-top:10px;
-}
-#loader-bar div{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#00ffff,#b026ff);
-animation:load 3s forwards;
-}
-@keyframes load{to{width:100%}}
+        /* Waitlist Container */
+        .waitlist-container {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            padding: 50px 30px;
+            border-radius: 15px;
+            border: 1px solid #0ea5e9;
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.1);
+            margin-top: 40px;
+        }
+        .waitlist-input {
+            padding: 15px 20px;
+            width: 300px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .waitlist-input:focus { border-color: #0ea5e9; }
+        .btn {
+            padding: 15px 30px;
+            background: #0ea5e9;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+        .btn:hover { background: #0284c7; box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4); transform: translateY(-2px); }
 
-/* BUTTON */
-.btn{
-background:#b026ff;
-padding:12px 25px;
-border:none;
-color:#fff;
-border-radius:10px;
-cursor:pointer;
-margin:8px;
-font-weight:bold;
-transition:0.3s;
-}
-.btn:hover{opacity:0.8; transform:scale(1.05);}
-
-/* VERIFY */
-#progress{
-width:80%;
-height:15px;
-background:#222;
-margin:15px auto;
-border-radius:10px;
-overflow:hidden;
-display:none;
-}
-#bar{
-height:100%;
-width:0%;
-background:#00ffff;
-}
-
-/* TOAST */
-#toast{
-position:fixed;
-top:20px;
-right:20px;
-background:#111;
-border:1px solid #00ffff;
-padding:12px 15px;
-border-radius:10px;
-transform:translateX(120%);
-opacity:0;
-transition:0.5s;
-z-index:9999;
-min-width:200px;
-}
-
-/* SOCIAL */
-.social a{
-color:#00ffff;
-margin:10px;
-font-size:24px;
-display:inline-block;
-transition:0.3s;
-}
-.social a:hover{transform:scale(1.2);}
-
-/* COUNTDOWN */
-#timer{
-font-size:20px;
-font-weight:bold;
-color:#00ffff;
-margin:10px;
-}
-
-/* INPUT */
-input{
-padding:10px;
-border-radius:8px;
-border:none;
-outline:none;
-width:200px;
-text-align:center;
-}
-    /* General Section Styling */
-.phantomix-section {
-    padding: 60px 20px;
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.section-header h2 {
-    font-size: 32px;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.section-header span {
-    color: #0ea5e9;
-}
-
-.section-header p {
-    color: #94a3b8;
-    margin-bottom: 40px;
-}
-
-/* Features Grid */
-.features-grid {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.feature-card {
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    width: 300px;
-    border: 1px solid #334155;
-    transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-    border-color: #0ea5e9;
-    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
-    transform: translateY(-5px);
-}
-
-.feature-icon {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-.feature-card h3 {
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.feature-card p {
-    color: #cbd5e1;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-/* Waitlist Section */
-.waitlist-container {
-    background: linear-gradient(145deg, #0f172a, #1e293b);
-    padding: 50px 30px;
-    border-radius: 15px;
-    border: 1px solid #0ea5e9;
-    box-shadow: 0 0 30px rgba(14, 165, 233, 0.1);
-}
-
-.waitlist-container h2 {
-    color: #ffffff;
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.waitlist-form {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.waitlist-input {
-    padding: 15px 20px;
-    width: 350px;
-    border-radius: 8px;
-    border: 1px solid #334155;
-    background: #0f172a;
-    color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.waitlist-input:focus {
-    border-color: #0ea5e9;
-}
-
-.waitlist-btn {
-    padding: 15px 30px;
-    background: #0ea5e9;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.waitlist-btn:hover {
-    background: #0284c7;
-    box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4);
-}
-
-/* Reviews Grid */
-.reviews-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.review-card {
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    width: 400px;
-    text-align: left;
-    border-left: 4px solid #0ea5e9;
-}
-
-.review-text {
-    font-style: italic;
-    color: #cbd5e1;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.reviewer {
-    color: #38bdf8;
-    font-size: 14px;
-}
-
-/* BIG BRAND INTERACTIVE ANIMATION (Scroll Reveal) */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-}
-
-.scroll-reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-</style>
+        /* Scroll Reveal Animation */
+        .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
 </head>
 
 <body>
-<div class="top-left-nav">
-    <a href="about.html" class="nav-link">About Phantomix</a>
-</div>
-<div id="popup">
-<div class="box">
-<h2>Welcome to Phantomix</h2>
-<p>Enter System</p>
-<button class="btn" onclick="closePopup()">ENTER</button>
-</div>
-</div>
 
-<div id="loader">
-<h2>PHANTOMIX SYSTEM</h2>
-<div id="loader-bar"><div></div></div>
-</div>
-
-<canvas id="matrix"></canvas>
-
-<img src="logo.png" width="120" style="border-radius:50%;box-shadow:0 0 20px #00ffff;">
-
-<h1>PHANTOMIX SYSTEM</h1>
-<p>Secure • Fast • Reliable</p>
-
-<h2>💎 DiamondMax App</h2>
-
-<h3>🚀 Launch Countdown</h3>
-<p id="timer">Loading...</p>
-
-<button class="btn" onclick="verify()">VERIFY DEVICE SECURITY</button>
-
-<div id="progress"><div id="bar"></div></div>
-
-<p id="status"></p>
-
-<a id="apk" class="btn" style="display:none"
-href="https://drive.google.com/uc?export=download&id=1y2a2aQEdEZ7bPruQACBpnLKxqVoradR3">
-DOWNLOAD APK
-</a>
-
-<br><br>
-
-<h3>Join Waitlist</h3>
-<input id="email" placeholder="Enter email">
-<br>
-<button class="btn" onclick="save()">JOIN</button>
-
-<p id="msg"></p>
-
-<div class="social">
-<a href="https://instagram.com/shrikantxprajapati"><i class="fab fa-instagram"></i></a>
-<a href="https://www.youtube.com/@Phantomix_SP"><i class="fab fa-youtube"></i></a>
-<a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m"><i class="fab fa-whatsapp"></i></a>
-<a href="https://t.me/diamondmax_india"><i class="fab fa-telegram"></i></a>
-</div>
-
-<div id="toast"></div>
-    <section id="features" class="phantomix-section scroll-reveal">
-    <div class="section-header">
-        <h2>Why <span>DiamondMax?</span> 💎</h2>
-        <p>A revolutionary app built for the modern tech landscape.</p>
+    <div class="top-left-nav">
+        <a href="about.html" class="nav-link">About Phantomix</a>
     </div>
-    
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3>Lightning Fast</h3>
-            <p>Optimized architecture ensures zero lag and blazing fast load times.</p>
+
+    <div class="hero-section">
+        <img src="logo.png" alt="Phantomix Logo" class="logo-img" onerror="this.style.display='none'">
+        
+        <h1>PHANTOMIX SYSTEM</h1>
+        <p class="tagline">Secure • Fast • Reliable</p>
+
+        <h2>💎 DiamondMax App</h2>
+        
+        <p style="color: #94a3b8; margin-top: 30px; margin-bottom: 5px;">🚀 Official Launch Countdown</p>
+        <div id="timer">Calculating...</div>
+
+        <div class="social">
+            <a href="https://instagram.com/shrikantxprajapati" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@Phantomix_SP" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/diamondmax_india" target="_blank"><i class="fab fa-telegram"></i></a>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <h3>Premium UI/UX</h3>
-            <p>A sleek, frameless dark-mode design that feels like the future.</p>
+    </div>
+
+    <section class="phantomix-section scroll-reveal">
+        <h2>Why DiamondMax?</h2>
+        <p style="color: #94a3b8;">A revolutionary app built for the modern tech landscape.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Optimized architecture ensures zero lag and blazing fast load times.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Premium UI/UX</h3>
+                <p>A sleek, frameless dark-mode design that feels like the future.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Ultra Secure</h3>
+                <p>Advanced data protection keeping your privacy at the forefront.</p>
+            </div>
         </div>
-        <div class="
+    </section>
+
+    <section class="phantomix-section scroll-reveal">
+        <div class="waitlist-container">
+            <h2 style="margin-top: 0;">Get Exclusive Early Access ⏳</h2>
+            <p style="color: #94a3b8; margin-bottom: 25px;">Join the waitlist today and unlock premium benefits on launch day.</p>
+            
+            <div>
+                <input type="email" id="emailInput" placeholder="Enter your email address..." required class="waitlist-input">
+                <button onclick="joinWaitlist()" class="btn">Join Waitlist 🚀</button>
+            </div>
+            <p id="msg" style="color: #10b981; font-weight: bold; margin-top: 15px; display: none;">✅ Successfully added to the waitlist!</p>
+        </div>
+    </section>
+
+    <script src="phantomix-data.js"></script>
+    <script src="chatbot.js"></script>
+
+    <script>
+        // 1. Simple Waitlist Logic
+        function joinWaitlist() {
+            let email = document.getElementById("emailInput").value;
+            let msg = document.getElementById("msg");
+            
+            if(!email.includes("@") || !email.includes(".")) {
+                msg.innerText = "❌ Please enter a valid email address.";
+                msg.style.color = "#ef4444"; // Red color for error
+                msg.style.display = "block";
+                return;
+            }
+            
+            // Success
+            msg.innerText = "✅ Successfully added to the waitlist!";
+            msg.style.color = "#10b981"; // Green color for success
+            msg.style.display = "block";
+            document.getElementById("emailInput").value = ""; // Clear input
+        }
+
+        // 2. Countdown Timer Logic (Set to Jan 1, 2028)
+        const launchDate = new Date("2028-01-01T00:00:00").getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const diff = launchDate - now;
+
+            if (diff <= 0) {
+                document.getElementById("timer").innerText = "🚀 APP LAUNCHED!";
+                return;
+            }
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerText = `${d}d ${h}h ${m}m ${s}s`;
+        }, 1000);
+
+        // 3. Scroll Reveal Animation Logic
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            const sections = document.querySelectorAll('.scroll-reveal');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
