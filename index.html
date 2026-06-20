@@ -20,6 +20,46 @@
             color: #ffffff;
             text-align: center;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* PREMIUM ANIMATED GLOWING BACKGROUND */
+        .bg-animation {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: #0f172a;
+        }
+        .glow-shape {
+            position: absolute;
+            filter: blur(80px); /* Creates the soft premium glow */
+            opacity: 0.5;
+            animation: float 10s infinite alternate ease-in-out;
+            border-radius: 50%;
+        }
+        .shape1 {
+            width: 400px; height: 400px;
+            background: #0ea5e9; /* Neon Blue */
+            top: -10%; left: -10%;
+            animation-duration: 12s;
+        }
+        .shape2 {
+            width: 500px; height: 500px;
+            background: #8b5cf6; /* Cyber Purple */
+            bottom: -20%; right: -10%;
+            animation-duration: 15s;
+        }
+        .shape3 {
+            width: 300px; height: 300px;
+            background: #3b82f6; /* Deep Blue */
+            top: 40%; left: 40%;
+            animation-duration: 18s;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-50px) scale(1.1); }
         }
 
         /* Top Left Navigation */
@@ -38,7 +78,8 @@
             padding: 8px 18px;
             border-radius: 6px;
             transition: all 0.3s ease;
-            background-color: transparent;
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
         }
         .nav-link:hover {
             background-color: #0ea5e9;
@@ -53,27 +94,29 @@
         .logo-img {
             width: 120px;
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.6);
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.6);
             margin-bottom: 20px;
+            border: 2px solid #0ea5e9;
         }
-        h1 { font-size: 36px; margin: 0 0 10px 0; }
-        .tagline { color: #94a3b8; font-size: 16px; margin-bottom: 30px; }
+        h1 { font-size: 36px; margin: 0 0 10px 0; letter-spacing: 1px; }
+        .tagline { color: #cbd5e1; font-size: 16px; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase;}
         
-        h2 { color: #0ea5e9; font-size: 28px; margin-top: 40px; }
+        h2 { color: #38bdf8; font-size: 28px; margin-top: 40px; }
 
         /* Countdown */
         #timer {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
-            color: #38bdf8;
+            color: #ffffff;
             margin: 15px 0 30px;
             letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
         }
 
         /* Social Icons */
         .social { margin-top: 40px; margin-bottom: 20px; }
         .social a {
-            color: #0ea5e9;
+            color: #38bdf8;
             margin: 0 15px;
             font-size: 28px;
             transition: 0.3s;
@@ -82,53 +125,58 @@
         .social a:hover {
             color: #ffffff;
             transform: scale(1.2) translateY(-3px);
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
         }
 
         /* Features Section */
-        .phantomix-section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+        .phantomix-section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; position: relative; z-index: 10; }
         .features-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 30px; }
         .feature-card {
-            background: #1e293b;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
             padding: 30px;
             border-radius: 12px;
             width: 280px;
-            border: 1px solid #334155;
+            border: 1px solid rgba(51, 65, 85, 0.8);
             transition: all 0.3s ease;
         }
         .feature-card:hover {
             border-color: #0ea5e9;
-            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
             transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.9);
         }
         .feature-icon { font-size: 40px; margin-bottom: 15px; }
-        .feature-card h3 { margin-bottom: 10px; }
+        .feature-card h3 { margin-bottom: 10px; color: #f8fafc; }
         .feature-card p { color: #cbd5e1; font-size: 14px; line-height: 1.6; margin: 0; }
 
         /* Waitlist Container */
         .waitlist-container {
-            background: linear-gradient(145deg, #0f172a, #1e293b);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(15px);
             padding: 50px 30px;
             border-radius: 15px;
-            border: 1px solid #0ea5e9;
-            box-shadow: 0 0 30px rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.5);
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.15);
             margin-top: 40px;
         }
         .waitlist-input {
             padding: 15px 20px;
             width: 300px;
+            max-width: 90%;
             border-radius: 8px;
             border: 1px solid #334155;
-            background: #0f172a;
+            background: rgba(15, 23, 42, 0.9);
             color: #ffffff;
             font-family: 'Poppins', sans-serif;
             outline: none;
             margin-right: 10px;
             margin-bottom: 10px;
         }
-        .waitlist-input:focus { border-color: #0ea5e9; }
+        .waitlist-input:focus { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.3); }
         .btn {
             padding: 15px 30px;
-            background: #0ea5e9;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -137,8 +185,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 15px;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
         }
-        .btn:hover { background: #0284c7; box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4); transform: translateY(-2px); }
+        .btn:hover { box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6); transform: translateY(-2px); }
 
         /* Scroll Reveal Animation */
         .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
@@ -147,6 +196,12 @@
 </head>
 
 <body>
+
+    <div class="bg-animation">
+        <div class="glow-shape shape1"></div>
+        <div class="glow-shape shape2"></div>
+        <div class="glow-shape shape3"></div>
+    </div>
 
     <div class="top-left-nav">
         <a href="about.html" class="nav-link">About Phantomix</a>
@@ -211,26 +266,25 @@
     <script src="chatbot.js"></script>
 
     <script>
-        // 1. Simple Waitlist Logic
+        // 1. Waitlist Logic
         function joinWaitlist() {
             let email = document.getElementById("emailInput").value;
             let msg = document.getElementById("msg");
             
             if(!email.includes("@") || !email.includes(".")) {
                 msg.innerText = "❌ Please enter a valid email address.";
-                msg.style.color = "#ef4444"; // Red color for error
+                msg.style.color = "#ef4444"; 
                 msg.style.display = "block";
                 return;
             }
             
-            // Success
             msg.innerText = "✅ Successfully added to the waitlist!";
-            msg.style.color = "#10b981"; // Green color for success
+            msg.style.color = "#10b981"; 
             msg.style.display = "block";
-            document.getElementById("emailInput").value = ""; // Clear input
+            document.getElementById("emailInput").value = ""; 
         }
 
-        // 2. Countdown Timer Logic (Set to Jan 1, 2028)
+        // 2. Countdown Timer Logic (Jan 1, 2028)
         const launchDate = new Date("2028-01-01T00:00:00").getTime();
 
         setInterval(function() {
