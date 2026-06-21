@@ -343,6 +343,110 @@
                 padding-bottom: 30px;
             }
         }
+                /* Development Roadmap Styling */
+        .roadmap-container {
+            position: relative;
+            padding-left: 30px;
+            text-align: left;
+            margin: 0 auto;
+        }
+
+        /* The vertical line */
+        .roadmap-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 14px;
+            height: 100%;
+            width: 2px;
+            background: rgba(51, 65, 85, 0.8);
+            z-index: 1;
+        }
+
+        .roadmap-item {
+            position: relative;
+            padding-bottom: 40px;
+            padding-left: 30px;
+        }
+
+        .roadmap-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .roadmap-marker {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #0f172a;
+            border: 2px solid #334155;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-content {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-item:hover .roadmap-content {
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateX(5px);
+        }
+
+        .roadmap-date {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #94a3b8;
+        }
+
+        /* Completed Phase Styles */
+        .roadmap-item.completed .roadmap-marker {
+            border-color: #10b981;
+            background: #10b981;
+            color: #fff;
+            font-size: 12px;
+        }
+        .roadmap-item.completed .roadmap-content {
+            border-left: 3px solid #10b981;
+        }
+
+        /* Current Phase Styles */
+        .roadmap-item.current .roadmap-marker {
+            border-color: #0ea5e9;
+        }
+        .roadmap-item.current .roadmap-content {
+            border-left: 3px solid #0ea5e9;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
+        }
+        
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: #0ea5e9;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+        }
+
+        /* Upcoming Phase Styles */
+        .roadmap-item.upcoming .roadmap-content {
+            opacity: 0.7;
+        }
 
 
         /* Scroll Reveal Animation */
@@ -431,6 +535,55 @@
     </section>
 
     </div>
+        <section class="phantomix-section scroll-reveal" style="max-width: 900px;">
+        <h2 style="margin-bottom: 5px;">The <span style="color: #0ea5e9;">DiamondMax</span> Journey</h2>
+        <p style="color: #94a3b8; margin-bottom: 40px;">Our strategic roadmap to launch.</p>
+        
+        <div class="roadmap-container">
+            <div class="roadmap-item completed">
+                <div class="roadmap-marker">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="roadmap-content">
+                    <h3 style="margin: 0 0 5px; color: #10b981;">Phase 1: Foundation</h3>
+                    <div class="roadmap-date">Q1 2026</div>
+                    <p style="margin: 0; color: #cbd5e1; font-size: 14px;">Core system architecture design, UI/UX prototyping, and securing base infrastructure.</p>
+                </div>
+            </div>
+
+            <div class="roadmap-item current">
+                <div class="roadmap-marker">
+                    <div class="pulse-dot"></div>
+                </div>
+                <div class="roadmap-content">
+                    <h3 style="margin: 0 0 5px; color: #0ea5e9;">Phase 2: Alpha Development</h3>
+                    <div class="roadmap-date">Q2 - Q3 2026</div>
+                    <p style="margin: 0; color: #cbd5e1; font-size: 14px;">Building core features, opening early waitlist, and strategic investor onboarding.</p>
+                </div>
+            </div>
+
+            <div class="roadmap-item upcoming">
+                <div class="roadmap-marker"></div>
+                <div class="roadmap-content">
+                    <h3 style="margin: 0 0 5px; color: #94a3b8;">Phase 3: Beta Testing</h3>
+                    <div class="roadmap-date">2027</div>
+                    <p style="margin: 0; color: #64748b; font-size: 14px;">Closed beta access for waitlist members, bug squashing, and performance tuning.</p>
+                </div>
+            </div>
+
+            <div class="roadmap-item upcoming">
+                <div class="roadmap-marker" style="border-color: #8b5cf6;">
+                    <i class="fas fa-rocket" style="color: #8b5cf6; display: none;"></i>
+                </div>
+                <div class="roadmap-content">
+                    <h3 style="margin: 0 0 5px; color: #8b5cf6;">Phase 4: Global Launch</h3>
+                    <div class="roadmap-date">January 2028</div>
+                    <p style="margin: 0; color: #64748b; font-size: 14px;">Official public release of DiamondMax across all major platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="phantomix-section scroll-reveal">
         <h2>Why DiamondMax?</h2>
