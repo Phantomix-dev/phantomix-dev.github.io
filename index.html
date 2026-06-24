@@ -52,7 +52,7 @@
         body {
             margin: 0;
             padding: 0;
-            padding-top: 80px; /* Navbar Overlap Fix */
+            padding-top: 115px; /* Navbar Overlap Fix */
             font-family: 'Poppins', sans-serif;
             background-color: #0f172a; /* Premium Dark Slate */
             color: #ffffff;
@@ -1042,10 +1042,83 @@
             50% { opacity: 1; }
             100% { opacity: 0.4; }
         }
+        /* --- Live Tech News Ticker Styling --- */
+        .news-ticker-container {
+            position: fixed;
+            top: 70px; /* Navbar ke theek neeche fit hoga */
+            left: 0;
+            width: 100%;
+            height: 35px;
+            background: #020617;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
+            display: flex;
+            align-items: center;
+            z-index: 998;
+            overflow: hidden;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+        }
+
+        .ticker-title {
+            background: #0ea5e9;
+            color: #020617;
+            padding: 0 15px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            z-index: 999;
+            box-shadow: 5px 0 15px rgba(14, 165, 233, 0.4);
+            white-space: nowrap;
+        }
+
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .ticker-move {
+            display: flex;
+            width: max-content;
+            animation: ticker 25s linear infinite;
+        }
+
+        .ticker-move:hover {
+            animation-play-state: paused; /* User mouse le jayega toh ruk jayega */
+            cursor: pointer;
+        }
+
+        .ticker-item {
+            color: #10b981; /* Neon Green text */
+            padding: 0 40px;
+            white-space: nowrap;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .news-ticker-container { top: 60px; }
+        }
     </style>
 </head>
 
 <body>
+    <div class="news-ticker-container">
+        <div class="ticker-title"><i class="fas fa-bolt"></i> FEEDS:</div>
+        <div class="ticker-wrap">
+            <div class="ticker-move">
+                <span class="ticker-item">⚡ [SYSTEM] Phantomix Engine v2.4 initialized successfully.</span>
+                <span class="ticker-item">🔒 [SECURITY] AES-256 quantum-resistant encryption activated for DiamondMax Vault.</span>
+                <span class="ticker-item">🚀 [LAUNCH] Early access waitlist crosses 1,250+ active global nodes.</span>
+                <span class="ticker-item">💻 [TECH] Flutter core integration optimized for zero-latency framing.</span>
+                <span class="ticker-item">🌐 [NETWORK] Mainframe servers uptime verified at 99.99%.</span>
+            </div>
+        </div>
+    </div>
     <nav class="phantomix-navbar">
         <div class="nav-logo">
             <i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i>
