@@ -1312,6 +1312,9 @@
             </div>
         </div>
     </div>
+    <div id="cyber-toast" style="display: none; position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); background: #020617; border: 1px solid #0ea5e9; color: #fff; padding: 12px 24px; border-radius: 30px; font-size: 13px; font-family: monospace; z-index: 10000; align-items: center; gap: 10px; box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); text-align: center; max-width: 85%;">
+        <span class="dot-green" id="toast-dot"></span> <span id="toast-message">System Connected</span>
+    </div>
     <nav class="phantomix-navbar">
         <div class="nav-logo">
             <i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i>
@@ -2109,6 +2112,25 @@
                     setTimeout(() => { msg.style.display = "none"; }, 3000);
                 }
             }
+        }
+        // 15. Global Cyber Toast Notification System
+        function showCyberToast(message, isSuccess = true) {
+            const toast = document.getElementById("cyber-toast");
+            const toastMsg = document.getElementById("toast-message");
+            const toastDot = document.getElementById("toast-dot");
+            
+            if(!toast) return;
+            
+            toastMsg.innerText = message;
+            toastDot.style.background = isSuccess ? "#10b981" : "#ef4444";
+            toastDot.style.boxShadow = isSuccess ? "0 0 8px #10b981" : "0 0 8px #ef4444";
+            
+            toast.style.display = "flex";
+            
+            // 3 second baad automatically hide ho jayega
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 3000);
         }
     </script>
 
