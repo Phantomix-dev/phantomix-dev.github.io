@@ -28,20 +28,32 @@
     <link rel="stylesheet" href="chatbot.css">
 
     <style>
-            html {
+            <style>
+        html {
             scroll-behavior: smooth;
         }
-            /* --- Premium Custom Scrollbar --- */
+
+        /* --- Premium Custom Scrollbar --- */
         ::-webkit-scrollbar {
-            width: 10px; /* Scrollbar ki motai */
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 10px; 
+            border: 2px solid #020617; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0ea5e9; 
         }
 
-        ::-webkit-scrollbar-track {
-            background: #020617; /* Scrollbar ka
         /* Base Styling */
         body {
             margin: 0;
             padding: 0;
+            padding-top: 80px; /* Navbar Overlap Fix */
             font-family: 'Poppins', sans-serif;
             background-color: #0f172a; /* Premium Dark Slate */
             color: #ffffff;
@@ -49,11 +61,10 @@
             overflow-x: hidden;
             position: relative;
         }
-            
-body {
-            /* Purani styling waisi hi rehne dein, bas ye line add karein */
-            padding-top: 80px; 
-        }
+
+        /* PREMIUM ANIMATED GLOWING BACKGROUND */
+        .bg-animation {
+            /* ... (Yahan se aapka baaki ka purana CSS same rahega) ... */
         /* PREMIUM ANIMATED GLOWING BACKGROUND */
         .bg-animation {
             position: fixed;
