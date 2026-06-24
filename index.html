@@ -758,6 +758,66 @@ body {
                 padding-top: 70px; /* Mobile ke liye padding thodi kam */
             }
         }
+            /* --- Mobile Menu & Hamburger Styling --- */
+        .hamburger-btn {
+            display: none; /* Hide on desktop */
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px; /* Right below the navbar */
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            max-height: 300px;
+            padding: 20px 0;
+        }
+
+        .mobile-menu a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 15px 5%;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a:hover {
+            color: #0ea5e9;
+            background: rgba(14, 165, 233, 0.1);
+            padding-left: 8%; /* Cool slide effect on hover */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .phantomix-navbar { padding: 0 15px; height: 70px; }
+            .nav-links { display: none; }
+            .nav-btn { display: none; } /* Hide the button to save space for hamburger */
+            .hamburger-btn { display: block; }
+        }
     </style>
 </head>
 
@@ -767,17 +827,29 @@ body {
             <i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i>
             Phantomix
         </div>
+        
         <ul class="nav-links">
             <li><a href="#hero-section">Home</a></li>
             <li><a href="#features-section">Features</a></li>
             <li><a href="#vault-section">Vault</a></li>
             <li><a href="#roadmap-section">Roadmap</a></li>
         </ul>
+        
         <div class="nav-action">
             <a href="#waitlist-section" class="nav-btn">Join Beta</a>
+            <button class="hamburger-btn" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </nav>
-    <div class="bg-animation">
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#hero-section" onclick="toggleMobileMenu()">Home</a>
+        <a href="#features-section" onclick="toggleMobileMenu()">Features</a>
+        <a href="#vault-section" onclick="toggleMobileMenu()">Vault</a>
+        <a href="#roadmap-section" onclick="toggleMobileMenu()">Roadmap</a>
+    </div>
+        <div class="bg-animation">
         <div class="glow-shape shape1"></div>
         <div class="glow-shape shape2"></div>
         <div class="glow-shape shape3"></div>
@@ -1190,7 +1262,11 @@ body {
                 });
             });
         });
-
+// Mobile Menu Toggle Logic
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
