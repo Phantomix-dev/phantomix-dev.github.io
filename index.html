@@ -42,7 +42,10 @@
             overflow-x: hidden;
             position: relative;
         }
-
+body {
+            /* Purani styling waisi hi rehne dein, bas ye line add karein */
+            padding-top: 80px; 
+        }
         /* PREMIUM ANIMATED GLOWING BACKGROUND */
         .bg-animation {
             position: fixed;
@@ -733,8 +736,26 @@
 
         /* Mobile View Adjustments */
         @media (max-width: 768px) {
+            .phantomix-navbar {
+                padding: 0 15px; /* Side ki jagah kam ki taaki fit ho sake */
+                height: 60px; /* Mobile par navbar thoda patla */
+            }
+
+            .nav-logo {
+                font-size: 16px; /* Logo ka text thoda chota */
+            }
+
             .nav-links {
-                display: none; /* Mobile pe links chupa denge clean look ke liye */
+                display: none; /* Links ko chupa diya space bachane ke liye */
+            }
+
+            .nav-btn {
+                padding: 6px 12px; /* Button thoda compact */
+                font-size: 12px;
+            }
+            
+            body {
+                padding-top: 70px; /* Mobile ke liye padding thodi kam */
             }
         }
     </style>
