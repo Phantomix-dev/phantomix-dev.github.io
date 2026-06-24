@@ -23,7 +23,7 @@
     <meta property="twitter:image" content="https://phantomix-dev.github.io/diamondmax-app/banner.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+\    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="chatbot.css">
 
@@ -666,7 +666,21 @@
 </head>
 
 <body>
-
+<nav class="phantomix-navbar">
+        <div class="nav-logo">
+            <i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i>
+            Phantomix
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero-section">Home</a></li>
+            <li><a href="#features-section">Features</a></li>
+            <li><a href="#vault-section">Vault</a></li>
+            <li><a href="#roadmap-section">Roadmap</a></li>
+        </ul>
+        <div class="nav-action">
+            <a href="#waitlist-section" class="nav-btn">Join Beta</a>
+        </div>
+    </nav>
     <div class="bg-animation">
         <div class="glow-shape shape1"></div>
         <div class="glow-shape shape2"></div>
@@ -677,7 +691,7 @@
         <a href="about.html" class="nav-link">About Phantomix</a>
     </div>
 
-    <div class="hero-section">
+    <div class="hero-section" id="hero-section">
         <img src="logo.png" alt="Phantomix Logo" class="logo-img" onerror="this.style.display='none'">
         
         <h1>PHANTOMIX SYSTEM</h1>
@@ -821,7 +835,7 @@
         </div>
         </section>
 
-    <section class="phantomix-section scroll-reveal">
+    <section class="phantomix-section scroll-reveal" id="features-section">
         <h2>Why DiamondMax?</h2>
         <p style="color: #94a3b8;">A revolutionary app built for the modern tech landscape.</p>
         
@@ -843,7 +857,7 @@
             </div>
         </div>
     </section>
-        <section class="phantomix-section scroll-reveal" style="max-width: 600px;">
+        <section class="phantomix-section scroll-reveal" style="max-width: 600px;" id="vault-section">
         <h2>Phantomix <span style="color: #0ea5e9;">Diamond-Vault</span></h2>
         <p style="color: #94a3b8; margin-bottom: 30px;">Generate ultra-secure, unbreakable passwords instantly.</p>
 
@@ -932,7 +946,7 @@
     </section>
 
 
-    <section class="phantomix-section scroll-reveal">
+    <section class="phantomix-section scroll-reveal" id="waitlist-section">
         <div class="waitlist-container">
             <h2 style="margin-top: 0;">Get Exclusive Early Access ⏳</h2>
             <p style="color: #94a3b8; margin-bottom: 25px;">Join the waitlist today and unlock premium benefits on launch day.</p>
