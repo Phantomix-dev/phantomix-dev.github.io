@@ -1258,6 +1258,44 @@
             border-radius: 50%;
             box-shadow: 0 0 8px #10b981;
         }
+        /* --- Mobile Share Card Styling --- */
+        .mobile-share-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .native-share-btn {
+            width: 100%;
+            background: rgba(14, 165, 233, 0.1);
+            color: #0ea5e9;
+            border: 1px solid #0ea5e9;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .native-share-btn:hover {
+            background: #0ea5e9;
+            color: white;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+        }
+
+        /* Responsive Mobile Tweak (QR code text/image mobile par bilkul hide ho jayega space bachane ke liye) */
+        @media (max-width: 768px) {
+            .qr-desktop-only {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -1653,6 +1691,22 @@
             <p id="msg" style="color: #10b981; font-weight: bold; margin-top: 15px; display: none;">✅ Successfully added to the waitlist!</p>
         </div>
     </section>
+    <section class="phantomix-section scroll-reveal" style="max-width: 500px; padding-top: 10px;">
+        <div class="mobile-share-card">
+            <h4 style="margin-top: 0; font-size: 16px; color: #fff;"><i class="fas fa-share-nodes" style="color: #0ea5e9;"></i> Spread the Word</h4>
+            <p style="color: #94a3b8; font-size: 13px; margin-bottom: 20px;">Invite other nodes to the DiamondMax network. Grow the mainframe.</p>
+            
+            <button class="native-share-btn" onclick="inviteNative()">
+                <i class="fas fa-arrow-up-from-bracket"></i> One-Click Share
+            </button>
+
+            <div class="qr-desktop-only" style="margin-top: 20px; border-top: 1px dashed rgba(51, 65, 85, 0.5); padding-top: 15px;">
+                <p style="color: #64748b; font-size: 11px; margin-bottom: 10px;">SCAN TO OPEN ON MOBILE</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://phantomix-dev.github.io/diamondmax-app/&color=0ea5e9&bgcolor=0f172a" alt="Scan QR" style="border: 2px solid #0ea5e9; border-radius: 8px; padding: 5px; background: #0f172a;">
+            </div>
+        </div>
+    </section>
+    
     <section class="phantomix-section scroll-reveal" style="max-width: 800px;">
         <h3 style="color: #ffffff; font-size: 20px; margin-bottom: 30px;"><i class="fas fa-gift" style="color: #8b5cf6;"></i> Early Adopter Rewards</h3>
         
@@ -2031,6 +2085,31 @@
 
         // Run on load
         simulatePing();
+        // 14. Native Mobile Web Share API Integration
+        function inviteNative() {
+            const shareData = {
+                title: 'Phantomix | DiamondMax',
+                text: '🔥 Join the elite waitlist for DiamondMax app by Phantomix. Secure your early access beta role today!',
+                url: 'https://phantomix-dev.github.io/diamondmax-app/'
+            };
+
+            // Agar user actual android/iOS mobile device par hai
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .then(() => console.log('Mainframe invite sent.'))
+                    .catch((err) => console.log('Share canceled:', err));
+            } else {
+                // PC Users ke liye fall-back (yeh automatically text copy kar dega clipboard par)
+                navigator.clipboard.writeText(shareData.text + " " + shareData.url);
+                let msg = document.getElementById("msg");
+                if (msg) {
+                    msg.innerText = "📋 Invite link copied to clipboard! Share it anywhere.";
+                    msg.style.color = "#0ea5e9";
+                    msg.style.display = "block";
+                    setTimeout(() => { msg.style.display = "none"; }, 3000);
+                }
+            }
+        }
     </script>
 
     <footer class="phantomix-footer">
