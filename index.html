@@ -1341,6 +1341,18 @@ body {
             
             window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
         }
+            // Tab Switch Magic (Page Visibility API)
+        let originalTitle = document.title; // Aapki site ka asli naam save kar lega
+        
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                // Jab user dusre tab me jayega
+                document.title = "🔒 Vault Left Open! We Miss You | Phantomix";
+            } else {
+                // Jab user wapas aayega
+                document.title = originalTitle;
+            }
+        });
     </script>
 </body>
 </html>
