@@ -1349,10 +1349,10 @@
             <h2 style="margin-top: 0;">Get Exclusive Early Access ⏳</h2>
             <p style="color: #94a3b8; margin-bottom: 25px;">Join the waitlist today and unlock premium benefits on launch day.</p>
             
-            <div>
-                <input type="email" id="emailInput" placeholder="Enter your email address..." required class="waitlist-input">
-                <button onclick="joinWaitlist()" class="btn">Join Waitlist 🚀</button>
-            </div>
+            <form action="https://formsubmit.co/phantomix.00@gmail.com" method="POST" id="waitlistForm" onsubmit="event.preventDefault(); joinWaitlist();">
+                <input type="email" name="email" id="emailInput" placeholder="Enter your email address..." required class="waitlist-input">
+                <button type="submit" class="btn">Join Waitlist 🚀</button>
+            </form>
             <p id="msg" style="color: #10b981; font-weight: bold; margin-top: 15px; display: none;">✅ Successfully added to the waitlist!</p>
         </div>
     </section>
@@ -1385,10 +1385,12 @@
     <script src="chatbot.js"></script>
 
     <script>
-        // 1. Waitlist Logic
+       // 1. Waitlist Logic (Fixed for Free Instant Backend)
         function joinWaitlist() {
-            let email = document.getElementById("emailInput").value;
+            let emailInput = document.getElementById("emailInput");
+            let email = emailInput.value;
             let msg = document.getElementById("msg");
+            let form = document.getElementById("waitlistForm");
             
             if(!email.includes("@") || !email.includes(".")) {
                 msg.innerText = "❌ Please enter a valid email address.";
@@ -1397,12 +1399,21 @@
                 return;
             }
             
-            msg.innerText = "✅ Successfully added to the waitlist!";
-            msg.style.color = "#10b981"; 
-            msg.style.display = "block";
-            document.getElementById("emailInput").value = ""; 
+            // Background mein data submit karne ke liye
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(form)
+            }).then(() => {
+                msg.innerText = "✅ Successfully added to the waitlist!";
+                msg.style.color = "#10b981"; 
+                msg.style.display = "block";
+                emailInput.value = ""; 
+            }).catch(() => {
+                msg.innerText = "❌ Something went wrong. Try again!";
+                msg.style.color = "#ef4444";
+                msg.style.display = "block";
+            });
         }
-
         // 2. Countdown Timer Logic (Jan 1, 2028)
         const launchDate = new Date("2028-01-01T00:00:00").getTime();
 
