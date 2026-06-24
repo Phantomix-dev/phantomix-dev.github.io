@@ -583,6 +583,85 @@
         /* Scroll Reveal Animation */
         .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
         .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+            /* Diamond-Vault Password Generator Styling */
+        .vault-container {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: left;
+        }
+
+        .password-display-box {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid #334155;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-family: monospace;
+            font-size: 20px;
+            color: #0ea5e9;
+            letter-spacing: 2px;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover { color: #10b981; transform: scale(1.1); }
+
+        .phantom-slider {
+            width: 100%;
+            cursor: pointer;
+            accent-color: #0ea5e9;
+            margin-bottom: 25px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .custom-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cbd5e1;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .custom-checkbox input { accent-color: #0ea5e9; width: 16px; height: 16px; cursor: pointer; }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .generate-btn:hover {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 
@@ -764,6 +843,47 @@
             </div>
         </div>
     </section>
+        <section class="phantomix-section scroll-reveal" style="max-width: 600px;">
+        <h2>Phantomix <span style="color: #0ea5e9;">Diamond-Vault</span></h2>
+        <p style="color: #94a3b8; margin-bottom: 30px;">Generate ultra-secure, unbreakable passwords instantly.</p>
+
+        <div class="vault-container">
+            <div class="password-display-box">
+                <span id="generated-password">P#ant0m!x_2026</span>
+                <button class="copy-btn" onclick="copyPassword()" title="Copy Password">
+                    <i class="far fa-copy"></i>
+                </button>
+            </div>
+
+            <div class="vault-controls">
+                <div class="slider-group">
+                    <label style="display: flex; justify-content: space-between; color: #cbd5e1; font-size: 14px; margin-bottom: 10px;">
+                        Password Length <span id="length-val" style="color: #0ea5e9; font-weight: bold;">12</span>
+                    </label>
+                    <input type="range" id="pass-length" min="8" max="32" value="12" class="phantom-slider" oninput="document.getElementById('length-val').innerText = this.value">
+                </div>
+
+                <div class="checkbox-group">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="inc-uppercase" checked>
+                        <span class="checkmark"></span> Uppercase (A-Z)
+                    </label>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="inc-numbers" checked>
+                        <span class="checkmark"></span> Numbers (0-9)
+                    </label>
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="inc-symbols" checked>
+                        <span class="checkmark"></span> Symbols (!@#$)
+                    </label>
+                </div>
+
+                <button class="generate-btn" onclick="generatePassword()">
+                    <i class="fas fa-bolt"></i> Generate Secure Password
+                </button>
+            </div>
+        </div>
+    </section>
         <section class="phantomix-section scroll-reveal" style="max-width: 800px;">
         <h2>Frequently Asked <span style="color: #0ea5e9;">Questions</span></h2>
         <p style="color: #94a3b8; margin-bottom: 40px;">Everything you need to know about Phantomix and DiamondMax.</p>
@@ -906,6 +1026,42 @@
                 observer.observe(section);
             });
         });
+            // Diamond-Vault Password Logic
+        function generatePassword() {
+            const length = document.getElementById('pass-length').value;
+            const incUpper = document.getElementById('inc-uppercase').checked;
+            const incNums = document.getElementById('inc-numbers').checked;
+            const incSyms = document.getElementById('inc-symbols').checked;
+
+            let chars = "abcdefghijklmnopqrstuvwxyz";
+            if (incUpper) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            if (incNums) chars += "0123456789";
+            if (incSyms) chars += "!@#$%^&*()_+~`|}{[]:;?><,./-=";
+
+            let password = "";
+            for (let i = 0; i < length; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+
+            document.getElementById('generated-password').innerText = password;
+        }
+
+        function copyPassword() {
+            const passText = document.getElementById('generated-password').innerText;
+            navigator.clipboard.writeText(passText).then(() => {
+                let msg = document.getElementById("msg");
+                msg.innerText = "✅ Password Copied to Clipboard!";
+                msg.style.color = "#10b981";
+                msg.style.display = "block";
+                
+                setTimeout(() => { msg.style.display = "none"; }, 3000);
+            });
+        }
+        
+        // Generate a random password on initial load
+        window.onload = function() {
+            generatePassword();
+        };
                 // FAQ Accordion Logic
         document.addEventListener('DOMContentLoaded', () => {
             const faqItems = document.querySelectorAll('.faq-item');
