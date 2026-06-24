@@ -1192,6 +1192,72 @@
             .milestone-step { flex-direction: column; text-align: center; gap: 10px; }
             .milestone-info { margin: 0; }
         }
+        /* --- Performance Analytics Styling --- */
+        .analytics-container {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .analytics-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #94a3b8;
+            border-bottom: 1px dashed rgba(51, 65, 85, 0.5);
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+
+        .analytics-grid {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .analytics-card {
+            flex: 1;
+            min-width: 150px;
+            background: rgba(2, 6, 23, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .analytics-card h5 {
+            margin: 0 0 5px 0;
+            color: #64748b;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .analytics-card p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .ping-good {
+            color: #10b981;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ping-dot {
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+        }
     </style>
 </head>
 
@@ -1305,6 +1371,28 @@
             <div class="tech-item" title="Cloud Native">
                 <i class="fa-solid fa-cloud" style="color: #0ea5e9;"></i>
                 <span>Cloud</span>
+            </div>
+        </div>
+    </section>
+    <section class="phantomix-section scroll-reveal" style="max-width: 800px; padding-top: 10px;">
+        <div class="analytics-container">
+            <div class="analytics-header">
+                <span><i class="fas fa-chart-line" style="color: #0ea5e9;"></i> Diagnostics & Performance</span>
+                <span id="ping-tag" class="ping-good"><span class="ping-dot"></span> Core Online</span>
+            </div>
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h5>Server Response</h5>
+                    <p id="ping-ms">Calculating...</p>
+                </div>
+                <div class="analytics-card">
+                    <h5>Server Load</h5>
+                    <p style="color: #10b981;">0.04% (Optimal)</p>
+                </div>
+                <div class="analytics-card">
+                    <h5>Node Location</h5>
+                    <p style="color: #cbd5e1;">Global Edge</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1928,6 +2016,21 @@
         
         // Initial invocation
         updateConnectionStatus();
+        // 13. Live Performance Ping Tracker
+        function simulatePing() {
+            const pingDisplay = document.getElementById("ping-ms");
+            if (!pingDisplay) return;
+
+            setInterval(() => {
+                // Generates a random realistic tech latency between 14ms and 38ms
+                const randomPing = Math.floor(Math.random() * (38 - 14 + 1)) + 14;
+                pingDisplay.innerText = randomPing + " ms";
+                pingDisplay.style.color = randomPing > 30 ? "#38bdf8" : "#10b981";
+            }, 2500);
+        }
+
+        // Run on load
+        simulatePing();
     </script>
 
     <footer class="phantomix-footer">
