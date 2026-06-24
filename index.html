@@ -1792,33 +1792,26 @@
     <script src="chatbot.js"></script>
 
     <script>
-       // 1. Waitlist Logic (Fixed for Free Instant Backend)
+      // 1. Waitlist Logic (Fixed for Free Instant Backend)
         function joinWaitlist() {
             let emailInput = document.getElementById("emailInput");
             let email = emailInput.value;
-            let msg = document.getElementById("msg");
             let form = document.getElementById("waitlistForm");
             
             if(!email.includes("@") || !email.includes(".")) {
-                msg.innerText = "❌ Please enter a valid email address.";
-                msg.style.color = "#ef4444"; 
-                msg.style.display = "block";
+                showCyberToast("❌ Invalid email address format!", false);
                 return;
             }
             
-            // Background mein data submit karne ke liye
             fetch(form.action, {
                 method: "POST",
                 body: new FormData(form)
             }).then(() => {
-                msg.innerText = "✅ Successfully added to the waitlist!";
-                msg.style.color = "#10b981"; 
-                msg.style.display = "block";
+                // Purane rigid green message ki jagah sleek float toast open hoga
+                showCyberToast("🚀 Access Granted. Node waitlisted!");
                 emailInput.value = ""; 
             }).catch(() => {
-                msg.innerText = "❌ Something went wrong. Try again!";
-                msg.style.color = "#ef4444";
-                msg.style.display = "block";
+                showCyberToast("❌ Transmission failed. Try again!", false);
             });
         }
         // 2. Countdown Timer Logic (Jan 1, 2028)
@@ -1880,12 +1873,8 @@
         function copyPassword() {
             const passText = document.getElementById('generated-password').innerText;
             navigator.clipboard.writeText(passText).then(() => {
-                let msg = document.getElementById("msg");
-                msg.innerText = "✅ Password Copied to Clipboard!";
-                msg.style.color = "#10b981";
-                msg.style.display = "block";
-                
-                setTimeout(() => { msg.style.display = "none"; }, 3000);
+                // Hamara naya dynamic toast popup chalega yahan
+                showCyberToast("🔒 Password copied securely to mainframe!");
             });
         }
         
