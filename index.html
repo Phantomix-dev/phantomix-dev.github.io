@@ -863,6 +863,86 @@ body {
         @media (max-width: 480px) {
             .share-tools { flex-direction: column; }
         }
+            /* --- Phantomix Terminal Styling --- */
+        .terminal-container {
+            background: #020617; /* Extra dark for terminal vibe */
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace; /* Hacker font */
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed rgba(16, 185, 129, 0.4);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .timer {
+            color: #ef4444;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+        }
+
+        .word-display {
+            font-size: 24px;
+            color: #10b981; /* Neon Green */
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            min-height: 30px;
+        }
+
+        .terminal-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #334155;
+            color: white;
+            font-size: 20px;
+            font-family: inherit;
+            padding: 5px 0;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .terminal-input:focus {
+            border-bottom-color: #10b981;
+        }
+
+        .terminal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .score-board {
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        .terminal-btn {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border: 1px solid #10b981;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .terminal-btn:hover {
+            background: #10b981;
+            color: #020617;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
     </style>
 </head>
 
@@ -995,6 +1075,32 @@ body {
                 </div>
             </div>
 
+        </div>
+    </section>
+
+            <section class="phantomix-section scroll-reveal" style="max-width: 600px;" id="terminal-section">
+        <h2>Phantomix <span style="color: #10b981;">Terminal</span></h2>
+        <p style="color: #94a3b8; margin-bottom: 30px;">Test your typing speed. Are you faster than a DiamondMax server?</p>
+
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <span style="color: #cbd5e1;">user@phantomix:~$ ./speed_test.sh</span>
+                <span class="timer" id="time-left">30s</span>
+            </div>
+            
+            <div class="terminal-body">
+                <div class="word-display" id="word-display">Click 'Start' to begin...</div>
+                <input type="text" class="terminal-input" id="type-input" placeholder="Type here..." autocomplete="off" disabled>
+            </div>
+            
+            <div class="terminal-footer">
+                <div class="score-board">
+                    Score: <span id="wpm-score" style="color: #10b981;">0</span> WPM
+                </div>
+                <button class="terminal-btn" id="start-btn" onclick="startTypingTest()">
+                    <i class="fas fa-play"></i> Start Test
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1353,6 +1459,68 @@ body {
                 document.title = originalTitle;
             }
         });
+            // Phantomix Terminal Logic
+        const words = ["phantomix", "diamondmax", "startup", "developer", "server", "cyber", "network", "cloud", "security", "innovation", "code", "founder", "speed", "data", "system", "encryption", "stealth"];
+        
+        let timeLeft = 30;
+        let timeInterval;
+        let isPlaying = false;
+        let score = 0;
+        let currentWord = "";
+
+        const wordDisplay = document.getElementById("word-display");
+        const typeInput = document.getElementById("type-input");
+        const timeDisplay = document.getElementById("time-left");
+        const scoreDisplay = document.getElementById("wpm-score");
+        const startBtn = document.getElementById("start-btn");
+
+        function startTypingTest() {
+            if(isPlaying) return;
+            isPlaying = true;
+            timeLeft = 30;
+            score = 0;
+            scoreDisplay.innerText = "0";
+            typeInput.disabled = false;
+            typeInput.value = "";
+            typeInput.focus();
+            startBtn.innerText = "Playing...";
+            
+            showNextWord();
+            
+            timeInterval = setInterval(() => {
+                timeLeft--;
+                timeDisplay.innerText = timeLeft + "s";
+                
+                if (timeLeft === 0) {
+                    clearInterval(timeInterval);
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function showNextWord() {
+            const randomIndex = Math.floor(Math.random() * words.length);
+            currentWord = words[randomIndex];
+            wordDisplay.innerText = currentWord;
+        }
+
+        // Listen for typing
+        typeInput.addEventListener("input", () => {
+            if (typeInput.value.trim() === currentWord) {
+                score++;
+                scoreDisplay.innerText = (score * 2); // Quick formula to estimate WPM based on 30s
+                typeInput.value = "";
+                showNextWord();
+            }
+        });
+
+        function endGame() {
+            isPlaying = false;
+            typeInput.disabled = true;
+            wordDisplay.innerText = "Test Over!";
+            startBtn.innerHTML = '<i class="fas fa-redo"></i> Try Again';
+            timeDisplay.innerText = "0s";
+        }
     </script>
 </body>
 </html>
