@@ -1103,6 +1103,95 @@
         @media (max-width: 768px) {
             .news-ticker-container { top: 60px; }
         }
+        /* --- Milestone Rewards Styling --- */
+        .milestone-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .milestone-step {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 25px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .milestone-badge {
+            font-size: 22px;
+            color: #64748b;
+            background: rgba(255, 255, 255, 0.05);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .milestone-info {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .milestone-info h4 {
+            margin: 0 0 5px 0;
+            color: #f8fafc;
+            font-size: 16px;
+        }
+
+        .milestone-info p {
+            margin: 0;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .milestone-status {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+        }
+
+        /* Achieved (Tier Completed) Status */
+        .milestone-step.achieved {
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.05);
+        }
+        .milestone-step.achieved .milestone-badge {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+        .milestone-step.achieved .milestone-status {
+            color: #10b981;
+        }
+
+        /* Active (Current Tier) Status */
+        .milestone-step.active {
+            border-color: rgba(139, 92, 246, 0.5);
+            background: rgba(139, 92, 246, 0.1);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
+        }
+        .milestone-step.active .milestone-badge {
+            color: #a78bfa;
+            background: rgba(139, 92, 246, 0.2);
+        }
+        .milestone-step.active .milestone-status {
+            color: #a78bfa;
+            animation: pulse 2s infinite;
+        }
+
+        @media (max-width: 600px) {
+            .milestone-step { flex-direction: column; text-align: center; gap: 10px; }
+            .milestone-info { margin: 0; }
+        }
     </style>
 </head>
 
@@ -1474,6 +1563,38 @@
                 <button type="submit" class="btn">Join Waitlist 🚀</button>
             </form>
             <p id="msg" style="color: #10b981; font-weight: bold; margin-top: 15px; display: none;">✅ Successfully added to the waitlist!</p>
+        </div>
+    </section>
+    <section class="phantomix-section scroll-reveal" style="max-width: 800px;">
+        <h3 style="color: #ffffff; font-size: 20px; margin-bottom: 30px;"><i class="fas fa-gift" style="color: #8b5cf6;"></i> Early Adopter Rewards</h3>
+        
+        <div class="milestone-container">
+            <div class="milestone-step achieved">
+                <div class="milestone-badge"><i class="fas fa-award"></i></div>
+                <div class="milestone-info">
+                    <h4>Top 500 Users</h4>
+                    <p>Alpha Tester Access + Exclusive Badge</p>
+                </div>
+                <span class="milestone-status">Unlocked</span>
+            </div>
+
+            <div class="milestone-step active">
+                <div class="milestone-badge"><i class="fas fa-gem"></i></div>
+                <div class="milestone-info">
+                    <h4>Top 1250 Users</h4>
+                    <p>1 Month Free DiamondMax Premium</p>
+                </div>
+                <span class="milestone-status">Current Tier</span>
+            </div>
+
+            <div class="milestone-step">
+                <div class="milestone-badge"><i class="fas fa-crown"></i></div>
+                <div class="milestone-info">
+                    <h4>Top 5000 Users</h4>
+                    <p>Lifetime Elite Founder Role on Discord</p>
+                </div>
+                <span class="milestone-status">Locked</span>
+            </div>
         </div>
     </section>
     <section class="phantomix-section scroll-reveal" style="max-width: 600px;">
