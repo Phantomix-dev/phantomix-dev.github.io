@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phantomix | DiamondMax</title>
     
@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="chatbot.css">
 
     <style>
-            <style>
         html {
             scroll-behavior: smooth;
         }
@@ -62,9 +61,6 @@
             position: relative;
         }
 
-        /* PREMIUM ANIMATED GLOWING BACKGROUND */
-        .bg-animation {
-            /* ... (Yahan se aapka baaki ka purana CSS same rahega) ... */
         /* PREMIUM ANIMATED GLOWING BACKGROUND */
         .bg-animation {
             position: fixed;
@@ -271,7 +267,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #0ea5e9; /* Neon Blue to match theme */
+            background: #0ea5e9;
             color: white;
             width: 60px;
             height: 60px;
@@ -290,7 +286,8 @@
             box-shadow: 0 6px 25px rgba(14, 165, 233, 0.6);
             color: white;
         }
-                /* Founder & Updates Section Styling */
+
+        /* Founder & Updates Section Styling */
         .founder-updates-container {
             display: flex;
             flex-wrap: wrap;
@@ -303,7 +300,6 @@
             text-align: left;
             margin-top: 20px;
         }
-        
         .ceo-profile {
             flex: 1;
             min-width: 280px;
@@ -311,14 +307,12 @@
             padding-right: 30px;
             border-right: 1px solid rgba(51, 65, 85, 0.5);
         }
-        
         .ceo-image-wrapper {
             position: relative;
             width: 150px;
             height: 150px;
             margin: 0 auto;
         }
-        
         .ceo-img {
             width: 100%;
             height: 100%;
@@ -327,7 +321,6 @@
             border: 3px solid #0ea5e9;
             box-shadow: 0 0 25px rgba(14, 165, 233, 0.3);
         }
-        
         .ceo-badge {
             position: absolute;
             bottom: -10px;
@@ -342,18 +335,15 @@
             white-space: nowrap;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-
         .live-updates {
             flex: 1.5;
             min-width: 300px;
         }
-
         .update-feed {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
-
         .update-item {
             display: flex;
             gap: 15px;
@@ -363,12 +353,10 @@
             border-left: 3px solid #0ea5e9;
             transition: all 0.3s ease;
         }
-
         .update-item:hover {
             background: rgba(30, 41, 59, 0.8);
             transform: translateX(5px);
         }
-
         .update-date {
             font-size: 12px;
             color: #0ea5e9;
@@ -376,7 +364,6 @@
             white-space: nowrap;
             min-width: 70px;
         }
-
         @media (max-width: 768px) {
             .ceo-profile {
                 border-right: none;
@@ -385,15 +372,14 @@
                 padding-bottom: 30px;
             }
         }
-                /* Development Roadmap Styling */
+
+        /* Development Roadmap Styling */
         .roadmap-container {
             position: relative;
             padding-left: 30px;
             text-align: left;
             margin: 0 auto;
         }
-
-        /* The vertical line */
         .roadmap-container::before {
             content: '';
             position: absolute;
@@ -404,17 +390,14 @@
             background: rgba(51, 65, 85, 0.8);
             z-index: 1;
         }
-
         .roadmap-item {
             position: relative;
             padding-bottom: 40px;
             padding-left: 30px;
         }
-
         .roadmap-item:last-child {
             padding-bottom: 0;
         }
-
         .roadmap-marker {
             position: absolute;
             left: -30px;
@@ -430,7 +413,6 @@
             justify-content: center;
             transition: all 0.3s ease;
         }
-
         .roadmap-content {
             background: rgba(30, 41, 59, 0.5);
             padding: 20px;
@@ -438,20 +420,16 @@
             border: 1px solid rgba(51, 65, 85, 0.5);
             transition: all 0.3s ease;
         }
-
         .roadmap-item:hover .roadmap-content {
             background: rgba(30, 41, 59, 0.8);
             transform: translateX(5px);
         }
-
         .roadmap-date {
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 10px;
             color: #94a3b8;
         }
-
-        /* Completed Phase Styles */
         .roadmap-item.completed .roadmap-marker {
             border-color: #10b981;
             background: #10b981;
@@ -461,8 +439,6 @@
         .roadmap-item.completed .roadmap-content {
             border-left: 3px solid #10b981;
         }
-
-        /* Current Phase Styles */
         .roadmap-item.current .roadmap-marker {
             border-color: #0ea5e9;
         }
@@ -470,7 +446,6 @@
             border-left: 3px solid #0ea5e9;
             box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
         }
-        
         .pulse-dot {
             width: 10px;
             height: 10px;
@@ -478,18 +453,16 @@
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
-
         @keyframes pulse {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
         }
-
-        /* Upcoming Phase Styles */
         .roadmap-item.upcoming .roadmap-content {
             opacity: 0.7;
         }
-                /* Tech Stack Section Styling */
+
+        /* Tech Stack Section Styling */
         .tech-stack-container {
             display: flex;
             justify-content: center;
@@ -503,7 +476,6 @@
             max-width: 800px;
             margin: 0 auto;
         }
-
         .tech-item {
             display: flex;
             flex-direction: column;
@@ -513,42 +485,36 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
-
         .tech-item i {
             font-size: 36px;
-            filter: grayscale(100%); /* Makes them grey initially */
+            filter: grayscale(100%);
             transition: all 0.3s ease;
         }
-
         .tech-item span {
             font-size: 12px;
             font-weight: 600;
             color: #64748b;
             transition: all 0.3s ease;
         }
-
-        /* Color reveals on hover */
         .tech-item:hover {
             opacity: 1;
             transform: translateY(-5px);
         }
-
         .tech-item:hover i {
             filter: grayscale(0%);
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
-
         .tech-item:hover span {
             color: #cbd5e1;
         }
-                /* FAQ Section Styling */
+
+        /* FAQ Section Styling */
         .faq-container {
             display: flex;
             flex-direction: column;
             gap: 15px;
             text-align: left;
         }
-
         .faq-item {
             background: rgba(30, 41, 59, 0.5);
             border: 1px solid rgba(51, 65, 85, 0.5);
@@ -556,12 +522,10 @@
             overflow: hidden;
             transition: all 0.3s ease;
         }
-
         .faq-item:hover {
             border-color: #0ea5e9;
             box-shadow: 0 5px 15px rgba(14, 165, 233, 0.1);
         }
-
         .faq-question {
             padding: 20px;
             display: flex;
@@ -571,16 +535,13 @@
             color: #ffffff;
             transition: all 0.3s ease;
         }
-
         .faq-question:hover {
             color: #0ea5e9;
         }
-
         .faq-icon {
             color: #0ea5e9;
             transition: transform 0.3s ease;
         }
-
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -588,26 +549,22 @@
             padding: 0 20px;
             background: rgba(15, 23, 42, 0.3);
         }
-
-        /* Active State Classes (Toggled via JS) */
         .faq-item.active .faq-answer {
-            max-height: 200px; /* Adjust if answer is very long */
+            max-height: 200px;
             padding-bottom: 20px;
         }
-
         .faq-item.active .faq-icon {
             transform: rotate(180deg);
         }
-        
         .faq-item.active {
             border-color: #0ea5e9;
         }
 
-
         /* Scroll Reveal Animation */
         .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
         .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
-            /* Diamond-Vault Password Generator Styling */
+
+        /* Diamond-Vault Password Generator Styling */
         .vault-container {
             background: rgba(15, 23, 42, 0.7);
             border: 1px solid rgba(14, 165, 233, 0.3);
@@ -616,7 +573,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             text-align: left;
         }
-
         .password-display-box {
             background: rgba(15, 23, 42, 0.9);
             border: 1px solid #334155;
@@ -632,7 +588,6 @@
             letter-spacing: 2px;
             word-break: break-all;
         }
-
         .copy-btn {
             background: none;
             border: none;
@@ -641,23 +596,19 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .copy-btn:hover { color: #10b981; transform: scale(1.1); }
-
         .phantom-slider {
             width: 100%;
             cursor: pointer;
             accent-color: #0ea5e9;
             margin-bottom: 25px;
         }
-
         .checkbox-group {
             display: flex;
             flex-direction: column;
             gap: 15px;
             margin-bottom: 25px;
         }
-
         .custom-checkbox {
             display: flex;
             align-items: center;
@@ -666,9 +617,7 @@
             font-size: 14px;
             cursor: pointer;
         }
-
         .custom-checkbox input { accent-color: #0ea5e9; width: 16px; height: 16px; cursor: pointer; }
-
         .generate-btn {
             width: 100%;
             padding: 15px;
@@ -681,12 +630,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .generate-btn:hover {
             box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
             transform: translateY(-2px);
         }
-            /* --- Premium Sticky Navbar --- */
+
+        /* --- Premium Sticky Navbar --- */
         .phantomix-navbar {
             position: fixed;
             top: 0;
@@ -697,14 +646,13 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 5%;
-            background: rgba(15, 23, 42, 0.6); /* Glass effect */
+            background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(14, 165, 233, 0.2);
             z-index: 1000;
             transition: all 0.3s ease;
         }
-
         .nav-logo {
             font-size: 20px;
             font-weight: 700;
@@ -713,7 +661,6 @@
             display: flex;
             align-items: center;
         }
-
         .nav-links {
             display: flex;
             list-style: none;
@@ -721,7 +668,6 @@
             margin: 0;
             padding: 0;
         }
-
         .nav-links li a {
             color: #94a3b8;
             text-decoration: none;
@@ -730,11 +676,9 @@
             transition: color 0.3s ease;
             cursor: pointer;
         }
-
         .nav-links li a:hover {
             color: #0ea5e9;
         }
-
         .nav-btn {
             background: rgba(14, 165, 233, 0.1);
             color: #0ea5e9;
@@ -746,7 +690,6 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-
         .nav-btn:hover {
             background: #0ea5e9;
             color: white;
@@ -756,30 +699,21 @@
         /* Mobile View Adjustments */
         @media (max-width: 768px) {
             .phantomix-navbar {
-                padding: 0 15px; /* Side ki jagah kam ki taaki fit ho sake */
-                height: 60px; /* Mobile par navbar thoda patla */
+                padding: 0 15px; 
+                height: 60px;
             }
-
-            .nav-logo {
-                font-size: 16px; /* Logo ka text thoda chota */
-            }
-
-            .nav-links {
-                display: none; /* Links ko chupa diya space bachane ke liye */
-            }
-
+            .nav-logo { font-size: 16px; }
+            .nav-links { display: none; }
             .nav-btn {
-                padding: 6px 12px; /* Button thoda compact */
+                padding: 6px 12px;
                 font-size: 12px;
             }
-            
-            body {
-                padding-top: 70px; /* Mobile ke liye padding thodi kam */
-            }
+            body { padding-top: 70px; }
         }
-            /* --- Mobile Menu & Hamburger Styling --- */
+
+        /* --- Mobile Menu & Hamburger Styling --- */
         .hamburger-btn {
-            display: none; /* Hide on desktop */
+            display: none;
             background: none;
             border: none;
             color: #ffffff;
@@ -787,10 +721,9 @@
             cursor: pointer;
             margin-left: 15px;
         }
-
         .mobile-menu {
             position: fixed;
-            top: 70px; /* Right below the navbar */
+            top: 70px;
             left: 0;
             width: 100%;
             background: rgba(15, 23, 42, 0.95);
@@ -804,12 +737,10 @@
             transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
             z-index: 999;
         }
-
         .mobile-menu.active {
             max-height: 300px;
             padding: 20px 0;
         }
-
         .mobile-menu a {
             color: #94a3b8;
             text-decoration: none;
@@ -819,25 +750,20 @@
             transition: all 0.3s ease;
             border-bottom: 1px solid rgba(51, 65, 85, 0.3);
         }
-
-        .mobile-menu a:last-child {
-            border-bottom: none;
-        }
-
+        .mobile-menu a:last-child { border-bottom: none; }
         .mobile-menu a:hover {
             color: #0ea5e9;
             background: rgba(14, 165, 233, 0.1);
-            padding-left: 8%; /* Cool slide effect on hover */
+            padding-left: 8%;
         }
-
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .phantomix-navbar { padding: 0 15px; height: 70px; }
             .nav-links { display: none; }
-            .nav-btn { display: none; } /* Hide the button to save space for hamburger */
+            .nav-btn { display: none; }
             .hamburger-btn { display: block; }
         }
-            /* --- Viral Share Buttons Styling --- */
+
+        /* --- Viral Share Buttons Styling --- */
         .share-btn {
             flex: 1;
             padding: 12px;
@@ -853,46 +779,40 @@
             justify-content: center;
             gap: 8px;
         }
-
         .share-btn.whatsapp {
             background: rgba(37, 211, 102, 0.1);
             color: #25d366;
             border: 1px solid rgba(37, 211, 102, 0.3);
         }
-
         .share-btn.whatsapp:hover {
             background: #25d366;
             color: white;
             box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
         }
-
         .share-btn.twitter {
             background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
-
         .share-btn.twitter:hover {
             background: #ffffff;
             color: black;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
-        
-        /* Mobile View Tweaks */
         @media (max-width: 480px) {
             .share-tools { flex-direction: column; }
         }
-            /* --- Phantomix Terminal Styling --- */
+
+        /* --- Phantomix Terminal Styling --- */
         .terminal-container {
-            background: #020617; /* Extra dark for terminal vibe */
+            background: #020617;
             border: 1px solid rgba(16, 185, 129, 0.3);
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
             text-align: left;
-            font-family: 'Courier New', Courier, monospace; /* Hacker font */
+            font-family: 'Courier New', Courier, monospace;
         }
-
         .terminal-header {
             display: flex;
             justify-content: space-between;
@@ -901,21 +821,18 @@
             margin-bottom: 20px;
             font-size: 14px;
         }
-
         .timer {
             color: #ef4444;
             font-weight: bold;
             animation: pulse 1s infinite;
         }
-
         .word-display {
             font-size: 24px;
-            color: #10b981; /* Neon Green */
+            color: #10b981;
             margin-bottom: 20px;
             letter-spacing: 2px;
             min-height: 30px;
         }
-
         .terminal-input {
             width: 100%;
             background: transparent;
@@ -928,23 +845,14 @@
             outline: none;
             transition: border-color 0.3s ease;
         }
-
-        .terminal-input:focus {
-            border-bottom-color: #10b981;
-        }
-
+        .terminal-input:focus { border-bottom-color: #10b981; }
         .terminal-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 25px;
         }
-
-        .score-board {
-            color: #cbd5e1;
-            font-size: 18px;
-        }
-
+        .score-board { color: #cbd5e1; font-size: 18px; }
         .terminal-btn {
             background: rgba(16, 185, 129, 0.1);
             color: #10b981;
@@ -956,20 +864,19 @@
             font-weight: bold;
             transition: all 0.3s ease;
         }
-
         .terminal-btn:hover {
             background: #10b981;
             color: #020617;
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
         }
-            /* --- Live Stats Counter Styling --- */
+
+        /* --- Live Stats Counter Styling --- */
         .hero-stats {
             display: flex;
             justify-content: center;
             gap: 40px;
             margin-top: 40px;
         }
-
         .stat-box {
             background: rgba(15, 23, 42, 0.5);
             border: 1px solid rgba(14, 165, 233, 0.2);
@@ -979,12 +886,10 @@
             backdrop-filter: blur(5px);
             transition: transform 0.3s ease;
         }
-
         .stat-box:hover {
             transform: translateY(-5px);
             border-color: rgba(14, 165, 233, 0.6);
         }
-
         .stat-box h3 {
             font-size: 32px;
             color: #0ea5e9;
@@ -992,7 +897,6 @@
             text-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
             font-family: 'Poppins', sans-serif;
         }
-
         .stat-box p {
             color: #94a3b8;
             font-size: 14px;
@@ -1000,23 +904,18 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        /* Mobile View Tweaks */
         @media (max-width: 600px) {
-            .hero-stats {
-                flex-direction: column;
-                gap: 15px;
-            }
+            .hero-stats { flex-direction: column; gap: 15px; }
         }
-                /* --- Premium Interactive Footer Styling --- */
+
+        /* --- Premium Interactive Footer Styling --- */
         .phantomix-footer {
-            background: #020617; /* Darkest theme color */
+            background: #020617;
             border-top: 1px solid rgba(14, 165, 233, 0.2);
             padding: 50px 5% 20px 5%;
             margin-top: 50px;
             font-family: 'Poppins', sans-serif;
         }
-
         .footer-content {
             display: flex;
             justify-content: space-between;
@@ -1027,12 +926,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-
-        .footer-brand {
-            flex: 1;
-            min-width: 250px;
-        }
-
+        .footer-brand { flex: 1; min-width: 250px; }
         .footer-brand h3 {
             color: white;
             font-size: 24px;
@@ -1041,43 +935,29 @@
             align-items: center;
             gap: 10px;
         }
-
-        .footer-brand p {
-            color: #94a3b8;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
+        .footer-brand p { color: #94a3b8; font-size: 14px; line-height: 1.6; }
         .footer-links {
             display: flex;
             flex-direction: column;
             gap: 12px;
             min-width: 150px;
         }
-
         .footer-links h4, .footer-social h4 {
             color: white;
             margin-bottom: 15px;
             font-size: 18px;
         }
-
         .footer-links a {
             color: #94a3b8;
             text-decoration: none;
             font-size: 14px;
             transition: all 0.3s ease;
         }
-
         .footer-links a:hover {
             color: #0ea5e9;
-            padding-left: 8px; /* Cool hover slide effect */
+            padding-left: 8px;
         }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-
+        .social-icons { display: flex; gap: 15px; }
         .social-icons a {
             color: #94a3b8;
             font-size: 20px;
@@ -1091,14 +971,12 @@
             width: 40px;
             height: 40px;
         }
-
         .social-icons a:hover {
             color: white;
             background: #0ea5e9;
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4);
         }
-
         .footer-bottom {
             border-top: 1px solid rgba(51, 65, 85, 0.5);
             padding-top: 20px;
@@ -1113,23 +991,15 @@
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* Responsive Mobile Footer */
         @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                justify-content: center;
-            }
+            .footer-content { flex-direction: column; }
+            .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
         }
     </style>
 </head>
 
 <body>
-<nav class="phantomix-navbar">
+    <nav class="phantomix-navbar">
         <div class="nav-logo">
             <i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i>
             Phantomix
@@ -1139,7 +1009,8 @@
             <li><a href="#hero-section">Home</a></li>
             <li><a href="#features-section">Features</a></li>
             <li><a href="#vault-section">Vault</a></li>
-           <li><a href="#terminal-section">Terminal</a></li> <li><a href="#roadmap-section">Roadmap</a></li>
+           <li><a href="#terminal-section">Terminal</a></li> 
+           <li><a href="#roadmap-section">Roadmap</a></li>
         </ul>
         
         <div class="nav-action">
@@ -1154,9 +1025,11 @@
         <a href="#hero-section" onclick="toggleMobileMenu()">Home</a>
         <a href="#features-section" onclick="toggleMobileMenu()">Features</a>
         <a href="#vault-section" onclick="toggleMobileMenu()">Vault</a>
-        <a href="#terminal-section" onclick="toggleMobileMenu()">Terminal</a> <a href="#roadmap-section" onclick="toggleMobileMenu()">Roadmap</a>
+        <a href="#terminal-section" onclick="toggleMobileMenu()">Terminal</a> 
+        <a href="#roadmap-section" onclick="toggleMobileMenu()">Roadmap</a>
     </div>
-        <div class="bg-animation">
+
+    <div class="bg-animation">
         <div class="glow-shape shape1"></div>
         <div class="glow-shape shape2"></div>
         <div class="glow-shape shape3"></div>
@@ -1173,7 +1046,8 @@
         <p class="tagline">Secure • Fast • Reliable</p>
 
         <h2>💎 DiamondMax App</h2>
-            <div class="hero-stats">
+        
+        <div class="hero-stats">
             <div class="stat-box">
                 <h3 class="counter" data-target="1250">0</h3>
                 <p>Waitlisted Users</p>
@@ -1197,7 +1071,9 @@
             <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="https://t.me/diamondmax_india" target="_blank"><i class="fab fa-telegram"></i></a>
         </div>
-            <section class="phantomix-section scroll-reveal" style="padding-top: 20px; padding-bottom: 20px;">
+    </div>
+
+    <section class="phantomix-section scroll-reveal" style="padding-top: 20px; padding-bottom: 20px;">
         <p style="color: #64748b; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Powered By Next-Gen Tech</p>
         
         <div class="tech-stack-container">
@@ -1224,9 +1100,8 @@
         </div>
     </section>
 
-            <section class="phantomix-section scroll-reveal" style="max-width: 1100px;">
+    <section class="phantomix-section scroll-reveal" style="max-width: 1100px;">
         <div class="founder-updates-container">
-            
             <div class="ceo-profile">
                 <div class="ceo-image-wrapper">
                     <img src="your-real-photo.jpg" alt="Shrikant Prajapati - CEO" class="ceo-img" onerror="this.src='https://via.placeholder.com/150/0ea5e9/ffffff?text=CEO'">
@@ -1270,11 +1145,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-            <section class="phantomix-section scroll-reveal" style="max-width: 600px;" id="terminal-section">
+    <section class="phantomix-section scroll-reveal" style="max-width: 600px;" id="terminal-section">
         <h2>Phantomix <span style="color: #10b981;">Terminal</span></h2>
         <p style="color: #94a3b8; margin-bottom: 30px;">Test your typing speed. Are you faster than a DiamondMax server?</p>
 
@@ -1300,8 +1174,7 @@
         </div>
     </section>
 
-    </div>
-        <section class="phantomix-section scroll-reveal" style="max-width: 900px;" id="roadmap-section">
+    <section class="phantomix-section scroll-reveal" style="max-width: 900px;" id="roadmap-section">
         <h2 style="margin-bottom: 5px;">The <span style="color: #0ea5e9;">DiamondMax</span> Journey</h2>
         <p style="color: #94a3b8; margin-bottom: 40px;">Our strategic roadmap to launch.</p>
         
@@ -1348,7 +1221,7 @@
                 </div>
             </div>
         </div>
-        </section>
+    </section>
 
     <section class="phantomix-section scroll-reveal" id="features-section">
         <h2>Why DiamondMax?</h2>
@@ -1372,7 +1245,8 @@
             </div>
         </div>
     </section>
-        <section class="phantomix-section scroll-reveal" style="max-width: 600px;" id="vault-section">
+
+    <section class="phantomix-section scroll-reveal" style="max-width: 600px;" id="vault-section">
         <h2>Phantomix <span style="color: #0ea5e9;">Diamond-Vault</span></h2>
         <p style="color: #94a3b8; margin-bottom: 30px;">Generate ultra-secure, unbreakable passwords instantly.</p>
 
@@ -1410,7 +1284,8 @@
                 <button class="generate-btn" onclick="generatePassword()">
                     <i class="fas fa-bolt"></i> Generate Secure Password
                 </button>
-                    <div class="share-tools" style="display: flex; gap: 10px; margin-top: 15px;">
+                
+                <div class="share-tools" style="display: flex; gap: 10px; margin-top: 15px;">
                     <button class="share-btn whatsapp" onclick="shareOnWhatsApp()">
                         <i class="fab fa-whatsapp"></i> Share on WhatsApp
                     </button>
@@ -1421,7 +1296,8 @@
             </div>
         </div>
     </section>
-        <section class="phantomix-section scroll-reveal" style="max-width: 800px;">
+
+    <section class="phantomix-section scroll-reveal" style="max-width: 800px;">
         <h2>Frequently Asked <span style="color: #0ea5e9;">Questions</span></h2>
         <p style="color: #94a3b8; margin-bottom: 40px;">Everything you need to know about Phantomix and DiamondMax.</p>
 
@@ -1467,7 +1343,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="phantomix-section scroll-reveal" id="waitlist-section">
         <div class="waitlist-container">
@@ -1563,7 +1438,8 @@
                 observer.observe(section);
             });
         });
-            // Diamond-Vault Password Logic
+
+        // 4. Diamond-Vault Password Logic
         function generatePassword() {
             const length = document.getElementById('pass-length').value;
             const incUpper = document.getElementById('inc-uppercase').checked;
@@ -1595,41 +1471,39 @@
             });
         }
         
-        // Generate a random password on initial load
         window.onload = function() {
             generatePassword();
         };
-                // FAQ Accordion Logic
+
+        // 5. FAQ Accordion Logic
         document.addEventListener('DOMContentLoaded', () => {
             const faqItems = document.querySelectorAll('.faq-item');
 
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
                 question.addEventListener('click', () => {
-                    // Close all other open items
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item && otherItem.classList.contains('active')) {
                             otherItem.classList.remove('active');
                         }
                     });
-                    // Toggle current item
                     item.classList.toggle('active');
                 });
             });
         });
-// Mobile Menu Toggle Logic
+
+        // 6. Mobile Menu Toggle Logic
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('active');
         }
-            // Viral Share Logic
+
+        // 7. Viral Share Logic
         function shareOnWhatsApp() {
             const siteUrl = "https://phantomix-dev.github.io/diamondmax-app/";
             const message = "🔥 Just found an ultra-secure Password Generator by Phantomix! Check it out and join the DiamondMax Waitlist: " + siteUrl;
             
-            // Check if user is on mobile
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
             if (isMobile) {
                 window.open(`whatsapp://send?text=${encodeURIComponent(message)}`, '_blank');
             } else {
@@ -1640,22 +1514,20 @@
         function shareOnTwitter() {
             const siteUrl = "https://phantomix-dev.github.io/diamondmax-app/";
             const text = "I just generated an unbreakable password using Diamond-Vault by Phantomix! 🔒💎 Check it out: " + siteUrl + " #CyberSecurity #Phantomix #DiamondMax";
-            
             window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
         }
-            // Tab Switch Magic (Page Visibility API)
-        let originalTitle = document.title; // Aapki site ka asli naam save kar lega
-        
+
+        // 8. Tab Switch Magic
+        let originalTitle = document.title; 
         document.addEventListener("visibilitychange", function() {
             if (document.hidden) {
-                // Jab user dusre tab me jayega
                 document.title = "🔒 Vault Left Open! We Miss You | Phantomix";
             } else {
-                // Jab user wapas aayega
                 document.title = originalTitle;
             }
         });
-            // Phantomix Terminal Logic
+
+        // 9. Phantomix Terminal Logic
         const words = ["phantomix", "diamondmax", "startup", "developer", "server", "cyber", "network", "cloud", "security", "innovation", "code", "founder", "speed", "data", "system", "encryption", "stealth"];
         
         let timeLeft = 30;
@@ -1700,11 +1572,10 @@
             wordDisplay.innerText = currentWord;
         }
 
-        // Listen for typing
         typeInput.addEventListener("input", () => {
             if (typeInput.value.trim() === currentWord) {
                 score++;
-                scoreDisplay.innerText = (score * 2); // Quick formula to estimate WPM based on 30s
+                scoreDisplay.innerText = (score * 2); 
                 typeInput.value = "";
                 showNextWord();
             }
@@ -1717,35 +1588,31 @@
             startBtn.innerHTML = '<i class="fas fa-redo"></i> Try Again';
             timeDisplay.innerText = "0s";
         }
-            // Animated Stats Counter Logic
+
+        // 10. Animated Stats Counter Logic
         const counters = document.querySelectorAll('.counter');
-        const speed = 100; // Speed of counting (lower is faster)
+        const speed = 100;
 
         counters.forEach(counter => {
             const updateCount = () => {
                 const target = +counter.getAttribute('data-target');
                 const count = +counter.innerText;
-                
-                // Calculate increment
                 const inc = target / speed;
 
                 if (count < target) {
-                    // Update the number safely
                     counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 20); // Delay between increments
+                    setTimeout(updateCount, 20);
                 } else {
-                    // Add cool symbols at the end
                     if(target > 1000) counter.innerText = target + "+";
                     else if(target === 99) counter.innerText = target + "%";
                     else counter.innerText = target;
                 }
             };
-
-            // Start the counting animation
             updateCount();
         });
     </script>
-        <footer class="phantomix-footer">
+
+    <footer class="phantomix-footer">
         <div class="footer-content">
             <div class="footer-brand">
                 <h3><i class="fa-solid fa-gem" style="color: #0ea5e9;"></i> Phantomix</h3>
