@@ -1296,6 +1296,30 @@
                 display: none !important;
             }
         }
+        /* --- Monetization & Ad Slots Styling --- */
+        .ad-placeholder-box {
+            background: rgba(2, 6, 23, 0.4);
+            border: 1px dashed rgba(14, 165, 233, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .ad-tag {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #0f172a;
+            color: #64748b;
+            font-size: 9px;
+            font-family: monospace;
+            padding: 2px 8px;
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 
@@ -1633,6 +1657,10 @@
                 </div>
             </div>
         </div>
+        <p style="font-size: 12px; color: #64748b; margin-top: 15px; text-align: center;">
+    Want advanced Quantum-Stealth encryption? 
+    <a href="javascript:void(0)" onclick="toggleMonetizeModal(true)" style="color: #0ea5e9; text-decoration: none; font-weight: bold;">Unlock Premium Alpha 🔓</a>
+</p>
     </section>
 
     <section class="phantomix-section scroll-reveal" style="max-width: 800px;">
@@ -2121,6 +2149,11 @@
                 toast.style.display = "none";
             }, 3000);
         }
+        // 16. Monetization Modal Controller
+        function toggleMonetizeModal(show) {
+            const modal = document.getElementById("monetize-modal");
+            if(modal) modal.style.display = show ? "flex" : "none";
+        }
     </script>
 
     <footer class="phantomix-footer">
@@ -2159,5 +2192,33 @@
         <p style="font-size: 18px; margin: 5px 0;">> WELCOME TO THE PHANTOMIX MAINFRAME, ELITE FOUNDER.</p>
         <p style="color: #64748b; font-size: 14px; margin-top: 30px; animation: blink 1s infinite;">[ Access Granted - Automatically closing in 5s... ]</p>
     </div>
+    <div id="monetize-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 6, 23, 0.9); z-index: 10010; justify-content: center; align-items: center; backdrop-filter: blur(8px);">
+        <div style="background: #0f172a; border: 1px solid #0ea5e9; width: 400px; max-width: 90%; border-radius: 15px; padding: 25px; box-shadow: 0 0 30px rgba(14, 165, 233, 0.3); text-align: center;">
+            <h3 style="margin-top: 0; color: #fff;"><i class="fas fa-heart" style="color: #ef4444;"></i> Support Phantomix</h3>
+            <p style="color: #94a3b8; font-size: 14px; line-height: 1.6;">Help us keep the servers running and speed up the launch of <b>DiamondMax App</b>.</p>
+            
+            <div style="margin: 20px 0;">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=8168350829@amazonpay%26pn=Shrikant%26cu=INR&color=0ea5e9&bgcolor=0f172a" alt="UPI QR" style="border: 2px solid #0ea5e9; border-radius: 10px; padding: 10px; background: #0f172a; width: 150px; height: 150px;">
+                <p style="color: #64748b; font-size: 12px; margin-top: 5px; font-family: monospace;">Scan with any UPI App (PhonePe, GPay, Paytm)</p>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <a href="https://wa.me/918168350829?text=Hi%20Shrikant,%20I%20just%20supported%20Phantomix!" target="_blank" class="btn" style="flex: 1; text-decoration: none; padding: 12px; font-size: 14px;">Confirm Payment</a>
+                <button onclick="toggleMonetizeModal(false)" class="btn" style="background: #334155; box-shadow: none; flex: 1; padding: 12px; font-size: 14px;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="phantomix-section scroll-reveal" style="max-width: 800px; padding-top: 10px; padding-bottom: 10px;">
+        <div class="ad-placeholder-box">
+            <span class="ad-tag">SPONSORED NODE / ADS</span>
+            <div id="ad-content-area">
+                <p style="color: #64748b; font-size: 14px; margin: 0; font-family: monospace;">
+                    ⚡ Partner with Phantomix. High-traffic developer audience slot available. 
+                    <a href="#investor-section" style="color: #0ea5e9; text-decoration: none; font-weight: bold;">[ Rent This Slot ]</a>
+                </p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
