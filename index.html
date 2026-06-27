@@ -1320,6 +1320,71 @@
             border-radius: 4px;
             letter-spacing: 1px;
         }
+        /* --- Presale Tiers Styling --- */
+        .tier-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            padding: 30px;
+            border-radius: 16px;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tier-card:hover {
+            border-color: #0ea5e9;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: -12px;
+            left: 25px;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 4px 12px;
+            border: 1px solid;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            font-family: monospace;
+        }
+
+        .tier-price {
+            font-size: 36px;
+            margin: 15px 0 5px 0;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tier-desc {
+            color: #94a3b8;
+            font-size: 13px;
+            margin: 0 0 20px 0;
+            line-height: 1.5;
+        }
+
+        .tier-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 13px;
+            color: #cbd5e1;
+            flex: 1;
+        }
+
+        .tier-features i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .feature-tier { transform: scale(1) !important; margin-top: 10px; }
+        }
     </style>
 </head>
 
@@ -1770,6 +1835,39 @@
             </div>
         </div>
     </section>
+    <section class="phantomix-section scroll-reveal" style="max-width: 900px;" id="funding-nodes">
+        <h2 style="color: #ffffff; margin-bottom: 5px;">Fund the <span style="color: #0ea5e9;">Mainframe</span></h2>
+        <p style="color: #94a3b8; margin-bottom: 40px;">Support development & secure lifetime elite privileges before the global launch.</p>
+        
+        <div class="tier-grid" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; text-align: left;">
+            
+            <div class="tier-card">
+                <span class="tier-badge" style="background: rgba(14, 165, 233, 0.1); color: #0ea5e9; border-color: #0ea5e9;">ALPHA NODE</span>
+                <h3 class="tier-price">₹29 <span style="font-size: 14px; color: #64748b; font-weight: normal;">/ lifetime</span></h3>
+                <p class="tier-desc">For early believers who want complete utility mapping.</p>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Lifetime Premium App Access</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Ad-Free Stealth UI Experience</li>
+                    <li><i class="fas fa-check" style="color: #10b981;"></i> Priority Server Routing</li>
+                </ul>
+                <button class="btn" style="width: 100%; margin-top: 15px;" onclick="openPresalePayment('Alpha Node', 29)">Initialize Node ⚡</button>
+            </div>
+
+            <div class="tier-card feature-tier" style="border-color: #8b5cf6; background: rgba(139, 92, 246, 0.05); transform: scale(1.03);">
+                <span class="tier-badge" style="background: #8b5cf6; color: #fff; border-color: #8b5cf6;">MOST POPULAR</span>
+                <h3 class="tier-price">₹99 <span style="font-size: 14px; color: #94a3b8; font-weight: normal;">/ lifetime</span></h3>
+                <p class="tier-desc">Embed your legacy into the core foundation of DiamondMax.</p>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check" style="color: #8b5cf6;"></i> <b>Everything in Alpha Node</b></li>
+                    <li><i class="fas fa-check" style="color: #8b5cf6;"></i> Your Name on App "Credits" Page</li>
+                    <li><i class="fas fa-check" style="color: #8b5cf6;"></i> Exclusive Founder Discord Role</li>
+                </ul>
+                <button class="btn" style="width: 100%; margin-top: 15px; background: linear-gradient(135deg, #8b5cf6, #c084fc); box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);" onclick="openPresalePayment('Core Architect', 99)">Become Architect 👑</button>
+            </div>
+
+        </div>
+    </section>
+    
     <section class="phantomix-section scroll-reveal" style="max-width: 600px;">
         <div class="status-container">
             <h3 style="margin-top: 0; font-size: 18px; color: #ffffff; display: flex; align-items: center; gap: 10px;">
@@ -1792,8 +1890,8 @@
         </div>
     </section>
 
-    <section id="invester-section" class="phantomix-section scroll-reveal" style="margin-bottom: 80px;">
-        <div class="investor-container">
+    <section class="phantomix-section scroll-reveal" style="margin-bottom: 80px;">
+        <div class="investor-container" id="investor-section">
             <h2 style="margin-top: 0; color: #c084fc;">Partner With Phantomix 🚀</h2>
             <p style="color: #cbd5e1; margin-bottom: 25px;">We are building the future of digital experiences. As an early-stage startup, we are open to strategic partnerships and angel investments.</p>
             
@@ -2153,6 +2251,31 @@
         function toggleMonetizeModal(show) {
             const modal = document.getElementById("monetize-modal");
             if(modal) modal.style.display = show ? "flex" : "none";
+        }
+        // 17. Dynamic Presale Payment Gateway Linker
+        function openPresalePayment(tierName, amount) {
+            const modal = document.getElementById("monetize-modal");
+            if(!modal) return;
+
+            // Modal ka text aur header dynamically change karenge
+            const modalHeading = modal.querySelector("h3");
+            const modalText = modal.querySelector("p");
+            const modalImg = modal.querySelector("img");
+
+            modalHeading.innerHTML = `<i class="fas fa-shield-halved" style="color: #0ea5e9;"></i> Activating ${tierName}`;
+            modalText.innerHTML = `You are securing <b>${tierName} Lifetime Access</b> for <b>₹${amount}</b>. Scan the mainframe node to complete transition.`;
+            
+            // Dynamic UPI QR generation with amount mapping
+            // Change 'YOUR_UPI_ID_HERE' to your actual UPI ID in this string below
+            const myUPI = "YOUR_UPI_ID_HERE"; 
+            modalImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=${myUPI}%26pn=Shrikant%26am=${amount}%26cu=INR&color=0ea5e9&bgcolor=0f172a`;
+
+            // WhatsApp button ka message bhi dynamic set kar dete hain tracking ke liye
+            const waBtn = modal.querySelector("a");
+            waBtn.href = `https://wa.me/918168350829?text=Hi%20Shrikant!%20I%20have%20sent%20₹${amount}%20for%20the%20${encodeURIComponent(tierName)}%20DiamondMax%20Lifetime%20Access.`;
+
+            // Display modal
+            modal.style.display = "flex";
         }
     </script>
 
