@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phantomix Ecosystem | Our Apps</title>
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="./logo.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* --- Base & Premium Scrollbar --- */
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #020617; }
@@ -18,26 +17,18 @@
         ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
 
         body {
-            margin: 0;
-            padding: 0;
-            padding-top: 80px;
+            margin: 0; padding: 0; padding-top: 80px;
             font-family: 'Poppins', sans-serif;
-            background-color: #0f172a;
-            color: #ffffff;
-            text-align: center;
-            overflow-x: hidden;
+            background-color: #0f172a; color: #ffffff;
+            text-align: center; overflow-x: hidden;
         }
 
-        /* --- Navbar --- */
         .phantomix-navbar {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 65px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 65px;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%; box-sizing: border-box;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
-            z-index: 1000;
+            background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2); z-index: 1000;
         }
         .nav-logo { font-size: 18px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; }
         .back-btn {
@@ -47,54 +38,34 @@
         }
         .back-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
 
-        /* --- Header Section --- */
         .hero-section { padding: 40px 20px 20px; }
         h1 { font-size: 36px; margin: 0 0 10px 0; color: #ffffff; line-height: 1.2; }
         .tagline { color: #0ea5e9; font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
         .desc { color: #94a3b8; font-size: 14px; max-width: 600px; margin: 10px auto 40px; line-height: 1.6; }
 
-        /* --- App Grid System (Mobile Optimized) --- */
         .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1000px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; max-width: 1000px; margin: 0 auto 60px; padding: 0 20px;
         }
 
-        /* --- Individual App Cards --- */
         .app-card {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(51, 65, 85, 0.5);
-            border-radius: 20px;
-            padding: 25px;
-            text-align: left;
-            position: relative;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 20px; padding: 25px; text-align: left;
+            position: relative; transition: all 0.4s ease;
+            display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .app-card:hover { transform: translateY(-5px); }
 
-        /* App Logos */
         .app-logo {
-            width: 80px; 
-            height: 80px;
-            border-radius: 20px;
-            object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
+            width: 80px; height: 80px; border-radius: 20px; object-fit: cover;
+            margin-bottom: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1); background-color: #020617;
         }
 
-        /* Theme Hovers */
         .card-diamondmax:hover { border-color: #0ea5e9; box-shadow: 0 15px 35px rgba(14, 165, 233, 0.2); }
         .card-cipher:hover { border-color: #10b981; box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2); }
         .card-vault:hover { border-color: #8b5cf6; box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2); }
 
-        /* Badges */
         .badge {
             position: absolute; top: 25px; right: 25px;
             font-size: 10px; font-weight: 700; padding: 4px 10px;
@@ -107,7 +78,6 @@
         .app-title { font-size: 22px; color: #ffffff; margin: 0 0 8px 0; font-weight: 700; }
         .app-desc { color: #94a3b8; font-size: 13px; line-height: 1.6; margin: 0 0 25px 0; flex-grow: 1; }
 
-        /* Action Buttons */
         .action-btn {
             padding: 12px 20px; border: none; border-radius: 10px;
             font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px;
@@ -121,13 +91,8 @@
         .btn-demo { background: linear-gradient(135deg, #8b5cf6, #c084fc); color: white; border: none; }
         .btn-demo:hover { background: linear-gradient(135deg, #7c3aed, #a855f7); box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4); }
 
-        /* --- Footer --- */
-        footer {
-            border-top: 1px solid rgba(51, 65, 85, 0.5); padding: 20px;
-            color: #64748b; font-size: 12px;
-        }
+        footer { border-top: 1px solid rgba(51, 65, 85, 0.5); padding: 20px; color: #64748b; font-size: 12px; }
 
-        /* Mobile specific tweaks */
         @media (max-width: 600px) {
             h1 { font-size: 28px; }
             .hero-section { padding: 30px 15px 10px; }
@@ -157,8 +122,7 @@
         
         <div class="app-card card-diamondmax">
             <span class="badge badge-upcoming"><i class="fas fa-clock"></i> UPCOMING</span>
-            <img src="diamondmax-logo.png" alt="DiamondMax Logo" class="app-logo" onerror="this.src='https://via.placeholder.com/150/0ea5e9/ffffff?text=DiamondMax'">
-            
+            <img src="./diamondmax-logo.png" alt="DiamondMax" class="app-logo" onerror="this.src='https://via.placeholder.com/150/0ea5e9/ffffff?text=DiamondMax'">
             <h3 class="app-title">DiamondMax</h3>
             <p class="app-desc">Our flagship reward ecosystem. Complete elite missions and earn real-world rewards safely and instantly.</p>
             <a href="index.html#waitlist-section" class="action-btn btn-waitlist">Notify Me 🚀</a>
@@ -166,8 +130,7 @@
 
         <div class="app-card card-cipher">
             <span class="badge badge-upcoming"><i class="fas fa-clock"></i> UPCOMING</span>
-            <img src="wordcipher-logo.png" alt="Word Cipher Logo" class="app-logo" onerror="this.src='https://via.placeholder.com/150/10b981/ffffff?text=Cipher'">
-            
+            <img src="./wordcipher-logo.png" alt="Word Cipher" class="app-logo" onerror="this.src='https://via.placeholder.com/150/10b981/ffffff?text=Cipher'">
             <h3 class="app-title">Word Cipher</h3>
             <p class="app-desc">A highly addictive brain-teaser game. Decrypt secret words to prove your intelligence and unlock Founder perks.</p>
             <a href="index.html#waitlist-section" class="action-btn btn-waitlist">Notify Me 🧠</a>
@@ -175,8 +138,7 @@
 
         <div class="app-card card-vault">
             <span class="badge badge-demo"><i class="fas fa-laptop-code"></i> WEB DEMO LIVE</span>
-            <img src="vault-logo.png" alt="Diamond-Vault Logo" class="app-logo" onerror="this.src='https://via.placeholder.com/150/8b5cf6/ffffff?text=Vault'">
-            
+            <img src="./vault-logo.png" alt="Diamond-Vault" class="app-logo" onerror="this.src='https://via.placeholder.com/150/8b5cf6/ffffff?text=Vault'">
             <h3 class="app-title">Diamond-Vault</h3>
             <p class="app-desc">App is in development, but you can try our military-grade password generator directly on our website for free.</p>
             <a href="index.html#vault-section" class="action-btn btn-demo">Try Web Demo 💻</a>
@@ -190,3 +152,4 @@
 
 </body>
 </html>
+
