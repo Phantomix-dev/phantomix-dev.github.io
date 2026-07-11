@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantomix Ecosystem | Our Apps</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- Base & Premium Scrollbar --- */
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; border: 2px solid #020617; }
+        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            padding-top: 90px;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* --- Navbar --- */
+        .phantomix-navbar {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 70px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; box-sizing: border-box;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+            z-index: 1000;
+        }
+        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; }
+        .back-btn {
+            background: rgba(14, 165, 233, 0.1); color: #0ea5e9;
+            padding: 8px 18px; border: 1px solid #0ea5e9; border-radius: 6px;
+            text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.3s ease;
+        }
+        .back-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+
+        /* --- Header Section --- */
+        .hero-section { padding: 60px 20px 40px; }
+        h1 { font-size: 42px; margin: 0 0 10px 0; color: #ffffff; }
+        .tagline { color: #0ea5e9; font-size: 16px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+        .desc { color: #94a3b8; font-size: 15px; max-width: 600px; margin: 15px auto 40px; line-height: 1.6; }
+
+        /* --- App Grid System --- */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        /* --- Individual App Cards --- */
+        .app-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: left;
+            position: relative;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .app-card:hover { transform: translateY(-10px); }
+
+        /* DiamondMax Theme (Blue) */
+        .card-diamondmax:hover { border-color: #0ea5e9; box-shadow: 0 15px 35px rgba(14, 165, 233, 0.15); }
+        .card-diamondmax .icon-box { background: rgba(14, 165, 233, 0.1); color: #0ea5e9; }
+        
+        /* Word Cipher Theme (Green) */
+        .card-cipher:hover { border-color: #10b981; box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15); }
+        .card-cipher .icon-box { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+
+        /* Vault Theme (Purple) */
+        .card-vault:hover { border-color: #8b5cf6; box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15); }
+        .card-vault .icon-box { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+
+        .icon-box {
+            width: 70px; height: 70px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 32px; margin-bottom: 25px;
+        }
+
+        .badge {
+            position: absolute; top: 30px; right: 30px;
+            font-size: 11px; font-weight: 700; padding: 4px 12px;
+            border-radius: 20px; letter-spacing: 1px;
+        }
+        .badge-primary { background: rgba(14, 165, 233, 0.1); color: #0ea5e9; border: 1px solid #0ea5e9; }
+        .badge-live { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid #10b981; }
+        .badge-tool { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border: 1px solid #8b5cf6; }
+
+        .app-title { font-size: 24px; color: #ffffff; margin: 0 0 10px 0; font-weight: 700; }
+        .app-desc { color: #94a3b8; font-size: 14px; line-height: 1.6; margin: 0 0 30px 0; flex-grow: 1; }
+
+        .action-btn {
+            padding: 12px 20px; border: none; border-radius: 8px;
+            font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px;
+            cursor: pointer; text-decoration: none; text-align: center;
+            transition: all 0.3s ease; display: inline-block; width: 100%; box-sizing: border-box;
+        }
+        .btn-blue { background: #0ea5e9; color: white; }
+        .btn-blue:hover { background: #0284c7; box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4); }
+        
+        .btn-green { background: #10b981; color: white; }
+        .btn-green:hover { background: #059669; box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4); }
+        
+        .btn-purple { background: #8b5cf6; color: white; }
+        .btn-purple:hover { background: #7c3aed; box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4); }
+
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid rgba(51, 65, 85, 0.5); padding: 30px 20px;
+            color: #64748b; font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="phantomix-navbar">
+        <a href="index.html" class="nav-logo">
+            <i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i>
+            Phantomix
+        </a>
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Mainframe</a>
+    </nav>
+
+    <div class="hero-section">
+        <p class="tagline">The Digital Ecosystem</p>
+        <h1>Phantomix Hub</h1>
+        <p class="desc">Explore our suite of next-generation applications. From our flagship reward ecosystem to secure utilities and addictive brain games, experience the speed of Phantomix.</p>
+    </div>
+
+    <div class="app-grid">
+        
+        <div class="app-card card-diamondmax">
+            <span class="badge badge-primary">FLAGSHIP</span>
+            <div class="icon-box"><i class="fa-solid fa-gem"></i></div>
+            <h3 class="app-title">DiamondMax</h3>
+            <p class="app-desc">Our upcoming premium reward ecosystem. Complete elite missions and earn real-world rewards safely and instantly.</p>
+            <a href="index.html#waitlist-section" class="action-btn btn-blue">Join Waitlist 🚀</a>
+        </div>
+
+        <div class="app-card card-cipher">
+            <span class="badge badge-live">LIVE</span>
+            <div class="icon-box"><i class="fa-solid fa-terminal"></i></div>
+            <h3 class="app-title">Word Cipher</h3>
+            <p class="app-desc">A highly addictive, daily brain-teaser game. Decrypt the secret words to prove your intelligence and unlock exclusive founder perks.</p>
+            <a href="#" class="action-btn btn-green">Play Online Now 🧠</a>
+        </div>
+
+        <div class="app-card card-vault">
+            <span class="badge badge-tool">UTILITY</span>
+            <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="app-title">Diamond-Vault</h3>
+            <p class="app-desc">An ultra-secure, military-grade password generator. Instantly create unbreakable passwords right from your browser with zero data tracking.</p>
+            <a href="index.html#vault-section" class="action-btn btn-purple">Generate Password 🔒</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Phantomix Ecosystem. All systems operational.</p>
+    </footer>
+
+</body>
+</html>
