@@ -2103,27 +2103,72 @@
     <script src="chatbot.js"></script>
 
     <script>
-      // 1. Waitlist Logic (Fixed for Free Instant Backend)
-        function joinWaitlist() {
+      // 🛠️ SUPABASE CONFIGURATION (Yahan apni keys dalein)
+        const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
+
+        // Real-Time Waitlist Logic with Supabase Backend
+        async function joinWaitlist() {
             let emailInput = document.getElementById("emailInput");
-            let email = emailInput.value;
-            let form = document.getElementById("waitlistForm");
+            let email = emailInput.value.trim().toLowerCase();
             
             if(!email.includes("@") || !email.includes(".")) {
                 showCyberToast("❌ Invalid email address format!", false);
                 return;
             }
-            
-            fetch(form.action, {
-                method: "POST",
-                body: new FormData(form)
-            }).then(() => {
-                // Purane rigid green message ki jagah sleek float toast open hoga
-                showCyberToast("🚀 Access Granted. Node waitlisted!");
+
+            try {
+                showCyberToast("⚡ Synchronizing with Mainframe...", true);
+
+                // 1. Check if email already exists or Insert new email
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+                    method: "POST",
+                    headers: {
+                        "apikey": SUPABASE_KEY,
+                        "Authorization": `Bearer ${SUPABASE_KEY}`,
+                        "Content-Type": "application/json",
+                        "Prefer": "return=representation"
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+
+                if (response.status === 409) {
+                    // Conflict means Email already registered, let's fetch their rank
+                    showCyberToast("🔒 Node already registered. Fetching Rank...", true);
+                }
+
+                // 2. Fetch all rows sorted by created_at to calculate exact global rank
+                const rankResponse = await fetch(`${SUPABASE_URL}/rest/v1/waitlist?select=email&order=created_at.asc`, {
+                    method: "GET",
+                    headers: {
+                        "apikey": SUPABASE_KEY,
+                        "Authorization": `Bearer ${SUPABASE_KEY}`
+                    }
+                });
+
+                const allUsers = await rankResponse.json();
+                
+                // Find index of current email to calculate rank
+                const userIndex = allUsers.findIndex(user => user.email === email);
+                const realRank = userIndex !== -1 ? userIndex + 1 : allUsers.length;
+
+                // 3. UI Update - Displays genuine real-time ranking
+                let msg = document.getElementById("msg");
+                msg.innerHTML = `🎉 Access Granted! You are officially Node <b>#${realRank}</b> in the global mainframe.`;
+                msg.style.color = "#10b981";
+                msg.style.display = "block";
+                
+                // Dynamically update the main counter on top of the website too!
+                const counters = document.querySelectorAll('.counter');
+                if(counters[0]) counters[0].innerText = allUsers.length + "+";
+
+                showCyberToast(`🚀 Position #${realRank} Secured!`);
                 emailInput.value = ""; 
-            }).catch(() => {
-                showCyberToast("❌ Transmission failed. Try again!", false);
-            });
+
+            } catch (error) {
+                console.error(error);
+                showCyberToast("❌ Mainframe link failed. Try again!", false);
+            }
         }
         // 2. Countdown Timer Logic (Jan 1, 2028)
         const launchDate = new Date("2028-01-01T00:00:00").getTime();
