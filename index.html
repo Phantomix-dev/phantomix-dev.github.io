@@ -687,6 +687,39 @@
             box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
             transform: translateY(-2px);
         }
+                /* --- Password Strength Meter Styling --- */
+        .strength-meter-container {
+            margin-bottom: 20px;
+            background: rgba(2, 6, 23, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .strength-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #94a3b8;
+        }
+        .strength-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: #020617;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .strength-bar-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+        }
+        .text-weak { color: #ef4444; }
+        .text-medium { color: #f59e0b; }
+        .text-strong { color: #10b981; }
+
 
         /* --- Premium Sticky Navbar --- */
         .phantomix-navbar {
@@ -1801,6 +1834,16 @@
                     <i class="far fa-copy"></i>
                 </button>
             </div>
+                        <div class="strength-meter-container">
+                <div class="strength-labels">
+                    <span>SECURITY LEVEL</span>
+                    <span id="strength-text" class="text-weak">WEAK</span>
+                </div>
+                <div class="strength-bar-bg">
+                    <div id="strength-bar" class="strength-bar-fill" style="background: #ef4444; width: 25%;"></div>
+                </div>
+            </div>
+
 
             <div class="vault-controls">
                 <div class="slider-group">
@@ -2118,8 +2161,7 @@
             });
         });
 
-        // 4. Diamond-Vault Password Logic
-        function generatePassword() {
+                function generatePassword() {
             const length = document.getElementById('pass-length').value;
             const incUpper = document.getElementById('inc-uppercase').checked;
             const incNums = document.getElementById('inc-numbers').checked;
@@ -2130,18 +2172,52 @@
             if (incNums) chars += "0123456789";
             if (incSyms) chars += "!@#$%^&*()_+~`|}{[]:;?><,./-=";
 
+            // Agar koi checkbox select nahi kiya, toh default lower case use karega
+            if (chars.length === 0) chars = "abcdefghijklmnopqrstuvwxyz";
+
             let password = "";
             for (let i = 0; i < length; i++) {
                 password += chars.charAt(Math.floor(Math.random() * chars.length));
             }
 
             document.getElementById('generated-password').innerText = password;
+            updateStrengthMeter(password, length, incUpper, incNums, incSyms);
         }
 
-        function copyPassword() {
-            const passText = document.getElementById('generated-password').innerText;
-            navigator.clipboard.writeText(passText).then(() => {
-                // Hamara naya dynamic toast popup chalega yahan
+        function updateStrengthMeter(password, length, hasUpper, hasNum, hasSym) {
+            const strengthText = document.getElementById('strength-text');
+            const strengthBar = document.getElementById('strength-bar');
+            
+            let score = 0;
+            if (length >= 12) score += 1;
+            if (length >= 16) score += 1;
+            if (hasUpper) score += 1;
+            if (hasNum) score += 1;
+            if (hasSym) score += 1;
+
+            if (score <= 2) {
+                strengthText.innerText = "WEAK";
+                strengthText.className = "text-weak";
+                strengthBar.style.width = "25%";
+                strengthBar.style.background = "#ef4444"; // Red
+                strengthBar.style.boxShadow = "0 0 10px #ef4444";
+            } else if (score === 3 || score === 4) {
+                strengthText.innerText = "GOOD";
+                strengthText.className = "text-medium";
+                strengthBar.style.width = "65%";
+                strengthBar.style.background = "#f59e0b"; // Orange/Yellow
+                strengthBar.style.boxShadow = "0 0 10px #f59e0b";
+            } else {
+                strengthText.innerText = "UNBREAKABLE";
+                strengthText.className = "text-strong";
+                strengthBar.style.width = "100%";
+                strengthBar.style.background = "#10b981"; // Neon Green
+                strengthBar.style.boxShadow = "0 0 15px #10b981";
+            }
+        }
+
+    
+        // Hamara naya dynamic toast popup chalega yahan
                 showCyberToast("🔒 Password copied securely to mainframe!");
             });
         }
