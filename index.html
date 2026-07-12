@@ -2107,6 +2107,60 @@
         const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
 
+        // 🌐 Real-Time Dashboard Sync (On Page Load)
+        async function syncRealData() {
+            try {
+                // Supabase se asli users ka data fetch karna
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist?select=email`, {
+                    method: "GET",
+                    headers: {
+                        "apikey": SUPABASE_KEY,
+                        "Authorization": `Bearer ${SUPABASE_KEY}`
+                    }
+                });
+                
+                const users = await response.json();
+                const realCount = users.length; // Asli users ki ginti
+
+                // 1. Hero Section ka Waitlist Counter Update
+                const waitlistCounter = document.querySelector('.hero-stats .stat-box:nth-child(1) h3');
+                if (waitlistCounter) {
+                    waitlistCounter.setAttribute('data-target', realCount);
+                    waitlistCounter.innerText = realCount; // Asli number show karega
+                }
+
+                // 2. Funding Section mein Backers Update
+                const backersCount = document.getElementById("backers-count");
+                if (backersCount) {
+                    backersCount.innerText = realCount;
+                }
+
+                // 3. Raised Funds Update (Agar har user average ₹29 ka Alpha Node leta hai)
+                const raisedAmount = document.getElementById("raised-amount");
+                const progressNode = document.getElementById("progress-bar-node");
+                const fundingPercentage = document.getElementById("funding-percentage");
+
+                if (raisedAmount) {
+                    const totalFunds = realCount * 29; // Real calculation
+                    raisedAmount.innerText = "₹" + totalFunds.toLocaleString('en-IN');
+                    
+                    // Progress bar dynamically fill hoga
+                    const targetAmount = 25000;
+                    let percent = Math.floor((totalFunds / targetAmount) * 100);
+                    if(percent > 100) percent = 100;
+                    
+                    if(progressNode) progressNode.style.width = percent + "%";
+                    if(fundingPercentage) fundingPercentage.innerText = percent + "% Funded";
+                }
+
+            } catch (error) {
+                console.error("Real data sync failed", error);
+            }
+        }
+
+        // Jaise hi website open ho, automatically asli data le aao
+        window.addEventListener('load', syncRealData);
+        
         // Real-Time Waitlist Logic with Supabase Backend
         async function joinWaitlist() {
             let emailInput = document.getElementById("emailInput");
