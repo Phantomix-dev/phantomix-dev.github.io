@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Terminal | Phantomix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0; padding: 0; font-family: 'Poppins', sans-serif;
+            background-color: #020617; color: #ffffff;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+            background-image: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 60%);
+        }
+
+        .auth-container {
+            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 15px; padding: 40px; width: 100%; max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(14, 165, 233, 0.05);
+            text-align: center;
+        }
+
+        .auth-header i { font-size: 40px; color: #0ea5e9; margin-bottom: 10px; }
+        .auth-header h2 { font-family: 'Courier Prime', monospace; margin: 0 0 5px; color: #0ea5e9; }
+        .auth-header p { font-size: 13px; color: #94a3b8; margin-bottom: 30px; }
+
+        .tabs { display: flex; margin-bottom: 25px; border-bottom: 1px solid #334155; }
+        .tab { 
+            flex: 1; padding: 10px; cursor: pointer; color: #64748b; 
+            font-weight: 600; transition: all 0.3s; 
+        }
+        .tab.active { color: #0ea5e9; border-bottom: 2px solid #0ea5e9; }
+
+        .input-group { margin-bottom: 15px; text-align: left; }
+        .input-group label { display: block; font-size: 12px; color: #94a3b8; margin-bottom: 5px; }
+        .input-group input {
+            width: 100%; padding: 12px; box-sizing: border-box; border-radius: 8px;
+            border: 1px solid #334155; background: #020617; color: white;
+            font-family: 'Poppins', sans-serif; outline: none; transition: all 0.3s;
+        }
+        .input-group input:focus { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.2); }
+
+        .auth-btn {
+            width: 100%; background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            color: white; border: none; padding: 12px; border-radius: 8px;
+            font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 10px;
+        }
+        .auth-btn:hover { box-shadow: 0 0 15px rgba(14, 165, 233, 0.5); transform: translateY(-2px); }
+
+        .message { margin-top: 15px; font-size: 13px; font-weight: 600; min-height: 20px; }
+        .success { color: #10b981; }
+        .error { color: #ef4444; }
+
+        .back-link { display: inline-block; margin-top: 20px; color: #64748b; text-decoration: none; font-size: 13px; }
+        .back-link:hover { color: #0ea5e9; }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-header">
+            <i class="fas fa-fingerprint"></i>
+            <h2>NODE ACCESS</h2>
+            <p>Identify yourself to join the Phantomix Network.</p>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" id="tab-login" onclick="switchTab('login')">LOGIN</div>
+            <div class="tab" id="tab-register" onclick="switchTab('register')">REGISTER</div>
+        </div>
+
+        <div id="form-login">
+            <div class="input-group">
+                <label>EMAIL ADDRESS</label>
+                <input type="email" id="login-email" placeholder="node@phantomix.io">
+            </div>
+            <div class="input-group">
+                <label>PASSWORD</label>
+                <input type="password" id="login-password" placeholder="••••••••">
+            </div>
+            <button class="auth-btn" onclick="processLogin()">INITIALIZE CONNECTION</button>
+        </div>
+
+        <div id="form-register" style="display: none;">
+            <div class="input-group">
+                <label>NODE ALIAS (Username)</label>
+                <input type="text" id="reg-alias" placeholder="e.g. CipherKing" maxlength="15">
+            </div>
+            <div class="input-group">
+                <label>EMAIL ADDRESS</label>
+                <input type="email" id="reg-email" placeholder="node@phantomix.io">
+            </div>
+            <div class="input-group">
+                <label>SECURE PASSWORD</label>
+                <input type="password" id="reg-password" placeholder="••••••••">
+            </div>
+            <button class="auth-btn" onclick="processRegister()">CREATE SECURE NODE</button>
+        </div>
+
+        <div id="auth-msg" class="message"></div>
+
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Return to Hub</a>
+    </div>
+
+    <script>
+        // ⚠️ APNI ASLI API KEYS YAHAN ZAROOR DALEIN
+        const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
+
+        const msgBox = document.getElementById("auth-msg");
+
+        function switchTab(tab) {
+            document.getElementById("tab-login").classList.remove("active");
+            document.getElementById("tab-register").classList.remove("active");
+            document.getElementById("form-login").style.display = "none";
+            document.getElementById("form-register").style.display = "none";
+            msgBox.innerText = "";
+
+            if (tab === 'login') {
+                document.getElementById("tab-login").classList.add("active");
+                document.getElementById("form-login").style.display = "block";
+            } else {
+                document.getElementById("tab-register").classList.add("active");
+                document.getElementById("form-register").style.display = "block";
+            }
+        }
+
+        async function processRegister() {
+            const alias = document.getElementById("reg-alias").value.trim();
+            const email = document.getElementById("reg-email").value.trim();
+            const password = document.getElementById("reg-password").value;
+
+            if (!alias || !email || !password) {
+                showMessage("All fields are required.", "error");
+                return;
+            }
+
+            try {
+                // 1. Create User in Supabase Auth
+                const response = await fetch(`${SUPABASE_URL}/auth/v1/signup`, {
+                    method: "POST",
+                    headers: { "apikey": SUPABASE_KEY, "Content-Type": "application/json" },
+                    body: JSON.stringify({ 
+                        email: email, 
+                        password: password,
+                        data: { alias: alias } // Storing alias in user metadata
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.error) throw new Error(data.error.message);
+
+                showMessage("Success! Check your email to verify your account.", "success");
+                
+                // Clear fields
+                document.getElementById("reg-alias").value = "";
+                document.getElementById("reg-email").value = "";
+                document.getElementById("reg-password").value = "";
+
+            } catch (error) {
+                showMessage(error.message, "error");
+            }
+        }
+
+        async function processLogin() {
+            const email = document.getElementById("login-email").value.trim();
+            const password = document.getElementById("login-password").value;
+
+            if (!email || !password) {
+                showMessage("Enter email and password.", "error");
+                return;
+            }
+
+            try {
+                // 1. Authenticate User
+                const response = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+                    method: "POST",
+                    headers: { "apikey": SUPABASE_KEY, "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: email, password: password })
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    if(data.error.message.includes("Email not confirmed")) {
+                        throw new Error("Please verify your email address first!");
+                    }
+                    throw new Error(data.error.message);
+                }
+
+                // 2. Save Session to Browser (localStorage)
+                localStorage.setItem("phantomix_token", data.access_token);
+                localStorage.setItem("phantomix_user_id", data.user.id);
+                localStorage.setItem("phantomix_alias", data.user.user_metadata.alias);
+
+                // 3. Create profile entry if it doesn't exist (Runs once)
+                await fetch(`${SUPABASE_URL}/rest/v1/profiles`, {
+                    method: "POST",
+                    headers: { 
+                        "apikey": SUPABASE_KEY, 
+                        "Authorization": `Bearer ${data.access_token}`,
+                        "Content-Type": "application/json",
+                        "Prefer": "resolution=ignore-duplicates"
+                    },
+                    body: JSON.stringify({ id: data.user.id, alias: data.user.user_metadata.alias })
+                });
+
+                showMessage("Access Granted. Redirecting to Community...", "success");
+                
+                // 4. Redirect to Community Chat page
+                setTimeout(() => {
+                    window.location.href = "community.html";
+                }, 1500);
+
+            } catch (error) {
+                showMessage(error.message, "error");
+            }
+        }
+
+        function showMessage(text, type) {
+            msgBox.innerText = text;
+            msgBox.className = "message " + type;
+        }
+    </script>
+</body>
+</html>
