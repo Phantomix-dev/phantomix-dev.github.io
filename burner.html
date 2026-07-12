@@ -35,11 +35,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
     <script>
-        // 1. Supabase Connection Set Karein
-        const supabaseUrl = "https://pekmsttmosuzcvielala.supabase.co";
-        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
+        // 1. Supabase Connection Set Karein (Fix ke sath)
+const supabaseUrl = "https://pekmsttmosuzcvielala.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
 
-        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+// Yahan se 'window.' hata diya hai
+const supabase = supabase.createClient(supabaseUrl, supabaseKey); 
 
         // 2. Note Banane Ka Function
         async function createNote() {
