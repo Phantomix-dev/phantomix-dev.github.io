@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glitch Text Generator | Phantomix</title>
+    <style>
+        body { background-color: #0a0a0a; color: #00ff00; font-family: monospace; text-align: center; padding: 50px; }
+        input { width: 80%; padding: 15px; background: #111; color: #00ff00; border: 1px solid #00ff00; font-size: 1.1em; text-align: center; font-family: monospace; }
+        #output-box { width: 80%; min-height: 80px; background: #1a1a1a; margin: 20px auto; padding: 15px; border: 1px dashed #00ff00; word-wrap: break-word; font-size: 1.4em; color: #ffffff; display: flex; align-items: center; justify-content: center; }
+        button { background: #00ff00; color: #000; padding: 10px 25px; border: none; cursor: pointer; font-weight: bold; font-size: 1em; }
+        button:hover { background: #fff; }
+    </style>
+</head>
+<body>
+
+    <h1>🔠 Cyber Glitch Generator</h1>
+    <p>Corrupt your text stream for secure data masking.</p>
+
+    <input type="text" id="normal-text" placeholder="Type normal text here..." oninput="corruptText()">
+
+    <div id="output-box" id="glitch-output">Your corrupted transmission will appear here...</div>
+
+    <button onclick="copyToClipboard()">1-Click Copy</button>
+
+    <script>
+        // Hardcore Zalgo Unicode Arrays (Text ke upar/niche noise add karne ke liye)
+        const zalgoUp = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310', '\u0352', '\u0357', '\u0351', '\u0307', '\u0308', '\u030a', '\u0342', '\u0343', '\u0344', '\u034a', '\u034b', '\u034c', '\u0303', '\u0302', '\u030c', '\u0350', '\u0300', '\u0301', '\u030b', '\u030f', '\u0312', '\u0313', '\u0314', '\u033d', '\u0309', '\u035b', '\u0346', '\u031a'];
+        const zalgoDown = ['\u0316', '\u0317', '\u0318', '\u0319', '\u031c', '\u031d', '\u031e', '\u031f', '\u0320', '\u0324', '\u0325', '\u0326', '\u0329', '\u032a', '\u032b', '\u032c', '\u032d', '\u032e', '\u032f', '\u0330', '\u0331', '\u0332', '\u0333', '\u0339', '\u033a', '\u033b', '\u033c', '\u0345', '\u0347', '\u0348', '\u0349', '\u034d', '\u034e', '\u0353', '\u0354', '\u0355', '\u0356', '\u0359', '\u035a', '\u0323'];
+        const zalgoMid = ['\u0315', '\u0334', '\u0335', '\u0336', '\u0337', '\u0338', '\u0358', '\u0327', '\u0328', '\u035e', '\u035f', '\u0360', '\u0362', '\u0338', '\u035c', '\u0328'];
+
+        // Core Glitch Generator Logic
+        function corruptText() {
+            const sourceText = document.getElementById('normal-text').value;
+            if(!sourceText) {
+                document.getElementById('output-box').innerText = "Your corrupted transmission will appear here...";
+                return;
+            }
+
+            let result = "";
+            for (let i = 0; i < sourceText.length; i++) {
+                let letter = sourceText[i];
+                result += letter;
+
+                // Har letter ke baad random 2-3 glitch characters mix karein (space ko chhod kar)
+                if (letter !== " ") {
+                    for (let j = 0; j < 2; j++) {
+                        result += zalgoUp[Math.floor(Math.random() * zalgoUp.length)];
+                        result += zalgoDown[Math.floor(Math.random() * zalgoDown.length)];
+                        result += zalgoMid[Math.floor(Math.random() * zalgoMid.length)];
+                    }
+                }
+            }
+            document.getElementById('output-box').innerText = result;
+        }
+
+        // 1-Click Copy Hack
+        function copyToClipboard() {
+            const textToCopy = document.getElementById('output-box').innerText;
+            if(textToCopy === "Your corrupted transmission will appear here...") return;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("🎯 Glitch text copied! Go flex it anywhere, CEO Sahab!");
+            }).catch(err => {
+                alert("Copy failed. Try selecting manually.");
+            });
+        }
+    </script>
+</body>
+</html>
