@@ -13,7 +13,7 @@
         body {
             margin: 0; padding: 0; padding-top: 80px;
             font-family: 'Poppins', sans-serif;
-            background-color: #020617; /* Deep Cyber Black */
+            background-color: #020617; 
             color: #ffffff;
             text-align: center; overflow-x: hidden;
             background-image: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
@@ -39,9 +39,7 @@
         .game-wrapper {
             max-width: 600px; margin: 40px auto; padding: 0 20px;
         }
-        .game-header {
-            margin-bottom: 30px;
-        }
+        .game-header { margin-bottom: 30px; }
         .game-header h1 {
             color: #10b981; font-family: 'Courier Prime', monospace;
             font-size: 32px; margin: 0 0 10px 0; text-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
@@ -59,7 +57,7 @@
         .stats-bar {
             display: flex; justify-content: space-between;
             font-family: 'Courier Prime', monospace; font-size: 16px;
-            color: #cbd5e1; margin-bottom: 30px;
+            color: #cbd5e1; margin-bottom: 20px;
             border-bottom: 1px dashed rgba(16, 185, 129, 0.3); padding-bottom: 15px;
         }
         .timer { color: #ef4444; font-weight: bold; }
@@ -67,33 +65,40 @@
 
         .scrambled-word {
             font-size: 42px; font-weight: 700; letter-spacing: 10px;
-            margin: 20px 0 40px; color: #ffffff;
+            margin: 10px 0 20px; color: #ffffff;
             font-family: 'Courier Prime', monospace;
             text-transform: uppercase;
         }
 
+        .hint-text {
+            color: #0ea5e9; font-size: 14px; font-style: italic;
+            min-height: 20px; margin-bottom: 25px;
+        }
+
         .input-group {
-            display: flex; gap: 10px; max-width: 400px; margin: 0 auto;
+            display: flex; gap: 10px; max-width: 400px; margin: 0 auto; flex-wrap: wrap; justify-content: center;
         }
         .guess-input {
-            flex: 1; padding: 15px; border-radius: 8px;
+            width: 100%; padding: 15px; border-radius: 8px; box-sizing: border-box;
             border: 1px solid #334155; background: #0f172a; color: #10b981;
             font-size: 18px; font-family: 'Courier Prime', monospace; text-transform: uppercase;
             text-align: center; outline: none; transition: all 0.3s;
+            margin-bottom: 10px;
         }
         .guess-input:focus { border-color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
         
         .action-btn {
             background: #10b981; color: #020617;
-            border: none; padding: 0 25px; border-radius: 8px;
+            border: none; padding: 12px 25px; border-radius: 8px;
             font-weight: 700; font-family: 'Poppins', sans-serif;
-            cursor: pointer; transition: all 0.3s; font-size: 16px;
+            cursor: pointer; transition: all 0.3s; font-size: 16px; flex: 1; min-width: 120px;
         }
         .action-btn:hover { background: #059669; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); transform: translateY(-2px); }
+        
+        .hint-btn { background: #334155; color: white; }
+        .hint-btn:hover { background: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.5); }
 
-        .message {
-            margin-top: 20px; font-size: 14px; font-weight: 600; height: 20px;
-        }
+        .message { margin-top: 20px; font-size: 14px; font-weight: 600; height: 20px; }
         .correct { color: #10b981; }
         .wrong { color: #ef4444; animation: shake 0.4s; }
 
@@ -117,7 +122,7 @@
 <body>
 
     <nav class="phantomix-navbar">
-        <a href="apps.html" class="nav-logo">
+        <a href="apps" class="nav-logo">
             <i class="fa-solid fa-terminal" style="color: #10b981; margin-right: 8px;"></i>
             Cipher
         </a>
@@ -137,9 +142,11 @@
             </div>
 
             <div class="scrambled-word" id="scrambled-text">START</div>
+            <div class="hint-text" id="hint-display"></div>
 
             <div class="input-group">
                 <input type="text" id="user-guess" class="guess-input" placeholder="Enter word..." autocomplete="off" disabled>
+                <button class="action-btn hint-btn" id="hint-btn" onclick="showHint()" disabled><i class="fas fa-lightbulb"></i> HINT</button>
                 <button class="action-btn" id="submit-btn" onclick="startGame()">START</button>
             </div>
 
@@ -155,28 +162,42 @@
     </div>
 
     <script>
-        const techWords = [
-            "HACKER", "PHANTOMIX", "NETWORK", "SERVER", "CRYPTO", 
-            "ENCRYPT", "SYSTEM", "STARTUP", "FLUTTER", "PYTHON",
-            "DIAMOND", "VAULT", "MAINFRAME", "CYBER", "CODE"
+        // Tech Words Dictionary with Hints
+        const wordData = [
+            { word: "HACKER", hint: "Someone who explores or breaks into computer systems" },
+            { word: "PHANTOMIX", hint: "The ultimate tech ecosystem you are building!" },
+            { word: "NETWORK", hint: "A group of connected computers" },
+            { word: "SERVER", hint: "Provides data or services to other computers" },
+            { word: "CRYPTO", hint: "Digital currency secured by cryptography" },
+            { word: "ENCRYPT", hint: "To secure data by converting it into secret code" },
+            { word: "SYSTEM", hint: "A set of connected things forming a complex whole" },
+            { word: "STARTUP", hint: "A newly established tech business" },
+            { word: "FLUTTER", hint: "Google's UI toolkit for building mobile apps" },
+            { word: "PYTHON", hint: "A popular coding language (and a snake)" },
+            { word: "DIAMOND", hint: "The hardest natural substance / Max reward" },
+            { word: "VAULT", hint: "A highly secure place to store passwords" },
+            { word: "CYBER", hint: "Relating to computers and virtual reality" },
+            { word: "CODE", hint: "Instructions written by a programmer" }
         ];
 
         let currentWord = "";
+        let currentHint = "";
         let score = 0;
         let timeLeft = 60;
         let timerInterval;
         let isPlaying = false;
 
         const scrambledText = document.getElementById("scrambled-text");
+        const hintDisplay = document.getElementById("hint-display");
         const guessInput = document.getElementById("user-guess");
         const submitBtn = document.getElementById("submit-btn");
+        const hintBtn = document.getElementById("hint-btn");
         const timeDisplay = document.getElementById("time-left");
         const scoreDisplay = document.getElementById("score-val");
         const feedbackMsg = document.getElementById("feedback-msg");
         const gameOverScreen = document.getElementById("game-over");
         const finalScoreVal = document.getElementById("final-score-val");
 
-        // Scramble logic
         function scrambleWord(word) {
             let arr = word.split('');
             for (let i = arr.length - 1; i > 0; i--) {
@@ -187,18 +208,25 @@
         }
 
         function loadNewWord() {
-            const randomIndex = Math.floor(Math.random() * techWords.length);
-            currentWord = techWords[randomIndex];
+            const randomIndex = Math.floor(Math.random() * wordData.length);
+            currentWord = wordData[randomIndex].word;
+            currentHint = wordData[randomIndex].hint;
             
             let scrambled = scrambleWord(currentWord);
-            // Ensure it doesn't accidentally scramble to the real word
             while(scrambled === currentWord && currentWord.length > 1) {
                 scrambled = scrambleWord(currentWord);
             }
             
             scrambledText.innerText = scrambled;
+            hintDisplay.innerText = ""; // Hide hint initially
             guessInput.value = "";
             guessInput.focus();
+        }
+
+        function showHint() {
+            if(isPlaying) {
+                hintDisplay.innerText = "💡 HINT: " + currentHint;
+            }
         }
 
         function startGame() {
@@ -211,6 +239,7 @@
             
             gameOverScreen.style.display = "none";
             guessInput.disabled = false;
+            hintBtn.disabled = false;
             submitBtn.innerText = "SUBMIT";
             submitBtn.setAttribute("onclick", "checkGuess()");
             feedbackMsg.innerText = "";
@@ -257,13 +286,13 @@
             isPlaying = false;
             clearInterval(timerInterval);
             guessInput.disabled = true;
+            hintBtn.disabled = true;
             timeDisplay.style.animation = "none";
             
             finalScoreVal.innerText = score;
             gameOverScreen.style.display = "flex";
         }
 
-        // Allow pressing Enter to submit
         guessInput.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
