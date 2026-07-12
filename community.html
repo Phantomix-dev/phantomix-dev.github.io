@@ -19,13 +19,11 @@
             background-image: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 60%);
         }
 
-        /* --- Premium Custom Scrollbar --- */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #020617; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
 
-        /* --- Navbar --- */
         .phantomix-navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 65px;
             display: flex; justify-content: space-between; align-items: center;
@@ -40,26 +38,22 @@
             text-decoration: none; font-size: 13px; font-weight: 600; transition: all 0.3s ease;
         }
         .back-btn:hover { background: #0ea5e9; color: #020617; box-shadow: 0 0 15px rgba(14, 165, 233, 0.6); }
+        .logout-btn {
+            background: rgba(239, 68, 68, 0.1); color: #ef4444; margin-left: 10px;
+            padding: 6px 14px; border: 1px solid #ef4444; border-radius: 6px;
+            cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.3s;
+        }
+        .logout-btn:hover { background: #ef4444; color: white; box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
 
-        /* --- Community Chat Container --- */
-        .chat-wrapper {
-            max-width: 800px; margin: 20px auto 40px; padding: 0 20px;
-        }
-        .chat-header {
-            margin-bottom: 20px;
-        }
-        .chat-header h1 {
-            color: #0ea5e9; font-size: 32px; margin: 0 0 10px 0; text-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
-        }
+        .chat-wrapper { max-width: 800px; margin: 20px auto 40px; padding: 0 20px; }
+        .chat-header { margin-bottom: 20px; }
+        .chat-header h1 { color: #0ea5e9; font-size: 32px; margin: 0 0 10px 0; text-shadow: 0 0 15px rgba(14, 165, 233, 0.3); }
         .chat-header p { color: #94a3b8; font-size: 14px; margin: 0; }
 
         .chat-box {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(14, 165, 233, 0.3);
-            border-radius: 15px; padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            display: flex; flex-direction: column;
-            height: 60vh; min-height: 400px;
+            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 15px; padding: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex; flex-direction: column; height: 60vh; min-height: 400px;
         }
 
         #chat-messages {
@@ -70,8 +64,7 @@
         .msg-bubble {
             background: rgba(30, 41, 59, 0.6); padding: 12px 18px; 
             border-radius: 12px; border-left: 3px solid #0ea5e9; 
-            font-size: 14px; line-height: 1.5;
-            animation: fadeIn 0.3s ease;
+            font-size: 14px; line-height: 1.5; animation: fadeIn 0.3s ease;
         }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
@@ -79,23 +72,19 @@
         .msg-time { color: #64748b; font-size: 11px; }
         .msg-text { color: #e2e8f0; display: block; margin-top: 5px; word-wrap: break-word; }
 
-        /* --- Input Area --- */
-        .input-group {
-            display: flex; gap: 10px;
-        }
+        .input-group { display: flex; gap: 10px; }
         .sender-input {
-            width: 120px; padding: 12px; border-radius: 8px;
-            border: 1px solid #334155; background: #020617; color: #0ea5e9;
-            font-size: 14px; font-family: 'Courier Prime', monospace;
+            width: 140px; padding: 12px; border-radius: 8px;
+            border: 1px solid #334155; background: #020617; color: #10b981;
+            font-size: 14px; font-family: 'Courier Prime', monospace; font-weight: bold;
             outline: none; transition: all 0.3s;
         }
         .msg-input {
             flex: 1; padding: 12px 15px; border-radius: 8px;
             border: 1px solid #334155; background: #020617; color: white;
-            font-size: 14px; font-family: 'Poppins', sans-serif;
-            outline: none; transition: all 0.3s;
+            font-size: 14px; font-family: 'Poppins', sans-serif; outline: none; transition: all 0.3s;
         }
-        .sender-input:focus, .msg-input:focus { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.2); }
+        .msg-input:focus { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.2); }
         
         .send-btn {
             background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white;
@@ -114,49 +103,84 @@
 
     <nav class="phantomix-navbar">
         <a href="index.html" class="nav-logo">
-            <i class="fa-solid fa-users" style="color: #0ea5e9; margin-right: 8px;"></i>
-            Community
+            <i class="fa-solid fa-users" style="color: #0ea5e9; margin-right: 8px;"></i> Community
         </a>
-        <a href="index.html" class="back-btn"><i class="fas fa-home"></i> Home</a>
+        <div>
+            <a href="index.html" class="back-btn"><i class="fas fa-home"></i> Home</a>
+            <button class="logout-btn" onclick="logoutNode()"><i class="fas fa-power-off"></i> Logout</button>
+        </div>
     </nav>
 
     <div class="chat-wrapper">
         <div class="chat-header">
             <h1>Global Node Chat</h1>
-            <p>Connect with other founders, developers, and early adopters in real-time.</p>
+            <p>Connect with other verified founders and early adopters.</p>
         </div>
 
         <div class="chat-box">
             <div id="chat-messages">
                 <div style="text-align: center; color: #64748b; font-size: 13px; margin-top: auto; margin-bottom: auto;">
-                    <i class="fas fa-satellite-dish fa-spin"></i> Synchronizing with Mainframe...
+                    <i class="fas fa-satellite-dish fa-spin"></i> Authenticating and Connecting to Mainframe...
                 </div>
             </div>
 
             <div class="input-group">
-                <input type="text" id="chat-sender" class="sender-input" placeholder="Alias..." maxlength="12">
-                <input type="text" id="chat-text" class="msg-input" placeholder="Transmit message..." onkeypress="if(event.key === 'Enter') sendChatMessage()">
+                <input type="text" id="chat-sender" class="sender-input" readonly>
+                <input type="text" id="chat-text" class="msg-input" placeholder="Transmit secure message..." autocomplete="off" onkeypress="if(event.key === 'Enter') sendChatMessage()">
                 <button class="send-btn" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
 
     <script>
+        // 🔒 DIGITAL BOUNCER: Checking if user is logged in
+        const userToken = localStorage.getItem("phantomix_token");
+        const userId = localStorage.getItem("phantomix_user_id");
+        const savedAlias = localStorage.getItem("phantomix_alias");
+
+        if (!userToken || !userId || !savedAlias) {
+            // Agar login nahi hai, sidha login page par feko
+            window.location.href = "login.html";
+        }
+
         // ⚠️ APNI ASLI API KEYS YAHAN ZAROOR DALEIN
         const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
 
+        // Setting the locked Alias in the input box
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("chat-sender").value = savedAlias;
+            document.getElementById("chat-sender").style.background = "#0f172a";
+        });
+
+        // 🚪 Logout Function
+        function logoutNode() {
+            localStorage.removeItem("phantomix_token");
+            localStorage.removeItem("phantomix_user_id");
+            localStorage.removeItem("phantomix_alias");
+            window.location.href = "login.html";
+        }
+
         async function fetchChatMessages() {
             try {
+                // Fetching messages (Read is allowed for anyone, but we pass token for good measure)
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/global_chat?select=*&order=created_at.desc&limit=50`, {
-                    headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}` }
+                    headers: { 
+                        "apikey": SUPABASE_KEY, 
+                        "Authorization": `Bearer ${userToken}` 
+                    }
                 });
+                
+                if (response.status === 401) {
+                    // Token expired or invalid
+                    logoutNode();
+                    return;
+                }
+
                 const messages = await response.json();
                 const chatBox = document.getElementById("chat-messages");
+                messages.reverse(); 
                 
-                messages.reverse(); // Purane messages upar, naye niche
-                
-                // Check if user is scrolled to bottom
                 const isScrolledToBottom = chatBox.scrollHeight - chatBox.clientHeight <= chatBox.scrollTop + 50;
 
                 chatBox.innerHTML = "";
@@ -165,20 +189,18 @@
                     
                     // Basic Word Filter (Security check)
                     let safeMsg = msg.message.replace(/</g, "&lt;").replace(/>/g, "&gt;"); 
+                    let safeAlias = msg.alias.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
                     chatBox.innerHTML += `
                         <div class="msg-bubble">
-                            <span class="msg-sender">[${msg.sender.replace(/</g, "&lt;")}]</span> 
+                            <span class="msg-sender">[${safeAlias}]</span> 
                             <span class="msg-time">${time}</span>
                             <span class="msg-text">${safeMsg}</span>
                         </div>
                     `;
                 });
 
-                // Auto-scroll to bottom only if they were already at the bottom
-                if (isScrolledToBottom) {
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                }
+                if (isScrolledToBottom) chatBox.scrollTop = chatBox.scrollHeight;
 
             } catch(e) { 
                 console.error("Chat sync failed", e); 
@@ -186,40 +208,46 @@
         }
 
         async function sendChatMessage() {
-            let sender = document.getElementById("chat-sender").value.trim();
             const messageInput = document.getElementById("chat-text");
             const message = messageInput.value.trim();
 
             if(!message) return;
-            if(!sender) sender = "Anon_Node";
 
             messageInput.value = ""; 
             
             try {
-                await fetch(`${SUPABASE_URL}/rest/v1/global_chat`, {
+                // Sending message with secure Token and User ID
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/global_chat`, {
                     method: "POST",
                     headers: {
                         "apikey": SUPABASE_KEY,
-                        "Authorization": `Bearer ${SUPABASE_KEY}`,
+                        "Authorization": `Bearer ${userToken}`, // Token proves who is sending
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ sender: sender, message: message })
+                    body: JSON.stringify({ 
+                        user_id: userId,   // Yeh database match karega!
+                        alias: savedAlias, // User ka locked naam
+                        message: message 
+                    })
                 });
+
+                if (!response.ok) {
+                    throw new Error("Unauthorized Transmission");
+                }
                 
                 fetchChatMessages(); 
                 
-                // Force scroll to bottom after sending
                 setTimeout(() => {
                     const chatBox = document.getElementById("chat-messages");
                     chatBox.scrollTop = chatBox.scrollHeight;
                 }, 100);
 
             } catch(e) { 
-                alert("Transmission Failed! Check connection.");
+                alert("Transmission Failed! Please login again.");
             }
         }
 
-        // Har 3 second mein refresh karega
+        // Auto-refresh chat every 3 seconds
         setInterval(fetchChatMessages, 3000);
         window.addEventListener('load', fetchChatMessages);
     </script>
