@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burner Protocol | Phantomix</title>
+    <style>
+        body { background-color: #0a0a0a; color: #00ff00; font-family: monospace; text-align: center; padding: 50px; }
+        textarea { width: 80%; height: 150px; background: #111; color: #00ff00; border: 1px solid #00ff00; padding: 10px; }
+        button { background: #00ff00; color: #000; padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; margin-top: 15px; }
+        button:hover { background: #fff; }
+        #link-box { margin-top: 20px; font-size: 1.2em; color: #ff003c; word-wrap: break-word; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <h1>🔥 The Burner Protocol</h1>
+    <p>Self-destructing secure transmissions.</p>
+
+    <div id="create-section">
+        <textarea id="secret-message" placeholder="Type your secret message here..."></textarea><br>
+        <button onclick="createNote()">Generate Burner Link</button>
+        <div id="link-box"></div>
+    </div>
+
+    <div id="read-section" class="hidden">
+        <h3 style="color: red;">WARNING: This message will self-destruct after you close this page.</h3>
+        <textarea id="decrypted-message" readonly></textarea>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Yahan hum apna JavaScript logic likhenge agle step mein!
+      // 1. Supabase Connection Set Karein
+const supabaseUrl = 'https://pekmsttmosuzcvielala.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+// 2. Note Banane Ka Function
+async function createNote() {
+    const message = document.getElementById('secret-message').value;
+    
+    if (!message) {
+        alert("Pehle koi secret message toh likho, CEO Sahab!");
+        return;
+    }
+
+    // Supabase mein data insert karein
+    const { data, error } = await supabase
+        .from('burner_notes')
+        .insert([{ message: message }])
+        .select();
+
+    if (error) {
+        console.error(error);
+        alert("Transmission failed. Network error!");
+    } else {
+        const noteId = data[0].id;
+        // Unique Shareable Link banayein
+        const link = window.location.origin + window.location.pathname + "?note=" + noteId;
+        
+        document.getElementById('link-box').innerHTML = `
+            Transmission Ready! Send this link: <br><br>
+            <a href="${link}" target="_blank" style="color:#00ff00; text-decoration:underline;">${link}</a>
+        `;
+        document.getElementById('secret-message').value = ""; // Textbox clear karein
+    }
+}
+
+// 3. Link Check aur Self-Destruct Function
+async function checkUrlForNote() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const noteId = urlParams.get('note');
+
+    // Agar URL mein ?note=XYZ hai, toh note dikhao aur DELETE maro!
+    if (noteId) {
+        document.getElementById('create-section').classList.add('hidden');
+        document.getElementById('read-section').classList.remove('hidden');
+
+        // Database se note padho
+        const { data, error } = await supabase
+            .from('burner_notes')
+            .select('message')
+            .eq('id', noteId)
+            .single();
+
+        if (data) {
+            // Note screen par print karein
+            document.getElementById('decrypted-message').value = data.message;
+            
+            // THE BLAST: Turant database se hamesha ke liye delete kar do! 💥
+            await supabase
+                .from('burner_notes')
+                .delete()
+                .eq('id', noteId);
+        } else {
+            // Agar dost ne dobara link kholne ki koshish ki
+            document.getElementById('decrypted-message').value = "[ERROR] Message not found. It has already self-destructed. 💥";
+            document.getElementById('decrypted-message').style.color = "red";
+        }
+    }
+}
+
+// Page load hote hi URL check karein
+window.onload = checkUrlForNote;
+
+    </script>
+</body>
+</html>
