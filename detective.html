@@ -6,134 +6,58 @@
     <title>Phishing Detective | Phantomix</title>
     <style>
         :root {
-            --bg-color: #050505;
-            --neon-green: #00ff00;
-            --neon-red: #ff003c;
-            --panel-bg: #111111;
+            --bg-main: #0B1221;
+            --card-bg: #151E32;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --accent-green: #10B981;
+            --accent-red: #EF4444;
         }
-        body { 
-            background-color: var(--bg-color); 
-            color: #ffffff; 
-            font-family: 'Courier New', monospace; 
-            text-align: center; 
-            padding: 30px;
-            margin: 0;
-        }
-        .game-container {
-            max-width: 650px;
-            margin: 0 auto;
-            background: var(--panel-bg);
-            border: 2px solid var(--neon-green);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 0 25px rgba(0, 255, 0, 0.1);
-        }
-        h1 { color: var(--neon-green); text-shadow: 0 0 10px rgba(0,255,0,0.3); margin-bottom: 5px; }
-        .score-board {
-            display: flex;
-            justify-content: space-between;
-            background: #000;
-            padding: 10px 20px;
-            border-radius: 6px;
-            border: 1px solid #333;
-            margin-bottom: 25px;
-            font-weight: bold;
-            color: var(--neon-green);
-        }
-        .case-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: left;
-            margin-bottom: 25px;
-            min-height: 150px;
-        }
-        .sender-info { color: #888; font-size: 0.9em; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 8px; }
-        .email-body { font-size: 1.1em; line-height: 1.5; color: #ddd; }
-        .url-box {
-            background: #000;
-            padding: 10px;
-            border-left: 4px solid var(--neon-green);
-            font-size: 0.95em;
-            color: #00dbff;
-            word-break: break-all;
-            margin-top: 15px;
-        }
-        .choice-btn {
-            width: 45%;
-            padding: 15px;
-            font-size: 1.1em;
-            font-weight: bold;
-            font-family: monospace;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.2s;
-            margin: 5px;
-        }
-        .btn-safe { background: var(--neon-green); color: #000; }
-        .btn-safe:hover { background: #fff; box-shadow: 0 0 15px #fff; }
-        .btn-phish { background: var(--neon-red); color: #fff; }
-        .btn-phish:hover { background: #fff; color: #000; box-shadow: 0 0 15px #fff; }
-        #feedback { margin-top: 20px; font-size: 1.2em; font-weight: bold; min-height: 30px; }
+        body { background-color: var(--bg-main); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-align: center; padding: 20px 15px; margin: 0; display: flex; justify-content: center; }
+        .game-container { width: 100%; max-width: 650px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); box-sizing: border-box; }
+        h1 { font-size: 1.6em; margin-top: 0; margin-bottom: 5px; font-weight: 700; }
+        .score-board { display: flex; justify-content: space-between; background: rgba(0,0,0,0.2); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 20px; margin-bottom: 25px; font-weight: 600; color: var(--accent-green); }
+        .case-card { background: rgba(0,0,0,0.15); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: left; margin-bottom: 25px; min-height: 150px; }
+        .sender-info { color: var(--text-muted); font-size: 0.9em; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .email-body { font-size: 1.05em; line-height: 1.6; color: var(--text-main); }
+        .url-box { background: rgba(0,0,0,0.3); padding: 12px; border-left: 4px solid var(--accent-green); border-radius: 4px; font-size: 0.9em; color: #60A5FA; word-break: break-all; margin-top: 15px; font-family: monospace; }
+        .choice-btn { width: 45%; padding: 14px; font-size: 1em; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; transition: 0.2s; margin: 5px; }
+        .btn-safe { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid var(--accent-green); }
+        .btn-safe:hover { background: var(--accent-green); color: #fff; }
+        .btn-phish { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); border: 1px solid var(--accent-red); }
+        .btn-phish:hover { background: var(--accent-red); color: #fff; }
+        #feedback { margin-top: 20px; font-size: 1.1em; font-weight: 600; min-height: 30px; }
+        @media (max-width: 480px) { .choice-btn { width: 100%; margin: 8px 0; } }
     </style>
 </head>
 <body>
-
     <div class="game-container">
-        <h1>🎣 PHISHING DETECTIVE</h1>
-        <p style="color: #666; margin-top: 0; font-size: 0.9em;">SYSTEM ANALYSIS INTERFACE v1.0.4</p>
-
+        <h1>🎣 Phishing Detective</h1>
+        <p style="color: var(--text-muted); margin: 0; font-size: 0.9em;">SYSTEM ANALYSIS INTERFACE v1.0.4</p>
         <div class="score-board">
             <div>LEVEL: <span id="current-level">1</span>/3</div>
             <div>SCORE: <span id="current-score">0</span></div>
         </div>
-
         <div class="case-card">
             <div class="sender-info" id="case-sender">FROM: loading...</div>
             <div class="email-body" id="case-body">Loading simulation vector...</div>
             <div class="url-box" id="case-url">URL: loading...</div>
         </div>
-
-        <button class="choice-btn btn-safe" onclick="submitDecision(true)">🟢 VERIFIED SAFE</button>
-        <button class="choice-btn btn-phish" onclick="submitDecision(false)">🔴 PHISHING TRAP</button>
-
+        <button class="choice-btn btn-safe" onclick="submitDecision(true)">VERIFIED SAFE</button>
+        <button class="choice-btn btn-phish" onclick="submitDecision(false)">PHISHING TRAP</button>
         <div id="feedback"></div>
     </div>
-
     <script>
-        // Game Database Objects (Levels Matrix)
         const cases = [
-            {
-                sender: "security@netflix-billing.com",
-                body: "Your subscription renewal failed. Please update your payment details within 24 hours to avoid account suspension.",
-                url: "http://netflx-account-update.com/login",
-                isSafe: false,
-                reason: "🚨 TRAP! Sender domain is 'netflx' (missing 'i') and uses insecure http protocol."
-            },
-            {
-                sender: "no-reply@github.com",
-                body: "Someone recently logged into your account from a new IP address in Berlin, Germany. If this wasn't you, verify the activity details.",
-                url: "https://github.com/settings/security/audit-log",
-                isSafe: true,
-                reason: "🟢 SAFE! Genuine HTTPS encryption routing straight to official GitHub security sub-domains."
-            },
-            {
-                sender: "support@lndia-post-tracking.in",
-                body: "Your package could not be delivered due to an incorrect house number. Please track your parcel and update the address immediately.",
-                url: "https://india-post.tracking-delivery-portal.xyz/track",
-                isSafe: false,
-                reason: "🚨 TRAP! Look closely: 'lndia' starts with a lowercase L instead of an uppercase I, and the domain ends in .xyz!"
-            }
+            { sender: "security@netflix-billing.com", body: "Your subscription renewal failed. Please update your payment details within 24 hours to avoid account suspension.", url: "http://netflx-account-update.com/login", isSafe: false, reason: "🚨 TRAP! Sender domain is 'netflx' (missing 'i') and uses insecure http protocol." },
+            { sender: "no-reply@github.com", body: "Someone recently logged into your account from a new IP address in Berlin, Germany. If this wasn't you, verify the activity details.", url: "https://github.com/settings/security/audit-log", isSafe: true, reason: "🟢 SAFE! Genuine HTTPS encryption routing straight to official GitHub security sub-domains." },
+            { sender: "support@lndia-post-tracking.in", body: "Your package could not be delivered due to an incorrect house number. Please track your parcel and update the address immediately.", url: "https://india-post.tracking-delivery-portal.xyz/track", isSafe: false, reason: "🚨 TRAP! Look closely: 'lndia' starts with a lowercase L instead of an uppercase I, and the domain ends in .xyz!" }
         ];
-
-        let index = 0;
-        let score = 0;
-
+        let index = 0; let score = 0;
         function loadCase() {
             if(index >= cases.length) {
-                document.querySelector('.case-card').innerHTML = `<h2 style='color:#00ff00; text-align:center;'>🏆 CASE FILE CLOSED</h2><p style='text-align:center;'>Excellent work, Detective! Final Score: ${score}/${cases.length}</p>`;
+                document.querySelector('.case-card').innerHTML = `<h2 style='color:var(--accent-green); text-align:center;'>🏆 CASE CLOSED</h2><p style='text-align:center;'>Excellent work, Detective! Final Score: ${score}/${cases.length}</p>`;
                 document.querySelectorAll('.choice-btn').forEach(b => b.style.display = 'none');
                 return;
             }
@@ -143,23 +67,16 @@
             document.getElementById('current-level').innerText = index + 1;
             document.getElementById('feedback').innerText = "";
         }
-
         function submitDecision(userSaidSafe) {
-            const currentCase = cases[index];
-            const feedbackBox = document.getElementById('feedback');
-            
+            const currentCase = cases[index]; const feedbackBox = document.getElementById('feedback');
             if(userSaidSafe === currentCase.isSafe) {
-                score++;
-                document.getElementById('current-score').innerText = score;
-                feedbackBox.innerHTML = "<span style='color:#00ff00;'>✔️ ACCESS GRANTED: Correct Assessment!</span>";
+                score++; document.getElementById('current-score').innerText = score;
+                feedbackBox.innerHTML = "<span style='color:var(--accent-green);'>✔️ ACCESS GRANTED: Correct Assessment!</span>";
             } else {
-                feedbackBox.innerHTML = "<span style='color:#ff003c;'>❌ PROTOCOL COMPROMISED! " + currentCase.reason + "</span>";
+                feedbackBox.innerHTML = "<span style='color:var(--accent-red);'>❌ PROTOCOL COMPROMISED! " + currentCase.reason + "</span>";
             }
-
-            index++;
-            setTimeout(loadCase, 3500); // 3.5 seconds buffer to let user read the reason
+            index++; setTimeout(loadCase, 3500);
         }
-
         window.onload = loadCase;
     </script>
 </body>
