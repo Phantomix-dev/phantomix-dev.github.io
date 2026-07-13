@@ -5,44 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghost Tracker | Phantomix</title>
     <style>
-        :root { --neon-green: #00ff00; --bg-dark: #050505; --panel-bg: #111111; }
-        body { background-color: var(--bg-dark); color: #fff; font-family: 'Courier New', monospace; text-align: center; padding: 30px; margin: 0; }
-        .scanner-container { max-width: 650px; margin: 0 auto; background: var(--panel-bg); border: 2px solid var(--neon-green); border-radius: 12px; padding: 30px; box-shadow: 0 0 25px rgba(0, 255, 0, 0.1); text-align: left; }
-        h1 { color: var(--neon-green); text-shadow: 0 0 10px rgba(0,255,0,0.3); margin-top: 0; text-align: center; }
+        :root {
+            --bg-main: #0B1221;
+            --card-bg: #151E32;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --accent-blue: #3B82F6;
+            --accent-red: #EF4444;
+        }
+        body { background-color: var(--bg-main); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-align: center; padding: 20px 15px; margin: 0; display: flex; justify-content: center; }
+        .scanner-container { width: 100%; max-width: 650px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); text-align: left; box-sizing: border-box; }
+        h1 { font-size: 1.6em; margin-top: 0; margin-bottom: 5px; font-weight: 700; text-align: center; }
+        p.subtitle { text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 0.9em; }
         
-        .scan-btn { width: 100%; background: var(--neon-green); color: #000; padding: 15px; font-size: 1.2em; font-weight: bold; border: none; cursor: pointer; font-family: monospace; border-radius: 6px; margin-bottom: 20px; }
-        .scan-btn:hover { background: #fff; box-shadow: 0 0 15px #fff; }
+        .scan-btn { width: 100%; background: var(--accent-blue); color: #fff; padding: 16px; font-size: 1.1em; font-weight: 600; border: none; cursor: pointer; border-radius: 8px; margin-bottom: 20px; transition: 0.3s; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+        .scan-btn:hover { background: #2563EB; transform: translateY(-1px); }
         
-        .data-grid { display: none; grid-template-columns: 1fr; gap: 15px; }
-        .data-row { background: #000; padding: 15px; border-left: 4px solid var(--neon-green); border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
-        .label { color: #888; font-size: 0.9em; font-weight: bold; }
-        .value { color: var(--neon-green); font-size: 1.1em; word-break: break-all; text-align: right; max-width: 60%; }
+        .data-grid { display: none; grid-template-columns: 1fr; gap: 12px; }
+        .data-row { background: rgba(0,0,0,0.2); padding: 15px; border-left: 4px solid var(--accent-blue); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 0.95em; }
+        .label { color: var(--text-muted); font-weight: 600; }
+        .value { color: var(--text-main); font-family: 'Courier New', monospace; font-weight: bold; text-align: right; max-width: 60%; word-break: break-all; }
         
-        #loading { display: none; color: #ff003c; text-align: center; font-size: 1.2em; font-weight: bold; margin: 20px 0; }
-        .warning { text-align: center; color: #ff003c; margin-top: 20px; font-size: 0.9em; display: none; }
+        #loading { display: none; color: var(--accent-blue); text-align: center; font-size: 1.1em; font-weight: 600; margin: 20px 0; }
+        .warning { text-align: center; color: var(--accent-red); background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 0.9em; font-weight: 500; display: none; line-height: 1.5; }
     </style>
 </head>
 <body>
 
     <div class="scanner-container">
-        <h1>🕵️‍♂️ HARDWARE FINGERPRINT</h1>
-        <p style="text-align: center; color: #666; margin-bottom: 30px;">WARNING: BYPASSING BROWSER CLOAKING PROTOCOLS</p>
+        <h1>🕵️‍♂️ Hardware Fingerprint</h1>
+        <p class="subtitle">Extract your browser's unique hardware footprint.</p>
 
         <button class="scan-btn" id="start-btn" onclick="runScan()">EXTRACT HARDWARE DATA</button>
         
-        <div id="loading">DECRYPTING SYSTEM NODE... PLEASE WAIT [||||||||||  ]</div>
+        <div id="loading">Scanning system parameters... Please wait.</div>
 
         <div class="data-grid" id="results">
             <div class="data-row"><span class="label">OS PLATFORM:</span><span class="value" id="res-os">Loading...</span></div>
             <div class="data-row"><span class="label">CPU CORES:</span><span class="value" id="res-cpu">Loading...</span></div>
             <div class="data-row"><span class="label">SYSTEM RAM:</span><span class="value" id="res-ram">Loading...</span></div>
             <div class="data-row"><span class="label">GPU ENGINE:</span><span class="value" id="res-gpu">Loading...</span></div>
-            <div class="data-row"><span class="label">RESOLUTION MATRIX:</span><span class="value" id="res-screen">Loading...</span></div>
-            <div class="data-row"><span class="label">TIMEZONE VECTOR:</span><span class="value" id="res-tz">Loading...</span></div>
+            <div class="data-row"><span class="label">RESOLUTION:</span><span class="value" id="res-screen">Loading...</span></div>
+            <div class="data-row"><span class="label">TIMEZONE:</span><span class="value" id="res-tz">Loading...</span></div>
         </div>
 
         <div class="warning" id="warning-text">
-            [!] This hardware combination makes your device 98.4% unique on the internet. You are being tracked.
+            [!] This hardware combination makes your device highly unique. You can be tracked across the internet even in Incognito mode.
         </div>
     </div>
 
@@ -62,7 +71,6 @@
             document.getElementById('start-btn').style.display = 'none';
             document.getElementById('loading').style.display = 'block';
 
-            // Extract Data
             const os = navigator.platform || "Unknown OS";
             const cpu = navigator.hardwareConcurrency ? navigator.hardwareConcurrency + " Logical Cores" : "Unknown";
             const ram = navigator.deviceMemory ? navigator.deviceMemory + " GB+" : "Unknown";
@@ -70,7 +78,6 @@
             const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
             const gpu = getGPU();
 
-            // Cinematic Delay Effect
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('results').style.display = 'grid';
@@ -82,7 +89,7 @@
                 document.getElementById('res-gpu').innerText = gpu;
                 document.getElementById('res-screen').innerText = screenData;
                 document.getElementById('res-tz').innerText = tz;
-            }, 1800); // 1.8 seconds delay for dramatic effect
+            }, 1800);
         }
     </script>
 </body>
