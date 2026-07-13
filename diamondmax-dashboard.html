@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiamondMax | Player Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #0B1221;
+            --card-bg: rgba(21, 30, 50, 0.7);
+            --border-color: rgba(14, 165, 233, 0.2);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --diamond-blue: #0ea5e9;
+            --diamond-glow: rgba(14, 165, 233, 0.5);
+            --success-green: #10B981;
+        }
+
+        body {
+            margin: 0; padding: 0; padding-top: 70px;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+        }
+
+        /* 🌟 TOP NAVIGATION */
+        .top-nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: 65px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; box-sizing: border-box;
+            background: rgba(11, 18, 33, 0.85); backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-color); z-index: 1000;
+        }
+        .brand { font-size: 20px; font-weight: 800; color: white; display: flex; align-items: center; gap: 8px; }
+        .brand i { color: var(--diamond-blue); }
+
+        /* 📱 DASHBOARD GRID */
+        .dashboard-container {
+            max-width: 1100px; margin: 0 auto; padding: 20px;
+            display: grid; grid-template-columns: 1fr 2fr; gap: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container { grid-template-columns: 1fr; }
+        }
+
+        /* 🃏 GLASS CARDS */
+        .panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        /* 👤 PROFILE SECTION */
+        .profile-header { text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px; margin-bottom: 20px; }
+        .avatar { width: 90px; height: 90px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 35px; border: 3px solid rgba(255,255,255,0.1); }
+        .username { font-size: 22px; font-weight: 700; margin: 0; }
+        .rank-badge { background: rgba(14, 165, 233, 0.15); color: var(--diamond-blue); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-top: 8px; display: inline-block; border: 1px solid var(--diamond-blue); }
+
+        /* 💎 DIAMOND VAULT (BALANCE) */
+        .vault-box { text-align: center; margin-top: 10px; }
+        .vault-title { color: var(--text-muted); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .balance { font-size: 48px; font-weight: 800; color: white; text-shadow: 0 0 20px var(--diamond-glow); margin: 5px 0; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .balance i { color: var(--diamond-blue); font-size: 35px; }
+
+        /* 🎯 MISSIONS SECTION */
+        .section-title { font-size: 20px; font-weight: 700; margin: 0 0 20px 0; display: flex; align-items: center; gap: 10px; }
+        
+        .mission-card {
+            background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 15px; padding: 15px 20px; margin-bottom: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.3s ease;
+        }
+        .mission-card:hover { border-color: rgba(14, 165, 233, 0.3); transform: translateX(5px); }
+        
+        .mission-info h4 { margin: 0 0 5px 0; font-size: 16px; }
+        .mission-info p { margin: 0; font-size: 13px; color: var(--text-muted); }
+        
+        .claim-btn {
+            background: rgba(14, 165, 233, 0.1); color: var(--diamond-blue);
+            border: 1px solid var(--diamond-blue); padding: 10px 20px;
+            border-radius: 10px; font-family: 'Poppins', sans-serif;
+            font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
+        .claim-btn:hover { background: var(--diamond-blue); color: white; box-shadow: 0 0 15px var(--diamond-glow); }
+        .claim-btn:disabled { background: rgba(16, 185, 129, 0.1); color: var(--success-green); border-color: var(--success-green); cursor: not-allowed; box-shadow: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="brand"><i class="fa-solid fa-gem"></i> DiamondMax</div>
+        <div style="color: var(--text-muted); font-size: 14px;"><i class="fas fa-bell"></i></div>
+    </nav>
+
+    <div class="dashboard-container">
+        
+        <div class="panel">
+            <div class="profile-header">
+                <div class="avatar"><i class="fas fa-user-ninja"></i></div>
+                <h2 class="username">Player_One</h2>
+                <div class="rank-badge">Elite Founder 🚀</div>
+            </div>
+            
+            <div class="vault-box">
+                <div class="vault-title">Current Vault Balance</div>
+                <div class="balance"><i class="fa-solid fa-gem"></i> <span id="total-diamonds">1,250</span></div>
+                <p style="color: var(--text-muted); font-size: 12px;">Next payout threshold: 5,000 Diamonds</p>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3 class="section-title"><i class="fas fa-crosshairs"></i> Active Missions</h3>
+            
+            <div class="mission-card">
+                <div class="mission-info">
+                    <h4>Daily System Login</h4>
+                    <p>Reward for accessing the mainframe today.</p>
+                </div>
+                <button class="claim-btn" onclick="claimReward(this, 50)">+50 <i class="fa-solid fa-gem"></i></button>
+            </div>
+
+            <div class="mission-card">
+                <div class="mission-info">
+                    <h4>Follow Phantomix on X</h4>
+                    <p>Join our decentralized community network.</p>
+                </div>
+                <button class="claim-btn" onclick="claimReward(this, 200)">+200 <i class="fa-solid fa-gem"></i></button>
+            </div>
+
+            <div class="mission-card">
+                <div class="mission-info">
+                    <h4>Test Bruteforce Simulator</h4>
+                    <p>Audit 1 password on our cyber tools hub.</p>
+                </div>
+                <button class="claim-btn" onclick="claimReward(this, 150)">+150 <i class="fa-solid fa-gem"></i></button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentBalance = 1250;
+
+        function claimReward(buttonElement, rewardAmount) {
+            // Update Balance
+            currentBalance += rewardAmount;
+            document.getElementById('total-diamonds').innerText = currentBalance.toLocaleString();
+            
+            // Change Button State
+            buttonElement.innerHTML = 'Claimed <i class="fas fa-check"></i>';
+            buttonElement.disabled = true;
+            
+            // Optional: Play a tiny browser beep or visual flash here for gamification later!
+        }
+    </script>
+</body>
+</html>
