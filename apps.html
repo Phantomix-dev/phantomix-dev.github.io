@@ -54,7 +54,7 @@
             position: relative; transition: all 0.4s ease;
             display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .app-card:hover { transform: translateY(-5px); }
+        .app-card:hover { transform: translateY(-5px); border-color: rgba(14, 165, 233, 0.4); }
 
         .app-logo {
             width: 80px; height: 80px; border-radius: 20px; object-fit: cover;
@@ -91,6 +91,13 @@
         .btn-demo { background: linear-gradient(135deg, #8b5cf6, #c084fc); color: white; border: none; }
         .btn-demo:hover { background: linear-gradient(135deg, #7c3aed, #a855f7); box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4); }
 
+        /* Premium Accent Buttons for new tools */
+        .btn-red { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.5); }
+        .btn-red:hover { background: #ef4444; color: white; box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4); }
+        
+        .btn-green { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.5); }
+        .btn-green:hover { background: #10b981; color: white; box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4); }
+
         footer { border-top: 1px solid rgba(51, 65, 85, 0.5); padding: 20px; color: #64748b; font-size: 12px; }
 
         @media (max-width: 600px) {
@@ -101,14 +108,13 @@
             .badge { top: 20px; right: 20px; }
         }
     </style>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
 </head>
 <body>
 
@@ -131,7 +137,6 @@
         <div class="app-card card-diamondmax">
             <span class="badge badge-upcoming"><i class="fas fa-clock"></i> UPCOMING</span>
             <img src="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bdiamondmax-logo.png" alt="DiamondMax" class="app-logo">
-            
             <h3 class="app-title">DiamondMax</h3>
             <p class="app-desc">Our flagship reward ecosystem. Complete elite missions and earn real-world rewards safely and instantly.</p>
             <a href="index.html#waitlist-section" class="action-btn btn-waitlist">Notify Me 🚀</a>
@@ -140,7 +145,6 @@
         <div class="app-card card-cipher">
             <span class="badge badge-upcoming"><i class="fas fa-clock"></i> UPCOMING</span>
             <img src="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bwordcipher-logo.png" alt="Word Cipher" class="app-logo">
-            
             <h3 class="app-title">Word Cipher</h3>
             <p class="app-desc">A highly addictive brain-teaser game. Decrypt secret words to prove your intelligence and unlock Founder perks.</p>
             <a href="cipher.html" class="action-btn btn-waitlist">Play Web Demo 🧠</a>
@@ -149,91 +153,78 @@
         <div class="app-card card-vault">
             <span class="badge badge-demo"><i class="fas fa-laptop-code"></i> WEB DEMO LIVE</span>
             <img src="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bvault-logo.png" alt="Diamond-Vault" class="app-logo">
-            
             <h3 class="app-title">Diamond-Vault</h3>
             <p class="app-desc">App is in development, but you can try our military-grade password generator directly on our website for free.</p>
             <a href="index.html#vault-section" class="action-btn btn-demo">Try Web Demo 💻</a>
         </div>
 
-    </div>
-    <div class="app-card" style="border: 1px solid #ff003c; padding: 20px; margin: 15px 0; border-radius: 8px;">
-    <h3 style="color: #ff003c;">🔥 The Burner Protocol</h3>
-    <p>Send ultra-secure, self-destructing messages. Read once, blasted from the server forever.</p>
-    <a href="burner.html" style="background: #ff003c; color: #fff; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">
-        Launch Protocol
-    </a>
-</div>
-<div class="app-card" style="border: 1px solid #00ff00; padding: 20px; margin: 15px 0; border-radius: 8px;">
-    <h3 style="color: #00ff00;">🔠 Glitch Text Generator</h3>
-    <p>Convert normal text into corrupted, cyber hacker style typography instantly.</p>
-    <a href="glitch.html" style="background: #00ff00; color: #000; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">
-        Open Terminal
-    </a>
-</div>
-    <div class="app-card" style="border: 1px solid #00ff00; padding: 20px; margin: 15px 0; border-radius: 8px;">
-    <h3 style="color: #00ff00;">📡 Quick QR Terminal</h3>
-    <p>Encode raw data, links, or access codes into custom cyberpunk visual matrices.</p>
-    <a href="qr.html" style="background: #00ff00; color: #000; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">
-        Initialize Scanner
-    </a>
-    </div>
-    <div class="app-card" style="border: 1px solid #00ff00; padding: 20px; margin: 15px 0; border-radius: 8px;">
-    <h3 style="color: #00ff00;">📸 EXIF Stripper (Metadata Purge)</h3>
-    <p>Wipe hidden tracking data, camera specs, and GPS locations from your images before sharing.</p>
-    <a href="stripper.html" style="background: #00ff00; color: #000; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">
-        Purge Metadata
-    </a>
-    </div>
-    <div class="app-card" style="border: 1px solid #00ff00; padding: 20px; margin: 15px 0; border-radius: 8px;">
-    <h3 style="color: #00ff00;">🎨 Code-to-Canvas</h3>
-    <p>Convert raw code into beautiful, neon-cyberpunk snippets for sharing on social media.</p>
-    <a href="canvas.html" style="background: #00ff00; color: #000; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">
-        Open Studio
-    </a>
-    </div>
-    <div class="app-card" style="border: 1px solid #ff003c; padding: 20px; margin: 15px 0; border-radius: 8px;">
-    <h3 style="color: #ff003c;">📧 Burner Mail Terminal</h3>
-    <p>Deploy a temporary disposable mailbox. Intercept verification codes without compromising your real inbox.</p>
-    <a href="mail.html" style="background: #ff003c; color: #fff; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">
-        Intercept Mail
-    </a>
-    </div>
-    <div class="app-card" style="background: #111; border: 2px solid #00ff00; padding: 25px; margin: 20px 0; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,255,0,0.05); text-align: left;">
-    <h3 style="color: #00ff00; font-family: monospace; font-size: 1.4em; margin-top: 0;">🎣 Phishing Detective</h3>
-    <p style="color: #aaa; font-family: monospace; line-height: 1.6;">Analyze incoming data packets, fake URLs, and spoofed headers. Can you spot the cyber trap or will you get compromised?</p>
-    <a href="detective.html" style="background: #00ff00; color: #000; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-family: monospace; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,255,0,0.2);">
-        INITIALIZE SIMULATION
-    </a>
-    </div>
-    <div class="app-card" style="background: #111; border: 2px solid #00ff00; padding: 25px; margin: 20px 0; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,255,0,0.05); text-align: left;">
-    <h3 style="color: #00ff00; font-family: monospace; font-size: 1.4em; margin-top: 0;">🔑 Bruteforce Simulator</h3>
-    <p style="color: #aaa; font-family: monospace; line-height: 1.6;">Test your encryption strength against brute-force mathematical cracking algorithms. Find out your time to compromise.</p>
-    <a href="password.html" style="background: #00ff00; color: #000; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-family: monospace; letter-spacing: 1px;">
-        AUDIT PASSWORD
-    </a>
-    </div>
-    <div class="app-card" style="background: #111; border: 2px solid #00ff00; padding: 25px; margin: 20px 0; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,255,0,0.05); text-align: left;">
-    <h3 style="color: #00ff00; font-family: monospace; font-size: 1.4em; margin-top: 0;">🖥️ Linux Terminal Simulator</h3>
-    <p style="color: #aaa; font-family: monospace; line-height: 1.6;">Access the virtual sandbox core. Run network diagnostics, file scans, and interface customization diagnostics.</p>
-    <a href="terminal.html" style="background: #00ff00; color: #000; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-family: monospace; letter-spacing: 1px;">
-        BOOT TERMINAL
-    </a>
-</div>
-<div class="app-card" style="background: #111; border: 2px solid #00ff00; padding: 25px; margin: 20px 0; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,255,0,0.05); text-align: left;">
-    <h3 style="color: #00ff00; font-family: monospace; font-size: 1.4em; margin-top: 0;">🔢 Cipher Machine</h3>
-    <p style="color: #aaa; font-family: monospace; line-height: 1.6;">Real-time multidirectional cryptographic converter. Translate standard data into raw Binary (Base2) or Hexadecimal (Base16) machine code.</p>
-    <a href="encoder.html" style="background: #00ff00; color: #000; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-family: monospace; letter-spacing: 1px;">
-        OPEN ENCODER
-    </a>
-</div>
-<div class="app-card" style="background: #111; border: 2px solid #00ff00; padding: 25px; margin: 20px 0; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,255,0,0.05); text-align: left;">
-    <h3 style="color: #00ff00; font-family: monospace; font-size: 1.4em; margin-top: 0;">🕵️‍♂️ Digital Fingerprint Scanner</h3>
-    <p style="color: #aaa; font-family: monospace; line-height: 1.6;">Incognito mode is an illusion. Extract your browser's unique hardware footprint (CPU, GPU, Memory) to see how you are being tracked.</p>
-    <a href="fingerprint.html" style="background: #00ff00; color: #000; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-family: monospace; letter-spacing: 1px;">
-        INITIATE SCAN
-    </a>
-</div>
+        <div class="app-card">
+            <h3 class="app-title">🔥 The Burner Protocol</h3>
+            <p class="app-desc">Send ultra-secure, self-destructing messages. Read once, blasted from the server forever.</p>
+            <a href="burner.html" class="action-btn btn-red">Launch Protocol</a>
+        </div>
 
+        <div class="app-card">
+            <h3 class="app-title">🔠 Glitch Text Generator</h3>
+            <p class="app-desc">Convert normal text into corrupted, cyber hacker style typography instantly.</p>
+            <a href="glitch.html" class="action-btn btn-green">Open Terminal</a>
+        </div>
+
+        <div class="app-card">
+            <h3 class="app-title">📡 Quick QR Terminal</h3>
+            <p class="app-desc">Encode raw data, links, or access codes into custom cyberpunk visual matrices.</p>
+            <a href="qr.html" class="action-btn btn-waitlist">Initialize Scanner</a>
+        </div>
+
+        <div class="app-card">
+            <h3 class="app-title">📸 EXIF Stripper</h3>
+            <p class="app-desc">Wipe hidden tracking data, camera specs, and GPS locations from your images before sharing.</p>
+            <a href="stripper.html" class="action-btn btn-waitlist">Purge Metadata</a>
+        </div>
+
+        <div class="app-card">
+            <h3 class="app-title">🎨 Code-to-Canvas</h3>
+            <p class="app-desc">Convert raw code into beautiful, neon-cyberpunk snippets for sharing on social media.</p>
+            <a href="canvas.html" class="action-btn btn-waitlist">Open Studio</a>
+        </div>
+
+        <div class="app-card">
+            <h3 class="app-title">📧 Burner Mail Terminal</h3>
+            <p class="app-desc">Deploy a temporary disposable mailbox. Intercept verification codes without compromising your real inbox.</p>
+            <a href="mail.html" class="action-btn btn-red">Intercept Mail</a>
+        </div>
+
+        <div class="app-card">
+            <h3 class="app-title">🎣 Phishing Detective</h3>
+            <p class="app-desc">Analyze incoming data packets, fake URLs, and spoofed headers. Can you spot the cyber trap or will you get compromised?</p>
+            <a href="detective.html" class="action-btn btn-green">Initialize Simulation</a>
+        </div>
+
+        <div class="app-card">
+            <h3 class="app-title">🔑 Bruteforce Simulator</h3>
+            <p class="app-desc">Test your encryption strength against brute-force mathematical cracking algorithms. Find out your time to compromise.</p>
+            <a href="password.html" class="action-btn btn-waitlist">Audit Password</a>
+        </div>
+
+        <div class="app-card">
+            <h3 class="app-title">🖥️ Linux Terminal Simulator</h3>
+            <p class="app-desc">Access the virtual sandbox core. Run network diagnostics, file scans, and interface customization diagnostics.</p>
+            <a href="terminal.html" class="action-btn btn-waitlist">Boot Terminal</a>
+        </div>
+
+        <div class="app-card">
+            <h3 class="app-title">🔢 Cipher Machine</h3>
+            <p class="app-desc">Real-time multidirectional cryptographic converter. Translate standard data into raw Binary (Base2) or Hexadecimal (Base16) machine code.</p>
+            <a href="encoder.html" class="action-btn btn-waitlist">Open Encoder</a>
+        </div>
+
+        <div class="app-card">
+            <h3 class="app-title">🕵️‍♂️ Digital Fingerprint Scanner</h3>
+            <p class="app-desc">Incognito mode is an illusion. Extract your browser's unique hardware footprint (CPU, GPU, Memory) to see how you are being tracked.</p>
+            <a href="fingerprint.html" class="action-btn btn-red">Initiate Scan</a>
+        </div>
+
+    </div>
 
     <footer>
         <p>&copy; 2026 Phantomix Ecosystem. All systems secure.</p>
