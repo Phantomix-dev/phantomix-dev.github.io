@@ -36,6 +36,8 @@
         }
         .brand { font-size: 20px; font-weight: 800; color: white; display: flex; align-items: center; gap: 8px; }
         .brand i { color: var(--diamond-blue); }
+        .logout-btn { color: var(--text-muted); cursor: pointer; text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s; }
+        .logout-btn:hover { color: #EF4444; }
 
         /* 📱 DASHBOARD GRID */
         .dashboard-container {
@@ -67,6 +69,7 @@
         .vault-title { color: var(--text-muted); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .balance { font-size: 48px; font-weight: 800; color: white; text-shadow: 0 0 20px var(--diamond-glow); margin: 5px 0; display: flex; align-items: center; justify-content: center; gap: 10px; }
         .balance i { color: var(--diamond-blue); font-size: 35px; }
+        .reset-btn { background: none; border: 1px solid rgba(239, 68, 68, 0.3); color: #EF4444; padding: 5px 10px; border-radius: 5px; font-size: 10px; cursor: pointer; margin-top: 15px; }
 
         /* 🎯 MISSIONS SECTION */
         .section-title { font-size: 20px; font-weight: 700; margin: 0 0 20px 0; display: flex; align-items: center; gap: 10px; }
@@ -96,7 +99,7 @@
 
     <nav class="top-nav">
         <div class="brand"><i class="fa-solid fa-gem"></i> DiamondMax</div>
-        <div style="color: var(--text-muted); font-size: 14px;"><i class="fas fa-bell"></i></div>
+        <a href="diamondmax-login.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Disconnect</a>
     </nav>
 
     <div class="dashboard-container">
@@ -112,6 +115,8 @@
                 <div class="vault-title">Current Vault Balance</div>
                 <div class="balance"><i class="fa-solid fa-gem"></i> <span id="total-diamonds">1,250</span></div>
                 <p style="color: var(--text-muted); font-size: 12px;">Next payout threshold: 5,000 Diamonds</p>
+                
+                <button class="reset-btn" onclick="resetAccount()">[DEV] Reset Data</button>
             </div>
         </div>
 
@@ -123,7 +128,7 @@
                     <h4>Daily System Login</h4>
                     <p>Reward for accessing the mainframe today.</p>
                 </div>
-                <button class="claim-btn" onclick="claimReward(this, 50)">+50 <i class="fa-solid fa-gem"></i></button>
+                <button class="claim-btn" id="mission-1" onclick="claimReward('mission-1', 50)">+50 <i class="fa-solid fa-gem"></i></button>
             </div>
 
             <div class="mission-card">
@@ -131,7 +136,7 @@
                     <h4>Follow Phantomix on X</h4>
                     <p>Join our decentralized community network.</p>
                 </div>
-                <button class="claim-btn" onclick="claimReward(this, 200)">+200 <i class="fa-solid fa-gem"></i></button>
+                <button class="claim-btn" id="mission-2" onclick="claimReward('mission-2', 200)">+200 <i class="fa-solid fa-gem"></i></button>
             </div>
 
             <div class="mission-card">
@@ -139,25 +144,58 @@
                     <h4>Test Bruteforce Simulator</h4>
                     <p>Audit 1 password on our cyber tools hub.</p>
                 </div>
-                <button class="claim-btn" onclick="claimReward(this, 150)">+150 <i class="fa-solid fa-gem"></i></button>
+                <button class="claim-btn" id="mission-3" onclick="claimReward('mission-3', 150)">+150 <i class="fa-solid fa-gem"></i></button>
             </div>
         </div>
 
     </div>
 
     <script>
-        let currentBalance = 1250;
+        // Check if data exists in local storage, otherwise set defaults
+        let currentBalance = localStorage.getItem('dmax_balance') ? parseInt(localStorage.getItem('dmax_balance')) : 1250;
+        let claimedMissions = localStorage.getItem('dmax_missions') ? JSON.parse(localStorage.getItem('dmax_missions')) : [];
 
-        function claimReward(buttonElement, rewardAmount) {
-            // Update Balance
-            currentBalance += rewardAmount;
+        // Run this when the page loads
+        window.onload = function() {
+            // Update UI with saved balance
             document.getElementById('total-diamonds').innerText = currentBalance.toLocaleString();
             
-            // Change Button State
-            buttonElement.innerHTML = 'Claimed <i class="fas fa-check"></i>';
-            buttonElement.disabled = true;
+            // Disable buttons for missions already claimed
+            claimedMissions.forEach(missionId => {
+                const btn = document.getElementById(missionId);
+                if(btn) {
+                    btn.innerHTML = 'Claimed <i class="fas fa-check"></i>';
+                    btn.disabled = true;
+                }
+            });
+        };
+
+        // Function to handle claiming rewards
+        function claimReward(missionId, rewardAmount) {
+            if (claimedMissions.includes(missionId)) return; // Prevent double clicking
+
+            // Add points and save to array
+            currentBalance += rewardAmount;
+            claimedMissions.push(missionId);
+
+            // Save new data to Browser Local Storage
+            localStorage.setItem('dmax_balance', currentBalance);
+            localStorage.setItem('dmax_missions', JSON.stringify(claimedMissions));
             
-            // Optional: Play a tiny browser beep or visual flash here for gamification later!
+            // Update UI instantly
+            document.getElementById('total-diamonds').innerText = currentBalance.toLocaleString();
+            const btn = document.getElementById(missionId);
+            btn.innerHTML = 'Claimed <i class="fas fa-check"></i>';
+            btn.disabled = true;
+        }
+
+        // Developer Tool: Reset Data
+        function resetAccount() {
+            if(confirm("Are you sure you want to reset all account data?")) {
+                localStorage.removeItem('dmax_balance');
+                localStorage.removeItem('dmax_missions');
+                location.reload();
+            }
         }
     </script>
 </body>
