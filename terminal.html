@@ -6,158 +6,72 @@
     <title>Cyber Terminal | Phantomix</title>
     <style>
         :root {
-            --neon-green: #00ff00;
-            --bg-dark: #050505;
-            --panel-bg: #111111;
+            --bg-main: #0B1221;
+            --card-bg: #151E32;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #F3F4F6;
+            --accent-green: #10B981;
+            --terminal-bg: #050914;
         }
-        body {
-            background-color: var(--bg-dark);
-            color: var(--neon-green);
-            font-family: 'Courier New', monospace;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            height: 90vh;
-            gap: 20px;
-            box-sizing: border-box;
-        }
-        /* LEFT COMMANDS MATRIX INDEX */
-        .commands-panel {
-            width: 30%;
-            background: var(--panel-bg);
-            border: 2px solid var(--neon-green);
-            border-radius: 10px;
-            padding: 20px;
-            overflow-y: auto;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.05);
-        }
-        .commands-panel h3 { margin-top: 0; border-bottom: 1px dashed var(--neon-green); padding-bottom: 10px; }
-        .cmd-item { margin: 15px 0; font-size: 0.9em; }
-        .cmd-name { color: #ffffff; font-weight: bold; background: #222; padding: 2px 6px; border-radius: 4px; }
+        body { background-color: var(--bg-main); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; display: flex; height: 100vh; gap: 20px; box-sizing: border-box; }
+        .commands-panel { width: 30%; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .commands-panel h3 { margin-top: 0; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; font-size: 1.2em; font-weight: 700; }
+        .cmd-item { margin: 15px 0; font-size: 0.9em; color: #9CA3AF; line-height: 1.5; }
+        .cmd-name { color: var(--text-main); font-weight: 600; background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 6px; font-family: monospace; display: inline-block; margin-bottom: 4px; }
         
-        /* RIGHT INTERACTIVE TERMINAL WINDOW */
-        .terminal-window {
-            width: 70%;
-            background: #000000;
-            border: 2px solid var(--neon-green);
-            border-radius: 10px;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
-        }
-        .terminal-output {
-            flex-grow: 1;
-            overflow-y: auto;
-            text-align: left;
-            white-space: pre-wrap;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-        .input-line {
-            display: flex;
-            align-items: center;
-        }
-        .prompt { color: #ffffff; font-weight: bold; margin-right: 10px; }
-        input {
-            flex-grow: 1;
-            background: transparent;
-            border: none;
-            color: var(--neon-green);
-            font-family: 'Courier New', monospace;
-            font-size: 1.1em;
-            outline: none;
-        }
-                /* 📱 MOBILE RESPONSIVE HACK */
+        .terminal-window { width: 70%; background: var(--terminal-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); font-family: 'Courier New', monospace; }
+        .terminal-output { flex-grow: 1; overflow-y: auto; text-align: left; white-space: pre-wrap; line-height: 1.6; margin-bottom: 15px; color: var(--accent-green); }
+        .input-line { display: flex; align-items: center; }
+        .prompt { color: #60A5FA; font-weight: bold; margin-right: 10px; }
+        input { flex-grow: 1; background: transparent; border: none; color: var(--text-main); font-family: 'Courier New', monospace; font-size: 1.1em; outline: none; }
+        
+        /* 📱 MOBILE RESPONSIVE HACK */
         @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-                height: auto;
-            }
-            .commands-panel {
-                width: 100%;
-                max-height: 200px; /* Panel ko thoda chota rakhenge */
-                box-sizing: border-box;
-            }
-            .terminal-window {
-                width: 100%;
-                height: 60vh; /* Terminal ko zyada jagah denge */
-                box-sizing: border-box;
-            }
+            body { flex-direction: column; height: auto; }
+            .commands-panel { width: 100%; max-height: 250px; box-sizing: border-box; }
+            .terminal-window { width: 100%; height: 60vh; box-sizing: border-box; }
         }
-
     </style>
 </head>
 <body>
-
     <div class="commands-panel">
         <h3>📋 DIRECTORY COMMANDS</h3>
-        <p style="color: #888; font-size: 0.85em;">Available system vectors:</p>
-        
-        <div class="cmd-item"><span class="cmd-name">help</span> - Display database operational codes.</div>
-        <div class="cmd-item"><span class="cmd-name">scan net</span> - Run diagnostic scan on grid nodes.</div>
-        <div class="cmd-item"><span class="cmd-name">sys info</span> - Output hardware virtualization vectors.</div>
-        <div class="cmd-item"><span class="cmd-name">matrix run</span> - Initialize automated code stream cascading.</div>
-        <div class="cmd-item"><span class="cmd-name">clear</span> - Flush screen data buffer logs.</div>
+        <div class="cmd-item"><span class="cmd-name">help</span><br>Display database operational codes.</div>
+        <div class="cmd-item"><span class="cmd-name">scan net</span><br>Run diagnostic scan on grid nodes.</div>
+        <div class="cmd-item"><span class="cmd-name">sys info</span><br>Output hardware virtualization vectors.</div>
+        <div class="cmd-item"><span class="cmd-name">matrix run</span><br>Initialize automated code stream cascading.</div>
+        <div class="cmd-item"><span class="cmd-name">clear</span><br>Flush screen data buffer logs.</div>
     </div>
-
     <div class="terminal-window">
         <div class="terminal-output" id="output-box">PHANTOMIX VIRTUAL CORE LOADED...
 Type 'help' to fetch active matrix protocols.</div>
-        
         <div class="input-line">
             <span class="prompt">phantomix@core:~#</span>
             <input type="text" id="terminal-input" autocomplete="off" autofocus onkeydown="processCommand(event)">
         </div>
     </div>
-
     <script>
-        const outputBox = document.getElementById('output-box');
-        const inputField = document.getElementById('terminal-input');
-
-        function printToTerminal(text) {
-            outputBox.innerText += "\n" + text;
-            outputBox.scrollTop = outputBox.scrollHeight; // Auto scroll parameters configuration
-        }
-
+        const outputBox = document.getElementById('output-box'); const inputField = document.getElementById('terminal-input');
+        function printToTerminal(text) { outputBox.innerText += "\n" + text; outputBox.scrollTop = outputBox.scrollHeight; }
         function processCommand(event) {
             if (event.key !== 'Enter') return;
-
-            const fullInput = inputField.value.trim();
-            inputField.value = ""; // Input buffer extraction reset
-
+            const fullInput = inputField.value.trim(); inputField.value = "";
             if (!fullInput) return;
-
             printToTerminal("phantomix@core:~# " + fullInput);
             const lowerInput = fullInput.toLowerCase();
-
-            // LOGIC MATRIX MAP EVALUATION
-            if (lowerInput === 'help') {
-                printToTerminal(">> AVAILABLE SECTORS:\n - help: Show this directory\n - scan net: Map network ports\n - sys info: Check core host specs\n - matrix run: Stream decryption codes\n - clear: Wipe console nodes");
-            } 
-            else if (lowerInput === 'clear') {
-                outputBox.innerText = "TERMINAL FLUSH COMPLETE. LOG DATA WIPED.";
-            } 
-            else if (lowerInput === 'sys info') {
-                printToTerminal(">> CORE HARDWARE VECTORS:\n HOST OS: Phantomix Sandbox v4.0\n KERNEL: JS-Client-Engine-2.06\n CPU: Virtualized Thread Array\n STATUS: OPERATIONAL [100%]");
-            } 
+            if (lowerInput === 'help') { printToTerminal(">> AVAILABLE SECTORS:\n - help: Show this directory\n - scan net: Map network ports\n - sys info: Check core host specs\n - matrix run: Stream decryption codes\n - clear: Wipe console nodes"); } 
+            else if (lowerInput === 'clear') { outputBox.innerText = "TERMINAL FLUSH COMPLETE. LOG DATA WIPED."; } 
+            else if (lowerInput === 'sys info') { printToTerminal(">> CORE HARDWARE VECTORS:\n HOST OS: Phantomix Sandbox v4.0\n KERNEL: JS-Client-Engine-2.06\n CPU: Virtualized Thread Array\n STATUS: OPERATIONAL [100%]"); } 
             else if (lowerInput === 'scan net') {
                 printToTerminal(">> INITIALIZING SUBNET PORT SCAN...");
                 let nodes = ["[+] Scanning 192.168.1.1 ... [OPEN] -> Port 80", "[+] Scanning 10.0.0.5 ... [SECURE] -> Firewall Block", "[+] Mapping network gateway tokens... [SUCCESS]", ">> GRID HEALTH STATUS: STEADY."];
-                nodes.forEach((node, index) => {
-                    setTimeout(() => printToTerminal(node), (index + 1) * 600);
-                });
+                nodes.forEach((node, index) => { setTimeout(() => printToTerminal(node), (index + 1) * 600); });
             } 
             else if (lowerInput === 'matrix run') {
                 printToTerminal(">> LAUNCHING DECRYPTION STREAM...");
                 let lines = ["01001001 01010100 01010011 01000001", "11001010 11101010 10101100 00110011", "SYSTEM WARNING: RE-ROUTING MATRIX OVERLAP", "[DEPLOYMENT PACKETS DECRYPTED SUCCESSFULLY]"];
-                lines.forEach((line, idx) => {
-                    setTimeout(() => printToTerminal(line), (idx + 1) * 500);
-                });
-            } 
-            else {
-                printToTerminal(`[-] COMMAND ERROR: '${fullInput}' unrecognized. Reference the Left Command Matrix index panel.`);
-            }
+                lines.forEach((line, idx) => { setTimeout(() => printToTerminal(line), (idx + 1) * 500); });
+            } else { printToTerminal(`[-] COMMAND ERROR: '${fullInput}' unrecognized.`); }
         }
     </script>
 </body>
