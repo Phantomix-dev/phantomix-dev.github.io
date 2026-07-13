@@ -5,24 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Burner Mail Terminal | Phantomix</title>
     <style>
-        body { background-color: #0a0a0a; color: #ff003c; font-family: monospace; text-align: center; padding: 20px; margin: 0; }
-        .terminal-container { max-width: 900px; margin: 0 auto; }
-        iframe { width: 100%; height: 600px; border: 2px solid #ff003c; background: #111; border-radius: 8px; box-shadow: 0 0 20px rgba(255, 0, 60, 0.2); }
-        .info-bar { background: #111; color: #00ff00; border: 1px dashed #00ff00; padding: 15px; margin-bottom: 20px; font-size: 0.9em; text-align: left; line-height: 1.5; }
+        :root {
+            --bg-main: #0B1221;
+            --card-bg: #151E32;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+        }
+        body { background-color: var(--bg-main); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px 15px; display: flex; justify-content: center; }
+        .terminal-container { width: 100%; max-width: 900px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); text-align: center; box-sizing: border-box; }
+        h1 { font-size: 1.6em; margin-top: 0; margin-bottom: 5px; font-weight: 700; }
+        p { color: var(--text-muted); font-size: 0.95em; margin-bottom: 20px; }
+        .info-bar { background: rgba(59, 130, 246, 0.1); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.3); padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9em; text-align: left; line-height: 1.5; }
+        iframe { width: 100%; height: 600px; border: 1px solid var(--border-color); background: #fff; border-radius: 8px; }
     </style>
 </head>
 <body>
-
     <div class="terminal-container">
         <h1>📧 Burner Mail Terminal</h1>
-        <p style="color: #888;">Secure dynamic packet redirection enabled.</p>
-
+        <p>Secure dynamic packet redirection enabled.</p>
         <div class="info-bar">
-            <strong>[SYSTEM NOTE]:</strong> This terminal embeds a secure client-side sandbox container. Generate your temporary proxy email below, use it for activations, and wait for inbound verification packets directly inside the container layout.
+            <strong>[SYSTEM NOTE]:</strong> This terminal embeds a secure client-side sandbox container. Generate your temporary proxy email below and intercept verifications directly here.
         </div>
-
-        <iframe src="https://emailondeck.com" title="Temporary Mail Engine"></div>
+        <iframe src="https://emailondeck.com" title="Temporary Mail Engine"></iframe>
     </div>
-
 </body>
 </html>
