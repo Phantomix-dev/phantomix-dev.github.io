@@ -48,6 +48,23 @@
         #output-box { width: 80%; min-height: 80px; background: #1a1a1a; margin: 20px auto; padding: 15px; border: 1px dashed #00ff00; word-wrap: break-word; font-size: 1.4em; color: #ffffff; display: flex; align-items: center; justify-content: center; }
         button { background: #00ff00; color: #000; padding: 10px 25px; border: none; cursor: pointer; font-weight: bold; font-size: 1em; }
         button:hover { background: #fff; }
+        /* 🎚️ CUSTOM CYBER SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 8px; /* Scrollbar ki motai */
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0f172a; /* Dark background */
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(14, 165, 233, 0.5); /* Neon Blue semi-transparent */
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(14, 165, 233, 1); /* Hover par full bright Neon Blue */
+        }
     </style>
 </head>
 <body>
