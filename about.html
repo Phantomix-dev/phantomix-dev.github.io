@@ -6,6 +6,21 @@
     <title>About - Phantomix</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ✨ PREMIUM FADE-IN ANIMATION */
+        body {
+            animation: appLoad 0.8s ease-out forwards;
+        }
+
+        @keyframes appLoad {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         /* Premium Dark Mode Styling */
         body {
             margin: 0;
