@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Phantomix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a; color: #f3f4f6;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            height: 100vh; text-align: center; overflow: hidden;
+        }
+        .error-code {
+            font-size: 120px; font-weight: 800; margin: 0;
+            background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            line-height: 1; text-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
+        }
+        .error-msg {
+            font-size: 24px; font-weight: 600; margin: 10px 0 20px; color: #e2e8f0;
+        }
+        .error-desc {
+            font-size: 16px; color: #94a3b8; max-width: 500px; margin: 0 auto 40px; line-height: 1.6;
+        }
+        .back-btn {
+            background: rgba(14, 165, 233, 0.1); color: #0ea5e9;
+            padding: 14px 28px; border: 1px solid #0ea5e9; border-radius: 8px;
+            text-decoration: none; font-size: 16px; font-weight: 600;
+            transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;
+        }
+        .back-btn:hover {
+            background: #0ea5e9; color: white; box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div style="padding: 20px;">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-msg">Lost in the Digital Space?</h2>
+        <p class="error-desc">The page you are looking for has been moved, deleted, or possibly never existed. Let's get you back to safety.</p>
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-home"></i> Return to Home Base
+        </a>
+    </div>
+</body>
+</html>
