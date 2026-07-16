@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
+        /* ✨ PREMIUM FADE-IN ANIMATION */
+        body {
+            animation: appLoad 0.8s ease-out forwards;
+        }
+
+        @keyframes appLoad {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         :root {
             --bg-main: #0B1221;
             --card-bg: rgba(21, 30, 50, 0.7);
