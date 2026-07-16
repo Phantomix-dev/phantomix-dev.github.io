@@ -14,6 +14,21 @@
     <meta name="theme-color" content="#0B1221">
 
     <style>
+        /* ✨ PREMIUM FADE-IN ANIMATION */
+        body {
+            animation: appLoad 0.8s ease-out forwards;
+        }
+
+        @keyframes appLoad {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         :root {
             --bg-main: #0B1221;
             --card-bg: #151E32;
