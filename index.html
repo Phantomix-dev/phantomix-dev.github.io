@@ -2159,33 +2159,11 @@
     <script src="chatbot.js"></script>
 
     <script>
-      // 🛠️ SUPABASE CONFIGURATION (Yahan apni keys dalein)
+            // 🛠️ SUPABASE CONFIGURATION (Yahan apni keys dalein)
         const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
 
         // 🌐 Real-Time Dashboard Sync (On Page Load)
-        async function syncRealData() {
-            try {
-                // Supabase se asli users ka data fetch karna
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist?select=email`, {
-                    method: "GET",
-                    headers: {
-                        "apikey": SUPABASE_KEY,
-                        "Authorization": `Bearer ${SUPABASE_KEY}`
-                    }
-                });
-                // 🌐 Real-Time Dashboard Sync (On Page Load)
-        async function syncRealData() {
-            try {
-                // --- 1. WAITLIST DATA SYNC ---
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist?select=email`, {
-                    method: "GET",
-                    headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}` }
-                });
-                const users = await response.json();
-                const realCount = users.length; 
-
-                        // 🌐 Real-Time Dashboard Sync (On Page Load)
         async function syncRealData() {
             try {
                 // --- 1. WAITLIST & FUNDING DATA SYNC ---
@@ -2229,68 +2207,31 @@
                     method: "GET",
                     headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}` }
                 });
-                const newsData = await newsResponse.json();
                 
-                const updateFeedDiv = document.querySelector('.update-feed');
-                if (updateFeedDiv && newsData.length > 0) {
-                    updateFeedDiv.innerHTML = ""; // Clear old HTML updates
+                if (newsResponse.ok) {
+                    const newsData = await newsResponse.json();
+                    const updateFeedDiv = document.querySelector('.update-feed');
                     
-                    newsData.forEach(news => {
-                        const dateObj = new Date(news.created_at);
-                        const formattedDate = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    if (updateFeedDiv && newsData.length > 0) {
+                        updateFeedDiv.innerHTML = ""; // Purane HTML updates hata do
+                        
+                        newsData.forEach(news => {
+                            const dateObj = new Date(news.created_at);
+                            const formattedDate = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
-                        const newsHTML = `
-                            <div class="update-item">
-                                <div class="update-date">${formattedDate}</div>
-                                <div class="update-content">
-                                    <h4 style="margin: 0 0 5px; color: #38bdf8;">${news.title}</h4>
-                                    <p style="margin: 0; color: #94a3b8; font-size: 13px;">${news.description}</p>
+                            const newsHTML = `
+                                <div class="update-item">
+                                    <div class="update-date">${formattedDate}</div>
+                                    <div class="update-content">
+                                        <h4 style="margin: 0 0 5px; color: #38bdf8;">${news.title}</h4>
+                                        <p style="margin: 0; color: #94a3b8; font-size: 13px;">${news.description}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        `;
-                        updateFeedDiv.innerHTML += newsHTML;
-                    });
+                            `;
+                            updateFeedDiv.innerHTML += newsHTML;
+                        });
+                    }
                 }
-            } catch (error) {
-                console.error("Real data sync failed", error);
-            }
-        }
-
-                
-                const users = await response.json();
-                const realCount = users.length; // Asli users ki ginti
-
-                // 1. Hero Section ka Waitlist Counter Update
-                const waitlistCounter = document.querySelector('.hero-stats .stat-box:nth-child(1) h3');
-                if (waitlistCounter) {
-                    waitlistCounter.setAttribute('data-target', realCount);
-                    waitlistCounter.innerText = realCount; // Asli number show karega
-                }
-
-                // 2. Funding Section mein Backers Update
-                const backersCount = document.getElementById("backers-count");
-                if (backersCount) {
-                    backersCount.innerText = realCount;
-                }
-
-                // 3. Raised Funds Update (Agar har user average ₹29 ka Alpha Node leta hai)
-                const raisedAmount = document.getElementById("raised-amount");
-                const progressNode = document.getElementById("progress-bar-node");
-                const fundingPercentage = document.getElementById("funding-percentage");
-
-                if (raisedAmount) {
-                    const totalFunds = realCount * 29; // Real calculation
-                    raisedAmount.innerText = "₹" + totalFunds.toLocaleString('en-IN');
-                    
-                    // Progress bar dynamically fill hoga
-                    const targetAmount = 25000;
-                    let percent = Math.floor((totalFunds / targetAmount) * 100);
-                    if(percent > 100) percent = 100;
-                    
-                    if(progressNode) progressNode.style.width = percent + "%";
-                    if(fundingPercentage) fundingPercentage.innerText = percent + "% Funded";
-                }
-
             } catch (error) {
                 console.error("Real data sync failed", error);
             }
