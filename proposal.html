@@ -1,1540 +1,1466 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport"
-content="width=device-width, initial-scale=1.0,
-maximum-scale=1.0, user-scalable=no">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#070711">
+<meta name="description" content="A little message for Naina.">
+<meta name="robots" content="noindex, nofollow">
 
-<meta name="theme-color" content="#080611"><title>For Naina — From Shrikant ❤️</title><style>
+<title>A Little Message for Naina ✦</title>
 
-/* =========================================================
-   FONTS
-========================================================= */
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
-
-
-/* =========================================================
-   RESET
-========================================================= */
+<style>
+:root{
+    --bg:#070711;
+    --bg2:#0d0b1d;
+    --text:#f8f7ff;
+    --muted:#aaa7bd;
+    --pink:#ff78b7;
+    --pink2:#ffb6d8;
+    --violet:#9c7cff;
+    --cyan:#74d9ff;
+    --glass:rgba(255,255,255,.065);
+    --border:rgba(255,255,255,.12);
+    --shadow:0 30px 100px rgba(0,0,0,.45);
+}
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
 }
 
 html{
-    width:100%;
-    height:100%;
+    scroll-behavior:smooth;
+    background:var(--bg);
 }
 
 body{
-    width:100%;
-    min-height:100%;
-    overflow:hidden;
-
-    font-family:"DM Sans",sans-serif;
-
-    color:#fff;
-
+    min-height:100vh;
+    overflow-x:hidden;
     background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(255,58,133,.20),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 85%,
-            rgba(116,67,255,.22),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            #05040b,
-            #10071b 45%,
-            #07050f
-        );
+        radial-gradient(circle at 20% 10%,rgba(156,124,255,.12),transparent 30%),
+        radial-gradient(circle at 85% 30%,rgba(255,120,183,.11),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(116,217,255,.08),transparent 35%),
+        var(--bg);
+    color:var(--text);
+    font-family:"DM Sans",sans-serif;
 }
 
+/* ================================
+   LOADING SCREEN
+================================ */
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-.background{
+#loader{
     position:fixed;
     inset:0;
-    overflow:hidden;
-    pointer-events:none;
-}
-
-.noise{
-    position:absolute;
-    inset:0;
-
-    opacity:.045;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-}
-
-.glow{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(80px);
-    opacity:.35;
-}
-
-.glow-a{
-    width:360px;
-    height:360px;
-
-    left:-130px;
-    top:-100px;
-
-    background:#ff397f;
-
-    animation:floatGlow 10s ease-in-out infinite alternate;
-}
-
-.glow-b{
-    width:400px;
-    height:400px;
-
-    right:-160px;
-    bottom:-160px;
-
-    background:#7045ff;
-
-    animation:floatGlow 13s ease-in-out infinite alternate-reverse;
-}
-
-.glow-c{
-    width:180px;
-    height:180px;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    background:#ff4b9b;
-
-    opacity:.12;
-
-    animation:pulseGlow 5s ease-in-out infinite;
-}
-
-@keyframes floatGlow{
-    to{
-        transform:translate(50px,-30px) scale(1.15);
-    }
-}
-
-@keyframes pulseGlow{
-    50%{
-        opacity:.24;
-        transform:translate(-50%,-50%) scale(1.3);
-    }
-}
-
-
-/* =========================================================
-   FLOATING HEARTS
-========================================================= */
-
-.heart{
-    position:absolute;
-
-    bottom:-50px;
-
-    font-size:18px;
-
-    opacity:0;
-
-    animation:rise linear forwards;
-}
-
-@keyframes rise{
-
-    0%{
-        transform:
-            translateY(0)
-            rotate(0deg)
-            scale(.6);
-
-        opacity:0;
-    }
-
-    15%{
-        opacity:.65;
-    }
-
-    85%{
-        opacity:.3;
-    }
-
-    100%{
-        transform:
-            translateY(-115vh)
-            rotate(25deg)
-            scale(1.15);
-
-        opacity:0;
-    }
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.wrapper{
-    position:relative;
-    z-index:5;
-
-    width:100%;
-    min-height:100vh;
-
+    z-index:9999;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    padding:18px;
+    background:#05050c;
+    transition:opacity 1s ease,visibility 1s ease;
 }
 
+#loader.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
 
-/* =========================================================
-   CARD
-========================================================= */
-
-.card{
-    position:relative;
-
-    width:min(580px,100%);
-
-    max-height:calc(100vh - 36px);
-
-    overflow:hidden;
-
-    padding:32px;
-
-    border-radius:32px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.105),
-            rgba(255,255,255,.045)
-        );
-
-    border:1px solid rgba(255,255,255,.14);
-
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.5),
-        inset 0 1px rgba(255,255,255,.10);
-
+.loader-inner{
     text-align:center;
 }
 
-.card::before{
-    content:"";
-
-    position:absolute;
-
-    width:250px;
-    height:250px;
-
-    top:-160px;
-    right:-100px;
-
-    background:#ff4d94;
-
-    filter:blur(100px);
-
-    opacity:.15;
+.loader-orbit{
+    width:74px;
+    height:74px;
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:50%;
+    position:relative;
+    margin:0 auto 25px;
+    animation:spin 4s linear infinite;
 }
 
+.loader-orbit::before{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--pink);
+    box-shadow:0 0 25px var(--pink);
+    top:-4px;
+    left:50%;
+}
 
-/* =========================================================
-   HEADER
-========================================================= */
+.loader-title{
+    font-family:"Playfair Display",serif;
+    font-size:20px;
+    letter-spacing:.04em;
+}
 
-.header{
+.loader-small{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+/* ================================
+   BACKGROUND
+================================ */
+
+#particles{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.particle{
+    position:absolute;
+    width:2px;
+    height:2px;
+    border-radius:50%;
+    background:rgba(255,255,255,.65);
+    animation:floatParticle linear infinite;
+}
+
+@keyframes floatParticle{
+    from{
+        transform:translate3d(0,110vh,0);
+        opacity:0;
+    }
+    10%{opacity:.8}
+    90%{opacity:.5}
+    to{
+        transform:translate3d(var(--drift),-10vh,0);
+        opacity:0;
+    }
+}
+
+.ambient{
+    position:fixed;
+    width:45vw;
+    height:45vw;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.13;
+    pointer-events:none;
+    z-index:0;
+}
+
+.ambient.one{
+    background:var(--violet);
+    top:-20vw;
+    left:-15vw;
+}
+
+.ambient.two{
+    background:var(--pink);
+    right:-20vw;
+    top:35%;
+}
+
+.ambient.three{
+    background:var(--cyan);
+    left:20%;
+    bottom:-30vw;
+}
+
+/* ================================
+   NAV
+================================ */
+
+.topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:72px;
+    z-index:100;
     display:flex;
-
     align-items:center;
     justify-content:space-between;
+    padding:0 30px;
+    background:linear-gradient(to bottom,rgba(5,5,12,.75),transparent);
+    pointer-events:none;
+}
 
-    margin-bottom:22px;
+.brand{
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.65);
+}
 
+.scene-counter{
+    font-size:11px;
+    color:rgba(255,255,255,.4);
+    letter-spacing:.15em;
+}
+
+.music{
+    position:fixed;
+    z-index:120;
+    right:22px;
+    bottom:22px;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(10,9,20,.75);
+    backdrop-filter:blur(20px);
+    color:white;
+    cursor:pointer;
+    font-size:19px;
+    box-shadow:0 10px 40px rgba(0,0,0,.3);
+    transition:.3s ease;
+}
+
+.music:hover{
+    transform:scale(1.08);
+    border-color:rgba(255,120,183,.5);
+}
+
+.music.playing{
+    box-shadow:0 0 0 7px rgba(255,120,183,.07),0 0 35px rgba(255,120,183,.22);
+}
+
+/* ================================
+   SCENES
+================================ */
+
+main{
     position:relative;
     z-index:2;
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-
-    gap:8px;
-
-    font-size:11px;
-    font-weight:700;
-
-    letter-spacing:1.7px;
-
-    text-transform:uppercase;
-
-    color:rgba(255,255,255,.65);
-}
-
-.brand-dot{
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:#ff5b9c;
-
-    box-shadow:
-        0 0 15px #ff5b9c;
-}
-
-.counter{
-    font-size:11px;
-
-    color:rgba(255,255,255,.4);
-
-    letter-spacing:1px;
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-.progress{
+.scene{
+    min-height:100svh;
     width:100%;
-    height:3px;
-
-    background:rgba(255,255,255,.08);
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    margin-bottom:28px;
-}
-
-.progress-bar{
-    width:0;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff4d91,
-            #a95cff
-        );
-
-    transition:width .6s cubic-bezier(.2,.8,.2,1);
-}
-
-
-/* =========================================================
-   SCREENS
-========================================================= */
-
-.screen{
-    display:none;
-
-    position:relative;
-
-    animation:screenIn .65s cubic-bezier(.2,.8,.2,1);
-}
-
-.screen.active{
-    display:block;
-}
-
-@keyframes screenIn{
-
-    from{
-        opacity:0;
-        transform:
-            translateY(22px)
-            scale(.97);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   CSS LOVE CHARACTER
-========================================================= */
-
-.character{
-    width:150px;
-    height:150px;
-
-    margin:5px auto 22px;
-
-    position:relative;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    font-size:82px;
-
-    border-radius:38px;
-
-    background:
-        radial-gradient(
-            circle at 35% 25%,
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.035)
-        );
-
-    border:1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,.25),
-        inset 0 1px rgba(255,255,255,.1);
-
-    animation:characterFloat 3.5s ease-in-out infinite;
+    padding:100px 22px;
+    position:relative;
 }
 
-@keyframes characterFloat{
-
-    0%,100%{
-        transform:translateY(0) rotate(-1deg);
-    }
-
-    50%{
-        transform:translateY(-9px) rotate(1deg);
-    }
+.scene-inner{
+    width:min(900px,100%);
+    text-align:center;
 }
 
-.character::after{
-    content:"✨";
-
-    position:absolute;
-
-    top:12px;
-    right:14px;
-
-    font-size:22px;
-
-    animation:twinkle 1.5s infinite alternate;
-}
-
-@keyframes twinkle{
-    from{
-        opacity:.3;
-        transform:scale(.8);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1.15);
-    }
-}
-
-
-/* =========================================================
-   TYPOGRAPHY
-========================================================= */
-
-.label{
+.scene-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    color:rgba(255,255,255,.52);
     font-size:11px;
-
+    letter-spacing:.2em;
     text-transform:uppercase;
-
-    letter-spacing:2.5px;
-
-    color:#ff91ba;
-
-    margin-bottom:10px;
+    margin-bottom:25px;
 }
 
-h1{
+.scene-tag::before{
+    content:"";
+    width:24px;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--pink));
+}
+
+.scene-tag::after{
+    content:"";
+    width:24px;
+    height:1px;
+    background:linear-gradient(90deg,var(--pink),transparent);
+}
+
+h1,h2{
     font-family:"Playfair Display",serif;
+    font-weight:500;
+    line-height:1.08;
+}
 
-    font-size:clamp(32px,7vw,48px);
-
-    line-height:1.12;
-
-    letter-spacing:-.5px;
-
-    margin-bottom:15px;
+.hero-title{
+    font-size:clamp(50px,9vw,105px);
+    letter-spacing:-.045em;
 }
 
 .gradient-text{
-    background:
-        linear-gradient(
-            90deg,
-            #ff8fbc,
-            #fff,
-            #c79bff
-        );
-
+    background:linear-gradient(110deg,#fff 10%,#ffc5df 45%,#a993ff 90%);
     -webkit-background-clip:text;
     background-clip:text;
-
     color:transparent;
 }
 
-.description{
-    max-width:460px;
-
-    margin:auto;
-
-    color:rgba(255,255,255,.63);
-
-    font-size:14px;
-
+.subtitle{
+    max-width:650px;
+    margin:25px auto 0;
+    color:var(--muted);
+    font-size:clamp(15px,2vw,18px);
     line-height:1.8;
 }
 
+.eyebrow{
+    color:var(--pink2);
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
 
-/* =========================================================
-   BUTTONS
-========================================================= */
+.scroll-hint{
+    margin-top:55px;
+    color:rgba(255,255,255,.35);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    animation:breathe 2.5s ease-in-out infinite;
+}
 
-.button-row{
+@keyframes breathe{
+    50%{opacity:.45;transform:translateY(5px)}
+}
+
+/* ================================
+   STORY CARDS
+================================ */
+
+.story-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:45px;
+}
+
+.story-card{
+    padding:30px 24px;
+    min-height:190px;
     display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    text-align:left;
+    border:1px solid var(--border);
+    border-radius:24px;
+    background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+    backdrop-filter:blur(22px);
+    box-shadow:var(--shadow);
+    transition:.45s ease;
+}
 
-    justify-content:center;
+.story-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(255,120,183,.25);
+}
 
-    gap:12px;
+.story-number{
+    font-size:11px;
+    color:rgba(255,255,255,.3);
+    letter-spacing:.15em;
+}
 
-    margin-top:28px;
+.story-card p{
+    color:#ddd9e8;
+    font-family:"Playfair Display",serif;
+    font-size:21px;
+    line-height:1.45;
+}
 
+/* ================================
+   CENTER QUOTE
+================================ */
+
+.quote{
+    max-width:760px;
+    margin:40px auto 0;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(28px,5vw,53px);
+    line-height:1.3;
+    color:#f5f2fb;
+}
+
+.quote em{
+    color:var(--pink2);
+    font-style:normal;
+}
+
+/* ================================
+   NAME REVEAL
+================================ */
+
+.name-wrap{
+    margin:35px 0;
+}
+
+.name{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(55px,12vw,125px);
+    letter-spacing:.16em;
+    margin-right:-.16em;
+    background:linear-gradient(100deg,#fff,#ffb8d8,#a990ff,#fff);
+    background-size:250% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:nameShine 6s linear infinite;
+}
+
+@keyframes nameShine{
+    to{background-position:250% center}
+}
+
+/* ================================
+   PROPOSAL
+================================ */
+
+.proposal{
     position:relative;
 }
 
-button{
-    border:0;
-    outline:0;
-
-    font-family:inherit;
-
-    cursor:pointer;
-
-    user-select:none;
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        background .25s ease;
+.proposal::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    max-width:80vw;
+    max-height:80vw;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,120,183,.13),transparent 65%);
+    filter:blur(10px);
+    pointer-events:none;
 }
 
-.primary{
-    padding:14px 25px;
+.proposal-box{
+    position:relative;
+    width:min(760px,100%);
+    padding:60px 30px;
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:36px;
+    background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+    backdrop-filter:blur(30px);
+    box-shadow:0 40px 120px rgba(0,0,0,.5);
+}
 
-    min-width:165px;
+.proposal-box h2{
+    font-size:clamp(38px,7vw,70px);
+}
 
-    border-radius:16px;
+.question{
+    margin:25px auto 40px;
+    max-width:570px;
+    font-size:clamp(17px,3vw,23px);
+    color:#c7c3d2;
+    line-height:1.7;
+}
 
-    color:white;
+.buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:13px;
+}
 
+.btn{
+    border:0;
+    border-radius:999px;
+    padding:16px 23px;
+    min-height:52px;
+    font-family:inherit;
     font-size:14px;
     font-weight:700;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff4b91,
-            #a858ff
-        );
-
-    box-shadow:
-        0 14px 35px rgba(255,73,145,.28);
+    cursor:pointer;
+    transition:.3s ease;
 }
 
-.primary:hover{
+.btn:hover{
     transform:translateY(-3px);
-
-    box-shadow:
-        0 20px 45px rgba(255,73,145,.42);
 }
 
-.secondary{
-    padding:14px 22px;
+.btn-primary{
+    color:#160a12;
+    background:linear-gradient(100deg,#ffc3df,#ff82bb);
+    box-shadow:0 12px 40px rgba(255,120,183,.2);
+}
 
-    border-radius:16px;
-
-    color:rgba(255,255,255,.75);
-
+.btn-secondary{
+    color:white;
     background:rgba(255,255,255,.07);
-
-    border:1px solid rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.13);
 }
 
-.secondary:hover{
+.btn-secondary:hover{
     background:rgba(255,255,255,.11);
 }
 
-
-/* =========================================================
-   QUESTION CARDS
-========================================================= */
-
-.options{
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:11px;
-
-    margin-top:25px;
+.btn-danger{
+    color:#e5e0eb;
+    background:transparent;
+    border:1px solid rgba(255,255,255,.08);
 }
 
-.option{
-    padding:17px 10px;
-
-    border-radius:18px;
-
-    background:rgba(255,255,255,.055);
-
-    border:1px solid rgba(255,255,255,.10);
-
-    cursor:pointer;
-
-    font-size:13px;
-    font-weight:600;
-
-    transition:.25s ease;
-}
-
-.option:hover{
-    transform:translateY(-3px);
-
-    background:rgba(255,255,255,.10);
-}
-
-.option.selected{
-    border-color:rgba(255,122,180,.75);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,74,145,.28),
-            rgba(156,83,255,.22)
-        );
-
-    box-shadow:
-        0 10px 30px rgba(255,74,145,.13);
-}
-
-.option-icon{
-    display:block;
-
-    font-size:26px;
-
-    margin-bottom:7px;
-}
-
-
-/* =========================================================
-   INPUT
-========================================================= */
-
-.input{
-    width:100%;
-
-    margin-top:14px;
-
-    padding:15px 16px;
-
-    border-radius:15px;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    outline:none;
-
-    background:rgba(255,255,255,.06);
-
-    color:white;
-
-    font-family:inherit;
-
-    font-size:14px;
-}
-
-.input:focus{
-    border-color:#ff6aa8;
-
-    box-shadow:
-        0 0 0 4px rgba(255,90,160,.08);
-}
-
-.input::placeholder{
+.small-note{
+    margin-top:24px;
     color:rgba(255,255,255,.35);
-}
-
-.input::-webkit-calendar-picker-indicator{
-    filter:invert(1);
-}
-
-
-/* =========================================================
-   DATE GRID
-========================================================= */
-
-.date-grid{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:11px;
-
-    margin-top:22px;
-}
-
-.field{
-    text-align:left;
-}
-
-.field label{
-    display:block;
-
-    margin-bottom:7px;
-
     font-size:11px;
-
-    color:rgba(255,255,255,.45);
-
-    letter-spacing:.5px;
 }
 
+/* ================================
+   RESULT
+================================ */
 
-/* =========================================================
-   FINAL
-========================================================= */
+.result{
+    display:none;
+    animation:resultIn 1s ease forwards;
+}
 
-.final-heart{
-    width:105px;
-    height:105px;
+.result.active{
+    display:block;
+}
 
-    margin:4px auto 23px;
+@keyframes resultIn{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+}
 
-    border-radius:50%;
-
+.result-icon{
+    width:76px;
+    height:76px;
+    margin:0 auto 25px;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    font-size:48px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,91,156,.25),
-            rgba(152,83,255,.12)
-        );
-
+    border-radius:50%;
+    background:rgba(255,255,255,.07);
     border:1px solid rgba(255,255,255,.14);
-
-    box-shadow:
-        0 0 70px rgba(255,77,145,.25);
-
-    animation:finalPulse 2s infinite;
+    font-size:30px;
 }
 
-@keyframes finalPulse{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.08);
-    }
+.result h3{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(30px,6vw,55px);
+    font-weight:500;
 }
 
-.details{
-    margin-top:22px;
+.result p{
+    max-width:560px;
+    margin:20px auto 0;
+    color:#b9b5c5;
+    line-height:1.8;
+}
 
-    padding:17px;
+/* ================================
+   DATE / FOOD
+================================ */
 
-    text-align:left;
+.choice-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+    margin-top:35px;
+}
 
-    border-radius:18px;
+.choice{
+    padding:25px 15px;
+    border:1px solid var(--border);
+    border-radius:22px;
+    background:rgba(255,255,255,.045);
+    color:#eee;
+    cursor:pointer;
+    transition:.3s ease;
+}
 
-    background:rgba(255,255,255,.055);
+.choice:hover,
+.choice.selected{
+    transform:translateY(-4px);
+    border-color:rgba(255,120,183,.55);
+    background:rgba(255,120,183,.08);
+}
 
-    border:1px solid rgba(255,255,255,.09);
+.choice-icon{
+    font-size:25px;
+    margin-bottom:10px;
+}
 
-    color:rgba(255,255,255,.72);
-
+.choice-label{
     font-size:13px;
-
-    line-height:2;
+    font-weight:700;
 }
 
-.details strong{
-    color:#ff9bc3;
+.input-card{
+    max-width:650px;
+    margin:35px auto 0;
+    padding:25px;
+    border:1px solid var(--border);
+    border-radius:25px;
+    background:rgba(255,255,255,.045);
 }
 
-
-/* =========================================================
-   SMALL NOTE
-========================================================= */
-
-.note{
-    margin-top:17px;
-
-    font-size:11px;
-
-    color:rgba(255,255,255,.33);
+.input-card label{
+    display:block;
+    text-align:left;
+    color:#aaa6b6;
+    font-size:12px;
+    margin-bottom:9px;
 }
 
+input,textarea{
+    width:100%;
+    border:1px solid rgba(255,255,255,.12);
+    outline:none;
+    border-radius:15px;
+    background:rgba(0,0,0,.2);
+    color:white;
+    padding:15px;
+    font-family:inherit;
+    font-size:14px;
+}
 
-/* =========================================================
+textarea{
+    resize:vertical;
+    min-height:110px;
+}
+
+input:focus,textarea:focus{
+    border-color:rgba(255,120,183,.5);
+}
+
+/* ================================
+   FINAL
+================================ */
+
+.final{
+    min-height:100svh;
+}
+
+.final-line{
+    width:70px;
+    height:1px;
+    margin:30px auto;
+    background:linear-gradient(90deg,transparent,var(--pink),transparent);
+}
+
+.signature{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(36px,7vw,72px);
+    background:linear-gradient(100deg,#fff,#ffafd2,#a894ff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.final-small{
+    margin-top:20px;
+    color:#8f8a9e;
+    font-size:13px;
+}
+
+/* ================================
+   NEXT BUTTON
+================================ */
+
+.continue{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:45px;
+    padding:13px 19px;
+    border-radius:999px;
+    color:rgba(255,255,255,.72);
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.1);
+    cursor:pointer;
+    font-family:inherit;
+    font-size:12px;
+    transition:.3s ease;
+}
+
+.continue:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,.08);
+}
+
+.continue span{
+    transition:.3s ease;
+}
+
+.continue:hover span{
+    transform:translateX(4px);
+}
+
+/* ================================
+   CONFETTI / HEARTS
+================================ */
+
+#celebration{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:500;
+    overflow:hidden;
+}
+
+.heart{
+    position:absolute;
+    bottom:-40px;
+    font-size:20px;
+    animation:heartUp var(--duration) ease-out forwards;
+}
+
+@keyframes heartUp{
+    0%{
+        transform:translate(0,0) rotate(0);
+        opacity:0;
+    }
+    10%{opacity:1}
+    100%{
+        transform:translate(var(--x),-110vh) rotate(var(--rot));
+        opacity:0;
+    }
+}
+
+/* ================================
    TOAST
-========================================================= */
+================================ */
 
 .toast{
     position:fixed;
-
     left:50%;
-
-    bottom:25px;
-
-    z-index:100;
-
-    transform:
-        translate(-50%,20px);
-
-    opacity:0;
-
-    pointer-events:none;
-
-    padding:12px 17px;
-
-    border-radius:14px;
-
-    background:rgba(20,12,30,.9);
-
+    bottom:90px;
+    z-index:900;
+    transform:translate(-50%,20px);
+    padding:13px 18px;
+    border-radius:999px;
+    background:rgba(15,13,27,.9);
     border:1px solid rgba(255,255,255,.12);
-
-    backdrop-filter:blur(15px);
-
+    backdrop-filter:blur(20px);
+    color:#eee;
     font-size:12px;
-
-    transition:.3s ease;
+    opacity:0;
+    pointer-events:none;
+    transition:.35s ease;
 }
 
 .toast.show{
     opacity:1;
-
-    transform:
-        translate(-50%,0);
+    transform:translate(-50%,0);
 }
 
-
-/* =========================================================
-   MUSIC INDICATOR
-========================================================= */
-
-.music{
-    position:fixed;
-
-    right:18px;
-    bottom:18px;
-
-    z-index:50;
-
-    width:42px;
-    height:42px;
-
-    border-radius:50%;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:white;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.12);
-
-    font-size:16px;
-
-    opacity:.75;
-}
-
-.music.playing{
-    box-shadow:
-        0 0 25px rgba(255,82,150,.35);
-
-    animation:musicPulse 1.2s infinite;
-}
-
-@keyframes musicPulse{
-
-    50%{
-        transform:scale(1.08);
-    }
-}
-
-
-/* =========================================================
+/* ================================
    MOBILE
-========================================================= */
+================================ */
 
-@media(max-width:600px){
+@media(max-width:700px){
 
-    .wrapper{
-        padding:10px;
+    .topbar{
+        padding:0 17px;
+        height:60px;
     }
 
-    .card{
-        padding:24px 17px;
-
-        border-radius:27px;
-
-        max-height:calc(100vh - 20px);
+    .brand{
+        font-size:9px;
+        letter-spacing:.17em;
     }
 
-    .character{
-        width:125px;
-        height:125px;
-
-        font-size:68px;
-
-        border-radius:30px;
-
-        margin-bottom:19px;
+    .scene-counter{
+        font-size:9px;
     }
 
-    h1{
-        font-size:31px;
+    .scene{
+        padding:85px 16px;
     }
 
-    .description{
-        font-size:13px;
-        line-height:1.7;
+    .scene-inner{
+        width:100%;
     }
 
-    .options{
-        gap:8px;
-    }
-
-    .option{
-        padding:14px 7px;
-    }
-
-    .button-row{
-        margin-top:22px;
-    }
-
-    .primary{
-        min-width:145px;
-        padding:13px 18px;
-    }
-
-    .secondary{
-        padding:13px 17px;
-    }
-
-    .date-grid{
+    .story-grid{
         grid-template-columns:1fr;
+        gap:11px;
+    }
+
+    .story-card{
+        min-height:145px;
+        padding:23px;
+    }
+
+    .story-card p{
+        font-size:19px;
+    }
+
+    .choice-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .proposal-box{
+        padding:45px 19px;
+        border-radius:27px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
     }
 
     .music{
-        right:12px;
-        bottom:12px;
+        right:15px;
+        bottom:15px;
+        width:48px;
+        height:48px;
+    }
+
+    .name{
+        font-size:clamp(45px,15vw,80px);
+        letter-spacing:.09em;
+        margin-right:-.09em;
     }
 }
 
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
+/* ================================
+   REDUCED MOTION
+================================ */
 
 @media(prefers-reduced-motion:reduce){
-
     *,
     *::before,
     *::after{
         animation-duration:.01ms !important;
         animation-iteration-count:1 !important;
-        transition:none !important;
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
     }
 }
+</style>
+</head>
 
-</style></head><body><!-- =======================================================
-     BACKGROUND
-======================================================= --><div class="background"><div class="glow glow-a"></div>
-<div class="glow glow-b"></div>
-<div class="glow glow-c"></div>
+<body>
 
-<div class="noise"></div>
-
-</div><!-- =======================================================
-     REAL MP3 MUSIC
-======================================================= --><audio
-id="bgMusic"
-preload="auto"
-loop
-playsinline>
-
-<source
-    src="./Naina_Nu_Proposal_Edit.mp3"
-    type="audio/mpeg">
-
-</audio><!-- =======================================================
-     MUSIC BUTTON
-======================================================= --><button
-class="music"
-id="musicButton"
-onclick="toggleMusic()"
-aria-label="Toggle music">
-
-♫
-
-</button><!-- =======================================================
-     MAIN
-======================================================= --><div class="wrapper"><div class="card"><!-- HEADER -->
-
-<div class="header">
-
-    <div class="brand">
-
-        <span class="brand-dot"></span>
-
-        From Shrikant
-
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-inner">
+        <div class="loader-orbit"></div>
+        <div class="loader-title">Preparing a little message…</div>
+        <div class="loader-small">for Naina ✦</div>
     </div>
-
-    <div
-        class="counter"
-        id="counter">
-
-        00 / 06
-
-    </div>
-
 </div>
 
+<!-- BACKGROUND -->
+<div id="particles"></div>
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+<div class="ambient three"></div>
 
-<!-- PROGRESS -->
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="brand">A Little Message</div>
+    <div class="scene-counter" id="sceneCounter">01 / 10</div>
+</header>
 
-<div class="progress">
+<!-- MUSIC -->
+<button class="music" id="musicButton" aria-label="Toggle music">♫</button>
 
-    <div
-        class="progress-bar"
-        id="progressBar">
-    </div>
+<audio id="bgMusic" preload="auto" loop playsinline>
+    <source src="./Naina_Nu_Proposal_Edit.mp3" type="audio/mpeg">
+</audio>
 
-</div>
+<main>
 
+<!-- ================================
+     SCENE 01
+================================ -->
+<section class="scene" id="scene1">
+    <div class="scene-inner">
 
-<!-- ===================================================
-     SCREEN 1
-==================================================== -->
+        <div class="scene-tag">01 · Begin</div>
 
-<section
-    class="screen active"
-    id="screen1">
+        <div class="eyebrow">There is something I wanted to say</div>
 
-    <div class="character">
-        🧸
-    </div>
+        <h1 class="hero-title">
+            A little<br>
+            <span class="gradient-text">message</span>
+            for you.
+        </h1>
 
-    <div class="label">
-        A little something
-    </div>
+        <p class="subtitle">
+            Not a big speech. Not something complicated.
+            Just a few things I've been meaning to say.
+        </p>
 
-    <h1>
-        Hey <span class="gradient-text">Naina</span>… 💗
-    </h1>
-
-    <p class="description">
-
-        I could have just sent you a message.
-
-        <br><br>
-
-        But you're kind of special,
-        so I decided to make something
-        a little more... <b>me</b>. 😌
-
-    </p>
-
-    <div class="button-row">
-
-        <button
-            class="primary"
-            onclick="startExperience()">
-
-            Open My Message 💌
-
+        <button class="continue" onclick="goTo('scene2');startMusic()">
+            Open my message <span>→</span>
         </button>
 
+        <div class="scroll-hint">a small journey · take your time</div>
+
     </div>
-
-    <p class="note">
-        Best experienced with sound on ✨
-    </p>
-
 </section>
 
 
+<!-- ================================
+     SCENE 02
+================================ -->
+<section class="scene" id="scene2">
+    <div class="scene-inner">
 
-<!-- ===================================================
-     SCREEN 2
-==================================================== -->
+        <div class="scene-tag">02 · A thought</div>
 
-<section
-    class="screen"
-    id="screen2">
+        <h2 class="quote">
+            Sometimes someone simply
+            <em>stands out.</em>
+        </h2>
 
-    <div class="character">
-        🥹
-    </div>
+        <div class="story-grid">
 
-    <div class="label">
-        From Shrikant
-    </div>
+            <div class="story-card">
+                <div class="story-number">01</div>
+                <p>Not because you planned it.</p>
+            </div>
 
-    <h1>
-        I need to ask you<br>
-        <span class="gradient-text">one thing.</span>
-    </h1>
+            <div class="story-card">
+                <div class="story-number">02</div>
+                <p>Not because you expected it.</p>
+            </div>
 
-    <p class="description">
+            <div class="story-card">
+                <div class="story-number">03</div>
+                <p>It just… happens.</p>
+            </div>
 
-        There is no complicated story.
+        </div>
 
-        <br>
-
-        We're not together.
-
-        <br>
-
-        I haven't proposed to you before.
-
-        <br><br>
-
-        I just like you.
-
-        And I've been wondering...
-
-    </p>
-
-    <div class="button-row">
-
-        <button
-            class="primary"
-            onclick="nextScreen(3)">
-
-            Tell me ❤️
-
+        <button class="continue" onclick="goTo('scene3')">
+            Continue <span>→</span>
         </button>
 
     </div>
-
 </section>
 
 
+<!-- ================================
+     SCENE 03
+================================ -->
+<section class="scene" id="scene3">
+    <div class="scene-inner">
 
-<!-- ===================================================
-     SCREEN 3 — PROPOSAL
-==================================================== -->
+        <div class="scene-tag">03 · The person</div>
 
-<section
-    class="screen"
-    id="screen3">
+        <div class="eyebrow">And for me…</div>
 
-    <div class="character">
-        🫣
-    </div>
+        <div class="name-wrap">
+            <div class="name">NAINA</div>
+        </div>
 
-    <div class="label">
-        The actual question
-    </div>
+        <p class="subtitle">
+            I don't know exactly what you think about me.
+            And honestly, I don't want to pretend that I do.
+        </p>
 
-    <h1>
-        Naina,<br>
-        will you give<br>
-        <span class="gradient-text">us a chance?</span> ❤️
-    </h1>
-
-    <p class="description">
-
-        No pressure.
-
-        <br>
-
-        No perfect answer needed.
-
-        <br><br>
-
-        Just your honest answer.
-
-    </p>
-
-    <div class="button-row">
-
-        <button
-            class="primary"
-            onclick="sayYes()">
-
-            Yes ❤️
-
-        </button>
-
-        <button
-            class="secondary"
-            id="noButton">
-
-            No 🙈
-
+        <button class="continue" onclick="goTo('scene4')">
+            There's more <span>→</span>
         </button>
 
     </div>
-
-    <p class="note">
-        P.S. One button is feeling a little shy. 😂
-    </p>
-
 </section>
 
 
+<!-- ================================
+     SCENE 04
+================================ -->
+<section class="scene" id="scene4">
+    <div class="scene-inner">
 
-<!-- ===================================================
-     SCREEN 4 — FUN QUESTIONS
-==================================================== -->
+        <div class="scene-tag">04 · Honesty</div>
 
-<section
-    class="screen"
-    id="screen4">
+        <h2 class="quote">
+            So instead of guessing what the answer might be,
+            I thought I'd simply
+            <em>ask.</em>
+        </h2>
 
-    <div class="character">
-        😌
+        <p class="subtitle">
+            Because sometimes the simplest question
+            is the most honest one.
+        </p>
+
+        <button class="continue" onclick="goTo('scene5')">
+            Ask me <span>→</span>
+        </button>
+
     </div>
+</section>
 
-    <div class="label">
-        Okay… hypothetical situation
-    </div>
 
-    <h1>
-        If you said yes…<br>
-        what would our first<br>
-        <span class="gradient-text">date vibe</span> be?
-    </h1>
+<!-- ================================
+     SCENE 05 — PROPOSAL
+================================ -->
+<section class="scene proposal" id="scene5">
+    <div class="scene-inner">
 
-    <div class="options">
+        <div class="proposal-box">
 
-        <div
-            class="option"
-            onclick="choose(this,'☕ A cozy cafe')">
+            <div id="proposalContent">
 
-            <span class="option-icon">☕</span>
+                <div class="scene-tag">05 · The question</div>
 
-            Cozy Cafe
+                <h2>Nancy Raghav</h2>
 
-        </div>
+                <p class="question">
+                    Would you give me a chance to know you better
+                    and see where this could go?
+                </p>
 
-        <div
-            class="option"
-            onclick="choose(this,'🎬 Movie date')">
+                <div class="buttons">
 
-            <span class="option-icon">🎬</span>
+                    <button class="btn btn-primary" onclick="answerYes()">
+                        Yes, let's see ✨
+                    </button>
 
-            Movie
+                    <button class="btn btn-secondary" onclick="answerTime()">
+                        I'd like some time 🤍
+                    </button>
 
-        </div>
+                    <button class="btn btn-danger" onclick="answerNo()">
+                        No, thank you
+                    </button>
 
-        <div
-            class="option"
-            onclick="choose(this,'🌆 Long evening walk')">
+                </div>
 
-            <span class="option-icon">🌆</span>
+                <div class="small-note">
+                    There is no right answer. Just your honest one.
+                </div>
 
-            Evening Walk
+            </div>
 
-        </div>
+            <!-- YES -->
+            <div class="result" id="yesResult">
 
-        <div
-            class="option"
-            onclick="choose(this,'✨ Surprise me')">
+                <div class="result-icon">✦</div>
 
-            <span class="option-icon">✨</span>
+                <h3>Maybe this is where it begins.</h3>
 
-            Surprise Me
+                <p>
+                    Thank you, Naina.
+                    Whatever comes next, I'm glad I finally had
+                    the courage to ask.
+                </p>
+
+                <button class="continue" onclick="goTo('scene6')">
+                    Continue the moment <span>→</span>
+                </button>
+
+            </div>
+
+            <!-- TIME -->
+            <div class="result" id="timeResult">
+
+                <div class="result-icon">🤍</div>
+
+                <h3>Take your time.</h3>
+
+                <p>
+                    You don't have to decide immediately.
+                    Your comfort matters, and I completely respect that.
+                </p>
+
+                <button class="continue" onclick="goTo('scene9')">
+                    Continue <span>→</span>
+                </button>
+
+            </div>
+
+            <!-- NO -->
+            <div class="result" id="noResult">
+
+                <div class="result-icon">♡</div>
+
+                <h3>Thank you for being honest.</h3>
+
+                <p>
+                    I genuinely appreciate you taking the time
+                    to read this and hear me out.
+                </p>
+
+                <button class="continue" onclick="goTo('scene9')">
+                    Continue <span>→</span>
+                </button>
+
+            </div>
 
         </div>
 
     </div>
-
-    <button
-        class="primary"
-        style="width:100%;margin-top:20px"
-        onclick="nextQuestion()">
-
-        Sounds Good ➜
-
-    </button>
-
 </section>
 
 
+<!-- ================================
+     SCENE 06
+================================ -->
+<section class="scene" id="scene6">
+    <div class="scene-inner">
 
-<!-- ===================================================
-     SCREEN 5 — DATE
-==================================================== -->
+        <div class="scene-tag">06 · If you're comfortable</div>
 
-<section
-    class="screen"
-    id="screen5">
+        <h2 class="quote">
+            Then maybe we can start with something
+            <em>simple.</em>
+        </h2>
 
-    <div class="character">
-        🥰
+        <p class="subtitle">
+            No complicated plans. Just spending a little time together
+            and seeing where the conversation takes us.
+        </p>
+
+        <button class="continue" onclick="goTo('scene7')">
+            One tiny question <span>→</span>
+        </button>
+
     </div>
+</section>
 
-    <div class="label">
-        Let's imagine it
+
+<!-- ================================
+     SCENE 07 — FIRST OUTING
+================================ -->
+<section class="scene" id="scene7">
+    <div class="scene-inner">
+
+        <div class="scene-tag">07 · First outing</div>
+
+        <h2 class="quote">
+            What sounds like
+            <em>your kind of plan?</em>
+        </h2>
+
+        <div class="choice-grid" id="planChoices">
+
+            <div class="choice" onclick="selectChoice(this,'Coffee')">
+                <div class="choice-icon">☕</div>
+                <div class="choice-label">Coffee</div>
+            </div>
+
+            <div class="choice" onclick="selectChoice(this,'Food')">
+                <div class="choice-icon">🍕</div>
+                <div class="choice-label">Food</div>
+            </div>
+
+            <div class="choice" onclick="selectChoice(this,'Movie')">
+                <div class="choice-icon">🎬</div>
+                <div class="choice-label">Movie</div>
+            </div>
+
+            <div class="choice" onclick="selectChoice(this,'Walk')">
+                <div class="choice-icon">🌆</div>
+                <div class="choice-label">Evening walk</div>
+            </div>
+
+            <div class="choice" onclick="selectChoice(this,'Something fun')">
+                <div class="choice-icon">🎡</div>
+                <div class="choice-label">Something fun</div>
+            </div>
+
+            <div class="choice" onclick="selectChoice(this,'Your choice')">
+                <div class="choice-icon">✨</div>
+                <div class="choice-label">Your choice</div>
+            </div>
+
+        </div>
+
+        <button class="continue" onclick="goTo('scene8')">
+            Next <span>→</span>
+        </button>
+
     </div>
+</section>
 
-    <h1>
-        When should we<br>
-        make it <span class="gradient-text">happen?</span> 📅
-    </h1>
 
-    <p class="description">
+<!-- ================================
+     SCENE 08 — FUN QUESTION
+================================ -->
+<section class="scene" id="scene8">
+    <div class="scene-inner">
 
-        You choose the day.
+        <div class="scene-tag">08 · Important question</div>
 
-        <br>
+        <div class="eyebrow">This is extremely serious.</div>
 
-        I'll take care of the rest. 😌
+        <h2 class="quote">
+            Who is choosing
+            <em>the food?</em>
+        </h2>
 
-    </p>
+        <div class="choice-grid" id="foodChoices">
 
-    <div class="date-grid">
+            <div class="choice" onclick="selectChoice(this,'You choose')">
+                <div class="choice-icon">😌</div>
+                <div class="choice-label">You</div>
+            </div>
 
-        <div class="field">
+            <div class="choice" onclick="selectChoice(this,'I choose')">
+                <div class="choice-icon">😎</div>
+                <div class="choice-label">Me</div>
+            </div>
 
-            <label>
-                DATE
+            <div class="choice" onclick="selectChoice(this,'We decide together')">
+                <div class="choice-icon">😂</div>
+                <div class="choice-label">We figure it out</div>
+            </div>
+
+        </div>
+
+        <button class="continue" onclick="goTo('scene9')">
+            Final thought <span>→</span>
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ================================
+     SCENE 09 — FINAL MESSAGE
+================================ -->
+<section class="scene" id="scene9">
+    <div class="scene-inner">
+
+        <div class="scene-tag">09 · One last thing</div>
+
+        <h2 class="quote">
+            I didn't make this because I know
+            what your answer will be.
+        </h2>
+
+        <p class="subtitle">
+            I made it because I wanted to be honest about how I feel.
+            And because some things are better said
+            than left unsaid.
+        </p>
+
+        <div class="input-card">
+
+            <label for="message">
+                If you want, leave a little message
             </label>
 
-            <input
-                class="input"
-                type="date"
-                id="date">
+            <textarea
+                id="message"
+                maxlength="500"
+                placeholder="Anything you'd like to say…"
+            ></textarea>
 
         </div>
 
-        <div class="field">
+        <button class="continue" onclick="submitMessage()">
+            Finish the moment <span>→</span>
+        </button>
 
-            <label>
-                TIME
-            </label>
+    </div>
+</section>
 
-            <input
-                class="input"
-                type="time"
-                id="time">
 
+<!-- ================================
+     SCENE 10 — END
+================================ -->
+<section class="scene final" id="scene10">
+    <div class="scene-inner">
+
+        <div class="scene-tag">10 · The end… or maybe not</div>
+
+        <div class="eyebrow">Naina × Shrikant</div>
+
+        <div class="signature">
+            Maybe.
         </div>
 
+        <div class="final-line"></div>
+
+        <h2 class="quote">
+            Maybe this is where
+            <em>our story begins.</em>
+        </h2>
+
+        <p class="final-small">
+            Thank you for taking the time to experience this.
+        </p>
+
+        <button class="continue" onclick="restartExperience()">
+            Replay experience <span>↻</span>
+        </button>
+
     </div>
-
-    <input
-        class="input"
-        type="text"
-        id="place"
-        placeholder="Where would you like to go? 📍">
-
-    <button
-        class="primary"
-        style="width:100%;margin-top:18px"
-        id="finishButton"
-        onclick="finishProposal()">
-
-        Make It Official 💗
-
-    </button>
-
 </section>
 
+</main>
 
+<div id="celebration"></div>
+<div class="toast" id="toast"></div>
 
-<!-- ===================================================
-     SCREEN 6 — FINAL
-==================================================== -->
+<!-- FORMSPREE -->
+<form id="proposalForm" action="https://formspree.io/f/mdeobrnn" method="POST" style="display:none;">
+    <input type="hidden" name="proposal_answer" id="formAnswer">
+    <input type="hidden" name="first_outing" id="formPlan">
+    <input type="hidden" name="food_choice" id="formFood">
+    <input type="hidden" name="message" id="formMessage">
+    <input type="hidden" name="source" value="Naina × Shrikant Proposal Experience">
+</form>
 
-<section
-    class="screen"
-    id="screen6">
+<script>
 
-    <div class="final-heart">
-        💗
-    </div>
+/* ==========================================
+   GLOBAL STATE
+========================================== */
 
-    <div class="label">
-        Mission complete
-    </div>
-
-    <h1>
-        It's a <span class="gradient-text">Date.</span> 🎉
-    </h1>
-
-    <p class="description">
-
-        Naina said yes to giving
-        this little story a chance. 🥹
-
-        <br><br>
-
-        And Shrikant is officially
-        very, very happy.
-
-    </p>
-
-    <div
-        class="details"
-        id="finalDetails">
-    </div>
-
-    <p class="note">
-
-        Screenshot this moment. ❤️
-
-        <br>
-
-        Some first steps are worth remembering.
-
-    </p>
-
-</section>
-
-</div></div><!-- TOAST --><div
-    class="toast"
-    id="toast">
-</div><script>
-
-/* =========================================================
-   DATA
-========================================================= */
-
-let currentScreen = 1;
-
-let selectedVibe = "Not selected";
-
-
-/* =========================================================
-   REAL MP3 MUSIC
-========================================================= */
-
-const music =
-    document.getElementById("bgMusic");
-
-const musicButton =
-    document.getElementById("musicButton");
+const music = document.getElementById("bgMusic");
+const musicButton = document.getElementById("musicButton");
+const sceneCounter = document.getElementById("sceneCounter");
+const toastBox = document.getElementById("toast");
 
 let musicPlaying = false;
+let selectedPlan = "";
+let selectedFood = "";
+let proposalAnswer = "";
 
 
-/*
-   REAL MUSIC FILE:
+/* ==========================================
+   LOADER
+========================================== */
 
-   ./Naina_Nu_Proposal_Edit.mp3
+window.addEventListener("load", () => {
 
-   The MP3 is expected to be in the same
-   GitHub Pages folder as index.html.
-*/
+    setTimeout(() => {
+        document.getElementById("loader").classList.add("hidden");
+    }, 1100);
 
+});
+
+
+/* ==========================================
+   PARTICLES
+========================================== */
+
+const particles = document.getElementById("particles");
+
+for(let i = 0; i < 55; i++){
+
+    const p = document.createElement("div");
+
+    p.className = "particle";
+
+    p.style.left = Math.random() * 100 + "%";
+    p.style.setProperty("--drift", (Math.random() * 180 - 90) + "px");
+    p.style.animationDuration = (7 + Math.random() * 13) + "s";
+    p.style.animationDelay = (-Math.random() * 15) + "s";
+    p.style.opacity = Math.random() * .6;
+
+    particles.appendChild(p);
+}
+
+
+/* ==========================================
+   SCENE NAVIGATION
+========================================== */
+
+const sceneNumbers = {
+    scene1:"01",
+    scene2:"02",
+    scene3:"03",
+    scene4:"04",
+    scene5:"05",
+    scene6:"06",
+    scene7:"07",
+    scene8:"08",
+    scene9:"09",
+    scene10:"10"
+};
+
+function goTo(id){
+
+    const target = document.getElementById(id);
+
+    if(!target) return;
+
+    target.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+
+    updateCounter(id);
+}
+
+function updateCounter(id){
+
+    if(sceneNumbers[id]){
+        sceneCounter.textContent = sceneNumbers[id] + " / 10";
+    }
+
+}
+
+
+/* ==========================================
+   INTERSECTION OBSERVER
+========================================== */
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                updateCounter(entry.target.id);
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.55
+    }
+);
+
+document.querySelectorAll(".scene").forEach(scene => {
+    observer.observe(scene);
+});
+
+
+/* ==========================================
+   MUSIC
+========================================== */
 
 async function startMusic(){
 
-    /*
-       If already playing, do nothing.
-    */
-
-    if(!music.paused){
-
-        musicPlaying = true;
-
-        musicButton.classList.add("playing");
-
-        musicButton.textContent = "♫";
-
-        return true;
-    }
-
+    if(!music) return;
 
     try{
 
-        /*
-           Reset volume to a comfortable level.
-        */
-
-        music.volume = 0.72;
-
-
-        /*
-           play() is called directly from the
-           user's button interaction.
-        */
+        music.volume = .72;
 
         await music.play();
-
 
         musicPlaying = true;
 
         musicButton.classList.add("playing");
 
-        musicButton.textContent = "♫";
-
-        return true;
-
     }catch(error){
-
-        console.log(
-            "Music could not start:",
-            error
-        );
 
         musicPlaying = false;
 
-        musicButton.classList.remove("playing");
+        showToast("Tap ♫ to start the music");
 
-        musicButton.textContent = "♫";
-
-        /*
-           Show a useful message instead of failing silently.
-        */
-
-        toast(
-            "Tap the music button to start 🎵"
-        );
-
-        return false;
     }
+
 }
-
-
-/* =========================================================
-   STOP MUSIC
-========================================================= */
 
 function stopMusic(){
 
@@ -1544,20 +1470,11 @@ function stopMusic(){
 
     musicButton.classList.remove("playing");
 
-    musicButton.textContent = "♫";
 }
-
-
-/* =========================================================
-   TOGGLE MUSIC
-========================================================= */
 
 async function toggleMusic(){
 
-    if(
-        !music.paused &&
-        !music.ended
-    ){
+    if(!music.paused){
 
         stopMusic();
 
@@ -1566,975 +1483,305 @@ async function toggleMusic(){
         await startMusic();
 
     }
-}
-
-
-/* =========================================================
-   MUSIC EVENTS
-========================================================= */
-
-music.addEventListener(
-    "play",
-    function(){
-
-        musicPlaying = true;
-
-        musicButton.classList.add("playing");
-
-        musicButton.textContent = "♫";
-
-    }
-);
-
-
-music.addEventListener(
-    "pause",
-    function(){
-
-        musicPlaying = false;
-
-        musicButton.classList.remove("playing");
-
-        musicButton.textContent = "♫";
-
-    }
-);
-
-
-music.addEventListener(
-    "error",
-    function(){
-
-        console.log(
-            "MP3 file could not be loaded."
-        );
-
-        toast(
-            "Music file not found. Check the GitHub filename."
-        );
-
-    }
-);
-
-
-/* =========================================================
-   HEARTS
-========================================================= */
-
-function createHeart(){
-
-    const heart =
-        document.createElement("div");
-
-    heart.className = "heart";
-
-    const icons = [
-        "♡",
-        "♥",
-        "💗",
-        "💕",
-        "✨"
-    ];
-
-    heart.textContent =
-        icons[
-            Math.floor(
-                Math.random()*icons.length
-            )
-        ];
-
-    heart.style.left =
-        Math.random()*100 + "vw";
-
-    heart.style.fontSize =
-        (12 + Math.random()*18) + "px";
-
-    heart.style.animationDuration =
-        (5 + Math.random()*5) + "s";
-
-    document
-        .querySelector(".background")
-        .appendChild(heart);
-
-    setTimeout(
-        ()=>heart.remove(),
-        10000
-    );
-}
-
-setInterval(
-    createHeart,
-    650
-);
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-function toast(message){
-
-    const box =
-        document.getElementById("toast");
-
-    box.textContent = message;
-
-    box.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer =
-        setTimeout(()=>{
-
-            box.classList.remove("show");
-
-        },2200);
-}
-
-
-/* =========================================================
-   SCREEN NAVIGATION
-========================================================= */
-
-function nextScreen(number){
-
-    document
-        .querySelectorAll(".screen")
-        .forEach(screen=>{
-
-            screen.classList.remove("active");
-
-        });
-
-
-    document
-        .getElementById("screen"+number)
-        .classList.add("active");
-
-
-    currentScreen = number;
-
-    updateProgress();
 
 }
 
+musicButton.addEventListener("click", toggleMusic);
 
-/* =========================================================
-   PROGRESS
-========================================================= */
+music.addEventListener("play", () => {
 
-function updateProgress(){
+    musicPlaying = true;
+    musicButton.classList.add("playing");
 
-    const percentage =
-        ((currentScreen - 1) / 5) * 100;
+});
+
+music.addEventListener("pause", () => {
+
+    musicPlaying = false;
+    musicButton.classList.remove("playing");
+
+});
+
+music.addEventListener("error", () => {
+
+    showToast("Music file couldn't be loaded");
+
+});
 
 
-    document
-        .getElementById("progressBar")
-        .style.width =
-        percentage + "%";
+/* ==========================================
+   PROPOSAL ANSWERS
+========================================== */
 
+function hideProposal(){
 
-    document
-        .getElementById("counter")
-        .textContent =
-        String(currentScreen).padStart(2,"0")
-        + " / 06";
+    document.getElementById("proposalContent").style.display = "none";
+
 }
 
+function answerYes(){
 
-/* =========================================================
-   START EXPERIENCE
-========================================================= */
+    proposalAnswer = "Yes";
 
-function startExperience(){
+    hideProposal();
 
-    /*
-       IMPORTANT:
-
-       This function is triggered directly by
-       the "Open My Message" button.
-
-       Therefore the browser recognizes it as
-       a real user interaction and allows audio
-       playback much more reliably.
-    */
+    document.getElementById("yesResult").classList.add("active");
 
     startMusic();
 
-    nextScreen(2);
+    celebrate();
+
+    saveResponse();
+
+}
+
+function answerTime(){
+
+    proposalAnswer = "I'd like some time";
+
+    hideProposal();
+
+    document.getElementById("timeResult").classList.add("active");
+
+    saveResponse();
+
+}
+
+function answerNo(){
+
+    proposalAnswer = "No, thank you";
+
+    hideProposal();
+
+    document.getElementById("noResult").classList.add("active");
+
+    saveResponse();
 
 }
 
 
-/* =========================================================
-   PROPOSAL
-========================================================= */
+/* ==========================================
+   CHOICES
+========================================== */
 
-function sayYes(){
+function selectChoice(element,value){
 
-    /*
-       Keep music playing if it is already running.
-       If the browser paused it, try to resume it
-       because this click is also a user interaction.
-    */
+    const parent = element.parentElement;
 
-    startMusic();
+    parent.querySelectorAll(".choice").forEach(item => {
 
-    celebrateSmall();
+        item.classList.remove("selected");
 
-
-    setTimeout(()=>{
-
-        nextScreen(4);
-
-    },650);
-
-}
-
-
-/* =========================================================
-   PLAYFUL NO
-========================================================= */
-
-const noButton =
-    document.getElementById("noButton");
-
-let noAttempts = 0;
-
-
-function moveNo(){
-
-    noAttempts++;
-
-
-    /*
-       Playful movement only.
-       After several attempts the visitor gets
-       a normal, genuine No option.
-    */
-
-    if(noAttempts <= 4){
-
-        noButton.style.position = "fixed";
-
-
-        const padding = 18;
-
-
-        const maxX =
-            window.innerWidth -
-            noButton.offsetWidth -
-            padding;
-
-
-        const maxY =
-            window.innerHeight -
-            noButton.offsetHeight -
-            padding;
-
-
-        const x =
-            Math.max(
-                padding,
-                Math.random()*maxX
-            );
-
-
-        const y =
-            Math.max(
-                padding,
-                Math.random()*maxY
-            );
-
-
-        noButton.style.left =
-            x + "px";
-
-
-        noButton.style.top =
-            y + "px";
-
-
-        const messages = [
-
-            "No 🙈",
-
-            "Too slow 😂",
-
-            "Wait… 😭",
-
-            "Try again 😌",
-
-            "Okay, seriously? 🥺"
-
-        ];
-
-
-        noButton.textContent =
-            messages[noAttempts];
-
-    }else{
-
-        noButton.style.position =
-            "relative";
-
-        noButton.style.left = "";
-
-        noButton.style.top = "";
-
-
-        noButton.textContent =
-            "No, I'm sure";
-
-
-        noButton.onclick =
-            function(){
-
-                const answer =
-                    confirm(
-                        "Are you sure? ❤️\n\n" +
-                        "It's completely okay to say no."
-                    );
-
-
-                if(answer){
-
-                    toast(
-                        "Okay. Thank you for being honest ❤️"
-                    );
-
-                }
-
-            };
-
-    }
-}
-
-
-noButton.addEventListener(
-    "mouseenter",
-    moveNo
-);
-
-
-noButton.addEventListener(
-    "touchstart",
-    function(event){
-
-        if(noAttempts < 4){
-
-            event.preventDefault();
-
-            moveNo();
-
-        }
-
-    },
-    {
-        passive:false
-    }
-);
-
-
-/* =========================================================
-   QUESTION OPTION
-========================================================= */
-
-function choose(element,value){
-
-    document
-        .querySelectorAll("#screen4 .option")
-        .forEach(option=>{
-
-            option.classList.remove("selected");
-
-        });
-
+    });
 
     element.classList.add("selected");
 
-    selectedVibe = value;
+    if(parent.id === "planChoices"){
 
-}
+        selectedPlan = value;
 
-
-/* =========================================================
-   NEXT QUESTION
-========================================================= */
-
-function nextQuestion(){
-
-    if(
-        selectedVibe === "Not selected"
-    ){
-
-        toast(
-            "Choose a vibe first 😌❤️"
-        );
-
-        return;
+        showToast("Selected: " + value);
 
     }
 
+    if(parent.id === "foodChoices"){
 
-    nextScreen(5);
+        selectedFood = value;
 
-}
-
-
-/* =========================================================
-   DATE MINIMUM
-========================================================= */
-
-const dateInput =
-    document.getElementById("date");
-
-
-const now =
-    new Date();
-
-
-const year =
-    now.getFullYear();
-
-
-const month =
-    String(
-        now.getMonth()+1
-    ).padStart(2,"0");
-
-
-const day =
-    String(
-        now.getDate()
-    ).padStart(2,"0");
-
-
-dateInput.min =
-    `${year}-${month}-${day}`;
-
-
-/* =========================================================
-   SMALL CELEBRATION
-========================================================= */
-
-function celebrateSmall(){
-
-    const symbols = [
-        "💗",
-        "💕",
-        "✨",
-        "❤️"
-    ];
-
-
-    for(let i=0;i<35;i++){
-
-        const item =
-            document.createElement("div");
-
-
-        item.textContent =
-            symbols[
-                Math.floor(
-                    Math.random()*symbols.length
-                )
-            ];
-
-
-        item.style.position = "fixed";
-
-        item.style.zIndex = "999";
-
-        item.style.left =
-            (40 + Math.random()*20) + "vw";
-
-        item.style.top = "45vh";
-
-        item.style.fontSize =
-            (14 + Math.random()*15) + "px";
-
-        item.style.pointerEvents = "none";
-
-
-        document.body.appendChild(item);
-
-
-        const x =
-            (Math.random()-.5)*350;
-
-
-        const y =
-            -(100 + Math.random()*400);
-
-
-        item.animate(
-
-            [
-
-                {
-                    transform:
-                        "translate(0,0) scale(.5)",
-
-                    opacity:0
-                },
-
-                {
-                    transform:
-                        `translate(${x*.4}px,${y*.4}px) scale(1)`,
-
-                    opacity:1
-                },
-
-                {
-                    transform:
-                        `translate(${x}px,${y}px) scale(.7)`,
-
-                    opacity:0
-                }
-
-            ],
-
-            {
-
-                duration:
-                    1300 + Math.random()*800,
-
-                easing:
-                    "cubic-bezier(.2,.8,.2,1)"
-
-            }
-
-        ).onfinish =
-            ()=>item.remove();
+        showToast("Decision recorded 😌");
 
     }
 
 }
 
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
+/* ==========================================
+   FORMSPREE
+========================================== */
 
-function safe(value){
+async function saveResponse(){
 
-    return String(value)
+    const form = document.getElementById("proposalForm");
 
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
-
-}
-
-
-/* =========================================================
-   FINAL SUBMISSION
-========================================================= */
-
-async function finishProposal(){
-
-    const date =
-        document
-        .getElementById("date")
-        .value;
-
-
-    const time =
-        document
-        .getElementById("time")
-        .value;
-
-
-    const place =
-        document
-        .getElementById("place")
-        .value
-        .trim();
-
-
-    if(!date){
-
-        toast(
-            "Choose a date first 📅"
-        );
-
-        return;
-
-    }
-
-
-    if(!time){
-
-        toast(
-            "And a time too ⏰"
-        );
-
-        return;
-
-    }
-
-
-    const finalPlace =
-        place ||
-        "Her choice";
-
-
-    const button =
-        document.getElementById(
-            "finishButton"
-        );
-
-
-    button.disabled = true;
-
-
-    button.textContent =
-        "Saving this moment... 💗";
-
-
-    const payload = {
-
-        Subject:
-            "Naina's Proposal Response ❤️",
-
-        From:
-            "Shrikant Prajapati",
-
-        For:
-            "Nancy Raghav",
-
-        Nickname:
-            "Naina",
-
-        Answer:
-            "YES — gave it a chance",
-
-        DateVibe:
-            selectedVibe,
-
-        Date:
-            date,
-
-        Time:
-            time,
-
-        Place:
-            finalPlace,
-
-        CreatedAt:
-            new Date().toISOString()
-
-    };
-
-
-    /* =====================================================
-       LOCAL BACKUP
-    ===================================================== */
+    document.getElementById("formAnswer").value = proposalAnswer;
+    document.getElementById("formPlan").value = selectedPlan;
+    document.getElementById("formFood").value = selectedFood;
+    document.getElementById("formMessage").value =
+        document.getElementById("message")?.value || "";
 
     try{
 
-        localStorage.setItem(
+        await fetch(form.action,{
 
-            "nainaProposalResponse",
+            method:"POST",
 
-            JSON.stringify(payload)
+            body:new FormData(form),
 
-        );
+            headers:{
+                "Accept":"application/json"
+            }
+
+        });
 
     }catch(error){
 
-        console.log(
-            "LocalStorage unavailable"
-        );
+        console.log("Form submission unavailable:",error);
 
     }
 
-
-    /* =====================================================
-       FORMSPREE
-    ===================================================== */
-
-    const endpoint =
-        "https://formspree.io/f/mdeobrnn";
+}
 
 
-    try{
+async function submitMessage(){
 
-        await fetch(
+    await saveResponse();
 
-            endpoint,
+    goTo("scene10");
 
-            {
+}
 
-                method:"POST",
 
-                headers:{
+/* ==========================================
+   CELEBRATION
+========================================== */
 
-                    "Content-Type":
-                        "application/json",
+function celebrate(){
 
-                    "Accept":
-                        "application/json"
+    const box = document.getElementById("celebration");
 
-                },
+    const symbols = ["♥","♡","✦","✧","✨"];
 
-                body:
-                    JSON.stringify(payload)
+    for(let i = 0; i < 45; i++){
 
-            }
+        const heart = document.createElement("div");
 
+        heart.className = "heart";
+
+        heart.textContent =
+            symbols[Math.floor(Math.random()*symbols.length)];
+
+        heart.style.left = Math.random()*100 + "%";
+
+        heart.style.setProperty(
+            "--x",
+            (Math.random()*300 - 150) + "px"
         );
 
-    }catch(error){
-
-        console.log(
-            "Formspree error:",
-            error
+        heart.style.setProperty(
+            "--rot",
+            (Math.random()*80 - 40) + "deg"
         );
+
+        heart.style.setProperty(
+            "--duration",
+            (3 + Math.random()*4) + "s"
+        );
+
+        heart.style.animationDelay =
+            (Math.random()*.8) + "s";
+
+        box.appendChild(heart);
+
+        setTimeout(() => heart.remove(),8000);
 
     }
 
-
-    /* =====================================================
-       FORMAT DATE
-    ===================================================== */
-
-    const readableDate =
-        new Date(
-            date + "T00:00:00"
-        ).toLocaleDateString(
-
-            "en-IN",
-
-            {
-
-                weekday:"long",
-
-                day:"numeric",
-
-                month:"long",
-
-                year:"numeric"
-
-            }
-
-        );
+}
 
 
-    /* =====================================================
-       FINAL SCREEN
-    ===================================================== */
+/* ==========================================
+   TOAST
+========================================== */
 
-    document
-        .getElementById("finalDetails")
-        .innerHTML = `
+let toastTimer;
 
-            ✨ <strong>Our vibe:</strong>
-            ${safe(selectedVibe)}
-            <br>
+function showToast(message){
 
-            📅 <strong>Date:</strong>
-            ${safe(readableDate)}
-            <br>
+    clearTimeout(toastTimer);
 
-            ⏰ <strong>Time:</strong>
-            ${safe(time)}
-            <br>
+    toastBox.textContent = message;
 
-            📍 <strong>Place:</strong>
-            ${safe(finalPlace)}
+    toastBox.classList.add("show");
 
+    toastTimer = setTimeout(() => {
+
+        toastBox.classList.remove("show");
+
+    },2200);
+
+}
+
+
+/* ==========================================
+   RESTART
+========================================== */
+
+function restartExperience(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    setTimeout(() => {
+
+        location.reload();
+
+    },700);
+
+}
+
+
+/* ==========================================
+   DESKTOP MOUSE GLOW
+========================================== */
+
+if(window.matchMedia("(pointer:fine)").matches){
+
+    document.addEventListener("pointermove", e => {
+
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+
+        document.body.style.background = `
+            radial-gradient(
+                circle at ${x}% ${y}%,
+                rgba(156,124,255,.08),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 20% 10%,
+                rgba(156,124,255,.10),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 85% 30%,
+                rgba(255,120,183,.10),
+                transparent 30%
+            ),
+            #070711
         `;
 
-
-    nextScreen(6);
-
-    finalCelebration();
+    });
 
 }
 
 
-/* =========================================================
-   FINAL CELEBRATION
-========================================================= */
+/* ==========================================
+   KEYBOARD SUPPORT
+========================================== */
 
-function finalCelebration(){
+document.addEventListener("keydown", event => {
 
-    /*
-       Make sure music remains playing.
-    */
+    if(event.key === "m" || event.key === "M"){
 
-    startMusic();
-
-
-    /*
-       Big custom celebration
-       without requiring a confetti CDN.
-    */
-
-    for(let i=0;i<100;i++){
-
-        const particle =
-            document.createElement("div");
-
-
-        const symbols = [
-
-            "💗",
-            "💕",
-            "❤️",
-            "✨",
-            "💖",
-            "🌸"
-
-        ];
-
-
-        particle.textContent =
-            symbols[
-                Math.floor(
-                    Math.random()*symbols.length
-                )
-            ];
-
-
-        particle.style.position =
-            "fixed";
-
-
-        particle.style.zIndex =
-            "999";
-
-
-        particle.style.left =
-            (Math.random()*100) + "vw";
-
-
-        particle.style.top =
-            "-30px";
-
-
-        particle.style.fontSize =
-            (12 + Math.random()*18) + "px";
-
-
-        particle.style.pointerEvents =
-            "none";
-
-
-        document.body.appendChild(
-            particle
-        );
-
-
-        const x =
-            (Math.random()-.5)*200;
-
-
-        const duration =
-            1800 + Math.random()*2200;
-
-
-        particle.animate(
-
-            [
-
-                {
-
-                    transform:
-                        "translateY(0) rotate(0deg)",
-
-                    opacity:0
-
-                },
-
-                {
-
-                    transform:
-                        `translate(${x}px,40vh) rotate(120deg)`,
-
-                    opacity:1
-
-                },
-
-                {
-
-                    transform:
-                        `translate(${x*2}px,110vh) rotate(260deg)`,
-
-                    opacity:0
-
-                }
-
-            ],
-
-            {
-
-                duration:duration,
-
-                easing:"ease-in"
-
-            }
-
-        ).onfinish =
-            ()=>particle.remove();
+        toggleMusic();
 
     }
 
-}
+});
 
+</script>
 
-/* =========================================================
-   INIT
-========================================================= */
-
-updateProgress();
-
-
-/*
-   Prevent accidental reload-related errors.
-*/
-
-window.addEventListener(
-
-    "beforeunload",
-
-    ()=>{
-
-        /*
-           We intentionally don't stop the audio
-           manually here. The browser handles page
-           destruction automatically.
-        */
-
-    }
-
-);
-
-</script></body>
-</html>
+</body>
+   </html>
