@@ -7,7 +7,7 @@
 <meta name="description" content="A little message for Naina.">
 <meta name="robots" content="noindex, nofollow">
 
-<title>A Little Message for Naina ✦</title>
+<title>A Little Message for Naina ❤️</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,14 +16,12 @@
 <style>
 :root{
     --bg:#070711;
-    --bg2:#0d0b1d;
     --text:#f8f7ff;
     --muted:#aaa7bd;
     --pink:#ff78b7;
     --pink2:#ffb6d8;
     --violet:#9c7cff;
     --cyan:#74d9ff;
-    --glass:rgba(255,255,255,.065);
     --border:rgba(255,255,255,.12);
     --shadow:0 30px 100px rgba(0,0,0,.45);
 }
@@ -51,9 +49,9 @@ body{
     font-family:"DM Sans",sans-serif;
 }
 
-/* ================================
-   LOADING SCREEN
-================================ */
+/* =========================
+   LOADER
+========================= */
 
 #loader{
     position:fixed;
@@ -101,7 +99,6 @@ body{
 .loader-title{
     font-family:"Playfair Display",serif;
     font-size:20px;
-    letter-spacing:.04em;
 }
 
 .loader-small{
@@ -114,9 +111,9 @@ body{
     to{transform:rotate(360deg)}
 }
 
-/* ================================
+/* =========================
    BACKGROUND
-================================ */
+========================= */
 
 #particles{
     position:fixed;
@@ -140,8 +137,15 @@ body{
         transform:translate3d(0,110vh,0);
         opacity:0;
     }
-    10%{opacity:.8}
-    90%{opacity:.5}
+
+    10%{
+        opacity:.8;
+    }
+
+    90%{
+        opacity:.5;
+    }
+
     to{
         transform:translate3d(var(--drift),-10vh,0);
         opacity:0;
@@ -177,9 +181,9 @@ body{
     bottom:-30vw;
 }
 
-/* ================================
-   NAV
-================================ */
+/* =========================
+   TOP BAR
+========================= */
 
 .topbar{
     position:fixed;
@@ -197,7 +201,7 @@ body{
 }
 
 .brand{
-    font-size:12px;
+    font-size:11px;
     letter-spacing:.22em;
     text-transform:uppercase;
     color:rgba(255,255,255,.65);
@@ -233,12 +237,14 @@ body{
 }
 
 .music.playing{
-    box-shadow:0 0 0 7px rgba(255,120,183,.07),0 0 35px rgba(255,120,183,.22);
+    box-shadow:
+        0 0 0 7px rgba(255,120,183,.07),
+        0 0 35px rgba(255,120,183,.22);
 }
 
-/* ================================
+/* =========================
    SCENES
-================================ */
+========================= */
 
 main{
     position:relative;
@@ -271,24 +277,27 @@ main{
     margin-bottom:25px;
 }
 
-.scene-tag::before{
-    content:"";
-    width:24px;
-    height:1px;
-    background:linear-gradient(90deg,transparent,var(--pink));
-}
-
+.scene-tag::before,
 .scene-tag::after{
     content:"";
     width:24px;
     height:1px;
+}
+
+.scene-tag::before{
+    background:linear-gradient(90deg,transparent,var(--pink));
+}
+
+.scene-tag::after{
     background:linear-gradient(90deg,var(--pink),transparent);
 }
 
-h1,h2{
+h1,
+h2,
+h3{
     font-family:"Playfair Display",serif;
     font-weight:500;
-    line-height:1.08;
+    line-height:1.1;
 }
 
 .hero-title{
@@ -297,18 +306,16 @@ h1,h2{
 }
 
 .gradient-text{
-    background:linear-gradient(110deg,#fff 10%,#ffc5df 45%,#a993ff 90%);
+    background:linear-gradient(
+        110deg,
+        #fff 10%,
+        #ffc5df 45%,
+        #a993ff 90%
+    );
+
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
-}
-
-.subtitle{
-    max-width:650px;
-    margin:25px auto 0;
-    color:var(--muted);
-    font-size:clamp(15px,2vw,18px);
-    line-height:1.8;
 }
 
 .eyebrow{
@@ -317,6 +324,14 @@ h1,h2{
     letter-spacing:.12em;
     text-transform:uppercase;
     margin-bottom:12px;
+}
+
+.subtitle{
+    max-width:650px;
+    margin:25px auto 0;
+    color:var(--muted);
+    font-size:clamp(15px,2vw,18px);
+    line-height:1.8;
 }
 
 .scroll-hint{
@@ -329,12 +344,15 @@ h1,h2{
 }
 
 @keyframes breathe{
-    50%{opacity:.45;transform:translateY(5px)}
+    50%{
+        opacity:.45;
+        transform:translateY(5px);
+    }
 }
 
-/* ================================
-   STORY CARDS
-================================ */
+/* =========================
+   STORY
+========================= */
 
 .story-grid{
     display:grid;
@@ -352,7 +370,12 @@ h1,h2{
     text-align:left;
     border:1px solid var(--border);
     border-radius:24px;
-    background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
     backdrop-filter:blur(22px);
     box-shadow:var(--shadow);
     transition:.45s ease;
@@ -376,9 +399,9 @@ h1,h2{
     line-height:1.45;
 }
 
-/* ================================
-   CENTER QUOTE
-================================ */
+/* =========================
+   QUOTES
+========================= */
 
 .quote{
     max-width:760px;
@@ -394,9 +417,9 @@ h1,h2{
     font-style:normal;
 }
 
-/* ================================
-   NAME REVEAL
-================================ */
+/* =========================
+   NAME
+========================= */
 
 .name-wrap{
     margin:35px 0;
@@ -407,25 +430,34 @@ h1,h2{
     font-size:clamp(55px,12vw,125px);
     letter-spacing:.16em;
     margin-right:-.16em;
-    background:linear-gradient(100deg,#fff,#ffb8d8,#a990ff,#fff);
+
+    background:
+        linear-gradient(
+            100deg,
+            #fff,
+            #ffb8d8,
+            #a990ff,
+            #fff
+        );
+
     background-size:250% auto;
+
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
+
     animation:nameShine 6s linear infinite;
 }
 
 @keyframes nameShine{
-    to{background-position:250% center}
+    to{
+        background-position:250% center;
+    }
 }
 
-/* ================================
+/* =========================
    PROPOSAL
-================================ */
-
-.proposal{
-    position:relative;
-}
+========================= */
 
 .proposal::before{
     content:"";
@@ -435,7 +467,12 @@ h1,h2{
     max-width:80vw;
     max-height:80vw;
     border-radius:50%;
-    background:radial-gradient(circle,rgba(255,120,183,.13),transparent 65%);
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,120,183,.13),
+            transparent 65%
+        );
     filter:blur(10px);
     pointer-events:none;
 }
@@ -444,11 +481,21 @@ h1,h2{
     position:relative;
     width:min(760px,100%);
     padding:60px 30px;
+
     border:1px solid rgba(255,255,255,.13);
     border-radius:36px;
-    background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+
     backdrop-filter:blur(30px);
-    box-shadow:0 40px 120px rgba(0,0,0,.5);
+
+    box-shadow:
+        0 40px 120px rgba(0,0,0,.5);
 }
 
 .proposal-box h2{
@@ -488,8 +535,15 @@ h1,h2{
 
 .btn-primary{
     color:#160a12;
-    background:linear-gradient(100deg,#ffc3df,#ff82bb);
-    box-shadow:0 12px 40px rgba(255,120,183,.2);
+    background:
+        linear-gradient(
+            100deg,
+            #ffc3df,
+            #ff82bb
+        );
+
+    box-shadow:
+        0 12px 40px rgba(255,120,183,.2);
 }
 
 .btn-secondary{
@@ -514,9 +568,9 @@ h1,h2{
     font-size:11px;
 }
 
-/* ================================
-   RESULT
-================================ */
+/* =========================
+   ANSWER RESULT
+========================= */
 
 .result{
     display:none;
@@ -528,27 +582,36 @@ h1,h2{
 }
 
 @keyframes resultIn{
-    from{opacity:0;transform:translateY(20px)}
-    to{opacity:1;transform:translateY(0)}
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .result-icon{
     width:76px;
     height:76px;
     margin:0 auto 25px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     border-radius:50%;
+
     background:rgba(255,255,255,.07);
     border:1px solid rgba(255,255,255,.14);
+
     font-size:30px;
 }
 
 .result h3{
-    font-family:"Playfair Display",serif;
     font-size:clamp(30px,6vw,55px);
-    font-weight:500;
 }
 
 .result p{
@@ -558,9 +621,9 @@ h1,h2{
     line-height:1.8;
 }
 
-/* ================================
-   DATE / FOOD
-================================ */
+/* =========================
+   CHOICES
+========================= */
 
 .choice-grid{
     display:grid;
@@ -596,12 +659,18 @@ h1,h2{
     font-weight:700;
 }
 
+/* =========================
+   MESSAGE
+========================= */
+
 .input-card{
     max-width:650px;
     margin:35px auto 0;
     padding:25px;
+
     border:1px solid var(--border);
     border-radius:25px;
+
     background:rgba(255,255,255,.045);
 }
 
@@ -613,30 +682,31 @@ h1,h2{
     margin-bottom:9px;
 }
 
-input,textarea{
+textarea{
     width:100%;
+    min-height:110px;
+    resize:vertical;
+
     border:1px solid rgba(255,255,255,.12);
     outline:none;
     border-radius:15px;
+
     background:rgba(0,0,0,.2);
     color:white;
+
     padding:15px;
+
     font-family:inherit;
     font-size:14px;
 }
 
-textarea{
-    resize:vertical;
-    min-height:110px;
-}
-
-input:focus,textarea:focus{
+textarea:focus{
     border-color:rgba(255,120,183,.5);
 }
 
-/* ================================
+/* =========================
    FINAL
-================================ */
+========================= */
 
 .final{
     min-height:100svh;
@@ -646,13 +716,28 @@ input:focus,textarea:focus{
     width:70px;
     height:1px;
     margin:30px auto;
-    background:linear-gradient(90deg,transparent,var(--pink),transparent);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--pink),
+            transparent
+        );
 }
 
 .signature{
     font-family:"Playfair Display",serif;
     font-size:clamp(36px,7vw,72px);
-    background:linear-gradient(100deg,#fff,#ffafd2,#a894ff);
+
+    background:
+        linear-gradient(
+            100deg,
+            #fff,
+            #ffafd2,
+            #a894ff
+        );
+
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
@@ -664,23 +749,28 @@ input:focus,textarea:focus{
     font-size:13px;
 }
 
-/* ================================
-   NEXT BUTTON
-================================ */
+/* =========================
+   CONTINUE
+========================= */
 
 .continue{
     display:inline-flex;
     align-items:center;
     gap:10px;
+
     margin-top:45px;
     padding:13px 19px;
+
     border-radius:999px;
+
     color:rgba(255,255,255,.72);
     background:rgba(255,255,255,.045);
     border:1px solid rgba(255,255,255,.1);
+
     cursor:pointer;
     font-family:inherit;
     font-size:12px;
+
     transition:.3s ease;
 }
 
@@ -697,9 +787,9 @@ input:focus,textarea:focus{
     transform:translateX(4px);
 }
 
-/* ================================
-   CONFETTI / HEARTS
-================================ */
+/* =========================
+   CELEBRATION
+========================= */
 
 #celebration{
     position:fixed;
@@ -713,40 +803,59 @@ input:focus,textarea:focus{
     position:absolute;
     bottom:-40px;
     font-size:20px;
-    animation:heartUp var(--duration) ease-out forwards;
+
+    animation:
+        heartUp var(--duration)
+        ease-out forwards;
 }
 
 @keyframes heartUp{
+
     0%{
         transform:translate(0,0) rotate(0);
         opacity:0;
     }
-    10%{opacity:1}
+
+    10%{
+        opacity:1;
+    }
+
     100%{
-        transform:translate(var(--x),-110vh) rotate(var(--rot));
+        transform:
+            translate(var(--x),-110vh)
+            rotate(var(--rot));
+
         opacity:0;
     }
 }
 
-/* ================================
+/* =========================
    TOAST
-================================ */
+========================= */
 
 .toast{
     position:fixed;
     left:50%;
     bottom:90px;
     z-index:900;
+
     transform:translate(-50%,20px);
+
     padding:13px 18px;
+
     border-radius:999px;
+
     background:rgba(15,13,27,.9);
     border:1px solid rgba(255,255,255,.12);
+
     backdrop-filter:blur(20px);
+
     color:#eee;
     font-size:12px;
+
     opacity:0;
     pointer-events:none;
+
     transition:.35s ease;
 }
 
@@ -755,9 +864,9 @@ input:focus,textarea:focus{
     transform:translate(-50%,0);
 }
 
-/* ================================
+/* =========================
    MOBILE
-================================ */
+========================= */
 
 @media(max-width:700px){
 
@@ -777,10 +886,6 @@ input:focus,textarea:focus{
 
     .scene{
         padding:85px 16px;
-    }
-
-    .scene-inner{
-        width:100%;
     }
 
     .story-grid{
@@ -828,11 +933,12 @@ input:focus,textarea:focus{
     }
 }
 
-/* ================================
+/* =========================
    REDUCED MOTION
-================================ */
+========================= */
 
 @media(prefers-reduced-motion:reduce){
+
     *,
     *::before,
     *::after{
@@ -841,442 +947,860 @@ input:focus,textarea:focus{
         scroll-behavior:auto !important;
         transition-duration:.01ms !important;
     }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
+<!-- =================================
+     LOADING SCREEN
+================================= -->
+
 <div id="loader">
+
     <div class="loader-inner">
+
         <div class="loader-orbit"></div>
-        <div class="loader-title">Preparing a little message…</div>
-        <div class="loader-small">for Naina ✦</div>
+
+        <div class="loader-title">
+            A little message…
+        </div>
+
+        <div class="loader-small">
+            for Naina ❤️
+        </div>
+
     </div>
+
 </div>
 
-<!-- BACKGROUND -->
+
+<!-- =================================
+     BACKGROUND
+================================= -->
+
 <div id="particles"></div>
+
 <div class="ambient one"></div>
 <div class="ambient two"></div>
 <div class="ambient three"></div>
 
-<!-- TOP BAR -->
+
+<!-- =================================
+     TOP BAR
+================================= -->
+
 <header class="topbar">
-    <div class="brand">A Little Message</div>
-    <div class="scene-counter" id="sceneCounter">01 / 10</div>
+
+    <div class="brand">
+        A Little Message
+    </div>
+
+    <div class="scene-counter" id="sceneCounter">
+        01 / 10
+    </div>
+
 </header>
 
-<!-- MUSIC -->
-<button class="music" id="musicButton" aria-label="Toggle music">♫</button>
 
-<audio id="bgMusic" preload="auto" loop playsinline>
-    <source src="./Naina_Nu_Proposal_Edit.mp3" type="audio/mpeg">
+<!-- =================================
+     MUSIC
+================================= -->
+
+<button
+    class="music"
+    id="musicButton"
+    aria-label="Play or pause music"
+>
+    ♫
+</button>
+
+<audio
+    id="bgMusic"
+    preload="auto"
+    loop
+    playsinline
+>
+    <source
+        src="./Naina_Nu_Proposal_Edit.mp3"
+        type="audio/mpeg"
+    >
 </audio>
+
 
 <main>
 
-<!-- ================================
-     SCENE 01
-================================ -->
+
+<!-- =================================
+     01 — OPENING
+================================= -->
+
 <section class="scene" id="scene1">
+
     <div class="scene-inner">
 
-        <div class="scene-tag">01 · Begin</div>
+        <div class="scene-tag">
+            01 · Begin
+        </div>
 
-        <div class="eyebrow">There is something I wanted to say</div>
+        <div class="eyebrow">
+            Hey Naina…
+        </div>
 
         <h1 class="hero-title">
-            A little<br>
-            <span class="gradient-text">message</span>
-            for you.
+
+            I have something<br>
+
+            <span class="gradient-text">
+                to tell you.
+            </span>
+
         </h1>
 
         <p class="subtitle">
-            Not a big speech. Not something complicated.
-            Just a few things I've been meaning to say.
+
+            It's simple.
+            I just didn't know how to say it.
+
         </p>
 
-        <button class="continue" onclick="goTo('scene2');startMusic()">
-            Open my message <span>→</span>
+        <button
+            class="continue"
+            onclick="goTo('scene2'); startMusic()"
+        >
+            Open my message
+            <span>→</span>
         </button>
 
-        <div class="scroll-hint">a small journey · take your time</div>
+        <div class="scroll-hint">
+            Take your time
+        </div>
 
     </div>
+
 </section>
 
 
-<!-- ================================
-     SCENE 02
-================================ -->
+<!-- =================================
+     02 — THOUGHT
+================================= -->
+
 <section class="scene" id="scene2">
+
     <div class="scene-inner">
 
-        <div class="scene-tag">02 · A thought</div>
+        <div class="scene-tag">
+            02 · A thought
+        </div>
 
         <h2 class="quote">
-            Sometimes someone simply
-            <em>stands out.</em>
+
+            Sometimes,
+            someone just becomes
+            <em>special.</em>
+
         </h2>
 
         <div class="story-grid">
 
             <div class="story-card">
-                <div class="story-number">01</div>
-                <p>Not because you planned it.</p>
+
+                <div class="story-number">
+                    01
+                </div>
+
+                <p>
+                    You don't plan it.
+                </p>
+
             </div>
 
-            <div class="story-card">
-                <div class="story-number">02</div>
-                <p>Not because you expected it.</p>
-            </div>
 
             <div class="story-card">
-                <div class="story-number">03</div>
-                <p>It just… happens.</p>
+
+                <div class="story-number">
+                    02
+                </div>
+
+                <p>
+                    You don't expect it.
+                </p>
+
+            </div>
+
+
+            <div class="story-card">
+
+                <div class="story-number">
+                    03
+                </div>
+
+                <p>
+                    It just happens.
+                </p>
+
             </div>
 
         </div>
 
-        <button class="continue" onclick="goTo('scene3')">
-            Continue <span>→</span>
+        <button
+            class="continue"
+            onclick="goTo('scene3')"
+        >
+            Continue
+            <span>→</span>
         </button>
 
     </div>
+
 </section>
 
 
-<!-- ================================
-     SCENE 03
-================================ -->
+<!-- =================================
+     03 — NAINA
+================================= -->
+
 <section class="scene" id="scene3">
+
     <div class="scene-inner">
 
-        <div class="scene-tag">03 · The person</div>
+        <div class="scene-tag">
+            03 · The person
+        </div>
 
-        <div class="eyebrow">And for me…</div>
+        <div class="eyebrow">
+            And for me…
+        </div>
 
         <div class="name-wrap">
-            <div class="name">NAINA</div>
+
+            <div class="name">
+                NAINA
+            </div>
+
         </div>
 
         <p class="subtitle">
-            I don't know exactly what you think about me.
-            And honestly, I don't want to pretend that I do.
+
+            I don't know what you think about me.
+            And that's okay.
+
         </p>
 
-        <button class="continue" onclick="goTo('scene4')">
-            There's more <span>→</span>
+        <button
+            class="continue"
+            onclick="goTo('scene4')"
+        >
+            There's more
+            <span>→</span>
         </button>
 
     </div>
+
 </section>
 
 
-<!-- ================================
-     SCENE 04
-================================ -->
+<!-- =================================
+     04 — HONESTY
+================================= -->
+
 <section class="scene" id="scene4">
+
     <div class="scene-inner">
 
-        <div class="scene-tag">04 · Honesty</div>
+        <div class="scene-tag">
+            04 · Honestly
+        </div>
 
         <h2 class="quote">
-            So instead of guessing what the answer might be,
-            I thought I'd simply
-            <em>ask.</em>
+
+            So I thought…
+
+            <br><br>
+
+            why not just
+            <em>tell you?</em>
+
         </h2>
 
         <p class="subtitle">
-            Because sometimes the simplest question
-            is the most honest one.
+
+            I really like you.
+            And I've wanted to tell you for a while.
+
         </p>
 
-        <button class="continue" onclick="goTo('scene5')">
-            Ask me <span>→</span>
+        <button
+            class="continue"
+            onclick="goTo('scene5')"
+        >
+            One important question
+            <span>→</span>
         </button>
 
     </div>
+
 </section>
 
 
-<!-- ================================
-     SCENE 05 — PROPOSAL
-================================ -->
-<section class="scene proposal" id="scene5">
+<!-- =================================
+     05 — THE PROPOSAL
+================================= -->
+
+<section
+    class="scene proposal"
+    id="scene5"
+>
+
     <div class="scene-inner">
 
         <div class="proposal-box">
 
+
+            <!-- MAIN QUESTION -->
+
             <div id="proposalContent">
 
-                <div class="scene-tag">05 · The question</div>
+                <div class="scene-tag">
+                    05 · The question
+                </div>
 
-                <h2>Nancy Raghav</h2>
+                <div class="eyebrow">
+                    Naina…
+                </div>
+
+                <h2>
+                    Can I ask you something?
+                </h2>
 
                 <p class="question">
-                    Would you give me a chance to know you better
-                    and see where this could go?
+
+                    Would you like to know me better?
+
                 </p>
 
                 <div class="buttons">
 
-                    <button class="btn btn-primary" onclick="answerYes()">
-                        Yes, let's see ✨
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="answerYes()"
+                    >
+                        Yes ❤️
                     </button>
 
-                    <button class="btn btn-secondary" onclick="answerTime()">
-                        I'd like some time 🤍
+
+                    <button
+                        class="btn btn-secondary"
+                        onclick="answerTime()"
+                    >
+                        I need some time 🤍
                     </button>
 
-                    <button class="btn btn-danger" onclick="answerNo()">
+
+                    <button
+                        class="btn btn-danger"
+                        onclick="answerNo()"
+                    >
                         No, thank you
                     </button>
 
                 </div>
 
                 <div class="small-note">
-                    There is no right answer. Just your honest one.
+
+                    Just tell me what you really feel.
+
                 </div>
 
             </div>
 
-            <!-- YES -->
-            <div class="result" id="yesResult">
 
-                <div class="result-icon">✦</div>
+            <!-- YES RESULT -->
 
-                <h3>Maybe this is where it begins.</h3>
+            <div
+                class="result"
+                id="yesResult"
+            >
+
+                <div class="result-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    You said yes.
+                </h3>
 
                 <p>
-                    Thank you, Naina.
-                    Whatever comes next, I'm glad I finally had
-                    the courage to ask.
+
+                    Okay…
+                    this really made me smile. ❤️
+
+                    <br><br>
+
+                    Let's take it slowly
+                    and see where it goes.
+
                 </p>
 
-                <button class="continue" onclick="goTo('scene6')">
-                    Continue the moment <span>→</span>
+                <button
+                    class="continue"
+                    onclick="goTo('scene6')"
+                >
+                    Continue
+                    <span>→</span>
                 </button>
 
             </div>
 
-            <!-- TIME -->
-            <div class="result" id="timeResult">
 
-                <div class="result-icon">🤍</div>
+            <!-- TIME RESULT -->
 
-                <h3>Take your time.</h3>
+            <div
+                class="result"
+                id="timeResult"
+            >
+
+                <div class="result-icon">
+                    🤍
+                </div>
+
+                <h3>
+                    That's okay.
+                </h3>
 
                 <p>
-                    You don't have to decide immediately.
-                    Your comfort matters, and I completely respect that.
+
+                    You don't have to decide right now.
+
+                    <br><br>
+
+                    Take your time.
+                    I completely understand.
+
                 </p>
 
-                <button class="continue" onclick="goTo('scene9')">
-                    Continue <span>→</span>
+                <button
+                    class="continue"
+                    onclick="goTo('scene9')"
+                >
+                    Continue
+                    <span>→</span>
                 </button>
 
             </div>
 
-            <!-- NO -->
-            <div class="result" id="noResult">
 
-                <div class="result-icon">♡</div>
+            <!-- NO RESULT -->
 
-                <h3>Thank you for being honest.</h3>
+            <div
+                class="result"
+                id="noResult"
+            >
+
+                <div class="result-icon">
+                    ♡
+                </div>
+
+                <h3>
+                    It's okay.
+                </h3>
 
                 <p>
-                    I genuinely appreciate you taking the time
-                    to read this and hear me out.
+
+                    Thank you for being honest with me.
+
+                    <br><br>
+
+                    I really appreciate you
+                    taking the time to read this.
+
                 </p>
 
-                <button class="continue" onclick="goTo('scene9')">
-                    Continue <span>→</span>
+                <button
+                    class="continue"
+                    onclick="goTo('scene9')"
+                >
+                    Continue
+                    <span>→</span>
                 </button>
 
             </div>
+
 
         </div>
 
     </div>
+
 </section>
 
 
-<!-- ================================
-     SCENE 06
-================================ -->
+<!-- =================================
+     06 — IF YES
+================================= -->
+
 <section class="scene" id="scene6">
+
     <div class="scene-inner">
 
-        <div class="scene-tag">06 · If you're comfortable</div>
+        <div class="scene-tag">
+            06 · If you're comfortable
+        </div>
+
+        <div class="eyebrow">
+            Then…
+        </div>
 
         <h2 class="quote">
-            Then maybe we can start with something
+
+            Maybe we can start with
+            something
             <em>simple.</em>
+
         </h2>
 
         <p class="subtitle">
-            No complicated plans. Just spending a little time together
-            and seeing where the conversation takes us.
+
+            We can talk.
+            Spend some time together.
+            And just see how it feels.
+
         </p>
 
-        <button class="continue" onclick="goTo('scene7')">
-            One tiny question <span>→</span>
+        <button
+            class="continue"
+            onclick="goTo('scene7')"
+        >
+            One little question
+            <span>→</span>
         </button>
 
     </div>
+
 </section>
 
 
-<!-- ================================
-     SCENE 07 — FIRST OUTING
-================================ -->
+<!-- =================================
+     07 — FIRST OUTING
+================================= -->
+
 <section class="scene" id="scene7">
+
     <div class="scene-inner">
 
-        <div class="scene-tag">07 · First outing</div>
+        <div class="scene-tag">
+            07 · First outing
+        </div>
 
         <h2 class="quote">
-            What sounds like
-            <em>your kind of plan?</em>
+
+            What would you
+            <em>like to do?</em>
+
         </h2>
 
-        <div class="choice-grid" id="planChoices">
+        <p class="subtitle">
 
-            <div class="choice" onclick="selectChoice(this,'Coffee')">
-                <div class="choice-icon">☕</div>
-                <div class="choice-label">Coffee</div>
+            You choose. 😊
+
+        </p>
+
+
+        <div
+            class="choice-grid"
+            id="planChoices"
+        >
+
+
+            <div
+                class="choice"
+                onclick="selectChoice(this,'Coffee')"
+            >
+
+                <div class="choice-icon">
+                    ☕
+                </div>
+
+                <div class="choice-label">
+                    Coffee
+                </div>
+
             </div>
 
-            <div class="choice" onclick="selectChoice(this,'Food')">
-                <div class="choice-icon">🍕</div>
-                <div class="choice-label">Food</div>
+
+            <div
+                class="choice"
+                onclick="selectChoice(this,'Food')"
+            >
+
+                <div class="choice-icon">
+                    🍕
+                </div>
+
+                <div class="choice-label">
+                    Food
+                </div>
+
             </div>
 
-            <div class="choice" onclick="selectChoice(this,'Movie')">
-                <div class="choice-icon">🎬</div>
-                <div class="choice-label">Movie</div>
+
+            <div
+                class="choice"
+                onclick="selectChoice(this,'Movie')"
+            >
+
+                <div class="choice-icon">
+                    🎬
+                </div>
+
+                <div class="choice-label">
+                    Movie
+                </div>
+
             </div>
 
-            <div class="choice" onclick="selectChoice(this,'Walk')">
-                <div class="choice-icon">🌆</div>
-                <div class="choice-label">Evening walk</div>
+
+            <div
+                class="choice"
+                onclick="selectChoice(this,'Evening Walk')"
+            >
+
+                <div class="choice-icon">
+                    🌆
+                </div>
+
+                <div class="choice-label">
+                    Evening walk
+                </div>
+
             </div>
 
-            <div class="choice" onclick="selectChoice(this,'Something fun')">
-                <div class="choice-icon">🎡</div>
-                <div class="choice-label">Something fun</div>
+
+            <div
+                class="choice"
+                onclick="selectChoice(this,'Something Fun')"
+            >
+
+                <div class="choice-icon">
+                    🎡
+                </div>
+
+                <div class="choice-label">
+                    Something fun
+                </div>
+
             </div>
 
-            <div class="choice" onclick="selectChoice(this,'Your choice')">
-                <div class="choice-icon">✨</div>
-                <div class="choice-label">Your choice</div>
+
+            <div
+                class="choice"
+                onclick="selectChoice(this,'Your Choice')"
+            >
+
+                <div class="choice-icon">
+                    ✨
+                </div>
+
+                <div class="choice-label">
+                    Your choice
+                </div>
+
             </div>
+
 
         </div>
 
-        <button class="continue" onclick="goTo('scene8')">
-            Next <span>→</span>
+
+        <button
+            class="continue"
+            onclick="goTo('scene8')"
+        >
+            Next
+            <span>→</span>
         </button>
 
     </div>
+
 </section>
 
 
-<!-- ================================
-     SCENE 08 — FUN QUESTION
-================================ -->
+<!-- =================================
+     08 — FUN
+================================= -->
+
 <section class="scene" id="scene8">
+
     <div class="scene-inner">
 
-        <div class="scene-tag">08 · Important question</div>
+        <div class="scene-tag">
+            08 · Very important
+        </div>
 
-        <div class="eyebrow">This is extremely serious.</div>
+        <div class="eyebrow">
+            Okay, one serious question 😂
+        </div>
 
         <h2 class="quote">
+
             Who is choosing
             <em>the food?</em>
+
         </h2>
 
-        <div class="choice-grid" id="foodChoices">
 
-            <div class="choice" onclick="selectChoice(this,'You choose')">
-                <div class="choice-icon">😌</div>
-                <div class="choice-label">You</div>
+        <div
+            class="choice-grid"
+            id="foodChoices"
+        >
+
+
+            <div
+                class="choice"
+                onclick="selectChoice(this,'You choose')"
+            >
+
+                <div class="choice-icon">
+                    😌
+                </div>
+
+                <div class="choice-label">
+                    You
+                </div>
+
             </div>
 
-            <div class="choice" onclick="selectChoice(this,'I choose')">
-                <div class="choice-icon">😎</div>
-                <div class="choice-label">Me</div>
+
+            <div
+                class="choice"
+                onclick="selectChoice(this,'I choose')"
+            >
+
+                <div class="choice-icon">
+                    😎
+                </div>
+
+                <div class="choice-label">
+                    Me
+                </div>
+
             </div>
 
-            <div class="choice" onclick="selectChoice(this,'We decide together')">
-                <div class="choice-icon">😂</div>
-                <div class="choice-label">We figure it out</div>
+
+            <div
+                class="choice"
+                onclick="selectChoice(this,'We decide together')"
+            >
+
+                <div class="choice-icon">
+                    😂
+                </div>
+
+                <div class="choice-label">
+                    We decide together
+                </div>
+
             </div>
+
 
         </div>
 
-        <button class="continue" onclick="goTo('scene9')">
-            Final thought <span>→</span>
+
+        <button
+            class="continue"
+            onclick="goTo('scene9')"
+        >
+            One last thing
+            <span>→</span>
         </button>
 
     </div>
+
 </section>
 
 
-<!-- ================================
-     SCENE 09 — FINAL MESSAGE
-================================ -->
+<!-- =================================
+     09 — FINAL MESSAGE
+================================= -->
+
 <section class="scene" id="scene9">
+
     <div class="scene-inner">
 
-        <div class="scene-tag">09 · One last thing</div>
+        <div class="scene-tag">
+            09 · One last thing
+        </div>
 
         <h2 class="quote">
-            I didn't make this because I know
-            what your answer will be.
+
+            Whatever your answer is…
+
+            <br><br>
+
+            I'm glad I
+            <em>told you.</em>
+
         </h2>
 
         <p class="subtitle">
-            I made it because I wanted to be honest about how I feel.
-            And because some things are better said
-            than left unsaid.
+
+            I just wanted to tell you
+            how I feel.
+
+            <br>
+
+            That's all.
+
         </p>
+
 
         <div class="input-card">
 
             <label for="message">
-                If you want, leave a little message
+
+                If you want,
+                you can leave me a message.
+
             </label>
 
             <textarea
                 id="message"
                 maxlength="500"
-                placeholder="Anything you'd like to say…"
+                placeholder="Write something…"
             ></textarea>
 
         </div>
 
-        <button class="continue" onclick="submitMessage()">
-            Finish the moment <span>→</span>
+
+        <button
+            class="continue"
+            onclick="submitMessage()"
+        >
+            Finish
+            <span>→</span>
         </button>
 
     </div>
+
 </section>
 
 
-<!-- ================================
-     SCENE 10 — END
-================================ -->
+<!-- =================================
+     10 — END
+================================= -->
+
 <section class="scene final" id="scene10">
+
     <div class="scene-inner">
 
-        <div class="scene-tag">10 · The end… or maybe not</div>
+        <div class="scene-tag">
+            10 · The end
+        </div>
 
-        <div class="eyebrow">Naina × Shrikant</div>
+        <div class="eyebrow">
+            Naina × Shrikant
+        </div>
 
         <div class="signature">
             Maybe.
@@ -1285,49 +1809,121 @@ input:focus,textarea:focus{
         <div class="final-line"></div>
 
         <h2 class="quote">
-            Maybe this is where
-            <em>our story begins.</em>
+
+            Maybe we can start
+            something
+            <em>new.</em>
+
         </h2>
 
         <p class="final-small">
-            Thank you for taking the time to experience this.
+
+            Thank you for reading this. ❤️
+
         </p>
 
-        <button class="continue" onclick="restartExperience()">
-            Replay experience <span>↻</span>
+
+        <button
+            class="continue"
+            onclick="restartExperience()"
+        >
+            Read it again
+            <span>↻</span>
         </button>
 
     </div>
+
 </section>
+
 
 </main>
 
-<div id="celebration"></div>
-<div class="toast" id="toast"></div>
 
-<!-- FORMSPREE -->
-<form id="proposalForm" action="https://formspree.io/f/mdeobrnn" method="POST" style="display:none;">
-    <input type="hidden" name="proposal_answer" id="formAnswer">
-    <input type="hidden" name="first_outing" id="formPlan">
-    <input type="hidden" name="food_choice" id="formFood">
-    <input type="hidden" name="message" id="formMessage">
-    <input type="hidden" name="source" value="Naina × Shrikant Proposal Experience">
+<!-- =================================
+     CELEBRATION
+================================= -->
+
+<div id="celebration"></div>
+
+
+<!-- =================================
+     TOAST
+================================= -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<!-- =================================
+     FORMSPREE
+================================= -->
+
+<form
+    id="proposalForm"
+    action="https://formspree.io/f/mdeobrnn"
+    method="POST"
+    style="display:none;"
+>
+
+    <input
+        type="hidden"
+        name="proposal_answer"
+        id="formAnswer"
+    >
+
+    <input
+        type="hidden"
+        name="first_outing"
+        id="formPlan"
+    >
+
+    <input
+        type="hidden"
+        name="food_choice"
+        id="formFood"
+    >
+
+    <input
+        type="hidden"
+        name="message"
+        id="formMessage"
+    >
+
+    <input
+        type="hidden"
+        name="source"
+        value="Naina × Shrikant Proposal Experience"
+    >
+
 </form>
+
 
 <script>
 
 /* ==========================================
-   GLOBAL STATE
+   STATE
 ========================================== */
 
-const music = document.getElementById("bgMusic");
-const musicButton = document.getElementById("musicButton");
-const sceneCounter = document.getElementById("sceneCounter");
-const toastBox = document.getElementById("toast");
+const music =
+    document.getElementById("bgMusic");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+const sceneCounter =
+    document.getElementById("sceneCounter");
+
+const toastBox =
+    document.getElementById("toast");
 
 let musicPlaying = false;
+
 let selectedPlan = "";
+
 let selectedFood = "";
+
 let proposalAnswer = "";
 
 
@@ -1338,8 +1934,12 @@ let proposalAnswer = "";
 window.addEventListener("load", () => {
 
     setTimeout(() => {
-        document.getElementById("loader").classList.add("hidden");
-    }, 1100);
+
+        document
+            .getElementById("loader")
+            .classList.add("hidden");
+
+    },1100);
 
 });
 
@@ -1348,29 +1948,44 @@ window.addEventListener("load", () => {
    PARTICLES
 ========================================== */
 
-const particles = document.getElementById("particles");
+const particles =
+    document.getElementById("particles");
 
 for(let i = 0; i < 55; i++){
 
-    const p = document.createElement("div");
+    const p =
+        document.createElement("div");
 
     p.className = "particle";
 
-    p.style.left = Math.random() * 100 + "%";
-    p.style.setProperty("--drift", (Math.random() * 180 - 90) + "px");
-    p.style.animationDuration = (7 + Math.random() * 13) + "s";
-    p.style.animationDelay = (-Math.random() * 15) + "s";
-    p.style.opacity = Math.random() * .6;
+    p.style.left =
+        Math.random() * 100 + "%";
+
+    p.style.setProperty(
+        "--drift",
+        (Math.random() * 180 - 90) + "px"
+    );
+
+    p.style.animationDuration =
+        (7 + Math.random() * 13) + "s";
+
+    p.style.animationDelay =
+        (-Math.random() * 15) + "s";
+
+    p.style.opacity =
+        Math.random() * .6;
 
     particles.appendChild(p);
+
 }
 
 
 /* ==========================================
-   SCENE NAVIGATION
+   NAVIGATION
 ========================================== */
 
 const sceneNumbers = {
+
     scene1:"01",
     scene2:"02",
     scene3:"03",
@@ -1381,57 +1996,79 @@ const sceneNumbers = {
     scene8:"08",
     scene9:"09",
     scene10:"10"
+
 };
+
 
 function goTo(id){
 
-    const target = document.getElementById(id);
+    const target =
+        document.getElementById(id);
 
     if(!target) return;
 
     target.scrollIntoView({
+
         behavior:"smooth",
+
         block:"start"
+
     });
 
     updateCounter(id);
+
 }
+
 
 function updateCounter(id){
 
     if(sceneNumbers[id]){
-        sceneCounter.textContent = sceneNumbers[id] + " / 10";
+
+        sceneCounter.textContent =
+            sceneNumbers[id] + " / 10";
+
     }
 
 }
 
 
 /* ==========================================
-   INTERSECTION OBSERVER
+   SCENE OBSERVER
 ========================================== */
 
-const observer = new IntersectionObserver(
-    entries => {
+const observer =
+    new IntersectionObserver(
 
-        entries.forEach(entry => {
+        entries => {
 
-            if(entry.isIntersecting){
+            entries.forEach(entry => {
 
-                updateCounter(entry.target.id);
+                if(entry.isIntersecting){
 
-            }
+                    updateCounter(
+                        entry.target.id
+                    );
 
-        });
+                }
 
-    },
-    {
-        threshold:.55
-    }
-);
+            });
 
-document.querySelectorAll(".scene").forEach(scene => {
-    observer.observe(scene);
-});
+        },
+
+        {
+            threshold:.55
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".scene")
+    .forEach(scene => {
+
+        observer.observe(scene);
+
+    });
 
 
 /* ==========================================
@@ -1450,17 +2087,24 @@ async function startMusic(){
 
         musicPlaying = true;
 
-        musicButton.classList.add("playing");
+        musicButton.classList.add(
+            "playing"
+        );
 
-    }catch(error){
+    }
+
+    catch(error){
 
         musicPlaying = false;
 
-        showToast("Tap ♫ to start the music");
+        showToast(
+            "Tap ♫ to start the music"
+        );
 
     }
 
 }
+
 
 function stopMusic(){
 
@@ -1468,9 +2112,12 @@ function stopMusic(){
 
     musicPlaying = false;
 
-    musicButton.classList.remove("playing");
+    musicButton.classList.remove(
+        "playing"
+    );
 
 }
+
 
 async function toggleMusic(){
 
@@ -1478,7 +2125,9 @@ async function toggleMusic(){
 
         stopMusic();
 
-    }else{
+    }
+
+    else{
 
         await startMusic();
 
@@ -1486,38 +2135,65 @@ async function toggleMusic(){
 
 }
 
-musicButton.addEventListener("click", toggleMusic);
 
-music.addEventListener("play", () => {
+musicButton.addEventListener(
+    "click",
+    toggleMusic
+);
 
-    musicPlaying = true;
-    musicButton.classList.add("playing");
 
-});
+music.addEventListener(
+    "play",
+    () => {
 
-music.addEventListener("pause", () => {
+        musicPlaying = true;
 
-    musicPlaying = false;
-    musicButton.classList.remove("playing");
+        musicButton.classList.add(
+            "playing"
+        );
 
-});
+    }
+);
 
-music.addEventListener("error", () => {
 
-    showToast("Music file couldn't be loaded");
+music.addEventListener(
+    "pause",
+    () => {
 
-});
+        musicPlaying = false;
+
+        musicButton.classList.remove(
+            "playing"
+        );
+
+    }
+);
+
+
+music.addEventListener(
+    "error",
+    () => {
+
+        showToast(
+            "Music file could not be loaded"
+        );
+
+    }
+);
 
 
 /* ==========================================
-   PROPOSAL ANSWERS
+   ANSWERS
 ========================================== */
 
 function hideProposal(){
 
-    document.getElementById("proposalContent").style.display = "none";
+    document
+        .getElementById("proposalContent")
+        .style.display = "none";
 
 }
+
 
 function answerYes(){
 
@@ -1525,7 +2201,9 @@ function answerYes(){
 
     hideProposal();
 
-    document.getElementById("yesResult").classList.add("active");
+    document
+        .getElementById("yesResult")
+        .classList.add("active");
 
     startMusic();
 
@@ -1535,25 +2213,33 @@ function answerYes(){
 
 }
 
+
 function answerTime(){
 
-    proposalAnswer = "I'd like some time";
+    proposalAnswer =
+        "I'd like some time";
 
     hideProposal();
 
-    document.getElementById("timeResult").classList.add("active");
+    document
+        .getElementById("timeResult")
+        .classList.add("active");
 
     saveResponse();
 
 }
 
+
 function answerNo(){
 
-    proposalAnswer = "No, thank you";
+    proposalAnswer =
+        "No, thank you";
 
     hideProposal();
 
-    document.getElementById("noResult").classList.add("active");
+    document
+        .getElementById("noResult")
+        .classList.add("active");
 
     saveResponse();
 
@@ -1564,31 +2250,47 @@ function answerNo(){
    CHOICES
 ========================================== */
 
-function selectChoice(element,value){
+function selectChoice(
+    element,
+    value
+){
 
-    const parent = element.parentElement;
+    const parent =
+        element.parentElement;
 
-    parent.querySelectorAll(".choice").forEach(item => {
+    parent
+        .querySelectorAll(".choice")
+        .forEach(item => {
 
-        item.classList.remove("selected");
+            item.classList.remove(
+                "selected"
+            );
 
-    });
+        });
 
-    element.classList.add("selected");
+    element.classList.add(
+        "selected"
+    );
+
 
     if(parent.id === "planChoices"){
 
         selectedPlan = value;
 
-        showToast("Selected: " + value);
+        showToast(
+            "Selected: " + value
+        );
 
     }
+
 
     if(parent.id === "foodChoices"){
 
         selectedFood = value;
 
-        showToast("Decision recorded 😌");
+        showToast(
+            "Got it 😄"
+        );
 
     }
 
@@ -1601,31 +2303,60 @@ function selectChoice(element,value){
 
 async function saveResponse(){
 
-    const form = document.getElementById("proposalForm");
+    const form =
+        document.getElementById(
+            "proposalForm"
+        );
 
-    document.getElementById("formAnswer").value = proposalAnswer;
-    document.getElementById("formPlan").value = selectedPlan;
-    document.getElementById("formFood").value = selectedFood;
-    document.getElementById("formMessage").value =
-        document.getElementById("message")?.value || "";
+    document.getElementById(
+        "formAnswer"
+    ).value = proposalAnswer;
+
+    document.getElementById(
+        "formPlan"
+    ).value = selectedPlan;
+
+    document.getElementById(
+        "formFood"
+    ).value = selectedFood;
+
+    document.getElementById(
+        "formMessage"
+    ).value =
+        document.getElementById(
+            "message"
+        )?.value || "";
+
 
     try{
 
-        await fetch(form.action,{
+        await fetch(
 
-            method:"POST",
+            form.action,
 
-            body:new FormData(form),
+            {
 
-            headers:{
-                "Accept":"application/json"
+                method:"POST",
+
+                body:new FormData(form),
+
+                headers:{
+                    "Accept":
+                        "application/json"
+                }
+
             }
 
-        });
+        );
 
-    }catch(error){
+    }
 
-        console.log("Form submission unavailable:",error);
+    catch(error){
+
+        console.log(
+            "Form submission unavailable:",
+            error
+        );
 
     }
 
@@ -1647,42 +2378,74 @@ async function submitMessage(){
 
 function celebrate(){
 
-    const box = document.getElementById("celebration");
+    const box =
+        document.getElementById(
+            "celebration"
+        );
 
-    const symbols = ["♥","♡","✦","✧","✨"];
+    const symbols = [
+        "♥",
+        "♡",
+        "✦",
+        "✧",
+        "✨"
+    ];
+
 
     for(let i = 0; i < 45; i++){
 
-        const heart = document.createElement("div");
+        const heart =
+            document.createElement(
+                "div"
+            );
 
         heart.className = "heart";
 
         heart.textContent =
-            symbols[Math.floor(Math.random()*symbols.length)];
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
 
-        heart.style.left = Math.random()*100 + "%";
+
+        heart.style.left =
+            Math.random() * 100 + "%";
+
 
         heart.style.setProperty(
             "--x",
-            (Math.random()*300 - 150) + "px"
+            (Math.random()*300 - 150)
+            + "px"
         );
+
 
         heart.style.setProperty(
             "--rot",
-            (Math.random()*80 - 40) + "deg"
+            (Math.random()*80 - 40)
+            + "deg"
         );
+
 
         heart.style.setProperty(
             "--duration",
-            (3 + Math.random()*4) + "s"
+            (3 + Math.random()*4)
+            + "s"
         );
+
 
         heart.style.animationDelay =
             (Math.random()*.8) + "s";
 
+
         box.appendChild(heart);
 
-        setTimeout(() => heart.remove(),8000);
+
+        setTimeout(
+            () => heart.remove(),
+            8000
+        );
 
     }
 
@@ -1695,19 +2458,32 @@ function celebrate(){
 
 let toastTimer;
 
+
 function showToast(message){
 
     clearTimeout(toastTimer);
 
-    toastBox.textContent = message;
+    toastBox.textContent =
+        message;
 
-    toastBox.classList.add("show");
+    toastBox.classList.add(
+        "show"
+    );
 
-    toastTimer = setTimeout(() => {
 
-        toastBox.classList.remove("show");
+    toastTimer = setTimeout(
 
-    },2200);
+        () => {
+
+            toastBox.classList.remove(
+                "show"
+            );
+
+        },
+
+        2200
+
+    );
 
 }
 
@@ -1719,69 +2495,96 @@ function showToast(message){
 function restartExperience(){
 
     window.scrollTo({
+
         top:0,
+
         behavior:"smooth"
+
     });
 
-    setTimeout(() => {
 
-        location.reload();
-
-    },700);
+    setTimeout(
+        () => location.reload(),
+        700
+    );
 
 }
 
 
 /* ==========================================
-   DESKTOP MOUSE GLOW
+   DESKTOP MOUSE LIGHT
 ========================================== */
 
-if(window.matchMedia("(pointer:fine)").matches){
+if(
+    window.matchMedia(
+        "(pointer:fine)"
+    ).matches
+){
 
-    document.addEventListener("pointermove", e => {
+    document.addEventListener(
+        "pointermove",
+        e => {
 
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
+            const x =
+                (e.clientX /
+                window.innerWidth) * 100;
 
-        document.body.style.background = `
-            radial-gradient(
-                circle at ${x}% ${y}%,
-                rgba(156,124,255,.08),
-                transparent 30%
-            ),
-            radial-gradient(
-                circle at 20% 10%,
-                rgba(156,124,255,.10),
-                transparent 30%
-            ),
-            radial-gradient(
-                circle at 85% 30%,
-                rgba(255,120,183,.10),
-                transparent 30%
-            ),
-            #070711
-        `;
+            const y =
+                (e.clientY /
+                window.innerHeight) * 100;
 
-    });
+
+            document.body.style.background = `
+
+                radial-gradient(
+                    circle at ${x}% ${y}%,
+                    rgba(156,124,255,.08),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 20% 10%,
+                    rgba(156,124,255,.10),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(255,120,183,.10),
+                    transparent 30%
+                ),
+
+                #070711
+
+            `;
+
+        }
+    );
 
 }
 
 
 /* ==========================================
-   KEYBOARD SUPPORT
+   KEYBOARD
 ========================================== */
 
-document.addEventListener("keydown", event => {
+document.addEventListener(
+    "keydown",
+    event => {
 
-    if(event.key === "m" || event.key === "M"){
+        if(
+            event.key === "m" ||
+            event.key === "M"
+        ){
 
-        toggleMusic();
+            toggleMusic();
+
+        }
 
     }
-
-});
+);
 
 </script>
 
 </body>
-   </html>
+    </html>
