@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1.0,
+maximum-scale=1.0, user-scalable=no">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0, user-scalable=no">
-
-<meta name="theme-color" content="#080611">
-
-<title>For Naina — From Shrikant ❤️</title>
-
-<style>
+<meta name="theme-color" content="#080611"><title>For Naina — From Shrikant ❤️</title><style>
 
 /* =========================================================
    FONTS
@@ -984,484 +977,459 @@ button{
     }
 }
 
-</style>
-</head>
-
-
-<body>
-
-
-<!-- =======================================================
+</style></head><body><!-- =======================================================
      BACKGROUND
-======================================================= -->
+======================================================= --><div class="background"><div class="glow glow-a"></div>
+<div class="glow glow-b"></div>
+<div class="glow glow-c"></div>
 
-<div class="background">
+<div class="noise"></div>
 
-    <div class="glow glow-a"></div>
-    <div class="glow glow-b"></div>
-    <div class="glow glow-c"></div>
+</div><!-- =======================================================
+     REAL MP3 MUSIC
+======================================================= --><audio
+id="bgMusic"
+preload="auto"
+loop
+playsinline>
 
-    <div class="noise"></div>
+<source
+    src="./Naina_Nu_Proposal_Edit.mp3"
+    type="audio/mpeg">
 
-</div>
-
-
-<!-- =======================================================
+</audio><!-- =======================================================
      MUSIC BUTTON
-======================================================= -->
+======================================================= --><button
+class="music"
+id="musicButton"
+onclick="toggleMusic()"
+aria-label="Toggle music">
 
-<button
-    class="music"
-    id="musicButton"
-    onclick="toggleMusic()"
-    aria-label="Toggle music">
+♫
 
-    ♫
-
-</button>
-
-
-<!-- =======================================================
+</button><!-- =======================================================
      MAIN
-======================================================= -->
+======================================================= --><div class="wrapper"><div class="card"><!-- HEADER -->
 
-<div class="wrapper">
+<div class="header">
 
-<div class="card">
+    <div class="brand">
+
+        <span class="brand-dot"></span>
+
+        From Shrikant
+
+    </div>
+
+    <div
+        class="counter"
+        id="counter">
+
+        00 / 06
+
+    </div>
+
+</div>
 
 
-    <!-- HEADER -->
+<!-- PROGRESS -->
 
-    <div class="header">
+<div class="progress">
 
-        <div class="brand">
+    <div
+        class="progress-bar"
+        id="progressBar">
+    </div>
 
-            <span class="brand-dot"></span>
+</div>
 
-            From Shrikant
+
+<!-- ===================================================
+     SCREEN 1
+==================================================== -->
+
+<section
+    class="screen active"
+    id="screen1">
+
+    <div class="character">
+        🧸
+    </div>
+
+    <div class="label">
+        A little something
+    </div>
+
+    <h1>
+        Hey <span class="gradient-text">Naina</span>… 💗
+    </h1>
+
+    <p class="description">
+
+        I could have just sent you a message.
+
+        <br><br>
+
+        But you're kind of special,
+        so I decided to make something
+        a little more... <b>me</b>. 😌
+
+    </p>
+
+    <div class="button-row">
+
+        <button
+            class="primary"
+            onclick="startExperience()">
+
+            Open My Message 💌
+
+        </button>
+
+    </div>
+
+    <p class="note">
+        Best experienced with sound on ✨
+    </p>
+
+</section>
+
+
+
+<!-- ===================================================
+     SCREEN 2
+==================================================== -->
+
+<section
+    class="screen"
+    id="screen2">
+
+    <div class="character">
+        🥹
+    </div>
+
+    <div class="label">
+        From Shrikant
+    </div>
+
+    <h1>
+        I need to ask you<br>
+        <span class="gradient-text">one thing.</span>
+    </h1>
+
+    <p class="description">
+
+        There is no complicated story.
+
+        <br>
+
+        We're not together.
+
+        <br>
+
+        I haven't proposed to you before.
+
+        <br><br>
+
+        I just like you.
+
+        And I've been wondering...
+
+    </p>
+
+    <div class="button-row">
+
+        <button
+            class="primary"
+            onclick="nextScreen(3)">
+
+            Tell me ❤️
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ===================================================
+     SCREEN 3 — PROPOSAL
+==================================================== -->
+
+<section
+    class="screen"
+    id="screen3">
+
+    <div class="character">
+        🫣
+    </div>
+
+    <div class="label">
+        The actual question
+    </div>
+
+    <h1>
+        Naina,<br>
+        will you give<br>
+        <span class="gradient-text">us a chance?</span> ❤️
+    </h1>
+
+    <p class="description">
+
+        No pressure.
+
+        <br>
+
+        No perfect answer needed.
+
+        <br><br>
+
+        Just your honest answer.
+
+    </p>
+
+    <div class="button-row">
+
+        <button
+            class="primary"
+            onclick="sayYes()">
+
+            Yes ❤️
+
+        </button>
+
+        <button
+            class="secondary"
+            id="noButton">
+
+            No 🙈
+
+        </button>
+
+    </div>
+
+    <p class="note">
+        P.S. One button is feeling a little shy. 😂
+    </p>
+
+</section>
+
+
+
+<!-- ===================================================
+     SCREEN 4 — FUN QUESTIONS
+==================================================== -->
+
+<section
+    class="screen"
+    id="screen4">
+
+    <div class="character">
+        😌
+    </div>
+
+    <div class="label">
+        Okay… hypothetical situation
+    </div>
+
+    <h1>
+        If you said yes…<br>
+        what would our first<br>
+        <span class="gradient-text">date vibe</span> be?
+    </h1>
+
+    <div class="options">
+
+        <div
+            class="option"
+            onclick="choose(this,'☕ A cozy cafe')">
+
+            <span class="option-icon">☕</span>
+
+            Cozy Cafe
 
         </div>
 
         <div
-            class="counter"
-            id="counter">
+            class="option"
+            onclick="choose(this,'🎬 Movie date')">
 
-            00 / 06
+            <span class="option-icon">🎬</span>
+
+            Movie
+
+        </div>
+
+        <div
+            class="option"
+            onclick="choose(this,'🌆 Long evening walk')">
+
+            <span class="option-icon">🌆</span>
+
+            Evening Walk
+
+        </div>
+
+        <div
+            class="option"
+            onclick="choose(this,'✨ Surprise me')">
+
+            <span class="option-icon">✨</span>
+
+            Surprise Me
 
         </div>
 
     </div>
 
+    <button
+        class="primary"
+        style="width:100%;margin-top:20px"
+        onclick="nextQuestion()">
 
-    <!-- PROGRESS -->
+        Sounds Good ➜
 
-    <div class="progress">
+    </button>
 
-        <div
-            class="progress-bar"
-            id="progressBar">
+</section>
+
+
+
+<!-- ===================================================
+     SCREEN 5 — DATE
+==================================================== -->
+
+<section
+    class="screen"
+    id="screen5">
+
+    <div class="character">
+        🥰
+    </div>
+
+    <div class="label">
+        Let's imagine it
+    </div>
+
+    <h1>
+        When should we<br>
+        make it <span class="gradient-text">happen?</span> 📅
+    </h1>
+
+    <p class="description">
+
+        You choose the day.
+
+        <br>
+
+        I'll take care of the rest. 😌
+
+    </p>
+
+    <div class="date-grid">
+
+        <div class="field">
+
+            <label>
+                DATE
+            </label>
+
+            <input
+                class="input"
+                type="date"
+                id="date">
+
+        </div>
+
+        <div class="field">
+
+            <label>
+                TIME
+            </label>
+
+            <input
+                class="input"
+                type="time"
+                id="time">
+
         </div>
 
     </div>
 
+    <input
+        class="input"
+        type="text"
+        id="place"
+        placeholder="Where would you like to go? 📍">
 
-    <!-- ===================================================
-         SCREEN 1
-    ==================================================== -->
+    <button
+        class="primary"
+        style="width:100%;margin-top:18px"
+        id="finishButton"
+        onclick="finishProposal()">
 
-    <section
-        class="screen active"
-        id="screen1">
+        Make It Official 💗
 
-        <div class="character">
-            🧸
-        </div>
+    </button>
 
-        <div class="label">
-            A little something
-        </div>
+</section>
 
-        <h1>
-            Hey <span class="gradient-text">Naina</span>… 💗
-        </h1>
 
-        <p class="description">
 
-            I could have just sent you a message.
+<!-- ===================================================
+     SCREEN 6 — FINAL
+==================================================== -->
 
-            <br><br>
+<section
+    class="screen"
+    id="screen6">
 
-            But you're kind of special,
-            so I decided to make something
-            a little more... <b>me</b>. 😌
+    <div class="final-heart">
+        💗
+    </div>
 
-        </p>
+    <div class="label">
+        Mission complete
+    </div>
 
-        <div class="button-row">
+    <h1>
+        It's a <span class="gradient-text">Date.</span> 🎉
+    </h1>
 
-            <button
-                class="primary"
-                onclick="startExperience()">
+    <p class="description">
 
-                Open My Message 💌
+        Naina said yes to giving
+        this little story a chance. 🥹
 
-            </button>
+        <br><br>
 
-        </div>
+        And Shrikant is officially
+        very, very happy.
 
-        <p class="note">
-            Best experienced with sound on ✨
-        </p>
+    </p>
 
-    </section>
+    <div
+        class="details"
+        id="finalDetails">
+    </div>
 
+    <p class="note">
 
+        Screenshot this moment. ❤️
 
-    <!-- ===================================================
-         SCREEN 2
-    ==================================================== -->
+        <br>
 
-    <section
-        class="screen"
-        id="screen2">
+        Some first steps are worth remembering.
 
-        <div class="character">
-            🥹
-        </div>
+    </p>
 
-        <div class="label">
-            From Shrikant
-        </div>
+</section>
 
-        <h1>
-            I need to ask you<br>
-            <span class="gradient-text">one thing.</span>
-        </h1>
-
-        <p class="description">
-
-            There is no complicated story.
-
-            <br>
-
-            We're not together.
-
-            <br>
-
-            I haven't proposed to you before.
-
-            <br><br>
-
-            I just like you.
-
-            And I've been wondering...
-
-        </p>
-
-        <div class="button-row">
-
-            <button
-                class="primary"
-                onclick="nextScreen(3)">
-
-                Tell me ❤️
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SCREEN 3 — PROPOSAL
-    ==================================================== -->
-
-    <section
-        class="screen"
-        id="screen3">
-
-        <div class="character">
-            🫣
-        </div>
-
-        <div class="label">
-            The actual question
-        </div>
-
-        <h1>
-            Naina,<br>
-            will you give<br>
-            <span class="gradient-text">us a chance?</span> ❤️
-        </h1>
-
-        <p class="description">
-
-            No pressure.
-
-            <br>
-
-            No perfect answer needed.
-
-            <br><br>
-
-            Just your honest answer.
-
-        </p>
-
-        <div class="button-row">
-
-            <button
-                class="primary"
-                onclick="sayYes()">
-
-                Yes ❤️
-
-            </button>
-
-            <button
-                class="secondary"
-                id="noButton">
-
-                No 🙈
-
-            </button>
-
-        </div>
-
-        <p class="note">
-            P.S. One button is feeling a little shy. 😂
-        </p>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SCREEN 4 — FUN QUESTIONS
-    ==================================================== -->
-
-    <section
-        class="screen"
-        id="screen4">
-
-        <div class="character">
-            😌
-        </div>
-
-        <div class="label">
-            Okay… hypothetical situation
-        </div>
-
-        <h1>
-            If you said yes…<br>
-            what would our first<br>
-            <span class="gradient-text">date vibe</span> be?
-        </h1>
-
-        <div class="options">
-
-            <div
-                class="option"
-                onclick="choose(this,'☕ A cozy cafe')">
-
-                <span class="option-icon">☕</span>
-
-                Cozy Cafe
-
-            </div>
-
-            <div
-                class="option"
-                onclick="choose(this,'🎬 Movie date')">
-
-                <span class="option-icon">🎬</span>
-
-                Movie
-
-            </div>
-
-            <div
-                class="option"
-                onclick="choose(this,'🌆 Long evening walk')">
-
-                <span class="option-icon">🌆</span>
-
-                Evening Walk
-
-            </div>
-
-            <div
-                class="option"
-                onclick="choose(this,'✨ Surprise me')">
-
-                <span class="option-icon">✨</span>
-
-                Surprise Me
-
-            </div>
-
-        </div>
-
-        <button
-            class="primary"
-            style="width:100%;margin-top:20px"
-            onclick="nextQuestion()">
-
-            Sounds Good ➜
-
-        </button>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SCREEN 5 — DATE
-    ==================================================== -->
-
-    <section
-        class="screen"
-        id="screen5">
-
-        <div class="character">
-            🥰
-        </div>
-
-        <div class="label">
-            Let's imagine it
-        </div>
-
-        <h1>
-            When should we<br>
-            make it <span class="gradient-text">happen?</span> 📅
-        </h1>
-
-        <p class="description">
-
-            You choose the day.
-
-            <br>
-
-            I'll take care of the rest. 😌
-
-        </p>
-
-        <div class="date-grid">
-
-            <div class="field">
-
-                <label>
-                    DATE
-                </label>
-
-                <input
-                    class="input"
-                    type="date"
-                    id="date">
-
-            </div>
-
-            <div class="field">
-
-                <label>
-                    TIME
-                </label>
-
-                <input
-                    class="input"
-                    type="time"
-                    id="time">
-
-            </div>
-
-        </div>
-
-        <input
-            class="input"
-            type="text"
-            id="place"
-            placeholder="Where would you like to go? 📍">
-
-        <button
-            class="primary"
-            style="width:100%;margin-top:18px"
-            id="finishButton"
-            onclick="finishProposal()">
-
-            Make It Official 💗
-
-        </button>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SCREEN 6 — FINAL
-    ==================================================== -->
-
-    <section
-        class="screen"
-        id="screen6">
-
-        <div class="final-heart">
-            💗
-        </div>
-
-        <div class="label">
-            Mission complete
-        </div>
-
-        <h1>
-            It's a <span class="gradient-text">Date.</span> 🎉
-        </h1>
-
-        <p class="description">
-
-            Naina said yes to giving
-            this little story a chance. 🥹
-
-            <br><br>
-
-            And Shrikant is officially
-            very, very happy.
-
-        </p>
-
-        <div
-            class="details"
-            id="finalDetails">
-        </div>
-
-        <p class="note">
-
-            Screenshot this moment. ❤️
-
-            <br>
-
-            Some first steps are worth remembering.
-
-        </p>
-
-    </section>
-
-
-</div>
-
-</div>
-
-
-<!-- TOAST -->
-
-<div
+</div></div><!-- TOAST --><div
     class="toast"
     id="toast">
-</div>
-
-
-<script>
+</div><script>
 
 /* =========================================================
    DATA
@@ -1473,186 +1441,180 @@ let selectedVibe = "Not selected";
 
 
 /* =========================================================
-   WEB AUDIO ROMANTIC MELODY
+   REAL MP3 MUSIC
 ========================================================= */
 
-let audioContext = null;
+const music =
+    document.getElementById("bgMusic");
 
-let musicGain = null;
-
-let musicTimer = null;
+const musicButton =
+    document.getElementById("musicButton");
 
 let musicPlaying = false;
 
 
 /*
-    This creates a tiny original ambient melody.
+   REAL MUSIC FILE:
 
-    No MP3.
-    No external music URL.
-    No copyright dependency.
+   ./Naina_Nu_Proposal_Edit.mp3
+
+   The MP3 is expected to be in the same
+   GitHub Pages folder as index.html.
 */
 
-const melody = [
 
-    [261.63,0.00],
-    [329.63,0.35],
-    [392.00,0.70],
-    [329.63,1.05],
+async function startMusic(){
 
-    [293.66,1.40],
-    [349.23,1.75],
-    [440.00,2.10],
-    [349.23,2.45],
+    /*
+       If already playing, do nothing.
+    */
 
-    [261.63,2.80],
-    [329.63,3.15],
-    [392.00,3.50],
-    [523.25,3.85],
-
-    [493.88,4.25],
-    [392.00,4.60],
-    [329.63,4.95],
-    [261.63,5.35]
-
-];
-
-
-function startMusic(){
-
-    if(musicPlaying){
-        return;
-    }
-
-    try{
-
-        audioContext =
-            new (
-                window.AudioContext ||
-                window.webkitAudioContext
-            )();
-
-        musicGain =
-            audioContext.createGain();
-
-        musicGain.gain.value = 0.045;
-
-        musicGain.connect(
-            audioContext.destination
-        );
+    if(!music.paused){
 
         musicPlaying = true;
 
-        document
-            .getElementById("musicButton")
-            .classList.add("playing");
+        musicButton.classList.add("playing");
 
-        playMelody();
+        musicButton.textContent = "♫";
+
+        return true;
+    }
+
+
+    try{
+
+        /*
+           Reset volume to a comfortable level.
+        */
+
+        music.volume = 0.72;
+
+
+        /*
+           play() is called directly from the
+           user's button interaction.
+        */
+
+        await music.play();
+
+
+        musicPlaying = true;
+
+        musicButton.classList.add("playing");
+
+        musicButton.textContent = "♫";
+
+        return true;
 
     }catch(error){
 
         console.log(
-            "Audio unavailable:",
+            "Music could not start:",
             error
         );
 
+        musicPlaying = false;
+
+        musicButton.classList.remove("playing");
+
+        musicButton.textContent = "♫";
+
+        /*
+           Show a useful message instead of failing silently.
+        */
+
+        toast(
+            "Tap the music button to start 🎵"
+        );
+
+        return false;
     }
 }
 
 
-function playMelody(){
-
-    if(!musicPlaying){
-        return;
-    }
-
-    const start =
-        audioContext.currentTime + .05;
-
-    melody.forEach(note=>{
-
-        const oscillator =
-            audioContext.createOscillator();
-
-        const gain =
-            audioContext.createGain();
-
-        oscillator.type = "sine";
-
-        oscillator.frequency.value =
-            note[0];
-
-        oscillator.connect(gain);
-
-        gain.connect(musicGain);
-
-        const when =
-            start + note[1];
-
-        gain.gain.setValueAtTime(
-            0,
-            when
-        );
-
-        gain.gain.linearRampToValueAtTime(
-            .20,
-            when + .05
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            .001,
-            when + .40
-        );
-
-        oscillator.start(when);
-
-        oscillator.stop(
-            when + .45
-        );
-
-    });
-
-    musicTimer =
-        setTimeout(
-            playMelody,
-            5900
-        );
-}
-
+/* =========================================================
+   STOP MUSIC
+========================================================= */
 
 function stopMusic(){
 
+    music.pause();
+
     musicPlaying = false;
 
-    clearTimeout(musicTimer);
+    musicButton.classList.remove("playing");
 
-    document
-        .getElementById("musicButton")
-        .classList.remove("playing");
-
-    if(musicGain){
-
-        musicGain.gain.exponentialRampToValueAtTime(
-            .001,
-            audioContext.currentTime + .4
-        );
-
-    }
+    musicButton.textContent = "♫";
 }
 
 
-function toggleMusic(){
+/* =========================================================
+   TOGGLE MUSIC
+========================================================= */
 
-    if(musicPlaying){
+async function toggleMusic(){
+
+    if(
+        !music.paused &&
+        !music.ended
+    ){
 
         stopMusic();
 
     }else{
 
-        startMusic();
+        await startMusic();
 
     }
 }
+
+
+/* =========================================================
+   MUSIC EVENTS
+========================================================= */
+
+music.addEventListener(
+    "play",
+    function(){
+
+        musicPlaying = true;
+
+        musicButton.classList.add("playing");
+
+        musicButton.textContent = "♫";
+
+    }
+);
+
+
+music.addEventListener(
+    "pause",
+    function(){
+
+        musicPlaying = false;
+
+        musicButton.classList.remove("playing");
+
+        musicButton.textContent = "♫";
+
+    }
+);
+
+
+music.addEventListener(
+    "error",
+    function(){
+
+        console.log(
+            "MP3 file could not be loaded."
+        );
+
+        toast(
+            "Music file not found. Check the GitHub filename."
+        );
+
+    }
+);
 
 
 /* =========================================================
@@ -1725,7 +1687,9 @@ function toast(message){
 
     toastTimer =
         setTimeout(()=>{
+
             box.classList.remove("show");
+
         },2200);
 }
 
@@ -1739,12 +1703,16 @@ function nextScreen(number){
     document
         .querySelectorAll(".screen")
         .forEach(screen=>{
+
             screen.classList.remove("active");
+
         });
+
 
     document
         .getElementById("screen"+number)
         .classList.add("active");
+
 
     currentScreen = number;
 
@@ -1762,10 +1730,12 @@ function updateProgress(){
     const percentage =
         ((currentScreen - 1) / 5) * 100;
 
+
     document
         .getElementById("progressBar")
         .style.width =
         percentage + "%";
+
 
     document
         .getElementById("counter")
@@ -1782,8 +1752,14 @@ function updateProgress(){
 function startExperience(){
 
     /*
-       This click counts as user interaction,
-       so browsers allow Web Audio.
+       IMPORTANT:
+
+       This function is triggered directly by
+       the "Open My Message" button.
+
+       Therefore the browser recognizes it as
+       a real user interaction and allows audio
+       playback much more reliably.
     */
 
     startMusic();
@@ -1799,9 +1775,16 @@ function startExperience(){
 
 function sayYes(){
 
+    /*
+       Keep music playing if it is already running.
+       If the browser paused it, try to resume it
+       because this click is also a user interaction.
+    */
+
     startMusic();
 
     celebrateSmall();
+
 
     setTimeout(()=>{
 
@@ -1826,27 +1809,32 @@ function moveNo(){
 
     noAttempts++;
 
+
     /*
-       It runs away only for fun.
-       Eventually it becomes a normal button
-       so the visitor still has a real choice.
+       Playful movement only.
+       After several attempts the visitor gets
+       a normal, genuine No option.
     */
 
     if(noAttempts <= 4){
 
         noButton.style.position = "fixed";
 
+
         const padding = 18;
+
 
         const maxX =
             window.innerWidth -
             noButton.offsetWidth -
             padding;
 
+
         const maxY =
             window.innerHeight -
             noButton.offsetHeight -
             padding;
+
 
         const x =
             Math.max(
@@ -1854,17 +1842,21 @@ function moveNo(){
                 Math.random()*maxX
             );
 
+
         const y =
             Math.max(
                 padding,
                 Math.random()*maxY
             );
 
+
         noButton.style.left =
             x + "px";
 
+
         noButton.style.top =
             y + "px";
+
 
         const messages = [
 
@@ -1880,6 +1872,7 @@ function moveNo(){
 
         ];
 
+
         noButton.textContent =
             messages[noAttempts];
 
@@ -1889,28 +1882,33 @@ function moveNo(){
             "relative";
 
         noButton.style.left = "";
+
         noButton.style.top = "";
+
 
         noButton.textContent =
             "No, I'm sure";
 
-        noButton.onclick = function(){
 
-            const answer =
-                confirm(
-                    "Are you sure? ❤️\n\n" +
-                    "It's completely okay to say no."
-                );
+        noButton.onclick =
+            function(){
 
-            if(answer){
+                const answer =
+                    confirm(
+                        "Are you sure? ❤️\n\n" +
+                        "It's completely okay to say no."
+                    );
 
-                toast(
-                    "Okay. Thank you for being honest ❤️"
-                );
 
-            }
+                if(answer){
 
-        };
+                    toast(
+                        "Okay. Thank you for being honest ❤️"
+                    );
+
+                }
+
+            };
 
     }
 }
@@ -1950,8 +1948,11 @@ function choose(element,value){
     document
         .querySelectorAll("#screen4 .option")
         .forEach(option=>{
+
             option.classList.remove("selected");
+
         });
+
 
     element.classList.add("selected");
 
@@ -1978,6 +1979,7 @@ function nextQuestion(){
 
     }
 
+
     nextScreen(5);
 
 }
@@ -1990,28 +1992,33 @@ function nextQuestion(){
 const dateInput =
     document.getElementById("date");
 
+
 const now =
     new Date();
 
+
 const year =
     now.getFullYear();
+
 
 const month =
     String(
         now.getMonth()+1
     ).padStart(2,"0");
 
+
 const day =
     String(
         now.getDate()
     ).padStart(2,"0");
+
 
 dateInput.min =
     `${year}-${month}-${day}`;
 
 
 /* =========================================================
-   CONFETTI — SELF CONTAINED
+   SMALL CELEBRATION
 ========================================================= */
 
 function celebrateSmall(){
@@ -2023,10 +2030,12 @@ function celebrateSmall(){
         "❤️"
     ];
 
+
     for(let i=0;i<35;i++){
 
         const item =
             document.createElement("div");
+
 
         item.textContent =
             symbols[
@@ -2035,44 +2044,70 @@ function celebrateSmall(){
                 )
             ];
 
+
         item.style.position = "fixed";
+
         item.style.zIndex = "999";
+
         item.style.left =
             (40 + Math.random()*20) + "vw";
+
         item.style.top = "45vh";
+
         item.style.fontSize =
             (14 + Math.random()*15) + "px";
+
         item.style.pointerEvents = "none";
 
+
         document.body.appendChild(item);
+
 
         const x =
             (Math.random()-.5)*350;
 
+
         const y =
             -(100 + Math.random()*400);
 
+
         item.animate(
+
             [
+
                 {
-                    transform:"translate(0,0) scale(.5)",
+                    transform:
+                        "translate(0,0) scale(.5)",
+
                     opacity:0
                 },
+
                 {
-                    transform:`translate(${x*.4}px,${y*.4}px) scale(1)`,
+                    transform:
+                        `translate(${x*.4}px,${y*.4}px) scale(1)`,
+
                     opacity:1
                 },
+
                 {
-                    transform:`translate(${x}px,${y}px) scale(.7)`,
+                    transform:
+                        `translate(${x}px,${y}px) scale(.7)`,
+
                     opacity:0
                 }
+
             ],
+
             {
+
                 duration:
                     1300 + Math.random()*800,
 
-                easing:"cubic-bezier(.2,.8,.2,1)"
+                easing:
+                    "cubic-bezier(.2,.8,.2,1)"
+
             }
+
         ).onfinish =
             ()=>item.remove();
 
@@ -2088,11 +2123,31 @@ function celebrateSmall(){
 function safe(value){
 
     return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
@@ -2108,10 +2163,12 @@ async function finishProposal(){
         .getElementById("date")
         .value;
 
+
     const time =
         document
         .getElementById("time")
         .value;
+
 
     const place =
         document
@@ -2127,6 +2184,7 @@ async function finishProposal(){
         );
 
         return;
+
     }
 
 
@@ -2137,6 +2195,7 @@ async function finishProposal(){
         );
 
         return;
+
     }
 
 
@@ -2150,7 +2209,9 @@ async function finishProposal(){
             "finishButton"
         );
 
+
     button.disabled = true;
+
 
     button.textContent =
         "Saving this moment... 💗";
@@ -2191,15 +2252,18 @@ async function finishProposal(){
     };
 
 
-    /*
-       Local backup
-    */
+    /* =====================================================
+       LOCAL BACKUP
+    ===================================================== */
 
     try{
 
         localStorage.setItem(
+
             "nainaProposalResponse",
+
             JSON.stringify(payload)
+
         );
 
     }catch(error){
@@ -2211,9 +2275,9 @@ async function finishProposal(){
     }
 
 
-    /*
-       Formspree
-    */
+    /* =====================================================
+       FORMSPREE
+    ===================================================== */
 
     const endpoint =
         "https://formspree.io/f/mdeobrnn";
@@ -2222,21 +2286,28 @@ async function finishProposal(){
     try{
 
         await fetch(
+
             endpoint,
+
             {
+
                 method:"POST",
 
                 headers:{
+
                     "Content-Type":
                         "application/json",
 
                     "Accept":
                         "application/json"
+
                 },
 
                 body:
                     JSON.stringify(payload)
+
             }
+
         );
 
     }catch(error){
@@ -2249,27 +2320,35 @@ async function finishProposal(){
     }
 
 
-    /*
-       Format date
-    */
+    /* =====================================================
+       FORMAT DATE
+    ===================================================== */
 
     const readableDate =
         new Date(
             date + "T00:00:00"
         ).toLocaleDateString(
+
             "en-IN",
+
             {
+
                 weekday:"long",
+
                 day:"numeric",
+
                 month:"long",
+
                 year:"numeric"
+
             }
+
         );
 
 
-    /*
-       Final screen
-    */
+    /* =====================================================
+       FINAL SCREEN
+    ===================================================== */
 
     document
         .getElementById("finalDetails")
@@ -2306,7 +2385,12 @@ async function finishProposal(){
 
 function finalCelebration(){
 
+    /*
+       Make sure music remains playing.
+    */
+
     startMusic();
+
 
     /*
        Big custom celebration
@@ -2318,14 +2402,18 @@ function finalCelebration(){
         const particle =
             document.createElement("div");
 
+
         const symbols = [
+
             "💗",
             "💕",
             "❤️",
             "✨",
             "💖",
             "🌸"
+
         ];
+
 
         particle.textContent =
             symbols[
@@ -2334,58 +2422,85 @@ function finalCelebration(){
                 )
             ];
 
+
         particle.style.position =
             "fixed";
+
 
         particle.style.zIndex =
             "999";
 
+
         particle.style.left =
             (Math.random()*100) + "vw";
+
 
         particle.style.top =
             "-30px";
 
+
         particle.style.fontSize =
             (12 + Math.random()*18) + "px";
 
+
         particle.style.pointerEvents =
             "none";
+
 
         document.body.appendChild(
             particle
         );
 
+
         const x =
             (Math.random()-.5)*200;
+
 
         const duration =
             1800 + Math.random()*2200;
 
+
         particle.animate(
+
             [
+
                 {
+
                     transform:
                         "translateY(0) rotate(0deg)",
+
                     opacity:0
+
                 },
 
                 {
+
                     transform:
                         `translate(${x}px,40vh) rotate(120deg)`,
+
                     opacity:1
+
                 },
 
                 {
+
                     transform:
                         `translate(${x*2}px,110vh) rotate(260deg)`,
+
                     opacity:0
+
                 }
+
             ],
+
             {
+
                 duration:duration,
+
                 easing:"ease-in"
+
             }
+
         ).onfinish =
             ()=>particle.remove();
 
@@ -2402,19 +2517,24 @@ updateProgress();
 
 
 /*
-   Prevent accidental form-like reload.
+   Prevent accidental reload-related errors.
 */
 
 window.addEventListener(
+
     "beforeunload",
+
     ()=>{
-        if(musicTimer){
-            clearTimeout(musicTimer);
-        }
+
+        /*
+           We intentionally don't stop the audio
+           manually here. The browser handles page
+           destruction automatically.
+        */
+
     }
+
 );
 
-</script>
-
-</body>
-   </html>
+</script></body>
+</html>
