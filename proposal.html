@@ -2,20 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>One Little Question 💗</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no">
 
-<meta name="theme-color" content="#12051f">
+<meta name="theme-color" content="#080611">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<title>For Naina — From Shrikant ❤️</title>
 
 <style>
+
+/* =========================================================
+   FONTS
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
 
 /* =========================================================
    RESET
@@ -25,27 +28,40 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
 html{
-    scroll-behavior:smooth;
+    width:100%;
+    height:100%;
 }
 
 body{
-    font-family:"DM Sans",sans-serif;
-    min-height:100vh;
+    width:100%;
+    min-height:100%;
     overflow:hidden;
+
+    font-family:"DM Sans",sans-serif;
+
     color:#fff;
 
     background:
-        radial-gradient(circle at 20% 20%, rgba(255,80,150,.18), transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(120,70,255,.20), transparent 30%),
-        linear-gradient(135deg,#090313,#180621,#0c031b);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(255,58,133,.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(116,67,255,.22),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #05040b,
+            #10071b 45%,
+            #07050f
+        );
 }
 
 
@@ -60,46 +76,73 @@ body{
     pointer-events:none;
 }
 
-.orb{
+.noise{
+    position:absolute;
+    inset:0;
+
+    opacity:.045;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+.glow{
     position:absolute;
     border-radius:50%;
-    filter:blur(70px);
+    filter:blur(80px);
     opacity:.35;
-    animation:orbFloat 10s ease-in-out infinite alternate;
 }
 
-.orb.one{
-    width:300px;
-    height:300px;
-    background:#ff3f81;
+.glow-a{
+    width:360px;
+    height:360px;
+
+    left:-130px;
     top:-100px;
-    left:-80px;
+
+    background:#ff397f;
+
+    animation:floatGlow 10s ease-in-out infinite alternate;
 }
 
-.orb.two{
-    width:350px;
-    height:350px;
-    background:#7048ff;
-    bottom:-150px;
-    right:-100px;
-    animation-delay:2s;
+.glow-b{
+    width:400px;
+    height:400px;
+
+    right:-160px;
+    bottom:-160px;
+
+    background:#7045ff;
+
+    animation:floatGlow 13s ease-in-out infinite alternate-reverse;
 }
 
-.orb.three{
+.glow-c{
     width:180px;
     height:180px;
-    background:#ff8acb;
-    top:50%;
+
     left:50%;
-    animation-delay:4s;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    background:#ff4b9b;
+
+    opacity:.12;
+
+    animation:pulseGlow 5s ease-in-out infinite;
 }
 
-@keyframes orbFloat{
-    from{
-        transform:translate(0,0) scale(1);
-    }
+@keyframes floatGlow{
     to{
         transform:translate(50px,-30px) scale(1.15);
+    }
+}
+
+@keyframes pulseGlow{
+    50%{
+        opacity:.24;
+        transform:translate(-50%,-50%) scale(1.3);
     }
 }
 
@@ -108,17 +151,26 @@ body{
    FLOATING HEARTS
 ========================================================= */
 
-.floating-heart{
+.heart{
     position:absolute;
-    bottom:-40px;
+
+    bottom:-50px;
+
     font-size:18px;
+
     opacity:0;
-    animation:heartFloat linear forwards;
+
+    animation:rise linear forwards;
 }
 
-@keyframes heartFloat{
+@keyframes rise{
+
     0%{
-        transform:translateY(0) rotate(0deg) scale(.7);
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.6);
+
         opacity:0;
     }
 
@@ -127,99 +179,144 @@ body{
     }
 
     85%{
-        opacity:.35;
+        opacity:.3;
     }
 
     100%{
-        transform:translateY(-110vh) rotate(35deg) scale(1.2);
+        transform:
+            translateY(-115vh)
+            rotate(25deg)
+            scale(1.15);
+
         opacity:0;
     }
 }
 
 
 /* =========================================================
-   MAIN CARD
+   MAIN
 ========================================================= */
 
-.app{
+.wrapper{
+    position:relative;
+    z-index:5;
+
     width:100%;
-    max-width:560px;
-    position:relative;
-    z-index:10;
-}
+    min-height:100vh;
 
-.card{
-    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    background:rgba(255,255,255,.075);
-    border:1px solid rgba(255,255,255,.16);
-
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
-
-    border-radius:32px;
-
-    padding:38px;
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.45),
-        inset 0 1px rgba(255,255,255,.12);
-
-    overflow:hidden;
-}
-
-.card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(255,255,255,.08),
-            transparent 35%
-        );
-
-    pointer-events:none;
+    padding:18px;
 }
 
 
 /* =========================================================
-   TOP BAR
+   CARD
 ========================================================= */
 
-.topbar{
+.card{
+    position:relative;
+
+    width:min(580px,100%);
+
+    max-height:calc(100vh - 36px);
+
+    overflow:hidden;
+
+    padding:32px;
+
+    border-radius:32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.105),
+            rgba(255,255,255,.045)
+        );
+
+    border:1px solid rgba(255,255,255,.14);
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.5),
+        inset 0 1px rgba(255,255,255,.10);
+
+    text-align:center;
+}
+
+.card::before{
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    top:-160px;
+    right:-100px;
+
+    background:#ff4d94;
+
+    filter:blur(100px);
+
+    opacity:.15;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
     display:flex;
+
     align-items:center;
     justify-content:space-between;
 
-    margin-bottom:25px;
+    margin-bottom:22px;
 
-    font-size:12px;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-
-    color:rgba(255,255,255,.6);
+    position:relative;
+    z-index:2;
 }
 
-.logo{
+.brand{
     display:flex;
     align-items:center;
+
     gap:8px;
 
-    color:#fff;
+    font-size:11px;
     font-weight:700;
+
+    letter-spacing:1.7px;
+
+    text-transform:uppercase;
+
+    color:rgba(255,255,255,.65);
 }
 
-.logo-dot{
+.brand-dot{
     width:8px;
     height:8px;
 
     border-radius:50%;
-    background:#ff5c9d;
+
+    background:#ff5b9c;
 
     box-shadow:
-        0 0 15px #ff5c9d;
+        0 0 15px #ff5b9c;
+}
+
+.counter{
+    font-size:11px;
+
+    color:rgba(255,255,255,.4);
+
+    letter-spacing:1px;
 }
 
 
@@ -229,81 +326,136 @@ body{
 
 .progress{
     width:100%;
-    height:4px;
+    height:3px;
 
-    background:rgba(255,255,255,.1);
+    background:rgba(255,255,255,.08);
 
     border-radius:20px;
 
-    margin-bottom:30px;
-
     overflow:hidden;
+
+    margin-bottom:28px;
 }
 
 .progress-bar{
-    width:16.66%;
+    width:0;
     height:100%;
 
-    background:linear-gradient(
-        90deg,
-        #ff4d91,
-        #b86cff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #ff4d91,
+            #a95cff
+        );
 
-    border-radius:20px;
-
-    transition:width .5s ease;
+    transition:width .6s cubic-bezier(.2,.8,.2,1);
 }
 
 
 /* =========================================================
-   STEPS
+   SCREENS
 ========================================================= */
 
-.step{
+.screen{
     display:none;
-    text-align:center;
 
-    animation:stepIn .55s cubic-bezier(.2,.8,.2,1);
+    position:relative;
+
+    animation:screenIn .65s cubic-bezier(.2,.8,.2,1);
 }
 
-.step.active{
+.screen.active{
     display:block;
 }
 
-@keyframes stepIn{
+@keyframes screenIn{
+
     from{
         opacity:0;
-        transform:translateY(18px) scale(.97);
+        transform:
+            translateY(22px)
+            scale(.97);
     }
 
     to{
         opacity:1;
-        transform:translateY(0) scale(1);
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
 
 /* =========================================================
-   IMAGE / GIF
+   CSS LOVE CHARACTER
 ========================================================= */
 
-.hero-img{
-    width:190px;
-    height:190px;
+.character{
+    width:150px;
+    height:150px;
 
-    object-fit:cover;
+    margin:5px auto 22px;
 
-    border-radius:28px;
+    position:relative;
 
-    margin:0 auto 24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    display:block;
+    font-size:82px;
+
+    border-radius:38px;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid rgba(255,255,255,.12);
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,.3);
+        0 25px 60px rgba(0,0,0,.25),
+        inset 0 1px rgba(255,255,255,.1);
 
-    border:1px solid rgba(255,255,255,.15);
+    animation:characterFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes characterFloat{
+
+    0%,100%{
+        transform:translateY(0) rotate(-1deg);
+    }
+
+    50%{
+        transform:translateY(-9px) rotate(1deg);
+    }
+}
+
+.character::after{
+    content:"✨";
+
+    position:absolute;
+
+    top:12px;
+    right:14px;
+
+    font-size:22px;
+
+    animation:twinkle 1.5s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:.3;
+        transform:scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.15);
+    }
 }
 
 
@@ -311,12 +463,14 @@ body{
    TYPOGRAPHY
 ========================================================= */
 
-.eyebrow{
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:2px;
+.label{
+    font-size:11px;
 
-    color:#ff8fbd;
+    text-transform:uppercase;
+
+    letter-spacing:2.5px;
+
+    color:#ff91ba;
 
     margin-bottom:10px;
 }
@@ -324,22 +478,40 @@ body{
 h1{
     font-family:"Playfair Display",serif;
 
-    font-size:clamp(30px,6vw,43px);
+    font-size:clamp(32px,7vw,48px);
 
-    line-height:1.15;
+    line-height:1.12;
 
-    margin-bottom:14px;
+    letter-spacing:-.5px;
+
+    margin-bottom:15px;
 }
 
-.subtitle{
-    color:rgba(255,255,255,.68);
+.gradient-text{
+    background:
+        linear-gradient(
+            90deg,
+            #ff8fbc,
+            #fff,
+            #c79bff
+        );
 
-    font-size:15px;
+    -webkit-background-clip:text;
+    background-clip:text;
 
-    line-height:1.7;
+    color:transparent;
+}
 
-    max-width:430px;
+.description{
+    max-width:460px;
+
     margin:auto;
+
+    color:rgba(255,255,255,.63);
+
+    font-size:14px;
+
+    line-height:1.8;
 }
 
 
@@ -347,13 +519,16 @@ h1{
    BUTTONS
 ========================================================= */
 
-.buttons{
+.button-row{
     display:flex;
-    gap:14px;
 
     justify-content:center;
 
+    gap:12px;
+
     margin-top:28px;
+
+    position:relative;
 }
 
 button{
@@ -364,75 +539,63 @@ button{
 
     cursor:pointer;
 
+    user-select:none;
+
     transition:
         transform .25s ease,
         box-shadow .25s ease,
-        opacity .25s ease;
-}
-
-button:active{
-    transform:scale(.96);
+        background .25s ease;
 }
 
 .primary{
-    min-width:150px;
-
     padding:14px 25px;
+
+    min-width:165px;
 
     border-radius:16px;
 
-    color:#fff;
+    color:white;
 
-    font-size:15px;
+    font-size:14px;
     font-weight:700;
 
     background:
         linear-gradient(
             135deg,
-            #ff4d91,
-            #a956ff
+            #ff4b91,
+            #a858ff
         );
 
     box-shadow:
-        0 12px 30px rgba(255,77,145,.3);
+        0 14px 35px rgba(255,73,145,.28);
 }
 
 .primary:hover{
     transform:translateY(-3px);
 
     box-shadow:
-        0 18px 40px rgba(255,77,145,.45);
+        0 20px 45px rgba(255,73,145,.42);
 }
 
 .secondary{
-    min-width:110px;
-
     padding:14px 22px;
 
     border-radius:16px;
 
-    color:rgba(255,255,255,.8);
+    color:rgba(255,255,255,.75);
 
-    font-size:15px;
-
-    background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.07);
 
     border:1px solid rgba(255,255,255,.12);
 }
 
-
-/* =========================================================
-   RUNAWAY BUTTON
-========================================================= */
-
-#noBtn{
-    position:relative;
-    z-index:20;
+.secondary:hover{
+    background:rgba(255,255,255,.11);
 }
 
 
 /* =========================================================
-   OPTION GRID
+   QUESTION CARDS
 ========================================================= */
 
 .options{
@@ -440,26 +603,24 @@ button:active{
 
     grid-template-columns:repeat(2,1fr);
 
-    gap:12px;
+    gap:11px;
 
-    margin-top:24px;
+    margin-top:25px;
 }
 
 .option{
-    padding:18px 12px;
+    padding:17px 10px;
 
     border-radius:18px;
 
-    background:rgba(255,255,255,.07);
+    background:rgba(255,255,255,.055);
 
-    border:1px solid rgba(255,255,255,.1);
-
-    color:#fff;
-
-    font-size:14px;
-    font-weight:600;
+    border:1px solid rgba(255,255,255,.10);
 
     cursor:pointer;
+
+    font-size:13px;
+    font-weight:600;
 
     transition:.25s ease;
 }
@@ -467,54 +628,40 @@ button:active{
 .option:hover{
     transform:translateY(-3px);
 
-    background:rgba(255,255,255,.12);
+    background:rgba(255,255,255,.10);
 }
 
 .option.selected{
+    border-color:rgba(255,122,180,.75);
+
     background:
         linear-gradient(
             135deg,
-            rgba(255,77,145,.35),
-            rgba(169,86,255,.3)
+            rgba(255,74,145,.28),
+            rgba(156,83,255,.22)
         );
 
-    border-color:rgba(255,130,190,.7);
-
     box-shadow:
-        0 10px 30px rgba(255,77,145,.15);
+        0 10px 30px rgba(255,74,145,.13);
 }
 
-.option span{
+.option-icon{
     display:block;
 
-    font-size:25px;
+    font-size:26px;
 
     margin-bottom:7px;
 }
 
 
 /* =========================================================
-   INPUTS
+   INPUT
 ========================================================= */
 
-.input-group{
-    margin-top:24px;
-}
-
-label{
-    display:block;
-
-    text-align:left;
-
-    font-size:12px;
-
-    color:rgba(255,255,255,.6);
-
-    margin-bottom:7px;
-}
-
-input{
+.input{
     width:100%;
+
+    margin-top:14px;
 
     padding:15px 16px;
 
@@ -524,31 +671,33 @@ input{
 
     outline:none;
 
-    background:rgba(255,255,255,.07);
+    background:rgba(255,255,255,.06);
 
-    color:#fff;
+    color:white;
 
     font-family:inherit;
 
-    font-size:15px;
-
-    margin-bottom:14px;
+    font-size:14px;
 }
 
-input:focus{
-    border-color:rgba(255,110,175,.7);
+.input:focus{
+    border-color:#ff6aa8;
 
     box-shadow:
         0 0 0 4px rgba(255,90,160,.08);
 }
 
-input::-webkit-calendar-picker-indicator{
+.input::placeholder{
+    color:rgba(255,255,255,.35);
+}
+
+.input::-webkit-calendar-picker-indicator{
     filter:invert(1);
 }
 
 
 /* =========================================================
-   DATE CARD
+   DATE GRID
 ========================================================= */
 
 .date-grid{
@@ -556,7 +705,25 @@ input::-webkit-calendar-picker-indicator{
 
     grid-template-columns:1fr 1fr;
 
-    gap:12px;
+    gap:11px;
+
+    margin-top:22px;
+}
+
+.field{
+    text-align:left;
+}
+
+.field label{
+    display:block;
+
+    margin-bottom:7px;
+
+    font-size:11px;
+
+    color:rgba(255,255,255,.45);
+
+    letter-spacing:.5px;
 }
 
 
@@ -564,11 +731,11 @@ input::-webkit-calendar-picker-indicator{
    FINAL
 ========================================================= */
 
-.success-icon{
-    width:100px;
-    height:100px;
+.final-heart{
+    width:105px;
+    height:105px;
 
-    margin:0 auto 25px;
+    margin:4px auto 23px;
 
     border-radius:50%;
 
@@ -576,62 +743,159 @@ input::-webkit-calendar-picker-indicator{
     align-items:center;
     justify-content:center;
 
-    font-size:50px;
+    font-size:48px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,77,145,.25),
-            rgba(169,86,255,.25)
+        radial-gradient(
+            circle,
+            rgba(255,91,156,.25),
+            rgba(152,83,255,.12)
         );
 
-    border:1px solid rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.14);
 
     box-shadow:
-        0 0 60px rgba(255,77,145,.25);
+        0 0 70px rgba(255,77,145,.25);
 
-    animation:pulse 2s infinite;
+    animation:finalPulse 2s infinite;
 }
 
-@keyframes pulse{
+@keyframes finalPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
     50%{
-        transform:scale(1.05);
+        transform:scale(1.08);
     }
 }
 
-.final-details{
-    margin-top:25px;
+.details{
+    margin-top:22px;
 
-    padding:18px;
-
-    border-radius:18px;
-
-    background:rgba(255,255,255,.06);
-
-    border:1px solid rgba(255,255,255,.1);
+    padding:17px;
 
     text-align:left;
 
-    line-height:2;
+    border-radius:18px;
 
-    font-size:14px;
+    background:rgba(255,255,255,.055);
+
+    border:1px solid rgba(255,255,255,.09);
+
+    color:rgba(255,255,255,.72);
+
+    font-size:13px;
+
+    line-height:2;
 }
 
-.final-details b{
-    color:#ff9ac5;
+.details strong{
+    color:#ff9bc3;
 }
 
 
 /* =========================================================
-   SMALL TEXT
+   SMALL NOTE
 ========================================================= */
 
-.hint{
-    margin-top:18px;
+.note{
+    margin-top:17px;
+
+    font-size:11px;
+
+    color:rgba(255,255,255,.33);
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+    position:fixed;
+
+    left:50%;
+
+    bottom:25px;
+
+    z-index:100;
+
+    transform:
+        translate(-50%,20px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    padding:12px 17px;
+
+    border-radius:14px;
+
+    background:rgba(20,12,30,.9);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
 
     font-size:12px;
 
-    color:rgba(255,255,255,.4);
+    transition:.3s ease;
+}
+
+.toast.show{
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+
+/* =========================================================
+   MUSIC INDICATOR
+========================================================= */
+
+.music{
+    position:fixed;
+
+    right:18px;
+    bottom:18px;
+
+    z-index:50;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    font-size:16px;
+
+    opacity:.75;
+}
+
+.music.playing{
+    box-shadow:
+        0 0 25px rgba(255,82,150,.35);
+
+    animation:musicPulse 1.2s infinite;
+}
+
+@keyframes musicPulse{
+
+    50%{
+        transform:scale(1.08);
+    }
 }
 
 
@@ -641,60 +905,72 @@ input::-webkit-calendar-picker-indicator{
 
 @media(max-width:600px){
 
-    body{
-        padding:12px;
+    .wrapper{
+        padding:10px;
     }
 
     .card{
-        padding:25px 18px;
+        padding:24px 17px;
 
-        border-radius:26px;
+        border-radius:27px;
+
+        max-height:calc(100vh - 20px);
     }
 
-    .hero-img{
-        width:150px;
-        height:150px;
+    .character{
+        width:125px;
+        height:125px;
 
-        border-radius:22px;
+        font-size:68px;
+
+        border-radius:30px;
+
+        margin-bottom:19px;
     }
 
     h1{
-        font-size:30px;
+        font-size:31px;
     }
 
-    .subtitle{
-        font-size:14px;
-    }
-
-    .buttons{
-        gap:10px;
-    }
-
-    .primary,
-    .secondary{
-        padding:13px 18px;
-
-        min-width:0;
-
-        font-size:14px;
+    .description{
+        font-size:13px;
+        line-height:1.7;
     }
 
     .options{
-        gap:9px;
+        gap:8px;
     }
 
     .option{
-        padding:15px 8px;
+        padding:14px 7px;
+    }
+
+    .button-row{
+        margin-top:22px;
+    }
+
+    .primary{
+        min-width:145px;
+        padding:13px 18px;
+    }
+
+    .secondary{
+        padding:13px 17px;
     }
 
     .date-grid{
         grid-template-columns:1fr;
     }
+
+    .music{
+        right:12px;
+        bottom:12px;
+    }
 }
 
 
 /* =========================================================
-   REDUCED MOTION
+   ACCESSIBILITY
 ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
@@ -702,9 +978,9 @@ input::-webkit-calendar-picker-indicator{
     *,
     *::before,
     *::after{
-        animation-duration:.01ms!important;
-        animation-iteration-count:1!important;
-        transition:none!important;
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition:none !important;
     }
 }
 
@@ -715,54 +991,63 @@ input::-webkit-calendar-picker-indicator{
 <body>
 
 
-<!-- ========================================================
+<!-- =======================================================
      BACKGROUND
-========================================================= -->
+======================================================= -->
 
 <div class="background">
 
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-    <div class="orb three"></div>
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+    <div class="glow glow-c"></div>
+
+    <div class="noise"></div>
 
 </div>
 
 
-<!-- ========================================================
-     AUDIO
-========================================================= -->
+<!-- =======================================================
+     MUSIC BUTTON
+======================================================= -->
 
-<audio id="bgMusic" loop preload="auto">
+<button
+    class="music"
+    id="musicButton"
+    onclick="toggleMusic()"
+    aria-label="Toggle music">
 
-    <!-- Replace this with your own music if you want -->
+    ♫
 
-    <source
-        src="https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-493.mp3"
-        type="audio/mpeg">
-
-</audio>
+</button>
 
 
-<!-- ========================================================
-     APP
-========================================================= -->
+<!-- =======================================================
+     MAIN
+======================================================= -->
 
-<main class="app">
+<div class="wrapper">
 
 <div class="card">
 
 
-    <!-- TOP -->
+    <!-- HEADER -->
 
-    <div class="topbar">
+    <div class="header">
 
-        <div class="logo">
-            <span class="logo-dot"></span>
-            A Little Surprise
+        <div class="brand">
+
+            <span class="brand-dot"></span>
+
+            From Shrikant
+
         </div>
 
-        <div id="stepCounter">
-            01 / 06
+        <div
+            class="counter"
+            id="counter">
+
+            00 / 06
+
         </div>
 
     </div>
@@ -780,42 +1065,107 @@ input::-webkit-calendar-picker-indicator{
     </div>
 
 
-
-    <!-- ====================================================
-         STEP 1
-    ===================================================== -->
+    <!-- ===================================================
+         SCREEN 1
+    ==================================================== -->
 
     <section
-        class="step active"
-        id="step1">
+        class="screen active"
+        id="screen1">
 
-        <img
-            class="hero-img"
-            src="https://media.tenor.com/ef30s-LzY78AAAAi/tkthao219-bubududu.gif"
-            alt="Cute bear">
+        <div class="character">
+            🧸
+        </div>
 
-        <div class="eyebrow">
-            Important Question
+        <div class="label">
+            A little something
         </div>
 
         <h1>
-            I have something<br>
-            to ask you… 💗
+            Hey <span class="gradient-text">Naina</span>… 💗
         </h1>
 
-        <p class="subtitle">
-            It may take only a few seconds,
-            but your answer could make
-            my entire world a little happier.
+        <p class="description">
+
+            I could have just sent you a message.
+
+            <br><br>
+
+            But you're kind of special,
+            so I decided to make something
+            a little more... <b>me</b>. 😌
+
         </p>
 
-        <div class="buttons">
+        <div class="button-row">
 
             <button
                 class="primary"
-                onclick="yesClicked()">
+                onclick="startExperience()">
 
-                Okay, ask me 💕
+                Open My Message 💌
+
+            </button>
+
+        </div>
+
+        <p class="note">
+            Best experienced with sound on ✨
+        </p>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SCREEN 2
+    ==================================================== -->
+
+    <section
+        class="screen"
+        id="screen2">
+
+        <div class="character">
+            🥹
+        </div>
+
+        <div class="label">
+            From Shrikant
+        </div>
+
+        <h1>
+            I need to ask you<br>
+            <span class="gradient-text">one thing.</span>
+        </h1>
+
+        <p class="description">
+
+            There is no complicated story.
+
+            <br>
+
+            We're not together.
+
+            <br>
+
+            I haven't proposed to you before.
+
+            <br><br>
+
+            I just like you.
+
+            And I've been wondering...
+
+        </p>
+
+        <div class="button-row">
+
+            <button
+                class="primary"
+                onclick="nextScreen(3)">
+
+                Tell me ❤️
+
             </button>
 
         </div>
@@ -824,118 +1174,132 @@ input::-webkit-calendar-picker-indicator{
 
 
 
-    <!-- ====================================================
-         STEP 2
-    ===================================================== -->
+    <!-- ===================================================
+         SCREEN 3 — PROPOSAL
+    ==================================================== -->
 
     <section
-        class="step"
-        id="step2">
+        class="screen"
+        id="screen3">
 
-        <img
-            class="hero-img"
-            src="https://media.tenor.com/Z7_D91tXlKAAAAAi/tkthao219-bubududu.gif"
-            alt="Cute bear">
+        <div class="character">
+            🫣
+        </div>
 
-        <div class="eyebrow">
-            The Big Question
+        <div class="label">
+            The actual question
         </div>
 
         <h1>
-            Will you go on a date<br>
-            with me? 🥺❤️
+            Naina,<br>
+            will you give<br>
+            <span class="gradient-text">us a chance?</span> ❤️
         </h1>
 
-        <p class="subtitle">
-            Think carefully… although
-            I have a tiny suspicion about
-            what your answer might be. 😌
+        <p class="description">
+
+            No pressure.
+
+            <br>
+
+            No perfect answer needed.
+
+            <br><br>
+
+            Just your honest answer.
+
         </p>
 
-        <div class="buttons">
+        <div class="button-row">
 
             <button
                 class="primary"
-                onclick="acceptProposal()">
+                onclick="sayYes()">
 
-                YES! 💗
+                Yes ❤️
+
             </button>
 
             <button
                 class="secondary"
-                id="noBtn">
+                id="noButton">
 
                 No 🙈
+
             </button>
 
         </div>
 
-        <p class="hint">
-            P.S. The buttons might have a little personality. 😈
+        <p class="note">
+            P.S. One button is feeling a little shy. 😂
         </p>
 
     </section>
 
 
 
-    <!-- ====================================================
-         STEP 3
-    ===================================================== -->
+    <!-- ===================================================
+         SCREEN 4 — FUN QUESTIONS
+    ==================================================== -->
 
     <section
-        class="step"
-        id="step3">
+        class="screen"
+        id="screen4">
 
-        <img
-            class="hero-img"
-            src="https://media.tenor.com/qU3VwY535V8AAAAi/bubududu-bear.gif"
-            alt="Cute bear">
+        <div class="character">
+            😌
+        </div>
 
-        <div class="eyebrow">
-            Question 02
+        <div class="label">
+            Okay… hypothetical situation
         </div>
 
         <h1>
-            What are we<br>
-            eating? 🍕
+            If you said yes…<br>
+            what would our first<br>
+            <span class="gradient-text">date vibe</span> be?
         </h1>
-
-        <p class="subtitle">
-            Choose your weapon. 😌
-        </p>
 
         <div class="options">
 
             <div
                 class="option"
-                onclick="selectOption(this,'🍕 Pizza')">
+                onclick="choose(this,'☕ A cozy cafe')">
 
-                <span>🍕</span>
-                Pizza
+                <span class="option-icon">☕</span>
+
+                Cozy Cafe
+
             </div>
 
             <div
                 class="option"
-                onclick="selectOption(this,'🥟 Momos')">
+                onclick="choose(this,'🎬 Movie date')">
 
-                <span>🥟</span>
-                Momos
+                <span class="option-icon">🎬</span>
+
+                Movie
+
             </div>
 
             <div
                 class="option"
-                onclick="selectOption(this,'🍔 Burger')">
+                onclick="choose(this,'🌆 Long evening walk')">
 
-                <span>🍔</span>
-                Burger
+                <span class="option-icon">🌆</span>
+
+                Evening Walk
+
             </div>
 
             <div
                 class="option"
-                onclick="selectOption(this,'☕ Cafe')">
+                onclick="choose(this,'✨ Surprise me')">
 
-                <span>☕</span>
-                Cafe
+                <span class="option-icon">✨</span>
+
+                Surprise Me
+
             </div>
 
         </div>
@@ -943,202 +1307,142 @@ input::-webkit-calendar-picker-indicator{
         <button
             class="primary"
             style="width:100%;margin-top:20px"
-            onclick="nextFromFood()">
+            onclick="nextQuestion()">
 
-            Continue 💕
+            Sounds Good ➜
+
         </button>
 
     </section>
 
 
 
-    <!-- ====================================================
-         STEP 4
-    ===================================================== -->
+    <!-- ===================================================
+         SCREEN 5 — DATE
+    ==================================================== -->
 
     <section
-        class="step"
-        id="step4">
+        class="screen"
+        id="screen5">
 
-        <img
-            class="hero-img"
-            src="https://media.tenor.com/P0C6G5eT9f4AAAAi/bubu-dudu-date.gif"
-            alt="Date">
+        <div class="character">
+            🥰
+        </div>
 
-        <div class="eyebrow">
-            Question 03
+        <div class="label">
+            Let's imagine it
         </div>
 
         <h1>
-            Where should<br>
-            we go? 📍
+            When should we<br>
+            make it <span class="gradient-text">happen?</span> 📅
         </h1>
 
-        <p class="subtitle">
-            Pick a vibe—or surprise me.
+        <p class="description">
+
+            You choose the day.
+
+            <br>
+
+            I'll take care of the rest. 😌
+
         </p>
 
-        <div class="options">
+        <div class="date-grid">
 
-            <div
-                class="option"
-                onclick="selectOption(this,'☕ Cozy Cafe')">
+            <div class="field">
 
-                <span>☕</span>
-                Cozy Cafe
+                <label>
+                    DATE
+                </label>
+
+                <input
+                    class="input"
+                    type="date"
+                    id="date">
+
             </div>
 
-            <div
-                class="option"
-                onclick="selectOption(this,'🎬 Movie')">
+            <div class="field">
 
-                <span>🎬</span>
-                Movie
-            </div>
+                <label>
+                    TIME
+                </label>
 
-            <div
-                class="option"
-                onclick="selectOption(this,'🌳 Park')">
+                <input
+                    class="input"
+                    type="time"
+                    id="time">
 
-                <span>🌳</span>
-                Park
-            </div>
-
-            <div
-                class="option"
-                onclick="selectOption(this,'✨ Your Choice')">
-
-                <span>✨</span>
-                Your Choice
             </div>
 
         </div>
 
-        <div class="input-group">
-
-            <label for="customLocation">
-                Or type your own place
-            </label>
-
-            <input
-                type="text"
-                id="customLocation"
-                placeholder="Your favourite place...">
-
-        </div>
+        <input
+            class="input"
+            type="text"
+            id="place"
+            placeholder="Where would you like to go? 📍">
 
         <button
             class="primary"
-            style="width:100%"
-            onclick="nextFromLocation()">
+            style="width:100%;margin-top:18px"
+            id="finishButton"
+            onclick="finishProposal()">
 
-            Next ➜
+            Make It Official 💗
+
         </button>
 
     </section>
 
 
 
-    <!-- ====================================================
-         STEP 5
-    ===================================================== -->
+    <!-- ===================================================
+         SCREEN 6 — FINAL
+    ==================================================== -->
 
     <section
-        class="step"
-        id="step5">
+        class="screen"
+        id="screen6">
 
-        <img
-            class="hero-img"
-            src="https://media.tenor.com/8Nn3lJ25-YMAAAAi/bubu-bubu-dudu.gif"
-            alt="Happy bear">
-
-        <div class="eyebrow">
-            Almost There
-        </div>
-
-        <h1>
-            Pick our<br>
-            date & time 📅
-        </h1>
-
-        <p class="subtitle">
-            This is the part where the developer
-            finally needs some real data. 😭
-        </p>
-
-        <div class="input-group">
-
-            <div class="date-grid">
-
-                <div>
-                    <label for="date">
-                        Date
-                    </label>
-
-                    <input
-                        type="date"
-                        id="date">
-                </div>
-
-                <div>
-                    <label for="time">
-                        Time
-                    </label>
-
-                    <input
-                        type="time"
-                        id="time">
-                </div>
-
-            </div>
-
-        </div>
-
-        <button
-            class="primary"
-            id="submitBtn"
-            style="width:100%"
-            onclick="finish()">
-
-            Fix The Date ❤️
-        </button>
-
-    </section>
-
-
-
-    <!-- ====================================================
-         STEP 6
-    ===================================================== -->
-
-    <section
-        class="step"
-        id="step6">
-
-        <div class="success-icon">
+        <div class="final-heart">
             💗
         </div>
 
-        <div class="eyebrow">
-            Mission Successful
+        <div class="label">
+            Mission complete
         </div>
 
         <h1>
-            It's a Date! 🎉
+            It's a <span class="gradient-text">Date.</span> 🎉
         </h1>
 
-        <p class="subtitle">
-            Okay… now this is officially
-            my favourite page on the internet. 🥹
+        <p class="description">
+
+            Naina said yes to giving
+            this little story a chance. 🥹
+
+            <br><br>
+
+            And Shrikant is officially
+            very, very happy.
+
         </p>
 
         <div
-            class="final-details"
+            class="details"
             id="finalDetails">
         </div>
 
-        <p class="hint">
-            Screenshot this. No take-backs. 😌❤️
+        <p class="note">
+
+            Screenshot this moment. ❤️
+
+            <br>
+
+            Some first steps are worth remembering.
+
         </p>
 
     </section>
@@ -1146,44 +1450,235 @@ input::-webkit-calendar-picker-indicator{
 
 </div>
 
-</main>
+</div>
 
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast">
+</div>
 
 
 <script>
 
 /* =========================================================
-   VARIABLES
+   DATA
 ========================================================= */
 
-let currentStep = 1;
+let currentScreen = 1;
 
-let selectedFood = "Not selected";
-let selectedLocation = "Not selected";
+let selectedVibe = "Not selected";
 
 
 /* =========================================================
-   FLOATING HEARTS
+   WEB AUDIO ROMANTIC MELODY
+========================================================= */
+
+let audioContext = null;
+
+let musicGain = null;
+
+let musicTimer = null;
+
+let musicPlaying = false;
+
+
+/*
+    This creates a tiny original ambient melody.
+
+    No MP3.
+    No external music URL.
+    No copyright dependency.
+*/
+
+const melody = [
+
+    [261.63,0.00],
+    [329.63,0.35],
+    [392.00,0.70],
+    [329.63,1.05],
+
+    [293.66,1.40],
+    [349.23,1.75],
+    [440.00,2.10],
+    [349.23,2.45],
+
+    [261.63,2.80],
+    [329.63,3.15],
+    [392.00,3.50],
+    [523.25,3.85],
+
+    [493.88,4.25],
+    [392.00,4.60],
+    [329.63,4.95],
+    [261.63,5.35]
+
+];
+
+
+function startMusic(){
+
+    if(musicPlaying){
+        return;
+    }
+
+    try{
+
+        audioContext =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+        musicGain =
+            audioContext.createGain();
+
+        musicGain.gain.value = 0.045;
+
+        musicGain.connect(
+            audioContext.destination
+        );
+
+        musicPlaying = true;
+
+        document
+            .getElementById("musicButton")
+            .classList.add("playing");
+
+        playMelody();
+
+    }catch(error){
+
+        console.log(
+            "Audio unavailable:",
+            error
+        );
+
+    }
+}
+
+
+function playMelody(){
+
+    if(!musicPlaying){
+        return;
+    }
+
+    const start =
+        audioContext.currentTime + .05;
+
+    melody.forEach(note=>{
+
+        const oscillator =
+            audioContext.createOscillator();
+
+        const gain =
+            audioContext.createGain();
+
+        oscillator.type = "sine";
+
+        oscillator.frequency.value =
+            note[0];
+
+        oscillator.connect(gain);
+
+        gain.connect(musicGain);
+
+        const when =
+            start + note[1];
+
+        gain.gain.setValueAtTime(
+            0,
+            when
+        );
+
+        gain.gain.linearRampToValueAtTime(
+            .20,
+            when + .05
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .001,
+            when + .40
+        );
+
+        oscillator.start(when);
+
+        oscillator.stop(
+            when + .45
+        );
+
+    });
+
+    musicTimer =
+        setTimeout(
+            playMelody,
+            5900
+        );
+}
+
+
+function stopMusic(){
+
+    musicPlaying = false;
+
+    clearTimeout(musicTimer);
+
+    document
+        .getElementById("musicButton")
+        .classList.remove("playing");
+
+    if(musicGain){
+
+        musicGain.gain.exponentialRampToValueAtTime(
+            .001,
+            audioContext.currentTime + .4
+        );
+
+    }
+}
+
+
+function toggleMusic(){
+
+    if(musicPlaying){
+
+        stopMusic();
+
+    }else{
+
+        startMusic();
+
+    }
+}
+
+
+/* =========================================================
+   HEARTS
 ========================================================= */
 
 function createHeart(){
 
-    const heart = document.createElement("div");
+    const heart =
+        document.createElement("div");
 
-    heart.className = "floating-heart";
+    heart.className = "heart";
 
-    const emojis = [
+    const icons = [
+        "♡",
+        "♥",
         "💗",
         "💕",
-        "💖",
-        "💘",
-        "💝",
         "✨"
     ];
 
     heart.textContent =
-        emojis[
-            Math.floor(Math.random()*emojis.length)
+        icons[
+            Math.floor(
+                Math.random()*icons.length
+            )
         ];
 
     heart.style.left =
@@ -1212,44 +1707,49 @@ setInterval(
 
 
 /* =========================================================
-   MUSIC
+   TOAST
 ========================================================= */
 
-function playMusic(){
+let toastTimer;
 
-    const music =
-        document.getElementById("bgMusic");
+function toast(message){
 
-    music.volume = .25;
+    const box =
+        document.getElementById("toast");
 
-    music.play().catch(()=>{
-        // Browser may block autoplay.
-    });
+    box.textContent = message;
+
+    box.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(()=>{
+            box.classList.remove("show");
+        },2200);
 }
 
 
 /* =========================================================
-   NAVIGATION
+   SCREEN NAVIGATION
 ========================================================= */
 
-function nextStep(number){
+function nextScreen(number){
 
     document
-        .querySelectorAll(".step")
-        .forEach(step=>{
-            step.classList.remove("active");
+        .querySelectorAll(".screen")
+        .forEach(screen=>{
+            screen.classList.remove("active");
         });
 
-    const next =
-        document.getElementById("step"+number);
+    document
+        .getElementById("screen"+number)
+        .classList.add("active");
 
-    if(next){
-        next.classList.add("active");
-    }
-
-    currentStep = number;
+    currentScreen = number;
 
     updateProgress();
+
 }
 
 
@@ -1260,7 +1760,7 @@ function nextStep(number){
 function updateProgress(){
 
     const percentage =
-        (currentStep / 6) * 100;
+        ((currentScreen - 1) / 5) * 100;
 
     document
         .getElementById("progressBar")
@@ -1268,80 +1768,84 @@ function updateProgress(){
         percentage + "%";
 
     document
-        .getElementById("stepCounter")
+        .getElementById("counter")
         .textContent =
-        String(currentStep).padStart(2,"0")
+        String(currentScreen).padStart(2,"0")
         + " / 06";
 }
 
 
 /* =========================================================
-   START
+   START EXPERIENCE
 ========================================================= */
 
-function yesClicked(){
+function startExperience(){
 
-    playMusic();
+    /*
+       This click counts as user interaction,
+       so browsers allow Web Audio.
+    */
 
-    nextStep(2);
+    startMusic();
+
+    nextScreen(2);
+
 }
 
 
 /* =========================================================
-   PROPOSAL YES
+   PROPOSAL
 ========================================================= */
 
-function acceptProposal(){
+function sayYes(){
 
-    playMusic();
+    startMusic();
 
-    confetti({
-        particleCount:180,
-        spread:90,
-        startVelocity:35,
-        origin:{
-            y:.6
-        }
-    });
+    celebrateSmall();
 
     setTimeout(()=>{
-        nextStep(3);
-    },500);
+
+        nextScreen(4);
+
+    },650);
+
 }
 
 
 /* =========================================================
-   PLAYFUL NO BUTTON
+   PLAYFUL NO
 ========================================================= */
 
-const noBtn =
-    document.getElementById("noBtn");
+const noButton =
+    document.getElementById("noButton");
 
 let noAttempts = 0;
 
-function moveNoButton(){
+
+function moveNo(){
 
     noAttempts++;
 
     /*
-       First few attempts:
-       Button playfully escapes.
+       It runs away only for fun.
+       Eventually it becomes a normal button
+       so the visitor still has a real choice.
     */
 
-    if(noAttempts < 5){
+    if(noAttempts <= 4){
 
-        noBtn.style.position = "fixed";
+        noButton.style.position = "fixed";
 
-        const padding = 20;
+        const padding = 18;
 
         const maxX =
             window.innerWidth -
-            noBtn.offsetWidth -
+            noButton.offsetWidth -
             padding;
 
         const maxY =
             window.innerHeight -
-            noBtn.offsetHeight -
+            noButton.offsetHeight -
             padding;
 
         const x =
@@ -1356,86 +1860,80 @@ function moveNoButton(){
                 Math.random()*maxY
             );
 
-        noBtn.style.left =
+        noButton.style.left =
             x + "px";
 
-        noBtn.style.top =
+        noButton.style.top =
             y + "px";
 
-        noBtn.textContent =
-            [
-                "No 🙈",
-                "Too slow 😭",
-                "Nope 😌",
-                "Try again 😂",
-                "Are you sure? 🥺"
-            ][
-                Math.min(
-                    noAttempts,
-                    4
-                )
-            ];
+        const messages = [
+
+            "No 🙈",
+
+            "Too slow 😂",
+
+            "Wait… 😭",
+
+            "Try again 😌",
+
+            "Okay, seriously? 🥺"
+
+        ];
+
+        noButton.textContent =
+            messages[noAttempts];
 
     }else{
 
-        /*
-           After the joke has run enough,
-           allow an actual No response.
-        */
+        noButton.style.position =
+            "relative";
 
-        noBtn.style.position = "relative";
+        noButton.style.left = "";
+        noButton.style.top = "";
 
-        noBtn.style.left = "";
-
-        noBtn.style.top = "";
-
-        noBtn.textContent =
+        noButton.textContent =
             "No, I'm sure";
 
-        noBtn.onclick = function(){
+        noButton.onclick = function(){
 
-            const confirmed =
+            const answer =
                 confirm(
-                    "Are you really sure? 🥺\n\n" +
-                    "You can choose No — I promise."
+                    "Are you sure? ❤️\n\n" +
+                    "It's completely okay to say no."
                 );
 
-            if(confirmed){
+            if(answer){
 
-                alert(
-                    "Okay ❤️ Thanks for being honest."
+                toast(
+                    "Okay. Thank you for being honest ❤️"
                 );
 
-                /*
-                   Stop here rather than forcing
-                   the user through the date flow.
-                */
             }
+
         };
+
     }
 }
 
 
-/* Desktop */
-
-noBtn.addEventListener(
+noButton.addEventListener(
     "mouseenter",
-    moveNoButton
+    moveNo
 );
 
 
-/* Mobile */
-
-noBtn.addEventListener(
+noButton.addEventListener(
     "touchstart",
-    function(e){
+    function(event){
 
-        if(noAttempts < 5){
+        if(noAttempts < 4){
 
-            e.preventDefault();
+            event.preventDefault();
 
-            moveNoButton();
+            moveNo();
+
         }
+
     },
     {
         passive:false
@@ -1444,119 +1942,166 @@ noBtn.addEventListener(
 
 
 /* =========================================================
-   OPTION SELECTION
+   QUESTION OPTION
 ========================================================= */
 
-function selectOption(element,value){
+function choose(element,value){
 
-    const parent =
-        element.parentElement;
-
-    parent
-        .querySelectorAll(".option")
+    document
+        .querySelectorAll("#screen4 .option")
         .forEach(option=>{
             option.classList.remove("selected");
         });
 
     element.classList.add("selected");
 
-    /*
-       Detect which question we are on.
-    */
+    selectedVibe = value;
 
-    if(currentStep === 3){
-
-        selectedFood = value;
-
-    }else if(currentStep === 4){
-
-        selectedLocation = value;
-    }
 }
 
 
 /* =========================================================
-   FOOD
+   NEXT QUESTION
 ========================================================= */
 
-function nextFromFood(){
+function nextQuestion(){
 
-    if(selectedFood === "Not selected"){
+    if(
+        selectedVibe === "Not selected"
+    ){
 
-        alert(
-            "Ek option choose karo na 🥺❤️"
+        toast(
+            "Choose a vibe first 😌❤️"
         );
 
         return;
+
     }
 
-    nextStep(4);
+    nextScreen(5);
+
 }
 
 
 /* =========================================================
-   LOCATION
-========================================================= */
-
-function nextFromLocation(){
-
-    const custom =
-        document
-        .getElementById("customLocation")
-        .value
-        .trim();
-
-    if(custom){
-
-        selectedLocation = custom;
-
-    }
-
-    if(selectedLocation === "Not selected"){
-
-        alert(
-            "Ek jagah choose karo 😭❤️"
-        );
-
-        return;
-    }
-
-    nextStep(5);
-}
-
-
-/* =========================================================
-   MINIMUM DATE = TODAY
+   DATE MINIMUM
 ========================================================= */
 
 const dateInput =
     document.getElementById("date");
 
-const today =
+const now =
     new Date();
 
-const yyyy =
-    today.getFullYear();
+const year =
+    now.getFullYear();
 
-const mm =
+const month =
     String(
-        today.getMonth()+1
+        now.getMonth()+1
     ).padStart(2,"0");
 
-const dd =
+const day =
     String(
-        today.getDate()
+        now.getDate()
     ).padStart(2,"0");
 
 dateInput.min =
-    `${yyyy}-${mm}-${dd}`;
+    `${year}-${month}-${day}`;
+
+
+/* =========================================================
+   CONFETTI — SELF CONTAINED
+========================================================= */
+
+function celebrateSmall(){
+
+    const symbols = [
+        "💗",
+        "💕",
+        "✨",
+        "❤️"
+    ];
+
+    for(let i=0;i<35;i++){
+
+        const item =
+            document.createElement("div");
+
+        item.textContent =
+            symbols[
+                Math.floor(
+                    Math.random()*symbols.length
+                )
+            ];
+
+        item.style.position = "fixed";
+        item.style.zIndex = "999";
+        item.style.left =
+            (40 + Math.random()*20) + "vw";
+        item.style.top = "45vh";
+        item.style.fontSize =
+            (14 + Math.random()*15) + "px";
+        item.style.pointerEvents = "none";
+
+        document.body.appendChild(item);
+
+        const x =
+            (Math.random()-.5)*350;
+
+        const y =
+            -(100 + Math.random()*400);
+
+        item.animate(
+            [
+                {
+                    transform:"translate(0,0) scale(.5)",
+                    opacity:0
+                },
+                {
+                    transform:`translate(${x*.4}px,${y*.4}px) scale(1)`,
+                    opacity:1
+                },
+                {
+                    transform:`translate(${x}px,${y}px) scale(.7)`,
+                    opacity:0
+                }
+            ],
+            {
+                duration:
+                    1300 + Math.random()*800,
+
+                easing:"cubic-bezier(.2,.8,.2,1)"
+            }
+        ).onfinish =
+            ()=>item.remove();
+
+    }
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function safe(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
 
 
 /* =========================================================
    FINAL SUBMISSION
 ========================================================= */
 
-async function finish(){
+async function finishProposal(){
 
     const date =
         document
@@ -1568,45 +2113,77 @@ async function finish(){
         .getElementById("time")
         .value;
 
-    if(!date || !time){
+    const place =
+        document
+        .getElementById("place")
+        .value
+        .trim();
 
-        alert(
-            "Date aur time dono choose karo ❤️"
+
+    if(!date){
+
+        toast(
+            "Choose a date first 📅"
         );
 
         return;
     }
 
 
+    if(!time){
+
+        toast(
+            "And a time too ⏰"
+        );
+
+        return;
+    }
+
+
+    const finalPlace =
+        place ||
+        "Her choice";
+
+
     const button =
-        document.getElementById("submitBtn");
+        document.getElementById(
+            "finishButton"
+        );
 
     button.disabled = true;
 
     button.textContent =
-        "Sending love... 💌";
-
-
-    const location =
-        selectedLocation;
+        "Saving this moment... 💗";
 
 
     const payload = {
 
         Subject:
-            "She Said YES! 💗 Date Details",
+            "Naina's Proposal Response ❤️",
 
-        Food:
-            selectedFood,
+        From:
+            "Shrikant Prajapati",
 
-        Location:
-            location,
+        For:
+            "Nancy Raghav",
+
+        Nickname:
+            "Naina",
+
+        Answer:
+            "YES — gave it a chance",
+
+        DateVibe:
+            selectedVibe,
 
         Date:
             date,
 
         Time:
             time,
+
+        Place:
+            finalPlace,
 
         CreatedAt:
             new Date().toISOString()
@@ -1615,27 +2192,37 @@ async function finish(){
 
 
     /*
-       Save locally as backup.
+       Local backup
     */
 
-    localStorage.setItem(
-        "proposalDate",
-        JSON.stringify(payload)
-    );
+    try{
+
+        localStorage.setItem(
+            "nainaProposalResponse",
+            JSON.stringify(payload)
+        );
+
+    }catch(error){
+
+        console.log(
+            "LocalStorage unavailable"
+        );
+
+    }
 
 
     /*
        Formspree
     */
 
-    const formspreeEndpoint =
+    const endpoint =
         "https://formspree.io/f/mdeobrnn";
 
 
     try{
 
         await fetch(
-            formspreeEndpoint,
+            endpoint,
             {
                 method:"POST",
 
@@ -1654,8 +2241,8 @@ async function finish(){
 
     }catch(error){
 
-        console.error(
-            "Form submission error:",
+        console.log(
+            "Formspree error:",
             error
         );
 
@@ -1663,59 +2250,16 @@ async function finish(){
 
 
     /*
-       Final screen.
+       Format date
     */
 
-    nextStep(6);
-
-
-    confetti({
-        particleCount:300,
-        spread:120,
-        startVelocity:45,
-        origin:{
-            y:.55
-        }
-    });
-
-
-    /*
-       Second confetti burst.
-    */
-
-    setTimeout(()=>{
-
-        confetti({
-            particleCount:180,
-            spread:80,
-            origin:{
-                x:.2,
-                y:.6
-            }
-        });
-
-        confetti({
-            particleCount:180,
-            spread:80,
-            origin:{
-                x:.8,
-                y:.6
-            }
-        });
-
-    },500);
-
-
-    /*
-       Format date.
-    */
-
-    const formattedDate =
+    const readableDate =
         new Date(
-            date + "T00:00"
+            date + "T00:00:00"
         ).toLocaleDateString(
             "en-IN",
             {
+                weekday:"long",
                 day:"numeric",
                 month:"long",
                 year:"numeric"
@@ -1723,51 +2267,154 @@ async function finish(){
         );
 
 
+    /*
+       Final screen
+    */
+
     document
         .getElementById("finalDetails")
         .innerHTML = `
 
-            🍽️ <b>Food:</b>
-            ${escapeHTML(selectedFood)}
+            ✨ <strong>Our vibe:</strong>
+            ${safe(selectedVibe)}
             <br>
 
-            📍 <b>Place:</b>
-            ${escapeHTML(location)}
+            📅 <strong>Date:</strong>
+            ${safe(readableDate)}
             <br>
 
-            📅 <b>Date:</b>
-            ${escapeHTML(formattedDate)}
+            ⏰ <strong>Time:</strong>
+            ${safe(time)}
             <br>
 
-            ⏰ <b>Time:</b>
-            ${escapeHTML(time)}
+            📍 <strong>Place:</strong>
+            ${safe(finalPlace)}
 
         `;
+
+
+    nextScreen(6);
+
+    finalCelebration();
+
 }
 
 
 /* =========================================================
-   HTML ESCAPE
+   FINAL CELEBRATION
 ========================================================= */
 
-function escapeHTML(value){
+function finalCelebration(){
 
-    return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+    startMusic();
+
+    /*
+       Big custom celebration
+       without requiring a confetti CDN.
+    */
+
+    for(let i=0;i<100;i++){
+
+        const particle =
+            document.createElement("div");
+
+        const symbols = [
+            "💗",
+            "💕",
+            "❤️",
+            "✨",
+            "💖",
+            "🌸"
+        ];
+
+        particle.textContent =
+            symbols[
+                Math.floor(
+                    Math.random()*symbols.length
+                )
+            ];
+
+        particle.style.position =
+            "fixed";
+
+        particle.style.zIndex =
+            "999";
+
+        particle.style.left =
+            (Math.random()*100) + "vw";
+
+        particle.style.top =
+            "-30px";
+
+        particle.style.fontSize =
+            (12 + Math.random()*18) + "px";
+
+        particle.style.pointerEvents =
+            "none";
+
+        document.body.appendChild(
+            particle
+        );
+
+        const x =
+            (Math.random()-.5)*200;
+
+        const duration =
+            1800 + Math.random()*2200;
+
+        particle.animate(
+            [
+                {
+                    transform:
+                        "translateY(0) rotate(0deg)",
+                    opacity:0
+                },
+
+                {
+                    transform:
+                        `translate(${x}px,40vh) rotate(120deg)`,
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        `translate(${x*2}px,110vh) rotate(260deg)`,
+                    opacity:0
+                }
+            ],
+            {
+                duration:duration,
+                easing:"ease-in"
+            }
+        ).onfinish =
+            ()=>particle.remove();
+
+    }
+
 }
 
 
 /* =========================================================
-   INITIALIZE
+   INIT
 ========================================================= */
 
 updateProgress();
 
+
+/*
+   Prevent accidental form-like reload.
+*/
+
+window.addEventListener(
+    "beforeunload",
+    ()=>{
+        if(musicTimer){
+            clearTimeout(musicTimer);
+        }
+    }
+);
+
 </script>
 
 </body>
-</html>
+   </html>
