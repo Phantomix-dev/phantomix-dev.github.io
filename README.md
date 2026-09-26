@@ -43,7 +43,7 @@ Welcome to the official repository of **Phantomix**, a premium suite of privacy 
 
 ## 🛠️ Core Features & Tools
 
-Our ecosystem operates completely on a **Zero-Data Architecture (Client-Side Processing)**. Your data never leaves your device.
+Privacy-first architecture: Many Phantomix utilities are designed for local/browser-side processing, Platform features such as accounts, community, waitlist and other services may use backend infrastructure as described in our Privacy Policy.
 
 * **🛡️ Privacy Suite:**
     * **Photo Privacy Cleaner:** Strips hidden GPS and EXIF data from images before sharing.
