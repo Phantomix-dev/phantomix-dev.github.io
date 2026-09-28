@@ -63,3 +63,59 @@ body {
     box-shadow: var(--glow-primary);
     transform: translateY(-2px);
 }
+/* =========================================
+   RESPONSIVE LAYOUT SYSTEM
+   ========================================= */
+/* Mobile First Layout (Stacked) */
+.app-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg) 5%;
+    display: grid;
+    grid-template-columns: 1fr; /* Ek ke neeche ek (Mobile) */
+    gap: var(--space-lg);
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile par checkboxes ek line mein */
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.password-box {
+    background: var(--bg-base);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+/* 📱 Mobile Specific Tweaks */
+@media (max-width: 768px) {
+    .password-box {
+        flex-direction: column; /* Mobile par copy button neeche aayega */
+        text-align: center;
+    }
+    .password-box button {
+        width: 100%;
+        justify-content: center;
+    }
+    .mobile-hide { display: none !important; }
+}
+
+/* 💻 Desktop Breakpoint */
+@media (min-width: 768px) {
+    .app-layout {
+        grid-template-columns: 250px 1fr; /* Desktop par Sidebar + Main Content */
+        gap: var(--space-xl);
+        padding: var(--space-xl) 5%;
+    }
+    .controls-grid {
+        grid-template-columns: 1fr 1fr; /* Desktop par 2 columns */
+    }
+}
