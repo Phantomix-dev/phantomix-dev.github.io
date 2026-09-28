@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phantom-Calc | The Omni Calculator</title>
@@ -16,135 +15,119 @@
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/phantomix-dev/phantomix-dev.github.io/main/assets/favicon.png">
     <meta name="description" content="Phantom-Calc. An all-in-one offline calculator for Finance, Data Storage, Percentages, and everyday math.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        ::selection { background-color: #0ea5e9; color: #ffffff; }
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
-
-        body {
-            background-color: #020617; color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-            margin: 0; padding: 0; padding-top: 80px; 
-            display: flex; flex-direction: column; min-height: 100vh;
+        /* Modern App Shell Tweaks */
+        .app-layout { padding-top: 20px; }
+        .calc-wrapper {
+            background: var(--surface-main); border: 1px solid var(--surface-border);
+            border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: var(--shadow-card);
         }
 
-        /* Navbar */
-        .phantomix-navbar {
-            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14, 165, 233, 0.2);
-            z-index: 1000; box-sizing: border-box;
+        /* 📱 Sleek Scrollable Tab Bar */
+        .tab-bar {
+            display: flex; overflow-x: auto; scrollbar-width: none;
+            background: rgba(2, 6, 23, 0.8); border-bottom: 1px solid var(--surface-border);
+            -webkit-overflow-scrolling: touch;
         }
-        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; }
-        .nav-actions { display: flex; gap: 12px; }
-        .nav-btn {
-            background: rgba(14, 165, 233, 0.1); color: #0ea5e9; padding: 8px 18px;
-            border: 1px solid #0ea5e9; border-radius: 6px; text-decoration: none;
-            font-size: 14px; font-weight: 600; transition: all 0.3s ease;
-        }
-        .nav-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
-
-        /* Main App Wrapper */
-        .main-wrapper {
-            flex-grow: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px;
-        }
-
-        .app-container {
-            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(14, 165, 233, 0.3);
-            border-radius: 16px; padding: 30px; width: 100%; max-width: 500px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5); 
-        }
-
-        .app-header { text-align: center; margin-bottom: 25px; }
-        .app-header h2 { margin: 0 0 5px 0; color: #f8fafc; font-size: 26px; }
-        .app-header h2 span { color: #0ea5e9; }
+        .tab-bar::-webkit-scrollbar { display: none; }
         
-        /* Category Selector */
-        .calc-selector { width: 100%; padding: 12px; background: #020617; border: 1px solid #334155; color: #f8fafc; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600; outline: none; margin-bottom: 25px; cursor: pointer; }
-        .calc-selector:focus { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.2); }
+        .tab-item {
+            padding: 15px 20px; white-space: nowrap; color: var(--text-secondary);
+            font-weight: 600; font-size: 14px; cursor: pointer; transition: 0.3s;
+            border-bottom: 3px solid transparent; display: flex; align-items: center; gap: 8px;
+        }
+        .tab-item:hover { color: var(--text-primary); background: rgba(255,255,255,0.02); }
+        .tab-item.active {
+            color: var(--brand-primary); border-bottom-color: var(--brand-primary);
+            background: rgba(14, 165, 233, 0.05);
+        }
 
-        /* Calculator Sections */
-        .calc-section { display: none; animation: fadeIn 0.3s ease-in-out; }
+        /* Tab Content Areas */
+        .calc-section { display: none; padding: 25px; animation: fadeIn 0.4s; }
         .calc-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Form Inputs */
-        .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; font-size: 13px; font-weight: 600; color: #cbd5e1; margin-bottom: 5px; }
+        /* Input Styling */
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
         .input-group input, .input-group select {
-            width: 100%; padding: 12px; background: rgba(2, 6, 23, 0.6); border: 1px solid #334155;
-            color: #f8fafc; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; outline: none; box-sizing: border-box;
+            width: 100%; padding: 15px; background: var(--bg-base); border: 1px solid var(--surface-border);
+            color: var(--text-primary); border-radius: var(--radius-md); font-family: var(--font-sans);
+            font-size: 16px; outline: none; box-sizing: border-box; transition: 0.3s;
         }
-        .input-group input:focus { border-color: #0ea5e9; }
+        .input-group input:focus, .input-group select:focus { border-color: var(--brand-primary); box-shadow: 0 0 15px rgba(14, 165, 233, 0.15); }
 
-        .action-btn {
-            width: 100%; padding: 14px; background: linear-gradient(135deg, #0ea5e9, #3b82f6);
-            color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700;
-            cursor: pointer; transition: 0.3s; margin-top: 10px;
+        /* Standard Calculator Grid */
+        .std-display {
+            width: 100%; background: var(--bg-base); padding: 20px; font-size: 32px;
+            font-weight: 700; color: #fff; text-align: right; border: 1px solid var(--surface-border);
+            border-radius: var(--radius-md); box-sizing: border-box; margin-bottom: 15px;
+            font-family: 'Fira Code', monospace;
         }
-        .action-btn:hover { box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); transform: translateY(-2px); }
+        .std-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .calc-btn {
+            background: var(--surface-elevated); color: var(--text-primary); border: 1px solid var(--surface-border);
+            border-radius: var(--radius-md); padding: 18px; font-size: 20px; font-weight: 600;
+            cursor: pointer; transition: 0.2s; font-family: 'Fira Code', monospace;
+        }
+        .calc-btn:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        .calc-btn:active { transform: translateY(0); }
+        .calc-btn.op { background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); border-color: rgba(14, 165, 233, 0.3); }
+        .calc-btn.eq { background: var(--brand-primary); color: white; grid-column: span 2; border-color: var(--brand-primary); }
 
-        /* Results Box */
+        /* Premium Result Box */
         .result-box {
-            background: #020617; padding: 20px; border-radius: 8px;
-            border: 1px dashed #0ea5e9; margin-top: 20px; text-align: center;
+            background: var(--bg-base); border: 1px dashed var(--brand-primary);
+            border-radius: var(--radius-md); padding: 25px; text-align: center; margin-top: 25px;
+            position: relative; overflow: hidden;
         }
-        .result-label { font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
-        .result-value { font-size: 24px; font-weight: 700; color: #10b981; }
-
-        /* Standard Calc Grid */
-        .std-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; }
-        .calc-btn { background: #1e293b; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 15px; font-size: 18px; font-weight: 600; cursor: pointer; transition: 0.2s; }
-        .calc-btn:hover { background: #334155; }
-        .calc-btn.op { background: rgba(14, 165, 233, 0.1); color: #0ea5e9; border-color: #0ea5e9; }
-        .calc-btn.op:hover { background: #0ea5e9; color: white; }
-        .calc-btn.eq { background: #10b981; color: white; border-color: #10b981; grid-column: span 2; }
-        .std-display { width: 100%; background: #020617; padding: 15px; font-size: 24px; font-weight: 700; color: white; text-align: right; border: 1px solid #334155; border-radius: 8px; box-sizing: border-box; margin-bottom: 10px; }
-
-        /* Footer */
-        .phantomix-footer { background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2); padding: 30px 5%; margin-top: auto; font-size: 13px; color: #64748b; text-align: center; width: 100%; box-sizing: border-box; }
-
-        @media (max-width: 600px) {
-            .phantomix-navbar { padding: 0 15px; }
-            .nav-logo { font-size: 16px; }
-            .nav-btn { padding: 6px 12px; font-size: 12px; }
+        .result-box::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary));
         }
+        .result-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 5px; }
+        .result-value { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 5px; word-break: break-all; }
+        .result-sub { font-size: 14px; font-weight: 600; }
     </style>
 </head>
 <body>
 
-    <nav class="phantomix-navbar">
-        <a href="index.html" class="nav-logo"><i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i> Phantomix</a>
-        <div class="nav-actions">
-            <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Back to Hub</a>
-        </div>
+    <!-- GLOBAL NAVBAR -->
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 1px solid var(--surface-border); background: var(--surface-main); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;">
+        <a href="index.html" style="font-weight: bold; font-size: 18px; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
+        </a>
+        <a href="apps.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 16px; background: rgba(14, 165, 233, 0.1); border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); color: var(--brand-primary);"><i class="fas fa-arrow-left"></i> Hub</a>
     </nav>
 
-    <div class="main-wrapper">
-        <div class="app-container">
-            <div class="app-header">
-                <h2>Phantom <span>Calc</span></h2>
-                <p style="color: #94a3b8; font-size: 13px; margin: 0;"><i class="fas fa-calculator"></i> The Omni Calculator Tool</p>
+    <div class="app-layout" style="max-width: 500px; grid-template-columns: 1fr; margin: 0 auto; padding-left: 15px; padding-right: 15px;">
+        
+        <div style="text-align: center; margin-bottom: 25px;">
+            <h1 style="font-size: 28px; margin-bottom: 5px;">Phantom <span style="color: var(--brand-primary);">Calc</span></h1>
+            <p style="color: var(--text-secondary); font-size: 14px; margin: 0;">The Omni Calculator Tool</p>
+        </div>
+
+        <div class="calc-wrapper">
+            
+            <!-- Sleek Tab Bar -->
+            <div class="tab-bar">
+                <div class="tab-item active" onclick="switchTab('standard', this)"><i class="fas fa-calculator"></i> Standard</div>
+                <div class="tab-item" onclick="switchTab('discount', this)"><i class="fas fa-tag"></i> Discount</div>
+                <div class="tab-item" onclick="switchTab('data', this)"><i class="fas fa-hdd"></i> Data Storage</div>
+                <div class="tab-item" onclick="switchTab('fd', this)"><i class="fas fa-building-columns"></i> Finance (FD)</div>
             </div>
 
-            <select class="calc-selector" id="modeSelector">
-                <option value="standard">🔢 Standard Calculator</option>
-                <option value="discount">🏷️ Discount & Percentage</option>
-                <option value="data">💾 Data & Storage</option>
-                <option value="fd">🏦 Fixed Deposit (FD)</option>
-            </select>
-
+            <!-- 🔢 STANDARD CALCULATOR -->
             <div id="standard" class="calc-section active">
                 <input type="text" class="std-display" id="stdDisplay" disabled value="0">
                 <div class="std-grid">
-                    <button class="calc-btn" onclick="stdClear()">C</button>
+                    <button class="calc-btn" style="color: var(--status-danger);" onclick="stdClear()">C</button>
                     <button class="calc-btn" onclick="stdAppend('(')">(</button>
                     <button class="calc-btn" onclick="stdAppend(')')">)</button>
                     <button class="calc-btn op" onclick="stdAppend('/')">÷</button>
@@ -170,89 +153,100 @@
                 </div>
             </div>
 
+            <!-- 🏷️ DISCOUNT CALCULATOR -->
             <div id="discount" class="calc-section">
                 <div class="input-group">
                     <label>Original Price</label>
-                    <input type="number" id="discPrice" placeholder="Enter amount">
+                    <input type="number" id="discPrice" placeholder="Enter amount" oninput="calcDiscount()">
                 </div>
                 <div class="input-group">
                     <label>Discount Percentage (%)</label>
-                    <input type="number" id="discPercent" placeholder="e.g. 20">
+                    <input type="number" id="discPercent" placeholder="e.g. 20" oninput="calcDiscount()">
                 </div>
-                <button class="action-btn" onclick="calcDiscount()">Calculate Discount</button>
+                
                 <div class="result-box">
                     <div class="result-label">Final Price</div>
                     <div class="result-value" id="discResult">₹ 0.00</div>
-                    <div style="font-size: 12px; color: #ef4444; margin-top: 5px;" id="discSaved">Saved: ₹ 0.00</div>
+                    <div class="result-sub" style="color: var(--status-success);" id="discSaved">Saved: ₹ 0.00</div>
                 </div>
             </div>
 
+            <!-- 💾 DATA STORAGE CALCULATOR -->
             <div id="data" class="calc-section">
                 <div class="input-group">
-                    <label>Value</label>
-                    <input type="number" id="dataValue" placeholder="Enter value">
+                    <label>Data Value</label>
+                    <input type="number" id="dataValue" placeholder="Enter value" oninput="calcData()">
                 </div>
-                <div class="input-group">
-                    <label>Convert From</label>
-                    <select id="dataFrom">
-                        <option value="1">Bytes (B)</option>
-                        <option value="1024">Kilobytes (KB)</option>
-                        <option value="1048576">Megabytes (MB)</option>
-                        <option value="1073741824" selected>Gigabytes (GB)</option>
-                        <option value="1099511627776">Terabytes (TB)</option>
-                    </select>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="input-group">
+                        <label>Convert From</label>
+                        <select id="dataFrom" onchange="calcData()">
+                            <option value="1">Bytes (B)</option>
+                            <option value="1024">Kilobytes (KB)</option>
+                            <option value="1048576">Megabytes (MB)</option>
+                            <option value="1073741824" selected>Gigabytes (GB)</option>
+                            <option value="1099511627776">Terabytes (TB)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Convert To</label>
+                        <select id="dataTo" onchange="calcData()">
+                            <option value="1">Bytes (B)</option>
+                            <option value="1024">Kilobytes (KB)</option>
+                            <option value="1048576" selected>Megabytes (MB)</option>
+                            <option value="1073741824">Gigabytes (GB)</option>
+                            <option value="1099511627776">Terabytes (TB)</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label>Convert To</label>
-                    <select id="dataTo">
-                        <option value="1">Bytes (B)</option>
-                        <option value="1024">Kilobytes (KB)</option>
-                        <option value="1048576" selected>Megabytes (MB)</option>
-                        <option value="1073741824">Gigabytes (GB)</option>
-                        <option value="1099511627776">Terabytes (TB)</option>
-                    </select>
-                </div>
-                <button class="action-btn" onclick="calcData()">Convert Storage</button>
+                
                 <div class="result-box">
                     <div class="result-label">Converted Value</div>
-                    <div class="result-value" id="dataResult">0</div>
+                    <div class="result-value" id="dataResult" style="color: var(--brand-primary);">0</div>
                 </div>
             </div>
 
+            <!-- 🏦 FD CALCULATOR -->
             <div id="fd" class="calc-section">
                 <div class="input-group">
                     <label>Principal Amount (₹)</label>
-                    <input type="number" id="fdAmount" placeholder="e.g. 100000">
+                    <input type="number" id="fdAmount" placeholder="e.g. 100000" oninput="calcFD()">
                 </div>
-                <div class="input-group">
-                    <label>Interest Rate (% p.a)</label>
-                    <input type="number" id="fdRate" placeholder="e.g. 7.5">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="input-group">
+                        <label>Interest Rate (%)</label>
+                        <input type="number" id="fdRate" placeholder="e.g. 7.5" oninput="calcFD()">
+                    </div>
+                    <div class="input-group">
+                        <label>Time (Years)</label>
+                        <input type="number" id="fdTime" placeholder="e.g. 5" oninput="calcFD()">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label>Time Period (Years)</label>
-                    <input type="number" id="fdTime" placeholder="e.g. 5">
-                </div>
-                <button class="action-btn" onclick="calcFD()">Calculate Returns</button>
+                
                 <div class="result-box">
                     <div class="result-label">Total Maturity Value</div>
                     <div class="result-value" id="fdResult">₹ 0.00</div>
-                    <div style="font-size: 12px; color: #10b981; margin-top: 5px;" id="fdInterest">Wealth Gained: ₹ 0.00</div>
+                    <div class="result-sub" style="color: var(--status-success);" id="fdInterest">Wealth Gained: ₹ 0.00</div>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <footer class="phantomix-footer">
-        <p>&copy; 2026 Phantomix. All rights reserved. Built with passion by Shrikant Prajapati & Ranjan Gupta.</p>
-    </footer>
-
     <script>
-        // 🔄 Switch Calculator Modes
-        document.getElementById('modeSelector').addEventListener('change', function() {
+        // 📱 Sleek Tab Switching Logic
+        function switchTab(tabId, element) {
+            // Remove active classes
+            document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.calc-section').forEach(sec => sec.classList.remove('active'));
-            document.getElementById(this.value).classList.add('active');
-        });
+            
+            // Add active classes
+            element.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+
+            // Scroll tab bar to center the clicked tab (for mobile)
+            element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
 
         // 🔢 1. Standard Calculator Logic
         let stdExp = "";
@@ -268,7 +262,7 @@
         }
         function stdCalculate() {
             try {
-                // Warning: eval used for simplicity in isolated offline environment
+                // Evaluation logic
                 let result = eval(stdExp);
                 stdDisplay.value = Number.isInteger(result) ? result : result.toFixed(4);
                 stdExp = stdDisplay.value;
@@ -278,40 +272,39 @@
             }
         }
 
-        // 🏷️ 2. Discount Logic
+        // 🏷️ 2. Discount Logic (Now updates in real-time)
         function calcDiscount() {
             let price = parseFloat(document.getElementById('discPrice').value);
             let percent = parseFloat(document.getElementById('discPercent').value);
             if(isNaN(price) || isNaN(percent)) return;
+            
             let save = price * (percent / 100);
             let final = price - save;
+            
             document.getElementById('discResult').innerText = `₹ ${final.toFixed(2)}`;
             document.getElementById('discSaved').innerText = `Saved: ₹ ${save.toFixed(2)}`;
         }
 
-        // 💾 3. Data Storage Logic
+        // 💾 3. Data Storage Logic (Now updates in real-time)
         function calcData() {
             let val = parseFloat(document.getElementById('dataValue').value);
             let from = parseFloat(document.getElementById('dataFrom').value);
             let to = parseFloat(document.getElementById('dataTo').value);
             if(isNaN(val)) return;
             
-            // Convert to bytes first, then to target
             let bytes = val * from;
             let result = bytes / to;
             
-            // Format to avoid long decimals
             document.getElementById('dataResult').innerText = Number.isInteger(result) ? result : result.toFixed(4);
         }
 
-        // 🏦 4. FD Calculator Logic
+        // 🏦 4. FD Calculator Logic (Now updates in real-time)
         function calcFD() {
             let p = parseFloat(document.getElementById('fdAmount').value);
             let r = parseFloat(document.getElementById('fdRate').value);
             let t = parseFloat(document.getElementById('fdTime').value);
             if(isNaN(p) || isNaN(r) || isNaN(t)) return;
             
-            // Formula: A = P(1 + r/100)^t (Yearly Compounding)
             let amount = p * Math.pow((1 + (r / 100)), t);
             let interest = amount - p;
             
