@@ -13,10 +13,23 @@
     <title>All Apps | Phantomix Ecosystem</title>
     <link rel="icon" type="image/png" href="./logo.png">
     
-    <!-- Link to our global Design System -->
     <link rel="stylesheet" href="core.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Ensuring custom logos fit perfectly in the new premium layout */
+        .app-logo-img {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            flex-shrink: 0;
+            background-color: var(--bg-base);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+    </style>
 </head>
 <body>
 
@@ -65,10 +78,10 @@
             <!-- 1. DiamondMax -->
             <a href="diamondmax-login.html" class="app-card" data-category="utilities">
                 <div class="app-header">
-                    <div class="app-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--status-success);"><i class="fas fa-gem"></i></div>
+                    <img src="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bdiamondmax-logo.png" alt="DiamondMax" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">DiamondMax</h3>
-                        <p class="app-desc">Our flagship reward ecosystem. Complete elite missions and earn real-world rewards.</p>
+                        <p class="app-desc">Our flagship reward ecosystem. Complete elite missions and earn real-world rewards safely and instantly.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -80,10 +93,10 @@
             <!-- 2. Diamond-Vault -->
             <a href="vault.html" class="app-card" data-category="security">
                 <div class="app-header">
-                    <div class="app-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--brand-secondary);"><i class="fas fa-shield-halved"></i></div>
+                    <img src="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bvault-logo.png" alt="Diamond-Vault" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Diamond-Vault</h3>
-                        <p class="app-desc">Quantum-grade offline password generator with advanced entropy tracking.</p>
+                        <p class="app-desc">App is in development, but you can try our military-grade password generator directly on our website for free.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -95,10 +108,10 @@
             <!-- 3. Phantom Wormhole -->
             <a href="wormhole.html" class="app-card" data-category="privacy security">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <img src="wormhole-logo.png" alt="Phantom Wormhole" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Phantom-Wormhole</h3>
-                        <p class="app-desc">Secure P2P file transfer using 6-digit PINs. Zero server storage.</p>
+                        <p class="app-desc">Zero-server peer-to-peer file transfer. Share files directly across devices with military-grade encryption.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -110,10 +123,10 @@
             <!-- 4. Phantom Shrink -->
             <a href="compressor.html" class="app-card" data-category="utilities">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-compress"></i></div>
+                    <img src="shrink-logo.png" alt="Phantom Shrink" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Phantom-Shrink</h3>
-                        <p class="app-desc">Lossless image and file compression without uploading data to the cloud.</p>
+                        <p class="app-desc">100% offline, zero-server image compressor. Reduce file sizes instantly on your device without compromising privacy.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -125,10 +138,10 @@
             <!-- 5. Phantom Morph -->
             <a href="converter.html" class="app-card" data-category="utilities">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <img src="morph-logo.png" alt="Phantom Morph" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Phantom-Morph</h3>
-                        <p class="app-desc">100% offline image format converter. Switch between JPG, PNG, and WEBP instantly.</p>
+                        <p class="app-desc">100% offline image format converter. Switch between JPG, PNG, and WEBP instantly without server uploads.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -140,10 +153,10 @@
             <!-- 6. Photo Privacy Cleaner (Stripper) -->
             <a href="stripper.html" class="app-card" data-category="privacy">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-eye-slash"></i></div>
+                    <img src="stripper-logo.png" alt="Photo Privacy Cleaner" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Photo Privacy Cleaner</h3>
-                        <p class="app-desc">Remove hidden location (GPS) and camera metadata from your photos before sharing.</p>
+                        <p class="app-desc">Remove hidden location (GPS) and camera data from your photos before sharing them on social media.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -155,10 +168,10 @@
             <!-- 7. Browser Privacy Auditor -->
             <a href="fingerprint.html" class="app-card" data-category="privacy security">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-fingerprint"></i></div>
+                    <img src="fingerprint-logo.png" alt="Browser Privacy Auditor" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Privacy Auditor</h3>
-                        <p class="app-desc">Find out exactly what hardware and browser data your phone is silently leaking.</p>
+                        <p class="app-desc">Find out exactly what hardware and browser data your phone is silently leaking to websites.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -170,10 +183,10 @@
             <!-- 8. Private Note Sender (Burner) -->
             <a href="burner.html" class="app-card" data-category="privacy">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-fire"></i></div>
+                    <img src="burner-logo.png" alt="Private Note Sender" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Private Note Sender</h3>
-                        <p class="app-desc">Send sensitive information safely. Once read, the note automatically deletes itself forever.</p>
+                        <p class="app-desc">Send sensitive information safely. Once the receiver reads the note, it automatically deletes itself forever.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -185,10 +198,10 @@
             <!-- 9. Smart Temp Mail -->
             <a href="mail.html" class="app-card" data-category="privacy utilities">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <img src="mail-logo.png" alt="Smart Temp Mail" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Smart Temp Mail</h3>
-                        <p class="app-desc">Keep your real inbox 100% spam-free. Generate a temporary email instantly.</p>
+                        <p class="app-desc">Keep your real inbox 100% spam-free. Generate a temporary email address instantly for quick sign-ups.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -200,10 +213,10 @@
             <!-- 10. Secure Message Encoder -->
             <a href="encoder.html" class="app-card" data-category="security privacy">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-user-secret"></i></div>
+                    <img src="encoder-logo.png" alt="Secure Message Encoder" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Message Encoder</h3>
-                        <p class="app-desc">Turn your private text into unreadable secret codes before sending them to friends.</p>
+                        <p class="app-desc">Turn your private text into unreadable secret codes before sending them to friends. Only trusted circles can decode.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -215,10 +228,10 @@
             <!-- 11. Password Strength Check -->
             <a href="password.html" class="app-card" data-category="security">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-unlock-keyhole"></i></div>
+                    <img src="password-logo.png" alt="Password Strength Check" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Password Auditor</h3>
-                        <p class="app-desc">Find out how secure your passwords really are against modern cracking algorithms.</p>
+                        <p class="app-desc">Find out how secure your passwords really are. Test them against modern algorithms and make them stronger.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -230,10 +243,10 @@
             <!-- 12. Scam Spotter Training -->
             <a href="detective.html" class="app-card" data-category="security">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-shield-virus"></i></div>
+                    <img src="detective-logo.png" alt="Scam Spotter Training" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Scam Spotter</h3>
-                        <p class="app-desc">Learn how to spot fake links and phishing emails in this interactive safety simulation.</p>
+                        <p class="app-desc">Learn how to spot fake links and scam emails before they trick you. An interactive safety quiz.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -245,10 +258,10 @@
             <!-- 13. Phantom Calc -->
             <a href="calculator.html" class="app-card" data-category="utilities">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-calculator"></i></div>
+                    <img src="calc-logo.png" alt="Phantom Calc" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Phantom Calc</h3>
-                        <p class="app-desc">Solve math, calculate financial returns, and process storage conversions completely offline.</p>
+                        <p class="app-desc">The Omni-Calculator. Solve standard math, calculate financial returns, convert data storage, and process discounts.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -260,10 +273,10 @@
             <!-- 14. Custom QR Studio -->
             <a href="qr.html" class="app-card" data-category="utilities creative">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-qrcode"></i></div>
+                    <img src="qr-logo.png" alt="Custom QR Studio" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Custom QR Studio</h3>
-                        <p class="app-desc">Create beautiful, high-quality QR codes for your links or business cards in seconds.</p>
+                        <p class="app-desc">Create beautiful, high-quality QR codes for your links, Wi-Fi, or business cards in seconds. No ads.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -275,10 +288,10 @@
             <!-- 15. Custom Payment QR -->
             <a href="payment-qr-terminal.html" class="app-card" data-category="utilities">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-indian-rupee-sign"></i></div>
+                    <img src="payment-logo.png" alt="Custom Payment QR" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Payment QR</h3>
-                        <p class="app-desc">Generate dynamic UPI merchant or personal payment QR codes securely and instantly.</p>
+                        <p class="app-desc">Generate dynamic UPI merchant or personal payment QR codes securely and instantly for smooth transactions.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -290,7 +303,7 @@
             <!-- 16. Glitch Text Generator -->
             <a href="glitch.html" class="app-card" data-category="creative">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-bolt"></i></div>
+                    <img src="glitch-logo.png" alt="Glitch Text Generator" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Glitch Text</h3>
                         <p class="app-desc">Convert normal text into corrupted, cyber hacker style typography instantly.</p>
@@ -305,10 +318,10 @@
             <!-- 17. Code-to-Canvas -->
             <a href="canvas.html" class="app-card" data-category="creative">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-palette"></i></div>
+                    <img src="canvas-logo.png" alt="Code-to-Canvas" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Code-to-Canvas</h3>
-                        <p class="app-desc">Convert raw code into beautiful, neon-cyberpunk snippets for social media.</p>
+                        <p class="app-desc">Convert raw code into beautiful, neon-cyberpunk snippets for sharing on social media.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -320,10 +333,10 @@
             <!-- 18. Word Cipher -->
             <a href="cipher.html" class="app-card" data-category="creative">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-brain"></i></div>
+                    <img src="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bwordcipher-logo.png" alt="Word Cipher" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">Word Cipher</h3>
-                        <p class="app-desc">A highly addictive brain-teaser game. Decrypt secret words to prove your intelligence.</p>
+                        <p class="app-desc">A highly addictive brain-teaser game. Decrypt secret words to prove your intelligence and unlock perks.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -334,10 +347,10 @@
             <!-- 19. Terminal Simulator -->
             <a href="terminal.1.html" class="app-card" data-category="utilities">
                 <div class="app-header">
-                    <div class="app-icon"><i class="fas fa-terminal"></i></div>
+                    <img src="terminal-logo.png" alt="Terminal Simulator" class="app-logo-img" loading="lazy" onerror="this.src='https://via.placeholder.com/56x56/0f172a/0ea5e9?text=T'">
                     <div>
                         <h3 class="app-title">Terminal Simulator</h3>
-                        <p class="app-desc">Test your raw typing speed in a cyberpunk terminal environment.</p>
+                        <p class="app-desc">Test your raw typing speed in a cyberpunk terminal environment. Are you faster than a DiamondMax server?</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -349,10 +362,10 @@
             <!-- 20. The Void -->
             <a href="void.html" class="app-card" data-category="creative">
                 <div class="app-header">
-                    <div class="app-icon" style="color: var(--status-danger);"><i class="fas fa-skull"></i></div>
+                    <img src="void-logo.png" alt="The Void" class="app-logo-img" loading="lazy">
                     <div>
                         <h3 class="app-title">The Void</h3>
-                        <p class="app-desc">Extreme flow-state editor. Stop typing for 15 seconds, and your text is destroyed forever.</p>
+                        <p class="app-desc">Extreme flow-state editor. Stop typing for 15 seconds, and your text is destroyed forever. Use at your own risk.</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -364,10 +377,10 @@
             <!-- 21. Phantom Trade -->
             <a href="exchange.html" class="app-card" data-category="utilities">
                 <div class="app-header">
-                    <div class="app-icon" style="color: var(--status-danger); background: rgba(239, 68, 68, 0.1);"><i class="fas fa-credit-card"></i></div>
+                    <img src="trade-logo.png" alt="Phantom Trade" class="app-logo-img" loading="lazy" onerror="this.src='https://via.placeholder.com/56x56/0f172a/f43f5e?text=T'">
                     <div>
                         <h3 class="app-title">Phantom Trade</h3>
-                        <p class="app-desc">Exchange your unused gift cards. (Currently disabled for maintenance).</p>
+                        <p class="app-desc">Exchange your unused gift cards for Crypto or UPI instantly. (Currently disabled for maintenance).</p>
                     </div>
                 </div>
                 <div class="badge-container">
@@ -400,29 +413,22 @@
                 const matchesCategory = activeCategory === 'all' || category.includes(activeCategory);
 
                 if (matchesSearch && matchesCategory) {
-                    card.style.display = 'flex'; // Keeps the card grid structure intact
+                    card.style.display = 'flex';
                     visibleCount++;
                 } else {
                     card.style.display = 'none';
                 }
             });
 
-            // Show or hide the "No results found" message
             noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
         }
 
-        // Search bar listener
         searchInput.addEventListener('input', filterApps);
 
-        // Filter pills listener
         filterPills.forEach(pill => {
             pill.addEventListener('click', () => {
-                // Remove active class from all
                 filterPills.forEach(p => p.classList.remove('active'));
-                // Add active class to clicked
                 pill.classList.add('active');
-                
-                // Update active category and run filter
                 activeCategory = pill.getAttribute('data-filter');
                 filterApps();
             });
