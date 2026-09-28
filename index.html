@@ -1699,6 +1699,95 @@
     }
 }
 
+        /* 🔥 --- Team Infinite Marquee Styling --- 🔥 */
+        .team-marquee-wrapper {
+            width: 100%;
+            overflow: hidden;
+            background: linear-gradient(90deg, rgba(2,6,23,1) 0%, rgba(15,23,42,0.8) 50%, rgba(2,6,23,1) 100%);
+            border-top: 1px dashed rgba(51, 65, 85, 0.5);
+            border-bottom: 1px dashed rgba(51, 65, 85, 0.5);
+            padding: 25px 0;
+            margin: 20px 0 40px 0;
+            display: flex;
+            position: relative;
+        }
+        /* Fade edges for smooth enter/exit */
+        .team-marquee-wrapper::before, .team-marquee-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 15%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .team-marquee-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, #020617 0%, transparent 100%);
+        }
+        .team-marquee-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, #020617 0%, transparent 100%);
+        }
+        .marquee-track {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            animation: marqueeScroll 25s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        .team-card-pill {
+            display: flex;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            padding: 8px 25px 8px 8px;
+            border-radius: 50px;
+            gap: 15px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+        .team-card-pill:hover {
+            border-color: #0ea5e9;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+            background: rgba(30, 41, 59, 0.8);
+            transform: scale(1.05);
+        }
+        .team-card-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #0ea5e9;
+        }
+        .team-card-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .team-card-name {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .team-card-role {
+            color: #0ea5e9;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+        
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+
     </style>
 </head>
 
@@ -1750,7 +1839,8 @@
     <div class="top-left-nav">
         <a href="about.html" class="nav-link">About Phantomix</a>
     </div>
-<div class="hero-section" id="hero-section" style="text-align: center; padding: 40px 20px;">
+    
+<div class="hero-section" id="hero-section" style="text-align: center; padding: 40px 20px 0px;">
         
         <div style="display: flex; justify-content: center; margin-bottom: 20px;">
            <img src="logo.png" alt="Phantomix Logo" class="logo-img" fetchpriority="high" onerror="this.style.display='none'" style="display: block; margin: 0;">
@@ -1799,6 +1889,84 @@
 
 </div>
 
+        <!-- 🔥 TEAM INFINITE MARQUEE ADDED HERE 🔥 -->
+        <div class="team-marquee-wrapper">
+            <div class="marquee-track">
+                
+                <!-- Group 1 -->
+                <div class="team-card-pill">
+                    <img src="your-real-photo.jpg" alt="Shrikant Prajapati" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Shrikant+Prajapati&background=0f172a&color=0ea5e9'">
+                    <div class="team-card-info">
+                        <p class="team-card-name">Shrikant Prajapati</p>
+                        <p class="team-card-role">Founder & CEO</p>
+                    </div>
+                </div>
+                <div class="team-card-pill">
+                    <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Ranjan+Gupta&background=0f172a&color=0ea5e9'">
+                    <div class="team-card-info">
+                        <p class="team-card-name">Ranjan Gupta</p>
+                        <p class="team-card-role">Co-Founder & Lead Architect</p>
+                    </div>
+                </div>
+                <div class="team-card-pill">
+                    <img src="vp.jpg" alt="Nancy Raghav" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Nancy+Raghav&background=0f172a&color=0ea5e9'">
+                    <div class="team-card-info">
+                        <p class="team-card-name">Nancy Raghav</p>
+                        <p class="team-card-role">VP of Brand Experience</p>
+                    </div>
+                </div>
+
+                <!-- Group 2 (Duplicate for Seamless Infinite Loop) -->
+                <div class="team-card-pill">
+                    <img src="your-real-photo.jpg" alt="Shrikant Prajapati" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Shrikant+Prajapati&background=0f172a&color=0ea5e9'">
+                    <div class="team-card-info">
+                        <p class="team-card-name">Shrikant Prajapati</p>
+                        <p class="team-card-role">Founder & CEO</p>
+                    </div>
+                </div>
+                <div class="team-card-pill">
+                    <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Ranjan+Gupta&background=0f172a&color=0ea5e9'">
+                    <div class="team-card-info">
+                        <p class="team-card-name">Ranjan Gupta</p>
+                        <p class="team-card-role">Co-Founder & Lead Architect</p>
+                    </div>
+                </div>
+                <div class="team-card-pill">
+                    <img src="vp.jpg" alt="Nancy Raghav" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Nancy+Raghav&background=0f172a&color=0ea5e9'">
+                    <div class="team-card-info">
+                        <p class="team-card-name">Nancy Raghav</p>
+                        <p class="team-card-role">VP of Brand Experience</p>
+                    </div>
+                </div>
+
+                <!-- Group 3 (Extra buffer for Ultra Wide Desktop Screens) -->
+                <div class="team-card-pill">
+                    <img src="your-real-photo.jpg" alt="Shrikant Prajapati" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Shrikant+Prajapati&background=0f172a&color=0ea5e9'">
+                    <div class="team-card-info">
+                        <p class="team-card-name">Shrikant Prajapati</p>
+                        <p class="team-card-role">Founder & CEO</p>
+                    </div>
+                </div>
+                <div class="team-card-pill">
+                    <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Ranjan+Gupta&background=0f172a&color=0ea5e9'">
+                    <div class="team-card-info">
+                        <p class="team-card-name">Ranjan Gupta</p>
+                        <p class="team-card-role">Co-Founder & Lead Architect</p>
+                    </div>
+                </div>
+                <div class="team-card-pill">
+                    <img src="vp.jpg" alt="Nancy Raghav" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Nancy+Raghav&background=0f172a&color=0ea5e9'">
+                    <div class="team-card-info">
+                        <p class="team-card-name">Nancy Raghav</p>
+                        <p class="team-card-role">VP of Brand Experience</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- 🔥 TEAM INFINITE MARQUEE END 🔥 -->
+
+
         <a href="gallery.html" class="vault-gate-card">
     <div class="vault-icon">
         <i class="fa-solid fa-photo-film"></i>
@@ -1813,13 +1981,12 @@
 </a>
 
 
-        <div class="social">
+        <div class="social" style="text-align: center;">
             <a href="https://instagram.com/phantomix.in" target="_blank" aria-label="Visit Phantomix Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
             <a href="https://www.youtube.com/@Phantomix_SP" target="_blank" aria-label="Visit Phantomix YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
             <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank" aria-label="Join Phantomix WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
             <a href="https://t.me/diamondmax_india" target="_blank" aria-label="Join Phantomix Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
         </div>
-    </div>
 
     <section class="phantomix-section scroll-reveal" style="max-width: 1000px; padding-top: 0;">
         <h3 style="color: #ffffff; font-size: 22px; margin-bottom: 25px;">🔥 Explore The Arsenal</h3>
