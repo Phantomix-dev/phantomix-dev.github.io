@@ -1,163 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cipher Machine | Real-Time Binary & Hexadecimal Converter</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <meta name="description" content="Translate standard text into raw Binary (Base2) or Hexadecimal (Base16) machine code instantly with the Phantomix multidirectional cryptographic encoder.">
-    <meta name="keywords" content="cipher machine, text to binary, text to hex, binary converter, hex decoder, text encryption, cryptography tool, phantomix encoder">
+    <title>Secure Message Encoder | Phantomix</title>
     
-    <meta property="og:title" content="Cipher Machine | Phantomix">
-    <meta property="og:description" content="Real-time multidirectional cryptographic converter. Translate standard data into raw machine code.">
-    <meta property="og:url" content="https://phantomix-dev.github.io/encoder.html">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bdiamondmax-logo.png">
-    <meta name="theme-color" content="#0B1221">
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CryptoJS Library for Military-Grade AES Encryption -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
     <style>
-        /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
-        ::selection {
-            background-color: #0ea5e9; /* Neon Blue */
-            color: #ffffff; /* White Text */
-        }
-        
-        /* Firefox browser ke liye */
-        ::-moz-selection {
-            background-color: #0ea5e9;
-            color: #ffffff;
-        }
-        /* ✨ PREMIUM FADE-IN ANIMATION */
-        body {
-            animation: appLoad 0.8s ease-out forwards;
-        }
+        .tabs { display: flex; background: var(--bg-base); border: 1px solid var(--surface-border); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 25px; }
+        .tab-btn { flex: 1; padding: 15px; text-align: center; cursor: pointer; font-weight: 600; color: var(--text-secondary); transition: 0.3s; }
+        .tab-btn.active { background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); border-bottom: 2px solid var(--brand-primary); }
+        .tab-btn:hover:not(.active) { background: rgba(255, 255, 255, 0.05); }
 
-        @keyframes appLoad {
-            0% {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .input-box {
+            width: 100%; background: var(--bg-base); border: 1px solid var(--surface-border);
+            color: var(--text-primary); padding: 15px; border-radius: var(--radius-md);
+            font-family: var(--font-sans); font-size: 15px; outline: none; transition: 0.3s;
+            box-sizing: border-box; resize: vertical; min-height: 120px; margin-bottom: 15px;
         }
-        :root {
-            --bg-main: #0B1221;
-            --card-bg: #151E32;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
-            --accent-blue: #3B82F6;
+        .input-box:focus { border-color: var(--brand-primary); box-shadow: 0 0 15px rgba(14, 165, 233, 0.2); }
+
+        .passcode-wrapper { position: relative; margin-bottom: 20px; }
+        .passcode-wrapper i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--brand-secondary); }
+        .passcode-input {
+            width: 100%; background: rgba(139, 92, 246, 0.05); border: 1px dashed var(--brand-secondary);
+            color: var(--brand-secondary); padding: 15px 15px 15px 45px; border-radius: var(--radius-md);
+            font-weight: 600; outline: none; box-sizing: border-box; transition: 0.3s;
         }
-        body { background-color: var(--bg-main); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-align: center; padding: 20px 15px; margin: 0; display: flex; justify-content: center; }
-        .encoder-container { width: 100%; max-width: 650px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); box-sizing: border-box; }
-        h1 { font-size: 1.6em; margin-top: 0; margin-bottom: 5px; font-weight: 700; }
-        p { color: var(--text-muted); font-size: 0.95em; margin-bottom: 30px; }
-        .input-group { margin-bottom: 25px; text-align: left; }
-        label { font-weight: 600; color: var(--text-main); display: block; margin-bottom: 8px; font-size: 0.9em; letter-spacing: 0.5px; }
-        textarea { width: 100%; height: 90px; background: rgba(0,0,0,0.2); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; font-family: 'Courier New', monospace; font-size: 1.05em; resize: none; box-sizing: border-box; transition: 0.3s; }
-        textarea:focus { border-color: var(--accent-blue); outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
-        .copy-btn { background: rgba(255,255,255,0.1); color: var(--text-main); border: none; padding: 6px 12px; cursor: pointer; float: right; font-size: 0.8em; margin-top: -30px; margin-right: 5px; position: relative; border-radius: 6px; font-weight: 600; transition: 0.2s; }
-        .copy-btn:hover { background: var(--accent-blue); color: #fff; }
-        /* 🎚️ CUSTOM CYBER SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 8px; /* Scrollbar ki motai */
+        .passcode-input:focus { background: rgba(139, 92, 246, 0.1); box-shadow: 0 0 15px rgba(139, 92, 246, 0.3); }
+
+        .result-container {
+            margin-top: 30px; display: none; background: #020617;
+            border: 1px solid var(--surface-border); border-radius: var(--radius-md);
+            padding: 20px; position: relative;
         }
-        
-        ::-webkit-scrollbar-track {
-            background: #0f172a; /* Dark background */
+        .result-text {
+            font-family: var(--font-mono); color: var(--status-success);
+            font-size: 14px; word-break: break-all; margin: 0 0 20px 0;
+            line-height: 1.6; max-height: 200px; overflow-y: auto;
         }
-        
-        ::-webkit-scrollbar-thumb {
-            background: rgba(14, 165, 233, 0.5); /* Neon Blue semi-transparent */
-            border-radius: 10px;
+        .copy-btn {
+            width: 100%; background: rgba(16, 185, 129, 0.1); color: var(--status-success);
+            border: 1px solid var(--status-success); padding: 12px; border-radius: var(--radius-sm);
+            font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; gap: 8px;
         }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(14, 165, 233, 1); /* Hover par full bright Neon Blue */
-        }
+        .copy-btn:hover { background: var(--status-success); color: #fff; }
     </style>
 </head>
 <body>
-    <style>
-    body { padding-top: 80px; } /* Navbar ke liye space */
-    .phantomix-top-nav {
-        position: fixed; top: 0; left: 0; width: 100%; height: 60px;
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 0 20px; box-sizing: border-box;
-        background: rgba(11, 18, 33, 0.85); backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(59, 130, 246, 0.2); z-index: 9999;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    .nav-brand { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .nav-brand span { color: #3B82F6; }
-    .nav-back {
-        background: rgba(59, 130, 246, 0.1); color: #3B82F6;
-        padding: 6px 14px; border: 1px solid #3B82F6; border-radius: 6px;
-        text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s;
-    }
-    .nav-back:hover { background: #3B82F6; color: #fff; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
-</style>
-<nav class="phantomix-top-nav">
-    <a href="apps.html" class="nav-brand"><span>✦</span> Phantomix</a>
-    <a href="apps.html" class="nav-back">← Hub</a>
-</nav>
 
-    <div class="encoder-container">
-        <h1>🔢 Cipher Machine</h1>
-        <p>SYSTEM PROTOCOL: AUTO-SYNC ENABLED</p>
-        <div class="input-group">
-            <label>STANDARD TEXT STREAM</label>
-            <button class="copy-btn" onclick="copyText('text-input')">COPY</button>
-            <textarea id="text-input" placeholder="Type normal text here to encrypt..." oninput="convertFromText()"></textarea>
+    <!-- GLOBAL NAVBAR -->
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 1px solid var(--surface-border); background: var(--surface-main); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;">
+        <a href="index.html" style="font-weight: bold; font-size: 18px; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
+        </a>
+        <a href="apps.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 16px; background: rgba(14, 165, 233, 0.1); border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); color: var(--brand-primary);"><i class="fas fa-arrow-left"></i> Hub</a>
+    </nav>
+
+    <div class="app-layout" style="max-width: 800px; grid-template-columns: 1fr;">
+        
+        <div style="text-align: center; margin-bottom: 10px;">
+            <h1 style="font-size: 28px; margin-bottom: 10px;">Secure <span style="color: var(--brand-primary);">Message Encoder</span></h1>
+            <p style="color: var(--text-secondary); font-size: 14px;">Lock your messages with military-grade AES encryption. Only those with the secret passcode can decode it.</p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                <span style="font-size: 10px; font-weight: bold; padding: 4px 10px; border-radius: 4px; background: rgba(139, 92, 246, 0.1); color: var(--brand-secondary); border: 1px solid rgba(139, 92, 246, 0.3);"><i class="fas fa-microchip"></i> AES-256 ENCRYPTION</span>
+            </div>
         </div>
-        <div class="input-group">
-            <label>BINARY MACHINE CODE (Base2)</label>
-            <button class="copy-btn" onclick="copyText('binary-input')">COPY</button>
-            <textarea id="binary-input" placeholder="01110100 01100101..." oninput="convertFromBinary()"></textarea>
-        </div>
-        <div class="input-group">
-            <label>HEXADECIMAL CIPHER (Base16)</label>
-            <button class="copy-btn" onclick="copyText('hex-input')">COPY</button>
-            <textarea id="hex-input" placeholder="74 65 78 74..." oninput="convertFromHex()"></textarea>
-        </div>
+
+        <section style="background: var(--surface-main); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); padding: var(--space-xl);">
+            
+            <!-- TABS -->
+            <div class="tabs">
+                <div class="tab-btn active" id="tab-encrypt" onclick="switchTab('encrypt')"><i class="fas fa-lock"></i> Encrypt</div>
+                <div class="tab-btn" id="tab-decrypt" onclick="switchTab('decrypt')"><i class="fas fa-unlock-keyhole"></i> Decrypt</div>
+            </div>
+
+            <!-- INPUT AREA -->
+            <textarea id="messageInput" class="input-box" placeholder="Type your secret message here..."></textarea>
+            
+            <div class="passcode-wrapper">
+                <i class="fas fa-key"></i>
+                <input type="text" id="passcodeInput" class="passcode-input" placeholder="Secret Passcode (e.g. phantom123)">
+            </div>
+
+            <!-- ACTION BUTTON -->
+            <button class="btn-primary" id="actionBtn" style="width: 100%;" onclick="processMessage()">
+                <i class="fas fa-lock"></i> Lock Message
+            </button>
+
+            <!-- RESULT AREA -->
+            <div class="result-container" id="resultBox">
+                <p style="margin: 0 0 10px 0; color: var(--text-muted); font-size: 12px; text-transform: uppercase;">Generated Output:</p>
+                <p class="result-text" id="resultText"></p>
+                <button class="copy-btn" id="copyBtn" onclick="copyResult()">
+                    <i class="fas fa-copy"></i> Copy to Clipboard
+                </button>
+            </div>
+
+        </section>
     </div>
+
+    <!-- Encryption Logic -->
     <script>
-        const textInput = document.getElementById('text-input'); const binInput = document.getElementById('binary-input'); const hexInput = document.getElementById('hex-input');
-        function convertFromText() {
-            let str = textInput.value; if(!str) { binInput.value = ""; hexInput.value = ""; return; }
-            binInput.value = str.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
-            hexInput.value = str.split('').map(char => char.charCodeAt(0).toString(16).padStart(2, '0')).join(' ');
+        let currentMode = 'encrypt';
+
+        function switchTab(mode) {
+            currentMode = mode;
+            const tabEncrypt = document.getElementById('tab-encrypt');
+            const tabDecrypt = document.getElementById('tab-decrypt');
+            const actionBtn = document.getElementById('actionBtn');
+            const input = document.getElementById('messageInput');
+            const resultBox = document.getElementById('resultBox');
+
+            resultBox.style.display = 'none'; // Hide result on switch
+
+            if (mode === 'encrypt') {
+                tabEncrypt.classList.add('active');
+                tabDecrypt.classList.remove('active');
+                actionBtn.innerHTML = '<i class="fas fa-lock"></i> Lock Message';
+                actionBtn.style.background = 'var(--brand-primary)';
+                input.placeholder = "Type your secret message here...";
+                input.value = "";
+            } else {
+                tabDecrypt.classList.add('active');
+                tabEncrypt.classList.remove('active');
+                actionBtn.innerHTML = '<i class="fas fa-unlock-keyhole"></i> Decode Message';
+                actionBtn.style.background = 'var(--brand-secondary)';
+                input.placeholder = "Paste the scrambled alien code here...";
+                input.value = "";
+            }
         }
-        function convertFromBinary() {
-            let binStr = binInput.value.trim().replace(/[^01 ]/g, ""); if(!binStr) { textInput.value = ""; hexInput.value = ""; return; }
-            let binArray = binStr.split(' ').filter(b => b.length > 0);
+
+        function processMessage() {
+            const text = document.getElementById('messageInput').value.trim();
+            const pass = document.getElementById('passcodeInput').value.trim();
+            const resultBox = document.getElementById('resultBox');
+            const resultText = document.getElementById('resultText');
+
+            if (!text) {
+                alert("Please enter a message!");
+                return;
+            }
+
+            // Fallback key if user doesn't enter a passcode
+            const secretKey = pass ? pass : "phantomix-default-key";
+
             try {
-                let textResult = binArray.map(b => String.fromCharCode(parseInt(b, 2))).join('');
-                textInput.value = textResult; hexInput.value = textResult.split('').map(char => char.charCodeAt(0).toString(16).padStart(2, '0')).join(' ');
-            } catch(e) { }
+                if (currentMode === 'encrypt') {
+                    // Encrypt using AES
+                    const cipherText = CryptoJS.AES.encrypt(text, secretKey).toString();
+                    resultText.innerText = cipherText;
+                    resultText.style.color = "var(--brand-primary)";
+                } else {
+                    // Decrypt using AES
+                    const bytes = CryptoJS.AES.decrypt(text, secretKey);
+                    const originalText = bytes.toString(CryptoJS.enc.Utf8);
+                    
+                    if (!originalText) throw new Error("Invalid passcode or corrupted code.");
+                    
+                    resultText.innerText = originalText;
+                    resultText.style.color = "var(--status-success)";
+                }
+                resultBox.style.display = 'block';
+            } catch (error) {
+                resultText.innerText = "❌ Decryption Failed! Either the text is broken or your passcode is wrong.";
+                resultText.style.color = "var(--status-danger)";
+                resultBox.style.display = 'block';
+            }
+            
+            // Reset Copy Button
+            const copyBtn = document.getElementById('copyBtn');
+            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy to Clipboard';
+            copyBtn.style.background = 'rgba(16, 185, 129, 0.1)';
+            copyBtn.style.color = 'var(--status-success)';
         }
-        function convertFromHex() {
-            let hexStr = hexInput.value.trim().replace(/[^0-9a-fA-F ]/g, ""); if(!hexStr) { textInput.value = ""; binInput.value = ""; return; }
-            let hexArray = hexStr.split(' ').filter(h => h.length > 0);
-            try {
-                let textResult = hexArray.map(h => String.fromCharCode(parseInt(h, 16))).join('');
-                textInput.value = textResult; binInput.value = textResult.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
-            } catch(e) { }
-        }
-        function copyText(elementId) {
-            const el = document.getElementById(elementId); if(!el.value) return;
-            navigator.clipboard.writeText(el.value).then(() => { alert("Copied to clipboard!"); });
+
+        function copyResult() {
+            const text = document.getElementById('resultText').innerText;
+            if(text.includes("❌")) return; // Don't copy errors
+
+            navigator.clipboard.writeText(text).then(() => {
+                const copyBtn = document.getElementById('copyBtn');
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                copyBtn.style.background = 'var(--status-success)';
+                copyBtn.style.color = '#fff';
+            });
         }
     </script>
 </body>
