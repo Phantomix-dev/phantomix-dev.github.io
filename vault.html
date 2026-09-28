@@ -3,224 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tool Name | Phantomix</title>
+    <title>Diamond-Vault | Secure Password Generator</title>
+    
     <link rel="stylesheet" href="core.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        .vault-display {
+            background: #020617; border: 1px solid var(--brand-secondary);
+            border-radius: var(--radius-md); padding: 25px 20px; text-align: center;
+            position: relative; margin-bottom: 30px; box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+        }
+        #password-output {
+            font-family: 'Fira Code', monospace; font-size: 24px; color: #fff;
+            word-break: break-all; letter-spacing: 2px; margin: 0; min-height: 35px;
+        }
+        .copy-icon {
+            position: absolute; top: 15px; right: 15px; color: var(--brand-secondary);
+            font-size: 18px; cursor: pointer; transition: 0.3s;
+            background: rgba(139, 92, 246, 0.1); padding: 8px; border-radius: 6px;
+        }
+        .copy-icon:hover { background: var(--brand-secondary); color: #fff; transform: scale(1.1); }
+
+        /* Range Slider Styling */
+        .slider-container { margin-bottom: 25px; }
+        .slider-header { display: flex; justify-content: space-between; margin-bottom: 15px; color: var(--text-primary); font-weight: 600; }
+        .length-badge { background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); padding: 4px 12px; border-radius: 20px; font-size: 14px; }
+        
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%;
+            background: var(--brand-primary); cursor: pointer; margin-top: -8px; box-shadow: 0 0 10px var(--brand-primary);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 6px; cursor: pointer; background: var(--surface-border); border-radius: 5px;
+        }
+
+        /* Checkbox Options */
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .option-lbl {
+            display: flex; align-items: center; justify-content: space-between;
+            background: var(--bg-base); border: 1px solid var(--surface-border);
+            padding: 15px; border-radius: var(--radius-sm); cursor: pointer; transition: 0.3s;
+        }
+        .option-lbl:hover { border-color: var(--brand-secondary); }
+        .option-lbl input { width: 18px; height: 18px; accent-color: var(--brand-secondary); cursor: pointer; }
+
+        /* Strength Meter */
+        .strength-meter { margin-top: -10px; margin-bottom: 25px; text-align: left; }
+        .strength-bar { height: 6px; width: 100%; background: var(--surface-border); border-radius: 5px; overflow: hidden; margin-top: 8px; }
+        .strength-fill { height: 100%; width: 0%; transition: all 0.4s ease; border-radius: 5px; }
+        #strength-text { font-size: 12px; font-weight: 700; text-transform: uppercase; float: right; }
+    </style>
 </head>
 <body>
 
     <!-- GLOBAL NAVBAR -->
-    <nav style="display: flex; justify-content: space-between; padding: 15px 5%; border-bottom: 1px solid var(--surface-border); background: var(--surface-main); backdrop-filter: blur(10px);">
-        <div style="font-weight: bold; font-size: 18px;"><i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX</div>
-        <div style="display: flex; gap: 20px;">
-            <span style="color: var(--text-secondary); cursor: pointer;"><i class="fas fa-search"></i> Ctrl+K</span>
-            <span style="color: var(--text-secondary); cursor: pointer;"><i class="fas fa-user-circle"></i> Account</span>
-        </div>
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 1px solid var(--surface-border); background: var(--surface-main); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;">
+        <a href="index.html" style="font-weight: bold; font-size: 18px; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
+        </a>
+        <a href="apps.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 16px; background: rgba(14, 165, 233, 0.1); border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); color: var(--brand-primary);"><i class="fas fa-arrow-left"></i> Hub</a>
     </nav>
 
-    <div class="app-layout">
+    <div class="app-layout" style="max-width: 600px; grid-template-columns: 1fr;">
         
-        <!-- LEFT SIDEBAR: Navigation & Privacy Status -->
-        <aside>
-            <a href="apps.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: var(--space-xl);">
-                <i class="fas fa-arrow-left"></i> Back to Apps
-            </a>
+        <div style="text-align: center; margin-bottom: 10px;">
+            <h1 style="font-size: 28px; margin-bottom: 10px;">Diamond <span style="color: var(--brand-secondary);">Vault</span></h1>
+            <p style="color: var(--text-secondary); font-size: 14px;">Quantum-grade offline password generation. Your keys never touch the internet.</p>
+        </div>
 
-            <!-- PRIVACY INDICATOR SYSTEM -->
-            <div style="background: var(--surface-main); border: 1px solid var(--surface-border); border-radius: var(--radius-md); padding: var(--space-md); margin-bottom: var(--space-xl);">
-                <h4 style="margin: 0 0 15px 0; font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Privacy Status</h4>
-                
-                <div style="margin-bottom: 10px;">
-                    <div style="font-size: 12px; color: var(--text-secondary);">Processing</div>
-                    <div style="font-size: 14px; font-weight: 600; color: var(--status-success);">● Local Browser</div>
-                </div>
-                <div>
-                    <div style="font-size: 12px; color: var(--text-secondary);">Storage</div>
-                    <div style="font-size: 14px; font-weight: 600; color: var(--status-success);">● None (Zero-Log)</div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- MAIN TOOL WORKSPACE -->
-        <main>
-            <!-- Tool Header -->
-            <header style="margin-bottom: var(--space-xl); border-bottom: 1px dashed var(--surface-border); padding-bottom: var(--space-md);">
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                    <div style="width: 50px; height: 50px; background: rgba(14, 165, 233, 0.1); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--brand-primary);">
-                        <i class="fas fa-shield-halved"></i>
-                    </div>
-                    <div>
-                        <h1 style="margin: 0; font-size: 28px;">Diamond-Vault</h1>
-                        <p style="margin: 0; color: var(--text-secondary); font-size: 14px;">Offline Quantum Password Generator</p>
-                    </div>
-                </div>
-            </header>
-
-            <!-- INDIVIDUAL TOOL UI GOES HERE -->
-            <!-- DIAMOND VAULT UI -->
-            <section style="background: var(--surface-main); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); padding: var(--space-xl);">
-                
-                <!-- Output Display -->
-                <div class="password-box">
-                    <span id="passwordOutput" style="font-family: var(--font-mono); font-size: 24px; letter-spacing: 2px; color: var(--text-primary); word-break: break-all;">••••••••••••••••</span>
-                    <button onclick="copyPassword()" class="btn-primary" style="padding: 8px 16px; display: flex; gap: 8px; align-items: center;">
-                        <i class="fas fa-copy"></i> Copy
-                    </button>
-                </div>
-
-                <!-- Strength Meter -->
-                <div style="margin-bottom: 25px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px;">
-                        <span style="color: var(--text-secondary);">Strength</span>
-                        <span id="strengthLabel" style="font-weight: bold; color: var(--status-success);">Very Strong</span>
-                    </div>
-                    <div style="height: 6px; background: var(--bg-base); border-radius: 3px; overflow: hidden;">
-                        <div id="strengthBar" style="height: 100%; width: 100%; background: var(--status-success); transition: 0.3s;"></div>
-                    </div>
-                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 5px; text-align: right;">Entropy: <span id="entropyValue">103</span> bits</div>
-                </div>
-
-                <!-- Controls Grid -->
-                <div class="controls-grid">
-                    
-                    <!-- Length Slider -->
-                    <div style="grid-column: 1 / -1;">
-                        <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px;">
-                            <span style="color: var(--text-secondary);">Length</span>
-                            <span id="lengthValue" style="color: var(--text-primary); font-weight: bold;">16</span>
-                        </div>
-                        <input type="range" id="lengthSlider" min="8" max="32" value="16" style="width: 100%; cursor: pointer; accent-color: var(--brand-primary);">
-                    </div>
-
-                    <!-- Checkboxes -->
-                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; color: var(--text-secondary);">
-                        <input type="checkbox" id="incUpper" checked style="accent-color: var(--brand-primary); width: 16px; height: 16px;"> Uppercase (A-Z)
-                    </label>
-                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; color: var(--text-secondary);">
-                        <input type="checkbox" id="incLower" checked style="accent-color: var(--brand-primary); width: 16px; height: 16px;"> Lowercase (a-z)
-                    </label>
-                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; color: var(--text-secondary);">
-                        <input type="checkbox" id="incNumbers" checked style="accent-color: var(--brand-primary); width: 16px; height: 16px;"> Numbers (0-9)
-                    </label>
-                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; color: var(--text-secondary);">
-                        <input type="checkbox" id="incSymbols" checked style="accent-color: var(--brand-primary); width: 16px; height: 16px;"> Symbols (!@#$)
-                    </label>
-                </div>
-
-                <button onclick="generatePassword()" class="btn-primary" style="width: 100%; padding: 15px; font-size: 16px; display: flex; justify-content: center; gap: 10px;">
-                    <i class="fas fa-rotate"></i> Generate New Password
-                </button>
-            </section>
-
-            <!-- Global Toast Notification (Hidden by default) -->
-            <div id="toast" style="position: fixed; bottom: 20px; right: 20px; background: var(--status-success); color: white; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 600; box-shadow: var(--shadow-card); transform: translateY(100px); opacity: 0; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; z-index: 9999;">
-                <i class="fas fa-check-circle"></i> <span>Action successful</span>
+        <section style="background: var(--surface-main); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); padding: var(--space-xl);">
+            
+            <!-- Output Display -->
+            <div class="vault-display">
+                <i class="fas fa-copy copy-icon" id="copyBtn" onclick="copyPassword()" title="Copy to Clipboard"></i>
+                <p id="password-output">Click Generate</p>
             </div>
 
-            <!-- Vault Logic -->
-            <script>
-                const slider = document.getElementById('lengthSlider');
-                const lengthVal = document.getElementById('lengthValue');
-                
-                slider.addEventListener('input', (e) => {
-                    lengthVal.innerText = e.target.value;
-                    generatePassword();
-                });
-
-                document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                    cb.addEventListener('change', generatePassword);
-                });
-
-                function generatePassword() {
-                    const length = slider.value;
-                    const upper = document.getElementById('incUpper').checked;
-                    const lower = document.getElementById('incLower').checked;
-                    const numbers = document.getElementById('incNumbers').checked;
-                    const symbols = document.getElementById('incSymbols').checked;
-
-                    const charset = {
-                        u: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-                        l: "abcdefghijklmnopqrstuvwxyz",
-                        n: "0123456789",
-                        s: "!@#$%^&*()_+~`|}{[]:;?><,./-="
-                    };
-
-                    let allowed = "";
-                    if(upper) allowed += charset.u;
-                    if(lower) allowed += charset.l;
-                    if(numbers) allowed += charset.n;
-                    if(symbols) allowed += charset.s;
-
-                    if(allowed === "") {
-                        document.getElementById('passwordOutput').innerText = "Select an option!";
-                        return;
-                    }
-
-                    let pass = "";
-                    for(let i=0; i<length; i++){
-                        pass += allowed[Math.floor(Math.random() * allowed.length)];
-                    }
-                    
-                    document.getElementById('passwordOutput').innerText = pass;
-                    updateStrength(length, allowed.length);
-                }
-
-                function updateStrength(length, poolSize) {
-                    const entropy = Math.floor(length * Math.log2(poolSize || 1));
-                    document.getElementById('entropyValue').innerText = entropy;
-                    
-                    const bar = document.getElementById('strengthBar');
-                    const label = document.getElementById('strengthLabel');
-                    
-                    if(entropy < 40) {
-                        bar.style.width = "25%"; bar.style.background = "var(--status-danger)";
-                        label.innerText = "Weak"; label.style.color = "var(--status-danger)";
-                    } else if(entropy < 60) {
-                        bar.style.width = "50%"; bar.style.background = "var(--status-warning)";
-                        label.innerText = "Moderate"; label.style.color = "var(--status-warning)";
-                    } else if(entropy < 80) {
-                        bar.style.width = "75%"; bar.style.background = "var(--brand-primary)";
-                        label.innerText = "Strong"; label.style.color = "var(--brand-primary)";
-                    } else {
-                        bar.style.width = "100%"; bar.style.background = "var(--status-success)";
-                        label.innerText = "Very Strong"; label.style.color = "var(--status-success)";
-                    }
-                }
-
-                function copyPassword() {
-                    const text = document.getElementById('passwordOutput').innerText;
-                    if(text === "Select an option!") return;
-                    
-                    navigator.clipboard.writeText(text);
-                    showToast("Password copied to clipboard!");
-                }
-
-                function showToast(message) {
-                    const toast = document.getElementById('toast');
-                    toast.querySelector('span').innerText = message;
-                    toast.style.transform = "translateY(0)";
-                    toast.style.opacity = "1";
-                    
-                    setTimeout(() => {
-                        toast.style.transform = "translateY(100px)";
-                        toast.style.opacity = "0";
-                    }, 3000);
-                }
-
-                // Initial generation on load
-                generatePassword();
-            </script>
-
-            <!-- RELATED TOOLS ECOSYSTEM LOOP -->
-            <footer style="margin-top: 50px;">
-                <h4 style="color: var(--text-muted); font-size: 12px; text-transform: uppercase;">You May Also Like</h4>
-                <div style="display: flex; gap: 15px; margin-top: 15px;">
-                    <a href="compressor.html" style="background: var(--surface-elevated); padding: 10px 20px; border-radius: var(--radius-sm); color: var(--text-primary); text-decoration: none; font-size: 13px; border: 1px solid var(--surface-border);">Phantom Shrink</a>
-                    <a href="wormhole.html" style="background: var(--surface-elevated); padding: 10px 20px; border-radius: var(--radius-sm); color: var(--text-primary); text-decoration: none; font-size: 13px; border: 1px solid var(--surface-border);">Phantom Wormhole</a>
+            <!-- Strength Meter -->
+            <div class="strength-meter">
+                <span style="font-size: 13px; color: var(--text-secondary);">Security Level:</span>
+                <span id="strength-text" style="color: var(--status-danger);">WEAK</span>
+                <div class="strength-bar">
+                    <div class="strength-fill" id="strength-fill" style="background: var(--status-danger); width: 25%;"></div>
                 </div>
-            </footer>
-        </main>
+            </div>
 
+            <!-- Length Slider -->
+            <div class="slider-container">
+                <div class="slider-header">
+                    <span>Password Length</span>
+                    <span class="length-badge" id="length-val">16</span>
+                </div>
+                <input type="range" id="slider" min="8" max="64" value="16" oninput="updateLength()">
+            </div>
+
+            <!-- Options Grid -->
+            <div class="options-grid">
+                <label class="option-lbl">
+                    Uppercase (A-Z) <input type="checkbox" id="chk-upper" checked>
+                </label>
+                <label class="option-lbl">
+                    Lowercase (a-z) <input type="checkbox" id="chk-lower" checked>
+                </label>
+                <label class="option-lbl">
+                    Numbers (0-9) <input type="checkbox" id="chk-num" checked>
+                </label>
+                <label class="option-lbl">
+                    Symbols (!@#$) <input type="checkbox" id="chk-sym" checked>
+                </label>
+            </div>
+
+            <!-- Generate Button -->
+            <button class="btn-primary" style="width: 100%; background: linear-gradient(135deg, var(--brand-secondary), #c084fc); border: none;" onclick="generatePassword()">
+                <i class="fas fa-bolt"></i> Generate Secure Password
+            </button>
+
+        </section>
     </div>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const lengthVal = document.getElementById('length-val');
+        const passOutput = document.getElementById('password-output');
+        const copyBtn = document.getElementById('copyBtn');
+        const strengthFill = document.getElementById('strength-fill');
+        const strengthText = document.getElementById('strength-text');
+
+        // Character Sets
+        const chars = {
+            upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            lower: "abcdefghijklmnopqrstuvwxyz",
+            num: "0123456789",
+            sym: "!@#$%^&*()_+~`|}{[]:;?><,./-="
+        };
+
+        function updateLength() {
+            lengthVal.innerText = slider.value;
+            generatePassword(); // Auto-generate when sliding
+        }
+
+        function generatePassword() {
+            let length = slider.value;
+            let charset = "";
+            let generatedPassword = "";
+
+            if (document.getElementById('chk-upper').checked) charset += chars.upper;
+            if (document.getElementById('chk-lower').checked) charset += chars.lower;
+            if (document.getElementById('chk-num').checked) charset += chars.num;
+            if (document.getElementById('chk-sym').checked) charset += chars.sym;
+
+            if (charset === "") {
+                passOutput.innerText = "Select at least 1 option!";
+                passOutput.style.color = "var(--status-danger)";
+                updateStrength(0);
+                return;
+            }
+
+            passOutput.style.color = "#fff";
+
+            // Secure Random Generation using Crypto API
+            const randomValues = new Uint32Array(length);
+            window.crypto.getRandomValues(randomValues);
+
+            for (let i = 0; i < length; i++) {
+                generatedPassword += charset[randomValues[i] % charset.length];
+            }
+
+            passOutput.innerText = generatedPassword;
+            updateStrength(length, charset.length);
+            
+            // Reset Copy Icon
+            copyBtn.className = "fas fa-copy copy-icon";
+            copyBtn.style.background = "rgba(139, 92, 246, 0.1)";
+        }
+
+        // Calculate Password Entropy/Strength
+        function updateStrength(length, poolSize) {
+            if (poolSize === 0) {
+                strengthFill.style.width = "0%";
+                strengthText.innerText = "NONE";
+                return;
+            }
+
+            // Entropy formula: Length * log2(Pool Size)
+            const entropy = length * (Math.log(poolSize) / Math.log(2));
+
+            if (entropy < 40) {
+                strengthFill.style.width = "25%";
+                strengthFill.style.background = "var(--status-danger)";
+                strengthText.innerText = "WEAK";
+                strengthText.style.color = "var(--status-danger)";
+            } else if (entropy < 60) {
+                strengthFill.style.width = "50%";
+                strengthFill.style.background = "var(--status-warning)";
+                strengthText.innerText = "GOOD";
+                strengthText.style.color = "var(--status-warning)";
+            } else if (entropy < 80) {
+                strengthFill.style.width = "75%";
+                strengthFill.style.background = "var(--status-success)";
+                strengthText.innerText = "STRONG";
+                strengthText.style.color = "var(--status-success)";
+            } else {
+                strengthFill.style.width = "100%";
+                strengthFill.style.background = "#8b5cf6"; // Purple for Unbreakable
+                strengthText.innerText = "UNBREAKABLE 🛡️";
+                strengthText.style.color = "#8b5cf6";
+            }
+        }
+
+        function copyPassword() {
+            const pw = passOutput.innerText;
+            if(pw === "Click Generate" || pw === "Select at least 1 option!") return;
+
+            navigator.clipboard.writeText(pw).then(() => {
+                copyBtn.className = "fas fa-check copy-icon";
+                copyBtn.style.background = "var(--status-success)";
+                copyBtn.style.color = "#fff";
+            });
+        }
+
+        // Generate one on page load
+        window.onload = generatePassword;
+    </script>
 </body>
 </html>
