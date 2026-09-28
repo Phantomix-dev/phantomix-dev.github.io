@@ -18,7 +18,7 @@
         </div>
     </nav>
 
-    <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-xl) 5%; display: grid; grid-template-columns: 250px 1fr; gap: var(--space-xl);">
+    <div class="app-layout">
         
         <!-- LEFT SIDEBAR: Navigation & Privacy Status -->
         <aside>
@@ -61,7 +61,7 @@
             <section style="background: var(--surface-main); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); padding: var(--space-xl);">
                 
                 <!-- Output Display -->
-                <div style="background: var(--bg-base); border: 1px solid var(--surface-border); border-radius: var(--radius-md); padding: 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <div class="password-box">
                     <span id="passwordOutput" style="font-family: var(--font-mono); font-size: 24px; letter-spacing: 2px; color: var(--text-primary); word-break: break-all;">••••••••••••••••</span>
                     <button onclick="copyPassword()" class="btn-primary" style="padding: 8px 16px; display: flex; gap: 8px; align-items: center;">
                         <i class="fas fa-copy"></i> Copy
@@ -81,7 +81,7 @@
                 </div>
 
                 <!-- Controls Grid -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+                <div class="controls-grid">
                     
                     <!-- Length Slider -->
                     <div style="grid-column: 1 / -1;">
