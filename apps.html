@@ -644,5 +644,219 @@
         // Run on Startup
         initAppSystem();
     </script>
+<!-- ==========================================
+     PHANTOMIX COMMAND PALETTE (CTRL + K)
+=========================================== -->
+<style>
+    /* Command Palette Overlay */
+    #phantom-cmd-overlay {
+        display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(2, 6, 23, 0.7); backdrop-filter: blur(10px);
+        z-index: 9999; justify-content: center; align-items: flex-start; padding-top: 10vh;
+        opacity: 0; transition: opacity 0.2s ease;
+    }
+    #phantom-cmd-overlay.active { display: flex; opacity: 1; }
+
+    /* Command Modal */
+    .cmd-modal {
+        width: 100%; max-width: 600px; background: var(--surface-main, #0f172a);
+        border: 1px solid var(--surface-border, #334155); border-radius: 12px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); overflow: hidden;
+        transform: scale(0.95); transition: transform 0.2s ease;
+    }
+    #phantom-cmd-overlay.active .cmd-modal { transform: scale(1); }
+
+    /* Input Area */
+    .cmd-input-wrapper {
+        position: relative; border-bottom: 1px solid var(--surface-border, #334155);
+        display: flex; align-items: center; padding: 0 20px;
+    }
+    .cmd-input-wrapper i { color: var(--brand-primary, #0ea5e9); font-size: 20px; }
+    #cmd-input {
+        width: 100%; padding: 20px 15px; background: transparent; border: none;
+        color: var(--text-primary, #f8fafc); font-size: 18px; font-family: 'Poppins', sans-serif;
+        outline: none;
+    }
+    .cmd-badge {
+        background: rgba(255,255,255,0.1); color: var(--text-muted, #94a3b8);
+        padding: 4px 8px; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 10px;
+    }
+
+    /* Results Area */
+    .cmd-results { max-height: 350px; overflow-y: auto; padding: 10px; }
+    .cmd-results::-webkit-scrollbar { width: 6px; }
+    .cmd-results::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.3); border-radius: 10px; }
+    
+    .cmd-item {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 12px 15px; margin-bottom: 5px; border-radius: 8px; cursor: pointer;
+        transition: background 0.1s; text-decoration: none; color: var(--text-primary, #f8fafc);
+    }
+    .cmd-item.selected, .cmd-item:hover {
+        background: rgba(14, 165, 233, 0.15); border-left: 3px solid var(--brand-primary, #0ea5e9);
+    }
+    
+    .cmd-item-left { display: flex; align-items: center; gap: 15px; }
+    .cmd-item-icon {
+        width: 35px; height: 35px; background: rgba(2, 6, 23, 0.5);
+        display: flex; justify-content: center; align-items: center;
+        border-radius: 8px; color: var(--brand-primary, #0ea5e9); font-size: 16px;
+    }
+    .cmd-item-title { font-size: 15px; font-weight: 600; margin: 0; }
+    .cmd-item-desc { font-size: 12px; color: var(--text-muted, #94a3b8); margin: 0; }
+    .cmd-item-type { font-size: 11px; color: var(--brand-secondary, #8b5cf6); font-family: 'Fira Code', monospace; }
+
+    /* Footer */
+    .cmd-footer {
+        padding: 10px 20px; background: rgba(2, 6, 23, 0.5); border-top: 1px solid var(--surface-border, #334155);
+        display: flex; justify-content: space-between; align-items: center;
+        font-family: 'Fira Code', monospace; font-size: 11px; color: var(--text-muted, #94a3b8);
+    }
+    .cmd-footer kbd {
+        background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;
+        border-bottom: 2px solid rgba(255,255,255,0.2); margin: 0 2px;
+    }
+</style>
+
+<div id="phantom-cmd-overlay">
+    <div class="cmd-modal">
+        <div class="cmd-input-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="cmd-input" placeholder="Jump to a tool or command..." autocomplete="off">
+            <span class="cmd-badge">ESC</span>
+        </div>
+        <div class="cmd-results" id="cmd-results">
+            <!-- Results will be injected here -->
+        </div>
+        <div class="cmd-footer">
+            <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
+            <span><kbd>↵</kbd> Open</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Phantomix Tool Database for Command Palette
+    const cmdTools = [
+        { title: "DiamondMax", desc: "Reward Ecosystem", icon: "fa-gem", url: "diamondmax-login.html", type: "Platform" },
+        { title: "Diamond-Vault", desc: "Offline Password Generator", icon: "fa-lock", url: "vault.html", type: "Security" },
+        { title: "Phantom-Wormhole", desc: "P2P File Transfer", icon: "fa-network-wired", url: "wormhole.html", type: "Privacy" },
+        { title: "Phantom-Shrink", desc: "Offline Image Compressor", icon: "fa-compress", url: "compressor.html", type: "Utility" },
+        { title: "Phantom-Morph", desc: "Offline Image Converter", icon: "fa-exchange-alt", url: "converter.html", type: "Utility" },
+        { title: "Privacy Auditor", desc: "Browser Hardware Scanner", icon: "fa-search", url: "fingerprint.html", type: "Privacy" },
+        { title: "Burner Protocol", desc: "Self-Destructing Notes", icon: "fa-fire", url: "burner.html", type: "Privacy" },
+        { title: "Burner Mail Proxy", desc: "Temp Email Sandbox", icon: "fa-envelope", url: "mail.html", type: "Privacy" },
+        { title: "Bruteforce Simulator", desc: "Password Strength Test", icon: "fa-shield-halved", url: "password.html", type: "Security" },
+        { title: "Phishing Detective", desc: "Scam Spotter Game", icon: "fa-user-ninja", url: "detective.html", type: "Security" },
+        { title: "Phantom Calc", desc: "Omni-Calculator", icon: "fa-calculator", url: "calculator.html", type: "Utility" },
+        { title: "Phantom QR Studio", desc: "Vector QR Generator", icon: "fa-qrcode", url: "qr.html", type: "Utility" },
+        { title: "Payment QR Terminal", desc: "Custom UPI QR", icon: "fa-indian-rupee-sign", url: "payment-qr-terminal.html", type: "Utility" },
+        { title: "Glitch Generator", desc: "Corrupted Text Maker", icon: "fa-biohazard", url: "glitch.html", type: "Creative" },
+        { title: "Code-to-Canvas", desc: "Aesthetic Code Snippets", icon: "fa-code", url: "canvas.html", type: "Creative" },
+        { title: "Word Cipher", desc: "Decryption Game", icon: "fa-terminal", url: "cipher.html", type: "Game" },
+        { title: "The Void", desc: "Extreme Flow-State Editor", icon: "fa-ghost", url: "void.html", type: "Utility" }
+    ];
+
+    const cmdOverlay = document.getElementById('phantom-cmd-overlay');
+    const cmdInput = document.getElementById('cmd-input');
+    const cmdResults = document.getElementById('cmd-results');
+    let selectedIndex = 0;
+
+    // Toggle Command Palette
+    function toggleCmdPalette() {
+        if (cmdOverlay.classList.contains('active')) {
+            cmdOverlay.classList.remove('active');
+            cmdInput.blur();
+        } else {
+            cmdOverlay.style.display = 'flex';
+            setTimeout(() => cmdOverlay.classList.add('active'), 10);
+            cmdInput.value = '';
+            renderCmdResults();
+            cmdInput.focus();
+        }
+    }
+
+    // Keyboard Shortcuts (Ctrl+K or Cmd+K to open, Esc to close)
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            toggleCmdPalette();
+        }
+        if (e.key === 'Escape' && cmdOverlay.classList.contains('active')) {
+            toggleCmdPalette();
+        }
+    });
+
+    // Close on clicking outside
+    cmdOverlay.addEventListener('click', (e) => {
+        if (e.target === cmdOverlay) toggleCmdPalette();
+    });
+
+    // Render Results
+    function renderCmdResults() {
+        const query = cmdInput.value.toLowerCase().trim();
+        const filtered = cmdTools.filter(t => t.title.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query));
+        
+        cmdResults.innerHTML = '';
+        selectedIndex = 0;
+
+        if (filtered.length === 0) {
+            cmdResults.innerHTML = `<div style="text-align:center; padding: 20px; color: var(--text-muted); font-family: 'Fira Code', monospace;"><i class="fas fa-ghost"></i> No modules found.</div>`;
+            return;
+        }
+
+        filtered.forEach((tool, index) => {
+            const item = document.createElement('a');
+            item.href = tool.url;
+            item.className = `cmd-item ${index === 0 ? 'selected' : ''}`;
+            item.innerHTML = `
+                <div class="cmd-item-left">
+                    <div class="cmd-item-icon"><i class="fas ${tool.icon}"></i></div>
+                    <div>
+                        <h4 class="cmd-item-title">${tool.title}</h4>
+                        <p class="cmd-item-desc">${tool.desc}</p>
+                    </div>
+                </div>
+                <div class="cmd-item-type">${tool.type}</div>
+            `;
+            // Hover logic to update keyboard selection
+            item.addEventListener('mouseenter', () => updateCmdSelection(index));
+            cmdResults.appendChild(item);
+        });
+    }
+
+    // Handle Input & Navigation
+    cmdInput.addEventListener('input', renderCmdResults);
+
+    cmdInput.addEventListener('keydown', (e) => {
+        const items = document.querySelectorAll('.cmd-item');
+        if (items.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            updateCmdSelection((selectedIndex + 1) % items.length);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            updateCmdSelection((selectedIndex - 1 + items.length) % items.length);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            items[selectedIndex].click();
+        }
+    });
+
+    function updateCmdSelection(newIndex) {
+        const items = document.querySelectorAll('.cmd-item');
+        if (items[selectedIndex]) items[selectedIndex].classList.remove('selected');
+        selectedIndex = newIndex;
+        if (items[selectedIndex]) {
+            items[selectedIndex].classList.add('selected');
+            items[selectedIndex].scrollIntoView({ block: 'nearest' });
+        }
+    }
+</script>
+<!-- ==========================================
+     END COMMAND PALETTE
+=========================================== -->
+
 </body>
 </html>
