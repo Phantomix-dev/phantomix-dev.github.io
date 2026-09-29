@@ -1,97 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phantom Wormhole | Serverless File Transfer</title>
+    <title>Phantom-Wormhole | Secure P2P Transfer</title>
     
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/phantomix-dev/phantomix-dev.github.io/main/wormhole-logo.png">
-    <meta name="description" content="Phantom Wormhole. Transfer files directly across devices using 6-digit PIN or QR code. Zero storage, 100% Secure.">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Original Core Scripts -->
     <script src="https://unpkg.com/peerjs@1.5.1/dist/peerjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 
     <style>
-        /* 🚀 THE ULTIMATE GHOST SPACE FIX */
-        html, body { width: 100%; max-width: 100vw; overflow-x: hidden !important; }
-        * { box-sizing: border-box; }
+        .radar-container {
+            position: relative; width: 100px; height: 100px; margin: 0 auto 20px auto;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .radar-icon { font-size: 32px; color: var(--brand-primary); z-index: 10; background: var(--bg-base); padding: 15px; border-radius: 50%; box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); }
+        .pulse-ring {
+            position: absolute; width: 100%; height: 100%;
+            border: 2px solid var(--brand-primary); border-radius: 50%;
+            animation: radarPulse 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        .pulse-ring:nth-child(2) { animation-delay: 0.5s; }
+        .pulse-ring:nth-child(3) { animation-delay: 1s; }
 
-        ::selection { background-color: #0ea5e9; color: #ffffff; }
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
-
-        body {
-            background-color: #020617; color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-            margin: 0; padding: 0; padding-top: 80px; 
-            display: flex; flex-direction: column; min-height: 100vh;
+        @keyframes radarPulse {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
         }
 
-        /* Navbar */
-        .phantomix-navbar {
-            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14, 165, 233, 0.2);
-            z-index: 1000; box-sizing: border-box;
+        .peer-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px;
         }
-        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; }
-        .nav-actions { display: flex; gap: 12px; }
-        .nav-btn {
-            background: rgba(14, 165, 233, 0.1); color: #0ea5e9; padding: 8px 18px;
-            border: 1px solid #0ea5e9; border-radius: 6px; text-decoration: none;
-            font-size: 14px; font-weight: 600; transition: 0.3s;
+        .peer-box {
+            background: var(--bg-base); border: 1px dashed var(--surface-border);
+            padding: 25px; border-radius: var(--radius-md); text-align: center;
+            transition: 0.3s;
         }
-        .nav-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
-
-        /* Main Wrapper */
-        .main-wrapper { flex-grow: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
-        .app-container {
-            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(14, 165, 233, 0.3);
-            border-radius: 16px; padding: 30px; width: 100%; max-width: 600px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5); text-align: center; position: relative;
-        }
-
-        h2 { margin: 0 0 5px 0; color: #f8fafc; font-size: 26px; }
-        h2 span { color: #0ea5e9; }
-        p.subtitle { color: #94a3b8; font-size: 13px; margin-bottom: 25px; }
-
-        /* Step 1: Connection UI */
-        #connectionPanel { display: block; animation: fadeIn 0.4s; }
+        .peer-box:hover { border-color: var(--brand-secondary); }
         
-        .id-box {
-            background: #020617; border: 2px dashed #0ea5e9; padding: 20px;
-            border-radius: 12px; margin-bottom: 25px;
+        .code-display {
+            font-family: 'Fira Code', monospace; font-size: 32px; font-weight: 700;
+            color: #fff; letter-spacing: 5px; margin: 15px 0;
+            background: rgba(139, 92, 246, 0.1); padding: 10px; border-radius: 8px; border: 1px solid rgba(139, 92, 246, 0.3);
         }
-        .id-box h4 { margin: 0 0 10px 0; color: #94a3b8; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
-        .my-id { font-size: 36px; font-weight: 700; color: #f8fafc; letter-spacing: 4px; margin-bottom: 15px; }
-        #qrcode { display: flex; justify-content: center; background: white; padding: 15px; border-radius: 8px; width: 150px; margin: 0 auto; }
-
-        .connect-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-        .input-group input { width: 100%; padding: 14px; background: rgba(2, 6, 23, 0.6); border: 1px solid #334155; color: #f8fafc; border-radius: 8px; font-size: 16px; text-align: center; letter-spacing: 2px; outline: none; box-sizing: border-box; }
-        .input-group input:focus { border-color: #0ea5e9; }
         
-        .action-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .action-btn:hover { box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); }
-        .btn-scan { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid #10b981; }
-        .btn-scan:hover { background: #10b981; color: white; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+        #qrcode { display: flex; justify-content: center; background: white; padding: 10px; border-radius: 8px; width: fit-content; margin: 0 auto 15px auto; }
 
-        /* Scanner Container */
-        #reader { width: 100%; margin-top: 15px; display: none; border-radius: 8px; overflow: hidden; border: 1px solid #0ea5e9; }
+        .input-group input {
+            width: 100%; padding: 15px; background: rgba(2, 6, 23, 0.8); border: 1px solid var(--surface-border);
+            color: #fff; border-radius: var(--radius-sm); font-family: 'Fira Code', monospace;
+            font-size: 20px; text-align: center; letter-spacing: 3px; outline: none; margin-bottom: 15px; box-sizing: border-box;
+        }
+        .input-group input:focus { border-color: var(--brand-primary); box-shadow: 0 0 15px rgba(14, 165, 233, 0.2); }
 
         /* Request Popup Modal */
         .modal-overlay {
@@ -100,88 +66,146 @@
             display: none; justify-content: center; align-items: center; z-index: 2000;
         }
         .modal-box {
-            background: #0f172a; padding: 30px; border-radius: 16px; border: 1px solid #0ea5e9;
+            background: #0f172a; padding: 30px; border-radius: 16px; border: 1px solid var(--brand-primary);
             text-align: center; max-width: 400px; width: 90%; box-shadow: 0 10px 40px rgba(14, 165, 233, 0.3);
         }
         .modal-box h3 { color: #f8fafc; margin-top: 0; font-size: 20px; }
         .modal-box p { color: #94a3b8; font-size: 14px; margin-bottom: 25px; }
         .modal-actions { display: flex; gap: 15px; }
-        .btn-accept { flex: 1; background: #10b981; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
-        .btn-decline { flex: 1; background: transparent; color: #ef4444; border: 1px solid #ef4444; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        .btn-accept { flex: 1; background: var(--status-success); color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .btn-decline { flex: 1; background: transparent; color: var(--status-danger); border: 1px solid var(--status-danger); padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .btn-accept:hover { box-shadow: 0 0 15px var(--status-success); }
+        .btn-decline:hover { background: rgba(239,68,68,0.1); }
 
-        /* Step 2: Transfer UI */
-        #transferPanel { display: none; animation: fadeIn 0.4s; }
-        .status-badge { display: inline-block; background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 8px 20px; border-radius: 30px; font-size: 12px; font-weight: 700; margin-bottom: 25px; border: 1px solid rgba(16, 185, 129, 0.3); }
-        .upload-area { border: 2px dashed #334155; border-radius: 12px; padding: 40px 20px; background: rgba(2, 6, 23, 0.5); cursor: pointer; transition: 0.3s; position: relative; }
-        .upload-area:hover { border-color: #0ea5e9; background: rgba(14, 165, 233, 0.05); }
-        .upload-area i { font-size: 40px; color: #0ea5e9; margin-bottom: 15px; }
+        /* Scanner Container */
+        #reader { width: 100%; margin-bottom: 15px; display: none; border-radius: 8px; overflow: hidden; border: 1px solid var(--brand-primary); }
+
+        /* Transfer Dashboard (Hidden initially) */
+        .transfer-dashboard { display: none; background: var(--bg-base); border: 1px solid var(--status-success); border-radius: var(--radius-md); padding: 25px; margin-top: 20px; text-align: left; animation: fadeIn 0.4s; }
+        
+        .upload-area { border: 2px dashed var(--surface-border); border-radius: 12px; padding: 40px 20px; background: rgba(2, 6, 23, 0.5); cursor: pointer; transition: 0.3s; position: relative; text-align: center; margin-bottom: 25px; }
+        .upload-area:hover { border-color: var(--brand-primary); background: rgba(14, 165, 233, 0.05); }
+        .upload-area i { font-size: 40px; color: var(--brand-primary); margin-bottom: 15px; }
         .upload-area p { margin: 0; font-size: 15px; font-weight: 600; color: #cbd5e1; }
         input[type="file"] { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
         
-        #logArea { margin-top: 20px; background: #020617; padding: 15px; border-radius: 8px; border: 1px solid #334155; max-height: 150px; overflow-y: auto; text-align: left; font-size: 12px; color: #94a3b8; }
+        /* Premium Terminal Log */
+        #logArea { margin-top: 20px; background: #020617; padding: 15px; border-radius: 8px; border: 1px solid var(--surface-border); max-height: 150px; overflow-y: auto; text-align: left; font-size: 12px; font-family: 'Fira Code', monospace; color: var(--text-muted); }
         .log-entry { margin-bottom: 5px; }
-        .log-entry.success { color: #10b981; }
+        .log-entry.success { color: var(--status-success); }
+        .log-entry.warning { color: var(--status-warning); }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Footer */
-        .phantomix-footer { background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2); padding: 30px 5%; margin-top: auto; font-size: 13px; color: #64748b; text-align: center; width: 100%; box-sizing: border-box; }
+        @media (max-width: 768px) {
+            .peer-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <nav class="phantomix-navbar">
-        <a href="index.html" class="nav-logo"><i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i> Phantomix</a>
-        <div class="nav-actions">
-            <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Back to Hub</a>
-        </div>
+    <!-- GLOBAL NAVBAR -->
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 1px solid var(--surface-border); background: var(--surface-main); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;">
+        <a href="index.html" style="font-weight: bold; font-size: 18px; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
+        </a>
+        <a href="apps.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 16px; background: rgba(14, 165, 233, 0.1); border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); color: var(--brand-primary);"><i class="fas fa-arrow-left"></i> Hub</a>
     </nav>
 
-    <div class="main-wrapper">
-        <div class="app-container">
-            <h2>Phantom <span>Wormhole</span></h2>
-            <p class="subtitle"><i class="fas fa-network-wired"></i> Zero-Storage Direct P2P Transfer</p>
+    <div class="app-layout" style="max-width: 900px; grid-template-columns: 1fr;">
+        
+        <div style="text-align: center; margin-bottom: 10px;">
+            <div class="radar-container">
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring"></div>
+                <i class="fas fa-satellite-dish radar-icon" id="radar-icon"></i>
+            </div>
+            <h1 style="font-size: 28px; margin-bottom: 10px;">Phantom <span style="color: var(--brand-primary);">Wormhole</span></h1>
+            <p style="color: var(--text-secondary); font-size: 14px;">Establish a direct, encrypted P2P tunnel between devices. Zero server storage.</p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                <span style="font-size: 10px; font-weight: bold; padding: 4px 10px; border-radius: 4px; background: rgba(16, 185, 129, 0.1); color: var(--status-success); border: 1px solid rgba(16, 185, 129, 0.3);"><i class="fas fa-lock"></i> END-TO-END ENCRYPTED</span>
+            </div>
+            <div id="connStatus" style="font-size: 13px; font-weight: bold; color: var(--brand-primary); margin-top: 15px;">Initializing secure node...</div>
+        </div>
 
+        <section style="background: var(--surface-main); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); padding: var(--space-xl);">
+            
+            <!-- Connection Setup Panel -->
             <div id="connectionPanel">
-                <div class="id-box">
-                    <h4>Your Secure ID</h4>
-                    <div class="my-id" id="myIdDisplay">--- ---</div>
-                    <div id="qrcode"></div>
-                    <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Scan QR or share the 6-digit code</p>
-                </div>
+                <div class="peer-grid">
+                    
+                    <!-- Receiver (Your Device) -->
+                    <div class="peer-box">
+                        <p style="color: var(--text-muted); font-size: 12px; text-transform: uppercase; font-weight: bold; margin: 0;">Receive Files</p>
+                        <p style="color: var(--text-primary); font-size: 14px; margin-top: 5px; margin-bottom: 15px;">Share this ID or scan QR</p>
+                        <div id="qrcode"></div>
+                        <div class="code-display" id="myIdDisplay">--- ---</div>
+                        <button class="btn-primary" style="background: rgba(139, 92, 246, 0.1); color: var(--brand-secondary); border: 1px solid var(--brand-secondary); width: 100%;" onclick="copyId()">
+                            <i class="fas fa-copy"></i> Copy ID
+                        </button>
+                    </div>
 
-                <div class="input-group" style="margin-bottom: 15px;">
-                    <input type="text" id="targetIdInput" placeholder="Enter 6-Digit ID" maxlength="6">
-                </div>
+                    <!-- Sender (Connect to remote) -->
+                    <div class="peer-box">
+                        <p style="color: var(--text-muted); font-size: 12px; text-transform: uppercase; font-weight: bold; margin: 0;">Send Files</p>
+                        <p style="color: var(--text-primary); font-size: 14px; margin-top: 5px; margin-bottom: 15px;">Enter receiver's ID to connect</p>
+                        
+                        <div id="reader"></div>
 
-                <div class="connect-actions">
-                    <button class="action-btn" id="connectBtn"><i class="fas fa-link"></i> Connect</button>
-                    <button class="action-btn btn-scan" id="scanBtn"><i class="fas fa-qrcode"></i> Scan QR</button>
+                        <div class="input-group">
+                            <input type="text" id="targetIdInput" placeholder="XXXXXX" maxlength="6">
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn-primary" style="flex: 1; padding: 12px;" id="connectBtn">
+                                <i class="fas fa-link"></i> Connect
+                            </button>
+                            <button class="btn-primary" style="background: rgba(16, 185, 129, 0.1); color: var(--status-success); border: 1px solid var(--status-success); padding: 12px;" id="scanBtn">
+                                <i class="fas fa-qrcode"></i> Scan
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
-                
-                <div id="reader"></div>
-                <div id="connStatus" style="font-size: 12px; color: #0ea5e9; margin-top: 10px;">Initializing secure node...</div>
             </div>
 
-            <div id="transferPanel">
-                <div class="status-badge"><i class="fas fa-lock"></i> Connection Secured</div>
-                
+            <!-- Active Transfer Dashboard (Appears after connection) -->
+            <div id="active-dashboard" class="transfer-dashboard">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--surface-border); padding-bottom: 15px; margin-bottom: 20px;">
+                    <div>
+                        <h3 style="margin: 0; color: var(--status-success);"><i class="fas fa-check-circle"></i> Connection Secured</h3>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Tunnel active with target node.</p>
+                    </div>
+                    <span style="font-size: 10px; font-weight: bold; padding: 4px 10px; border-radius: 4px; background: rgba(16, 185, 129, 0.1); color: var(--status-success); border: 1px solid rgba(16, 185, 129, 0.3);">ACTIVE</span>
+                </div>
+
+                <!-- File Selection Area -->
                 <div class="upload-area">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p>Click or Drop File to Send</p>
+                    <i class="fas fa-file-upload"></i>
+                    <p>Click or Drop File to Transfer (Max 1GB)</p>
                     <input type="file" id="fileInput" multiple>
                 </div>
 
+                <!-- Live Log Terminal -->
                 <div id="logArea">
                     <div class="log-entry">Waiting for file activity...</div>
                 </div>
+
+                <div style="text-align: right; margin-top: 25px;">
+                    <button class="btn-primary" style="background: rgba(239, 68, 68, 0.1); color: var(--status-danger); border: 1px solid var(--status-danger);" onclick="closeConnectionUI()">
+                        <i class="fas fa-times"></i> Terminate Connection
+                    </button>
+                </div>
             </div>
-        </div>
+
+        </section>
     </div>
 
+    <!-- Incoming Request Modal -->
     <div class="modal-overlay" id="requestModal">
         <div class="modal-box">
-            <h3><i class="fas fa-satellite-dish" style="color: #0ea5e9;"></i> Incoming Connection</h3>
+            <h3><i class="fas fa-satellite-dish" style="color: var(--brand-primary);"></i> Incoming Connection</h3>
             <p>Device ID <strong id="incomingIdText" style="color: #fff;"></strong> wants to establish a secure P2P tunnel.</p>
             <div class="modal-actions">
                 <button class="btn-accept" id="acceptBtn">Accept</button>
@@ -190,11 +214,33 @@
         </div>
     </div>
 
-    <footer class="phantomix-footer">
-        <p>&copy; 2026 Phantomix. All rights reserved. Built with passion.</p>
-    </footer>
+    <!-- ORIGINAL PHANTOMIX WEBRTC & CHUNKING LOGIC -->
     <script>
-        // Generate random 6-digit PIN
+        // Copy to clipboard helper
+        function copyId() {
+            const id = document.getElementById("myIdDisplay").innerText.replace(' ', ''); // remove visual space
+            navigator.clipboard.writeText(id);
+            connStatus.innerText = "ID Copied to clipboard!";
+        }
+
+        // Dashboard UI Switches
+        function showTransferDashboard() {
+            document.getElementById("connectionPanel").style.display = "none";
+            document.getElementById("active-dashboard").style.display = "block";
+            document.getElementById("radar-icon").style.color = "var(--status-success)";
+        }
+
+        function closeConnectionUI() {
+            if (activeConnection) {
+                activeConnection.close();
+            }
+            location.reload(); // Hard reset network states
+        }
+
+        // =========================================================
+        // YOUR EXACT ORIGINAL WEBRTC JAVASCRIPT STARTS HERE
+        // =========================================================
+
         const generateID = () => Math.floor(100000 + Math.random() * 900000).toString();
         const myID = generateID();
         
@@ -202,15 +248,12 @@
         let activeConnection = null;
         let html5QrcodeScanner = null;
 
-        // ==========================================
-        // 🔥 ADVANCED FILE CHUNKING ENGINE (1GB)
-        // ==========================================
         const CHUNK_SIZE = 64 * 1024; // 64KB per chunk (Best for Mobile)
         let incomingFileInfo = null;
         let incomingFileData = [];
         let bytesReceived = 0;
 
-        // UI Elements
+        // UI Elements Mapping
         const myIdDisplay = document.getElementById('myIdDisplay');
         const qrcodeContainer = document.getElementById('qrcode');
         const connStatus = document.getElementById('connStatus');
@@ -219,38 +262,29 @@
         const scanBtn = document.getElementById('scanBtn');
         const readerDiv = document.getElementById('reader');
         
-        const connectionPanel = document.getElementById('connectionPanel');
-        const transferPanel = document.getElementById('transferPanel');
         const requestModal = document.getElementById('requestModal');
         const incomingIdText = document.getElementById('incomingIdText');
-        
         const acceptBtn = document.getElementById('acceptBtn');
         const declineBtn = document.getElementById('declineBtn');
         const fileInput = document.getElementById('fileInput');
         const logArea = document.getElementById('logArea');
 
-        function logMsg(msg, isSuccess = false) {
+        function logMsg(msg, statusType = '') {
             const div = document.createElement('div');
-            div.className = `log-entry ${isSuccess ? 'success' : ''}`;
+            div.className = `log-entry ${statusType}`;
             div.innerText = `[${new Date().toLocaleTimeString()}] ${msg}`;
             logArea.appendChild(div);
             logArea.scrollTop = logArea.scrollHeight;
         }
 
-        // ==========================================
-        // 🚀 THE BULLETPROOF ICE SERVERS (STUN + TURN)
-        // ==========================================
         function initPeer() {
             peer = new Peer(myID, {
                 config: {
                     'iceServers': [
-                        // Google & Cloudflare STUN (Finds Public IP)
                         { urls: 'stun:stun.l.google.com:19302' },
                         { urls: 'stun:stun1.l.google.com:19302' },
                         { urls: 'stun:stun2.l.google.com:19302' },
                         { urls: 'stun:stun.cloudflare.com:3478' },
-                        
-                        // 🔥 THE MAGIC: Public TURN Server (Bypasses Strict Jio/Airtel/Wi-Fi Blockers)
                         {
                             urls: 'turn:openrelay.metered.ca:80',
                             username: 'openrelayproject',
@@ -266,6 +300,7 @@
             });
             
             peer.on('open', (id) => {
+                // Add visual space for easier reading e.g. "123 456"
                 myIdDisplay.innerText = `${id.substring(0,3)} ${id.substring(3)}`;
                 connStatus.innerText = "Node active. Share PIN or scan QR to connect.";
                 
@@ -291,10 +326,8 @@
                         activeConnection = conn;
                         setupDataListener(conn);
                         conn.send({ type: 'handshake', status: 'accepted' }); 
-                        
-                        connectionPanel.style.display = 'none';
-                        transferPanel.style.display = 'block';
-                        logMsg("Secure tunnel established. Ready to receive.", true);
+                        showTransferDashboard();
+                        logMsg("Secure tunnel established. Ready to receive.", "success");
                     };
 
                     if (conn.open) {
@@ -312,8 +345,8 @@
             });
 
             peer.on('error', (err) => {
-                connStatus.innerText = `Error: ${err.type}. Connection blocked or failed.`;
-                connStatus.style.color = "#ef4444";
+                connStatus.innerText = `Network Protocol Error.`;
+                connStatus.style.color = "var(--status-danger)";
                 console.error(err);
             });
         }
@@ -323,12 +356,11 @@
             conn.on('data', (data) => {
                 if (data.type === 'handshake') {
                     if (data.status === 'accepted') {
-                        connectionPanel.style.display = 'none';
-                        transferPanel.style.display = 'block';
-                        logMsg("Target accepted the connection.", true);
+                        showTransferDashboard();
+                        logMsg("Target accepted the connection.", "success");
                     } else if (data.status === 'declined') {
                         connStatus.innerText = "Connection declined by target.";
-                        connStatus.style.color = "#ef4444";
+                        connStatus.style.color = "var(--status-danger)";
                     }
                     return;
                 }
@@ -353,7 +385,7 @@
                 }
 
                 if (data.type === 'eof') {
-                    logMsg(`Processing and saving file...`, true);
+                    logMsg(`Processing and saving file...`, "warning");
                     const blob = new Blob(incomingFileData);
                     const url = URL.createObjectURL(blob);
                     
@@ -364,7 +396,7 @@
                     a.click();
                     document.body.removeChild(a);
                     
-                    logMsg("✅ File downloaded successfully!", true);
+                    logMsg("✅ File downloaded successfully!", "success");
                     
                     incomingFileInfo = null;
                     incomingFileData = []; 
@@ -421,7 +453,7 @@
                 const file = files[i];
 
                 if (file.size > MAX_BYTES) {
-                    logMsg(`⚠️ Skipped ${file.name}. Size exceeds ${MAX_SIZE_MB}MB limit.`);
+                    logMsg(`⚠️ Skipped ${file.name}. Size exceeds ${MAX_SIZE_MB}MB limit.`, "warning");
                     continue; 
                 }
 
@@ -453,7 +485,7 @@
                         readNextChunk(); 
                     } else {
                         activeConnection.send({ type: 'eof' });
-                        logMsg(`✅ ${file.name} sent successfully!`, true);
+                        logMsg(`✅ ${file.name} sent successfully!`, "success");
                     }
                 };
 
@@ -477,6 +509,5 @@
 
         window.onload = initPeer;
     </script>
-
 </body>
 </html>
