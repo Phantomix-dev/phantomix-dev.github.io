@@ -2,47 +2,46 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code-to-Canvas | Phantomix</title>
+    <title>Code-to-Canvas Studio | Phantomix</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <meta name="description" content="Generate high-end aesthetic images of your source code for social sharing. Instant, secure, and 100% offline.">
+    <meta name="keywords" content="code to image, aesthetic code snippet, code screenshot tool, phantomix canvas">
     
+    <meta property="og:title" content="Code-to-Canvas | Phantomix">
+    <meta property="og:description" content="Create aesthetic code screenshots instantly.">
+    <meta property="og:url" content="https://phantomix-dev.github.io/canvas.html">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bdiamondmax-logo.png">
+    <meta name="theme-color" content="#020617">
+
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
         /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
-        ::selection { background-color: #0ea5e9; color: #ffffff; }
-        ::-moz-selection { background-color: #0ea5e9; color: #ffffff; }
-        
-        /* --- Premium Custom Scrollbar --- */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; border: 2px solid #020617; }
-        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        ::selection { background-color: var(--brand-primary); color: #ffffff; }
+        ::-moz-selection { background-color: var(--brand-primary); color: #ffffff; }
 
-        /* Base Styling */
+        /* ✨ PREMIUM FADE-IN ANIMATION */
         body {
-            margin: 0;
-            padding: 0;
-            padding-top: 115px; 
-            font-family: 'Poppins', sans-serif;
-            background-color: #0f172a; 
-            color: #ffffff;
-            text-align: center;
-            overflow-x: hidden;
-            position: relative;
             animation: appLoad 0.8s ease-out forwards;
-            display: flex;
-            justify-content: center;
+            margin: 0; padding: 0; padding-top: 90px;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-base); color: var(--text-primary);
+            text-align: center; overflow-x: hidden; position: relative;
+            display: flex; flex-direction: column; min-height: 100vh;
         }
 
         @keyframes appLoad {
@@ -50,162 +49,182 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* PREMIUM ANIMATED GLOWING BACKGROUND */
-        .bg-animation {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1; overflow: hidden; background: #0f172a;
-        }
-        .glow-shape {
-            position: absolute; filter: blur(80px); opacity: 0.5;
-            animation: float 10s infinite alternate ease-in-out; border-radius: 50%;
-        }
-        .shape1 { width: 400px; height: 400px; background: #0ea5e9; top: -10%; left: -10%; animation-duration: 12s; }
-        .shape2 { width: 500px; height: 500px; background: #8b5cf6; bottom: -20%; right: -10%; animation-duration: 15s; }
-        .shape3 { width: 300px; height: 300px; background: #3b82f6; top: 40%; left: 40%; animation-duration: 18s; }
-        
-        @keyframes float {
-            0% { transform: translateY(0px) scale(1); }
-            100% { transform: translateY(-50px) scale(1.1); }
-        }
+        /* Custom Cyber Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary); }
 
-        /* --- Premium Sticky Navbar --- */
+        /* GLOBAL NAVBAR */
         .phantomix-navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 70px;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(14, 165, 233, 0.2); z-index: 1000;
-            box-sizing: border-box;
+            padding: 0 5%; background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--surface-border);
+            z-index: 1000; box-sizing: border-box;
         }
-        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none;}
+        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; gap: 8px; }
         .nav-btn {
-            background: rgba(14, 165, 233, 0.1); color: #0ea5e9; padding: 8px 18px;
-            border: 1px solid #0ea5e9; border-radius: 6px; text-decoration: none;
+            background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); padding: 8px 18px;
+            border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); text-decoration: none;
             font-size: 14px; font-weight: 600; transition: all 0.3s ease;
         }
-        .nav-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+        .nav-btn:hover { background: var(--brand-primary); color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
 
-        /* --- Tool Container (Vault Style) --- */
-        .container { 
-            width: 100%; 
-            max-width: 650px; 
-            background: rgba(15, 23, 42, 0.7); 
-            border: 1px solid rgba(14, 165, 233, 0.3); 
-            border-radius: 15px; 
-            padding: 40px 30px; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
-            backdrop-filter: blur(10px);
-            margin-bottom: 50px;
-            box-sizing: border-box;
+        /* Workspace Layout */
+        .content-wrapper { flex: 1; display: flex; justify-content: center; align-items: flex-start; padding: 20px; }
+        
+        .canvas-workspace {
+            width: 100%; max-width: 800px; background: var(--surface-main); 
+            border: 1px solid var(--surface-border); border-radius: var(--radius-lg); 
+            padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            text-align: left;
         }
 
-        h1 { font-size: 28px; margin-top: 0; margin-bottom: 8px; font-weight: 700; color: #fff; }
-        h1 span { color: #0ea5e9; }
-        p { color: #94a3b8; font-size: 14px; margin-bottom: 25px; }
-        
+        /* Textarea Code Input */
+        .code-input-box { position: relative; margin-bottom: 25px; }
+        .code-input-box i { position: absolute; left: 20px; top: 20px; color: var(--text-muted); font-size: 16px; }
         textarea { 
-            width: 100%; 
-            height: 110px; 
-            background: rgba(15, 23, 42, 0.9); 
-            color: #0ea5e9; 
-            border: 1px solid #334155; 
-            border-radius: 8px; 
-            padding: 15px; 
-            font-family: 'Courier New', monospace; 
-            resize: none; 
-            box-sizing: border-box; 
-            margin-bottom: 25px; 
-            outline: none;
-            transition: all 0.3s ease;
+            width: 100%; height: 120px; background: rgba(2, 6, 23, 0.8); color: var(--text-primary); 
+            border: 1px solid var(--surface-border); border-radius: var(--radius-md); 
+            padding: 20px 20px 20px 45px; font-family: 'Fira Code', monospace; font-size: 14px;
+            resize: none; outline: none; transition: 0.3s ease; box-sizing: border-box; line-height: 1.5;
         }
-        textarea:focus { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.3); }
-        
+        textarea:focus { border-color: var(--brand-primary); box-shadow: 0 0 20px rgba(14, 165, 233, 0.2); }
+        textarea::placeholder { color: var(--text-muted); opacity: 0.6; }
+
+        /* Theme Selector */
+        .theme-selector { display: flex; gap: 10px; margin-bottom: 25px; justify-content: center; }
+        .theme-btn {
+            width: 35px; height: 35px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
+            transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .theme-btn:hover, .theme-btn.active { border-color: #fff; transform: scale(1.1); }
+        .theme-1 { background: linear-gradient(135deg, #0284c7, #7c3aed); } /* Ocean Blue */
+        .theme-2 { background: linear-gradient(135deg, #f59e0b, #ef4444); } /* Fire Sunset */
+        .theme-3 { background: linear-gradient(135deg, #10b981, #047857); } /* Matrix Green */
+        .theme-4 { background: #0f172a; border: 1px solid var(--surface-border); } /* Dark Slate */
+        .theme-5 { background: linear-gradient(135deg, #a855f7, #ec4899); } /* Synthwave */
+
+        /* Aesthetic Canvas Frame */
         #canvas-preview { 
-            background: linear-gradient(135deg, #0284c7, #7c3aed); 
-            padding: 40px; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
-            text-align: left; 
-            box-sizing: border-box; 
-            margin-bottom: 25px; 
-            overflow: hidden; 
+            background: linear-gradient(135deg, #0284c7, #7c3aed); /* Default Theme */
+            padding: 40px; border-radius: var(--radius-lg); 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5); 
+            text-align: left; box-sizing: border-box; margin-bottom: 30px; 
+            overflow: hidden; transition: background 0.4s ease;
         }
         
         #code-window { 
-            background: rgba(2, 6, 23, 0.9); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 8px; 
-            padding: 20px; 
-            color: #E2E8F0; 
-            font-family: 'Courier New', monospace; 
-            font-size: 14px; 
-            white-space: pre-wrap; 
-            word-wrap: break-word; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
+            background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: var(--radius-sm); padding: 20px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4); 
         }
         
-        .dots { display: flex; gap: 8px; margin-bottom: 15px; }
+        .window-controls { display: flex; gap: 8px; margin-bottom: 15px; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .dot-red { background: #ef4444; } 
         .dot-yellow { background: #f59e0b; } 
         .dot-green { background: #10b981; }
         
-        button.export-btn { 
-            background: linear-gradient(135deg, #0ea5e9, #3b82f6); 
-            color: #fff; 
-            padding: 15px 30px; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            font-weight: 600; 
-            font-size: 15px; 
-            width: 100%; 
-            transition: all 0.3s ease; 
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
-            font-family: 'Poppins', sans-serif;
+        #code-output {
+            color: #E2E8F0; font-family: 'Fira Code', monospace; 
+            font-size: 14px; white-space: pre-wrap; word-wrap: break-word; line-height: 1.6;
+            margin: 0; display: block;
         }
-        button.export-btn:hover { box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6); transform: translateY(-2px); }
+
+        /* Action Buttons */
+        .btn-export { 
+            background: linear-gradient(135deg, var(--brand-primary), #3b82f6); 
+            color: #fff; padding: 16px; border: none; border-radius: var(--radius-sm); 
+            cursor: pointer; font-weight: 700; font-size: 16px; width: 100%; 
+            transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; gap: 10px;
+        }
+        .btn-export:hover { box-shadow: 0 6px 25px rgba(14, 165, 233, 0.4); transform: translateY(-2px); }
+
+        /* Footer */
+        .phantomix-footer { background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2); padding: 40px 5% 20px 5%; margin-top: auto; font-family: 'Poppins', sans-serif; text-align: left; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 30px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-brand { flex: 1; min-width: 250px; }
+        .footer-brand h3 { color: white; font-size: 22px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .footer-brand p { color: #94a3b8; font-size: 14px; line-height: 1.6; margin: 0; }
+        .footer-social h4 { color: white; margin-bottom: 12px; font-size: 16px; }
+        .social-icons { display: flex; gap: 12px; }
+        .social-icons a { color: #94a3b8; font-size: 18px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; text-decoration: none; }
+        .social-icons a:hover { color: white; background: #0ea5e9; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4); }
+        .footer-bottom { border-top: 1px solid rgba(51, 65, 85, 0.4); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; color: #64748b; font-size: 13px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-bottom p { margin: 0; }
+
+        @media (max-width: 600px) {
+            .phantomix-navbar { padding: 0 15px; height: 60px; }
+            .nav-logo { font-size: 16px; }
+            .nav-btn { padding: 6px 12px; font-size: 12px; }
+            .canvas-workspace { padding: 25px 20px; }
+            #canvas-preview { padding: 20px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="bg-animation">
-        <div class="glow-shape shape1"></div>
-        <div class="glow-shape shape2"></div>
-        <div class="glow-shape shape3"></div>
-    </div>
-
+    <!-- GLOBAL NAVBAR -->
     <nav class="phantomix-navbar">
-        <a href="apps.html" class="nav-logo">
-            <i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i>
-            Phantomix
+        <a href="index.html" class="nav-logo">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
         </a>
-        <div class="nav-action">
-            <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Back to Hub</a>
-        </div>
+        <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Back to Hub</a>
     </nav>
 
-    <div class="container">
-        <h1>Code-to-<span>Canvas</span></h1>
-        <p>Generate high-end aesthetic images of your source code for social sharing.</p>
-
-        <textarea id="code-input" placeholder="Paste your code snippet here..." oninput="updateSnippet()"></textarea>
-
-        <div id="canvas-preview">
-            <div id="code-window">
-                <div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
-                <code id="code-output">// Your code snapshot will render here...</code>
+    <div class="content-wrapper">
+        <div class="canvas-workspace">
+            
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h1 style="font-size: 32px; margin-bottom: 10px;">Code-to-<span style="color: var(--brand-primary);">Canvas</span></h1>
+                <p style="color: var(--text-secondary); font-size: 14px; max-width: 500px; margin: 0 auto;">
+                    Generate high-end aesthetic images of your source code snippets. Perfect for Instagram, Twitter, and LinkedIn.
+                </p>
             </div>
-        </div>
 
-        <button class="export-btn" onclick="exportToImage()">
-            <i class="fas fa-download" style="margin-right: 8px;"></i> Download Snippet Image
-        </button>
+            <!-- Custom Theme Selector -->
+            <div class="theme-selector">
+                <div class="theme-btn theme-1 active" onclick="setTheme('linear-gradient(135deg, #0284c7, #7c3aed)', this)"></div>
+                <div class="theme-btn theme-5" onclick="setTheme('linear-gradient(135deg, #a855f7, #ec4899)', this)"></div>
+                <div class="theme-btn theme-2" onclick="setTheme('linear-gradient(135deg, #f59e0b, #ef4444)', this)"></div>
+                <div class="theme-btn theme-3" onclick="setTheme('linear-gradient(135deg, #10b981, #047857)', this)"></div>
+                <div class="theme-btn theme-4" onclick="setTheme('#0f172a', this)"></div>
+            </div>
+
+            <!-- Code Input Box -->
+            <div class="code-input-box">
+                <i class="fas fa-code"></i>
+                <textarea id="code-input" placeholder="Paste your raw code snippet here..." oninput="updateSnippet()"></textarea>
+            </div>
+
+            <!-- Live Canvas Preview Frame -->
+            <div id="canvas-preview">
+                <div id="code-window">
+                    <div class="window-controls">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <pre style="margin:0;"><code id="code-output">// Awaiting compilation...
+// Your code snapshot will render here.</code></pre>
+                </div>
+            </div>
+
+            <button class="btn-export" onclick="exportToImage()" id="exportBtn">
+                <i class="fas fa-camera"></i> Export Aesthetic Snapshot
+            </button>
+
+        </div>
     </div>
+
+    <!-- FOOTER -->
     <footer class="phantomix-footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <h3><i class="fa-solid fa-gem" style="color: #0ea5e9;"></i> Phantomix</h3>
+                <h3><i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> Phantomix</h3>
                 <p>Building the future of digital experience. Fast, secure, and premium. Join the revolution with DiamondMax.</p>
             </div>
             <div class="footer-social">
@@ -219,22 +238,70 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Phantomix. All rights reserved.</p>
-            <p>Made with <span style="color: #ef4444; animation: pulse 1.5s infinite;">❤</span> in India by Shrikant Prajapati and Ranjan Gupta</p>
+            <p>Made with <span style="color: var(--status-danger); animation: pulse 1.5s infinite;">❤</span> in India by Shrikant Prajapati and Ranjan Gupta</p>
         </div>
     </footer>
 
+    <!-- HTML2Canvas Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
+        // Update text preview live
         function updateSnippet() {
             const rawCode = document.getElementById('code-input').value;
-            document.getElementById('code-output').innerText = rawCode.trim() === "" ? "// Your code snapshot will render here..." : rawCode;
+            const output = document.getElementById('code-output');
+            
+            if(rawCode.trim() === "") {
+                output.innerText = "// Awaiting compilation...\n// Your code snapshot will render here.";
+                output.style.color = "var(--text-muted)";
+            } else {
+                output.innerText = rawCode;
+                output.style.color = "#E2E8F0"; // Default light text
+            }
         }
+
+        // Handle Theme Switching
+        function setTheme(gradient, element) {
+            document.getElementById('canvas-preview').style.background = gradient;
+            
+            // Manage active state borders
+            document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Export Canvas to PNG Image
         function exportToImage() {
-            html2canvas(document.getElementById('canvas-preview'), { backgroundColor: null, scale: 2 }).then(canvas => {
+            const exportBtn = document.getElementById('exportBtn');
+            const originalText = exportBtn.innerHTML;
+            
+            exportBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing Image...';
+            exportBtn.style.opacity = '0.8';
+
+            const elementToCapture = document.getElementById('canvas-preview');
+
+            // html2canvas settings for High-Quality Export
+            html2canvas(elementToCapture, { 
+                backgroundColor: null, 
+                scale: 3, // Multiplier for better resolution (Retina display quality)
+                useCORS: true,
+                logging: false
+            }).then(canvas => {
                 const link = document.createElement('a'); 
-                link.download = 'phantomix_snippet.png';
-                link.href = canvas.toDataURL('image/png'); 
+                link.download = 'Phantomix_Code_Snippet.png';
+                link.href = canvas.toDataURL('image/png', 1.0); 
                 link.click();
+
+                exportBtn.innerHTML = '<i class="fas fa-check"></i> Snapshot Exported!';
+                exportBtn.style.background = 'var(--status-success)';
+                
+                setTimeout(() => {
+                    exportBtn.innerHTML = originalText;
+                    exportBtn.style.background = 'linear-gradient(135deg, var(--brand-primary), #3b82f6)';
+                    exportBtn.style.opacity = '1';
+                }, 2000);
+            }).catch(err => {
+                alert("Error generating image.");
+                exportBtn.innerHTML = originalText;
+                exportBtn.style.opacity = '1';
             });
         }
     </script>
