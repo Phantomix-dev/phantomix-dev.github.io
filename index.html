@@ -330,11 +330,12 @@
             box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
         }
         .btn:hover { box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6); transform: translateY(-2px); }
+        
         /* Investor Section Styling Fix */
         .investor-container {
             background: rgba(30, 41, 59, 0.6);
             backdrop-filter: blur(15px);
-            padding: 40px 15px; /* Side padding kam kar di taaki text ko jagah mile */
+            padding: 40px 15px; 
             border-radius: 15px;
             border: 1px solid #8b5cf6;
             box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
@@ -343,10 +344,9 @@
             width: 100%;
         }
         
-        /* Box ke andar ke text ka glowing error theek kiya */
         .investor-stats .stat-box h3 {
-            font-size: 20px !important; /* Font size chota kiya */
-            text-shadow: none !important; /* Bekaar glow hata diya */
+            font-size: 20px !important; 
+            text-shadow: none !important; 
             color: #ffffff !important;
             letter-spacing: 0.5px;
         }
@@ -404,57 +404,9 @@
             color: white;
         }
 
-        /* Founder & Updates Section Styling */
-        .founder-updates-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(51, 65, 85, 0.8);
-            padding: 40px;
-            text-align: left;
-            margin-top: 20px;
-        }
-        .ceo-profile {
-            flex: 1;
-            min-width: 280px;
-            text-align: center;
-            padding-right: 30px;
-            border-right: 1px solid rgba(51, 65, 85, 0.5);
-        }
-        .ceo-image-wrapper {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 0 auto;
-        }
-        .ceo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid #0ea5e9;
-            box-shadow: 0 0 25px rgba(14, 165, 233, 0.3);
-        }
-        .ceo-badge {
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
-            color: white;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
+        /* Founder & Updates Section Styling (MODIFIED FOR NEW TEAM GRID) */
         .live-updates {
-            flex: 1.5;
-            min-width: 300px;
+            width: 100%;
         }
         .update-feed {
             display: flex;
@@ -480,14 +432,6 @@
             font-weight: 700;
             white-space: nowrap;
             min-width: 70px;
-        }
-        @media (max-width: 768px) {
-            .ceo-profile {
-                border-right: none;
-                border-bottom: 1px solid rgba(51, 65, 85, 0.5);
-                padding-right: 0;
-                padding-bottom: 30px;
-            }
         }
 
         /* Development Roadmap Styling */
@@ -681,110 +625,6 @@
         .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
         .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* Diamond-Vault Password Generator Styling */
-        .vault-container {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(14, 165, 233, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            text-align: left;
-        }
-        .password-display-box {
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid #334155;
-            padding: 15px 20px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            font-family: monospace;
-            font-size: 20px;
-            color: #0ea5e9;
-            letter-spacing: 2px;
-            word-break: break-all;
-        }
-        .copy-btn {
-            background: none;
-            border: none;
-            color: #94a3b8;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .copy-btn:hover { color: #10b981; transform: scale(1.1); }
-        .phantom-slider {
-            width: 100%;
-            cursor: pointer;
-            accent-color: #0ea5e9;
-            margin-bottom: 25px;
-        }
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        .custom-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #cbd5e1;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .custom-checkbox input { accent-color: #0ea5e9; width: 16px; height: 16px; cursor: pointer; }
-        .generate-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .generate-btn:hover {
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
-            transform: translateY(-2px);
-        }
-                /* --- Password Strength Meter Styling --- */
-        .strength-meter-container {
-            margin-bottom: 20px;
-            background: rgba(2, 6, 23, 0.5);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(51, 65, 85, 0.5);
-        }
-        .strength-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #94a3b8;
-        }
-        .strength-bar-bg {
-            width: 100%;
-            height: 6px;
-            background: #020617;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .strength-bar-fill {
-            height: 100%;
-            width: 0%;
-            border-radius: 10px;
-            transition: all 0.4s ease;
-        }
-        .text-weak { color: #ef4444; }
-        .text-medium { color: #f59e0b; }
-        .text-strong { color: #10b981; }
-
-
         /* --- Premium Sticky Navbar --- */
         .phantomix-navbar {
             position: fixed;
@@ -949,76 +789,6 @@
             color: black;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
-        @media (max-width: 480px) {
-            .share-tools { flex-direction: column; }
-        }
-
-        /* --- Phantomix Terminal Styling --- */
-        .terminal-container {
-            background: #020617;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            text-align: left;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .terminal-header {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px dashed rgba(16, 185, 129, 0.4);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-        .timer {
-            color: #ef4444;
-            font-weight: bold;
-            animation: pulse 1s infinite;
-        }
-        .word-display {
-            font-size: 24px;
-            color: #10b981;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            min-height: 30px;
-        }
-        .terminal-input {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid #334155;
-            color: white;
-            font-size: 20px;
-            font-family: inherit;
-            padding: 5px 0;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-        .terminal-input:focus { border-bottom-color: #10b981; }
-        .terminal-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 25px;
-        }
-        .score-board { color: #cbd5e1; font-size: 18px; }
-        .terminal-btn {
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-            border: 1px solid #10b981;
-            padding: 8px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        .terminal-btn:hover {
-            background: #10b981;
-            color: #020617;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
-        }
 
         /* --- Live Stats Counter Styling --- */
         .hero-stats {
@@ -1154,29 +924,24 @@
             text-align: left;
             backdrop-filter: blur(10px);
         }
-
         .status-item {
             display: flex;
             align-items: center;
             gap: 10px;
             font-size: 14px;
         }
-
         .status-label {
             color: #64748b;
         }
-
         .status-value {
             font-weight: 600;
         }
-
         .status-value.operational {
             color: #10b981;
             display: flex;
             align-items: center;
             gap: 6px;
         }
-
         .dot-green {
             width: 8px;
             height: 8px;
@@ -1186,73 +951,12 @@
             box-shadow: 0 0 8px #10b981;
             animation: blink 1.5s infinite;
         }
-
         @keyframes blink {
             0% { opacity: 0.4; }
             50% { opacity: 1; }
             100% { opacity: 0.4; }
         }
-        /* --- Live Tech News Ticker Styling --- */
-        .news-ticker-container {
-            position: fixed;
-            top: 70px; /* Navbar ke theek neeche fit hoga */
-            left: 0;
-            width: 100%;
-            height: 35px;
-            background: #020617;
-            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
-            display: flex;
-            align-items: center;
-            z-index: 998;
-            overflow: hidden;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 12px;
-        }
-
-        .ticker-title {
-            background: #0ea5e9;
-            color: #020617;
-            padding: 0 15px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            z-index: 999;
-            box-shadow: 5px 0 15px rgba(14, 165, 233, 0.4);
-            white-space: nowrap;
-        }
-
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .ticker-move {
-            display: flex;
-            width: max-content;
-            animation: ticker 25s linear infinite;
-        }
-
-        .ticker-move:hover {
-            animation-play-state: paused; /* User mouse le jayega toh ruk jayega */
-            cursor: pointer;
-        }
-
-        .ticker-item {
-            color: #10b981; /* Neon Green text */
-            padding: 0 40px;
-            white-space: nowrap;
-        }
-
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            .news-ticker-container { top: 60px; }
-        }
+        
         /* --- Milestone Rewards Styling --- */
         .milestone-container {
             display: flex;
@@ -1260,7 +964,6 @@
             gap: 20px;
             text-align: left;
         }
-
         .milestone-step {
             display: flex;
             align-items: center;
@@ -1272,7 +975,6 @@
             transition: all 0.3s ease;
             position: relative;
         }
-
         .milestone-badge {
             font-size: 22px;
             color: #64748b;
@@ -1284,24 +986,20 @@
             align-items: center;
             justify-content: center;
         }
-
         .milestone-info {
             flex: 1;
             margin-left: 20px;
         }
-
         .milestone-info h4 {
             margin: 0 0 5px 0;
             color: #f8fafc;
             font-size: 16px;
         }
-
         .milestone-info p {
             margin: 0;
             color: #94a3b8;
             font-size: 13px;
         }
-
         .milestone-status {
             font-size: 12px;
             font-weight: 700;
@@ -1309,8 +1007,6 @@
             letter-spacing: 1px;
             color: #64748b;
         }
-
-        /* Achieved (Tier Completed) Status */
         .milestone-step.achieved {
             border-color: rgba(16, 185, 129, 0.3);
             background: rgba(16, 185, 129, 0.05);
@@ -1322,8 +1018,6 @@
         .milestone-step.achieved .milestone-status {
             color: #10b981;
         }
-
-        /* Active (Current Tier) Status */
         .milestone-step.active {
             border-color: rgba(139, 92, 246, 0.5);
             background: rgba(139, 92, 246, 0.1);
@@ -1337,11 +1031,11 @@
             color: #a78bfa;
             animation: pulse 2s infinite;
         }
-
         @media (max-width: 600px) {
             .milestone-step { flex-direction: column; text-align: center; gap: 10px; }
             .milestone-info { margin: 0; }
         }
+
         /* --- Performance Analytics Styling --- */
         .analytics-container {
             background: rgba(15, 23, 42, 0.4);
@@ -1350,7 +1044,6 @@
             padding: 20px;
             text-align: left;
         }
-
         .analytics-header {
             display: flex;
             justify-content: space-between;
@@ -1361,13 +1054,11 @@
             padding-bottom: 12px;
             margin-bottom: 15px;
         }
-
         .analytics-grid {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
         }
-
         .analytics-card {
             flex: 1;
             min-width: 150px;
@@ -1376,7 +1067,6 @@
             padding: 15px;
             border-radius: 8px;
         }
-
         .analytics-card h5 {
             margin: 0 0 5px 0;
             color: #64748b;
@@ -1384,14 +1074,12 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
         .analytics-card p {
             margin: 0;
             font-size: 18px;
             font-weight: bold;
             font-family: 'Courier New', Courier, monospace;
         }
-
         .ping-good {
             color: #10b981;
             font-size: 12px;
@@ -1400,7 +1088,6 @@
             align-items: center;
             gap: 6px;
         }
-
         .ping-dot {
             width: 6px;
             height: 6px;
@@ -1408,6 +1095,7 @@
             border-radius: 50%;
             box-shadow: 0 0 8px #10b981;
         }
+
         /* --- Mobile Share Card Styling --- */
         .mobile-share-card {
             background: rgba(15, 23, 42, 0.5);
@@ -1416,7 +1104,6 @@
             border-radius: 12px;
             text-align: center;
         }
-
         .native-share-btn {
             width: 100%;
             background: rgba(14, 165, 233, 0.1);
@@ -1433,19 +1120,17 @@
             justify-content: center;
             gap: 10px;
         }
-
         .native-share-btn:hover {
             background: #0ea5e9;
             color: white;
             box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
         }
-
-        /* Responsive Mobile Tweak (QR code text/image mobile par bilkul hide ho jayega space bachane ke liye) */
         @media (max-width: 768px) {
             .qr-desktop-only {
                 display: none !important;
             }
         }
+
         /* --- Monetization & Ad Slots Styling --- */
         .ad-placeholder-box {
             background: rgba(2, 6, 23, 0.4);
@@ -1456,7 +1141,6 @@
             text-align: center;
             margin-top: 20px;
         }
-
         .ad-tag {
             position: absolute;
             top: -10px;
@@ -1470,6 +1154,7 @@
             border-radius: 4px;
             letter-spacing: 1px;
         }
+
         /* --- Presale Tiers Styling --- */
         .tier-card {
             background: rgba(15, 23, 42, 0.6);
@@ -1482,13 +1167,11 @@
             transition: all 0.3s ease;
             position: relative;
         }
-
         .tier-card:hover {
             border-color: #0ea5e9;
             box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15);
             transform: translateY(-5px);
         }
-
         .tier-badge {
             position: absolute;
             top: -12px;
@@ -1501,21 +1184,18 @@
             letter-spacing: 1px;
             font-family: monospace;
         }
-
         .tier-price {
             font-size: 36px;
             margin: 15px 0 5px 0;
             color: #fff;
             font-family: 'Poppins', sans-serif;
         }
-
         .tier-desc {
             color: #94a3b8;
             font-size: 13px;
             margin: 0 0 20px 0;
             line-height: 1.5;
         }
-
         .tier-features {
             list-style: none;
             padding: 0;
@@ -1527,14 +1207,13 @@
             color: #cbd5e1;
             flex: 1;
         }
-
         .tier-features i {
             margin-right: 8px;
         }
-
         @media (max-width: 768px) {
             .feature-tier { transform: scale(1) !important; margin-top: 10px; }
         }
+
         /* --- Crowdfunding & FOMO Engine Styling --- */
         .fomo-container {
             background: rgba(15, 23, 42, 0.7);
@@ -1544,7 +1223,6 @@
             text-align: left;
             box-shadow: 0 0 25px rgba(139, 92, 246, 0.05);
         }
-
         .progress-bar-bg {
             width: 100%;
             height: 10px;
@@ -1553,16 +1231,14 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.02);
         }
-
         .progress-bar-fill {
-            width: 0%; /* JS se dynamically target mapping hogi */
+            width: 0%;
             height: 100%;
             background: linear-gradient(90deg, #0ea5e9, #8b5cf6);
             border-radius: 20px;
             box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
             transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .live-activity-box {
             margin-top: 20px;
             background: rgba(2, 6, 23, 0.5);
@@ -1573,6 +1249,7 @@
             align-items: center;
             gap: 12px;
         }
+
         /* 🖱️ CUSTOM NEON CURSOR STYLING */
         .glow-cursor {
             position: fixed;
@@ -1583,209 +1260,105 @@
             border-radius: 50%;
             background: rgba(14, 165, 233, 0.4);
             box-shadow: 0 0 20px rgba(14, 165, 233, 0.8), 0 0 40px rgba(14, 165, 233, 0.4);
-            pointer-events: none; /* Taaki clicks block na hon */
+            pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 99999;
             transition: width 0.2s, height 0.2s, background 0.2s, box-shadow 0.2s;
-            display: none; /* Default hidden */
+            display: none;
         }
-        /* Mobile touch screens par hide karna zaroori hai */
         @media (max-width: 768px) {
             .glow-cursor { display: none !important; }
         }
 
         .vault-gate-card {
-    display: flex;
-    align-items: center;
-    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
-    border: 1px solid rgba(14, 165, 233, 0.3);
-    border-radius: 16px;
-    padding: 20px 25px;
-    max-width: 600px;
-    margin: 40px auto; /* Page ke center me laane ke liye */
-    text-decoration: none;
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-}
-
-.vault-gate-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    border-color: #0ea5e9;
-    box-shadow: 0 15px 40px rgba(14, 165, 233, 0.25);
-}
-
-.vault-icon {
-    background: rgba(14, 165, 233, 0.1);
-    color: #0ea5e9;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    flex-shrink: 0;
-    transition: transform 0.4s ease;
-}
-
-.vault-gate-card:hover .vault-icon {
-    transform: rotate(10deg) scale(1.1);
-}
-
-.vault-content {
-    margin-left: 20px;
-    text-align: left;
-    flex-grow: 1;
-}
-
-.vault-content h3 {
-    margin: 0 0 6px 0;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* "NEW" Tag Style */
-.vault-content .badge {
-    background: #10b981;
-    color: #ffffff;
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 12px;
-    vertical-align: middle;
-    margin-left: 8px;
-    letter-spacing: 0.5px;
-    font-weight: 600;
-}
-
-.vault-content p {
-    margin: 0;
-    color: #94a3b8;
-    font-size: 13px;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.5;
-}
-
-.vault-arrow {
-    color: #334155;
-    font-size: 20px;
-    transition: all 0.4s ease;
-}
-
-.vault-gate-card:hover .vault-arrow {
-    color: #0ea5e9;
-    transform: translateX(6px);
-}
-
-/* 📱 Mobile Responsiveness */
-@media (max-width: 600px) {
-    .vault-gate-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 25px 20px;
-        margin: 25px 15px; /* Mobile par width set karne ke liye */
-    }
-    .vault-content {
-        margin-left: 0;
-        margin-top: 15px;
-        text-align: center;
-    }
-    .vault-arrow {
-        display: none; /* Mobile par arrow hide kar diya for clean look */
-    }
-}
-
-        /* 🔥 --- Team Infinite Marquee Styling --- 🔥 */
-        .team-marquee-wrapper {
-            width: 100%;
-            overflow: hidden;
-            background: linear-gradient(90deg, rgba(2,6,23,1) 0%, rgba(15,23,42,0.8) 50%, rgba(2,6,23,1) 100%);
-            border-top: 1px dashed rgba(51, 65, 85, 0.5);
-            border-bottom: 1px dashed rgba(51, 65, 85, 0.5);
-            padding: 25px 0;
-            margin: 20px 0 40px 0;
-            display: flex;
-            position: relative;
-        }
-        /* Fade edges for smooth enter/exit */
-        .team-marquee-wrapper::before, .team-marquee-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 15%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-        }
-        .team-marquee-wrapper::before {
-            left: 0;
-            background: linear-gradient(to right, #020617 0%, transparent 100%);
-        }
-        .team-marquee-wrapper::after {
-            right: 0;
-            background: linear-gradient(to left, #020617 0%, transparent 100%);
-        }
-        .marquee-track {
-            display: flex;
-            gap: 30px;
-            width: max-content;
-            animation: marqueeScroll 25s linear infinite;
-        }
-        .marquee-track:hover {
-            animation-play-state: paused;
-        }
-        .team-card-pill {
             display: flex;
             align-items: center;
-            background: rgba(30, 41, 59, 0.5);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
             border: 1px solid rgba(14, 165, 233, 0.3);
-            padding: 8px 25px 8px 8px;
-            border-radius: 50px;
-            gap: 15px;
-            transition: all 0.3s ease;
+            border-radius: 16px;
+            padding: 20px 25px;
+            max-width: 600px;
+            margin: 40px auto;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
             backdrop-filter: blur(10px);
-            cursor: pointer;
         }
-        .team-card-pill:hover {
+        .vault-gate-card:hover {
+            transform: translateY(-5px) scale(1.02);
             border-color: #0ea5e9;
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
-            background: rgba(30, 41, 59, 0.8);
-            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.25);
         }
-        .team-card-img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #0ea5e9;
-        }
-        .team-card-info {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-        .team-card-name {
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 700;
-            margin: 0;
-        }
-        .team-card-role {
+        .vault-icon {
+            background: rgba(14, 165, 233, 0.1);
             color: #0ea5e9;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            transition: transform 0.4s ease;
         }
-        
-        @keyframes marqueeScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } 
+        .vault-gate-card:hover .vault-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+        .vault-content {
+            margin-left: 20px;
+            text-align: left;
+            flex-grow: 1;
+        }
+        .vault-content h3 {
+            margin: 0 0 6px 0;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+        }
+        .vault-content .badge {
+            background: #10b981;
+            color: #ffffff;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            vertical-align: middle;
+            margin-left: 8px;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .vault-content p {
+            margin: 0;
+            color: #94a3b8;
+            font-size: 13px;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.5;
+        }
+        .vault-arrow {
+            color: #334155;
+            font-size: 20px;
+            transition: all 0.4s ease;
+        }
+        .vault-gate-card:hover .vault-arrow {
+            color: #0ea5e9;
+            transform: translateX(6px);
+        }
+        @media (max-width: 600px) {
+            .vault-gate-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+                margin: 25px 15px;
+            }
+            .vault-content {
+                margin-left: 0;
+                margin-top: 15px;
+                text-align: center;
+            }
+            .vault-arrow { display: none; }
         }
 
     </style>
@@ -1796,6 +1369,7 @@
     <div id="cyber-toast" style="display: none; position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); background: #020617; border: 1px solid #0ea5e9; color: #fff; padding: 12px 24px; border-radius: 30px; font-size: 13px; font-family: monospace; z-index: 10000; align-items: center; gap: 10px; box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); text-align: center; max-width: 85%;">
         <span class="dot-green" id="toast-dot"></span> <span id="toast-message">System Connected</span>
     </div>
+    
     <nav class="phantomix-navbar">
         <div class="nav-logo">
             <i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i>
@@ -1804,7 +1378,7 @@
         
        <ul class="nav-links">
             <li><a href="#hero-section">Home</a></li>
-            <li><a href="apps"><i class="fas fa-layer-group"></i> Apps</a></li>
+            <li><a href="apps.html"><i class="fas fa-layer-group"></i> Apps</a></li>
             <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
             <li><a href="team.html" style="color: #10b981;"><i class="fas fa-user-astronaut"></i> Team</a></li> 
             <li><a href="#features-section">Features</a></li>
@@ -1822,7 +1396,7 @@
 
     <div class="mobile-menu" id="mobileMenu">
         <a href="#hero-section" onclick="toggleMobileMenu()">Home</a>
-        <a href="apps" onclick="toggleMobileMenu()"><i class="fas fa-layer-group"></i> Apps</a>
+        <a href="apps.html" onclick="toggleMobileMenu()"><i class="fas fa-layer-group"></i> Apps</a>
         <a href="community.html" onclick="toggleMobileMenu()"><i class="fas fa-users"></i> Community</a>
         <a href="team.html" onclick="toggleMobileMenu()"><i class="fas fa-user-astronaut"></i> Team</a>
         <a href="#features-section" onclick="toggleMobileMenu()">Features</a>
@@ -1840,7 +1414,7 @@
         <a href="about.html" class="nav-link">About Phantomix</a>
     </div>
     
-<div class="hero-section" id="hero-section" style="text-align: center; padding: 40px 20px 0px;">
+    <div class="hero-section" id="hero-section" style="text-align: center; padding: 40px 20px;">
         
         <div style="display: flex; justify-content: center; margin-bottom: 20px;">
            <img src="logo.png" alt="Phantomix Logo" class="logo-img" fetchpriority="high" onerror="this.style.display='none'" style="display: block; margin: 0;">
@@ -1878,115 +1452,102 @@
             </div>
         </div>
         
-        <!-- 🔥 CHANGES START HERE: Timer Removed, Stealth Badge Added 🔥 -->
         <div style="margin-top: 40px; margin-bottom: 20px;">
             <div style="display: inline-block; background: rgba(14, 165, 233, 0.1); border: 1px solid #0ea5e9; color: #0ea5e9; padding: 10px 24px; border-radius: 30px; font-size: 14px; font-weight: 600; letter-spacing: 1px; box-shadow: 0 0 15px rgba(14, 165, 233, 0.2);">
                 <i class="fas fa-flask" style="margin-right: 5px;"></i> DIAMONDMAX IN ACTIVE R&D
             </div>
             <p style="color: #94a3b8; font-size: 14px; margin-top: 15px;">Development phase extended to engineer a revolutionary reward architecture. Stay tuned.</p>
         </div>
-        <!-- 🔥 CHANGES END HERE 🔥 -->
 
-</div>
+    </div>
 
-        <!-- 🔥 TEAM INFINITE MARQUEE ADDED HERE 🔥 -->
-        <div class="team-marquee-wrapper">
-            <div class="marquee-track">
-                
-                <!-- Group 1 -->
-                <div class="team-card-pill">
-                    <img src="your-real-photo.jpg" alt="Shrikant Prajapati" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Shrikant+Prajapati&background=0f172a&color=0ea5e9'">
-                    <div class="team-card-info">
-                        <p class="team-card-name">Shrikant Prajapati</p>
-                        <p class="team-card-role">Founder & CEO</p>
-                    </div>
-                </div>
-                <div class="team-card-pill">
-                    <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Ranjan+Gupta&background=0f172a&color=0ea5e9'">
-                    <div class="team-card-info">
-                        <p class="team-card-name">Ranjan Gupta</p>
-                        <p class="team-card-role">Co-Founder & Lead Architect</p>
-                    </div>
-                </div>
-                <div class="team-card-pill">
-                    <img src="vp.jpg" alt="Nancy Raghav" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Nancy+Raghav&background=0f172a&color=0ea5e9'">
-                    <div class="team-card-info">
-                        <p class="team-card-name">Nancy Raghav</p>
-                        <p class="team-card-role">VP of Brand Experience</p>
-                    </div>
-                </div>
+    <a href="gallery.html" class="vault-gate-card">
+        <div class="vault-icon">
+            <i class="fa-solid fa-photo-film"></i>
+        </div>
+        <div class="vault-content">
+            <h3>Phantomix Media Vault <span class="badge">NEW</span></h3>
+            <p>Explore high-res app UI, team behind the scenes, and official ecosystem updates.</p>
+        </div>
+        <div class="vault-arrow">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+    </a>
 
-                <!-- Group 2 (Duplicate for Seamless Infinite Loop) -->
-                <div class="team-card-pill">
-                    <img src="your-real-photo.jpg" alt="Shrikant Prajapati" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Shrikant+Prajapati&background=0f172a&color=0ea5e9'">
-                    <div class="team-card-info">
-                        <p class="team-card-name">Shrikant Prajapati</p>
-                        <p class="team-card-role">Founder & CEO</p>
-                    </div>
-                </div>
-                <div class="team-card-pill">
-                    <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Ranjan+Gupta&background=0f172a&color=0ea5e9'">
-                    <div class="team-card-info">
-                        <p class="team-card-name">Ranjan Gupta</p>
-                        <p class="team-card-role">Co-Founder & Lead Architect</p>
-                    </div>
-                </div>
-                <div class="team-card-pill">
-                    <img src="vp.jpg" alt="Nancy Raghav" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Nancy+Raghav&background=0f172a&color=0ea5e9'">
-                    <div class="team-card-info">
-                        <p class="team-card-name">Nancy Raghav</p>
-                        <p class="team-card-role">VP of Brand Experience</p>
-                    </div>
-                </div>
 
-                <!-- Group 3 (Extra buffer for Ultra Wide Desktop Screens) -->
-                <div class="team-card-pill">
-                    <img src="your-real-photo.jpg" alt="Shrikant Prajapati" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Shrikant+Prajapati&background=0f172a&color=0ea5e9'">
-                    <div class="team-card-info">
-                        <p class="team-card-name">Shrikant Prajapati</p>
-                        <p class="team-card-role">Founder & CEO</p>
-                    </div>
-                </div>
-                <div class="team-card-pill">
-                    <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Ranjan+Gupta&background=0f172a&color=0ea5e9'">
-                    <div class="team-card-info">
-                        <p class="team-card-name">Ranjan Gupta</p>
-                        <p class="team-card-role">Co-Founder & Lead Architect</p>
-                    </div>
-                </div>
-                <div class="team-card-pill">
-                    <img src="vp.jpg" alt="Nancy Raghav" class="team-card-img" onerror="this.src='https://ui-avatars.com/api/?name=Nancy+Raghav&background=0f172a&color=0ea5e9'">
-                    <div class="team-card-info">
-                        <p class="team-card-name">Nancy Raghav</p>
-                        <p class="team-card-role">VP of Brand Experience</p>
-                    </div>
-                </div>
+    <div class="social" style="text-align: center; margin-bottom: 40px;">
+        <a href="https://instagram.com/phantomix.in" target="_blank" aria-label="Visit Phantomix Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://www.youtube.com/@Phantomix_SP" target="_blank" aria-label="Visit Phantomix YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank" aria-label="Join Phantomix WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://t.me/diamondmax_india" target="_blank" aria-label="Join Phantomix Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
+    </div>
 
+    <!-- 🌟 THE NEW PREMIUM TEAM SECTION (Replaces old split-view profile) -->
+    <section class="phantomix-section scroll-reveal" style="max-width: 1100px; padding-top: 0;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <p style="color: #0ea5e9; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">⚡ The Minds Behind The Mainframe</p>
+            <h2 style="color: #fff; font-size: 32px; margin-top: 0;">Engineered for Excellence</h2>
+        </div>
+        
+        <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 40px;">
+            <!-- CEO -->
+            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 16px; padding: 30px 25px; width: 280px; text-align: center; backdrop-filter: blur(10px); transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#0ea5e9';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(14, 165, 233, 0.3)';">
+                <img src="your-real-photo.jpg" alt="Shrikant Prajapati" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #0ea5e9; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Shrikant+Prajapati&background=0f172a&color=0ea5e9'">
+                <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Shrikant Prajapati</h3>
+                <p style="font-size: 13px; font-weight: 600; color: #0ea5e9; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Founder & CEO</p>
+            </div>
+            <!-- Co-Founder -->
+            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 16px; padding: 30px 25px; width: 280px; text-align: center; backdrop-filter: blur(10px); transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#8b5cf6';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(139, 92, 246, 0.3)';">
+                <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #8b5cf6; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Ranjan+Gupta&background=0f172a&color=8b5cf6'">
+                <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Ranjan Gupta</h3>
+                <p style="font-size: 13px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Co-Founder & Lead Architect</p>
+            </div>
+            <!-- VP -->
+            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px; padding: 30px 25px; width: 280px; text-align: center; backdrop-filter: blur(10px); transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#10b981';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(16, 185, 129, 0.3)';">
+                <img src="vp.jpg" alt="Nancy Raghav" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #10b981; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Nancy+Raghav&background=0f172a&color=10b981'">
+                <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Nancy Raghav</h3>
+                <p style="font-size: 13px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 1px; margin: 0;">VP of Brand Experience</p>
             </div>
         </div>
-        <!-- 🔥 TEAM INFINITE MARQUEE END 🔥 -->
 
-
-        <a href="gallery.html" class="vault-gate-card">
-    <div class="vault-icon">
-        <i class="fa-solid fa-photo-film"></i>
-    </div>
-    <div class="vault-content">
-        <h3>Phantomix Media Vault <span class="badge">NEW</span></h3>
-        <p>Explore high-res app UI, team behind the scenes, and official ecosystem updates.</p>
-    </div>
-    <div class="vault-arrow">
-        <i class="fas fa-arrow-right"></i>
-    </div>
-</a>
-
-
-        <div class="social" style="text-align: center;">
-            <a href="https://instagram.com/phantomix.in" target="_blank" aria-label="Visit Phantomix Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-            <a href="https://www.youtube.com/@Phantomix_SP" target="_blank" aria-label="Visit Phantomix YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-            <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank" aria-label="Join Phantomix WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-            <a href="https://t.me/diamondmax_india" target="_blank" aria-label="Join Phantomix Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
+        <!-- 📡 Live System Updates Section (Kept intact from your original code) -->
+        <div class="live-updates" style="width: 100%; max-width: 800px; margin: 0 auto; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px); border-radius: 15px; border: 1px solid rgba(51, 65, 85, 0.8); padding: 40px; text-align: left;">
+            <h3 style="margin: 0 0 20px; color: #ffffff; text-align: left; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-satellite-dish" style="color: #0ea5e9;"></i> Live System Updates
+            </h3>
+            
+            <div class="update-feed">
+                <div class="update-item">
+                    <div class="update-date">July 2026</div>
+                    <div class="update-content">
+                        <h4 style="margin: 0 0 5px; color: #7c4dff;">Leadership Team Expanded</h4>
+                        <p style="margin: 0; color: #94a3b8; font-size: 13px;">Ranjan Gupta officially joins Phantomix as Co-Founder to accelerate the DiamondMax backend development.</p>
+                    </div>
+                </div>
+                <div class="update-item">
+                    <div class="update-date">June 2026</div>
+                    <div class="update-content">
+                        <h4 style="margin: 0 0 5px; color: #38bdf8;">Pre-Seed Stage Activated</h4>
+                        <p style="margin: 0; color: #94a3b8; font-size: 13px;">Phantomix officially opens doors for strategic angel investments.</p>
+                    </div>
+                </div>
+                <div class="update-item">
+                    <div class="update-date">May 2026</div>
+                    <div class="update-content">
+                        <h4 style="margin: 0 0 5px; color: #38bdf8;">DiamondMax Core Engine</h4>
+                        <p style="margin: 0; color: #94a3b8; font-size: 13px;">Successfully completed the base architecture for ultra-fast loading.</p>
+                    </div>
+                </div>
+                <div class="update-item">
+                    <div class="update-date">April 2026</div>
+                    <div class="update-content">
+                        <h4 style="margin: 0 0 5px; color: #38bdf8;">Waitlist Launch</h4>
+                        <p style="margin: 0; color: #94a3b8; font-size: 13px;">Early access waitlist went live. The response has been massive!</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
     <section class="phantomix-section scroll-reveal" style="max-width: 1000px; padding-top: 0;">
         <h3 style="color: #ffffff; font-size: 22px; margin-bottom: 25px;">🔥 Explore The Arsenal</h3>
@@ -2066,79 +1627,6 @@
         </div>
     </section>
 
-    <section class="phantomix-section scroll-reveal" style="max-width: 1100px;">
-        <div class="founder-updates-container">
-            
-            <div class="ceo-profile">
-                <div style="margin-bottom: 25px;">
-                    <div class="ceo-image-wrapper">
-                        <img src="your-real-photo.jpg" alt="Shrikant Prajapati - CEO" class="ceo-img" onerror="this.src='https://via.placeholder.com/150/0ea5e9/ffffff?text=CEO'">
-                        <div class="ceo-badge">Founder & CEO</div>
-                    </div>
-                    <h3 style="margin: 15px 0 5px; color: #ffffff; font-size: 22px;">Shrikant Prajapati</h3>
-                    <p style="color: #0ea5e9; font-weight: 600; margin: 0 0 10px; font-size: 14px;">Tech Entrepreneur</p>
-                    <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
-                        "My mission with Phantomix is to build digital experiences that feel premium, fast, and completely secure. DiamondMax is just the beginning."
-                    </p>
-                </div>
-
-                <hr style="border: 0; height: 1px; background: #334155; margin: 25px 0;">
-
-                <div>
-                    <div class="ceo-image-wrapper">
-                        <img src="ranjan-kumar-photo.jpg" alt="Ranjan Kumar - Co-Founder" class="ceo-img" onerror="this.src='https://via.placeholder.com/150/7c4dff/ffffff?text=Co-Founder'">
-                        <div class="ceo-badge" style="background: #7c4dff;">Co-Founder</div>
-                    </div>
-                    <h3 style="margin: 15px 0 5px; color: #ffffff; font-size: 22px;">Ranjan Gupta</h3>
-                    <p style="color: #7c4dff; font-weight: 600; margin: 0 0 10px; font-size: 14px;">Lead Architect</p>
-                    <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
-                        "Engineering a robust PostgreSQL backend and scaling the ecosystem architecture for the ultimate 2028 launch."
-                    </p>
-                </div>
-            </div>
-
-            <div class="live-updates">
-                <h3 style="margin: 0 0 20px; color: #ffffff; text-align: left; display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-satellite-dish" style="color: #0ea5e9;"></i> Live System Updates
-                </h3>
-                
-                <div class="update-feed">
-                    <div class="update-item">
-                        <div class="update-date">July 2026</div>
-                        <div class="update-content">
-                            <h4 style="margin: 0 0 5px; color: #7c4dff;">Leadership Team Expanded</h4>
-                            <p style="margin: 0; color: #94a3b8; font-size: 13px;">Ranjan Gupta officially joins Phantomix as Co-Founder to accelerate the DiamondMax backend development.</p>
-                        </div>
-                    </div>
-
-                    <div class="update-item">
-                        <div class="update-date">June 2026</div>
-                        <div class="update-content">
-                            <h4 style="margin: 0 0 5px; color: #38bdf8;">Pre-Seed Stage Activated</h4>
-                            <p style="margin: 0; color: #94a3b8; font-size: 13px;">Phantomix officially opens doors for strategic angel investments.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="update-item">
-                        <div class="update-date">May 2026</div>
-                        <div class="update-content">
-                            <h4 style="margin: 0 0 5px; color: #38bdf8;">DiamondMax Core Engine</h4>
-                            <p style="margin: 0; color: #94a3b8; font-size: 13px;">Successfully completed the base architecture for ultra-fast loading.</p>
-                        </div>
-                    </div>
-
-                    <div class="update-item">
-                        <div class="update-date">April 2026</div>
-                        <div class="update-content">
-                            <h4 style="margin: 0 0 5px; color: #38bdf8;">Waitlist Launch</h4>
-                            <p style="margin: 0; color: #94a3b8; font-size: 13px;">Early access waitlist went live. The response has been massive!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <section class="phantomix-section scroll-reveal" style="max-width: 900px;" id="roadmap-section">
         <h2 style="margin-bottom: 5px;">The <span style="color: #0ea5e9;">DiamondMax</span> Journey</h2>
         <p style="color: #94a3b8; margin-bottom: 40px;">Our strategic roadmap to launch.</p>
@@ -2355,13 +1843,14 @@
         </div>
     </section>
 
-    <section class="phantomix-section scroll-reveal" style="max-width: 900px;" id="funding-nodes">
+    <section class="phantomix-section scroll-reveal" style="max-width: 900px;">
         <h2 style="color: #ffffff; margin-bottom: 5px;">Fund the <span style="color: #0ea5e9;">Mainframe</span></h2>
         <p style="color: #94a3b8; margin-bottom: 40px;">Support development & secure lifetime elite privileges before the global launch.</p>
         
         <div class="tier-grid" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; text-align: left;">
             
-            <div class="tier-card" id="funding-nodes">
+            <!-- FIXED DUPLICATE ID HERE: Changed id="funding-nodes" to id="alpha-node" -->
+            <div class="tier-card" id="alpha-node">
                 <span class="tier-badge" style="background: rgba(14, 165, 233, 0.1); color: #0ea5e9; border-color: #0ea5e9;">ALPHA NODE</span>
                 <h3 class="tier-price">₹29 <span style="font-size: 14px; color: #64748b; font-weight: normal;">/ lifetime</span></h3>
                 <p class="tier-desc">For early believers who want complete utility mapping.</p>
@@ -2895,7 +2384,7 @@
                 <a href="#hero-section">Home</a>
                 <a href="#features-section">Features</a>
                 <a href="team.html" style="color: #0ea5e9; font-weight: bold;">Team Core</a> <a href="#vault-section">Diamond-Vault</a>
-                <a href="apps">Our Apps</a>
+                <a href="apps.html">Our Apps</a>
                 <a href="#vault-section">Diamond-Vault</a>
                 <a href="#terminal-section">Terminal</a>
                 <a href="#roadmap-section">Roadmap</a>
@@ -2920,7 +2409,7 @@
         </div>
     </footer>
 
-    <div id="hacker-screen" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 6, 23, 0.98); z-index: 10000; flex-direction: column; justify-content: center; align-items: center; color: #10b981; font-family: 'Courier New', Courier, monospace; text-align: center; padding: 20px;">
+    <div id="hacker-screen" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 6, 23, 0.98); z-index: 10000; flex-direction: column; justify-content: center; align-items: center; color: #10b981; font-family: 'Courier custom-font', Courier, monospace; text-align: center; padding: 20px;">
         <i class="fas fa-user-secret" style="font-size: 60px; margin-bottom: 20px; animation: pulse 1s infinite;"></i>
         <h2 style="color: #ef4444; margin-bottom: 10px; font-family: 'Courier New', Courier, monospace;">> SYSTEM BREACH DETECTED_</h2>
         <p style="font-size: 18px; margin: 5px 0;">> OVERRIDING DIAMONDMAX PROTOCOLS...</p>
