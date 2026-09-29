@@ -2,168 +2,152 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phantom Morph | Offline File Converter</title>
-    
+    <title>Phantom-Morph | Offline Image Converter</title>
+
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/phantomix-dev/phantomix-dev.github.io/main/assets/favicon.png">
     <meta name="description" content="Phantom Morph. 100% offline image converter. Convert JPG, PNG, and WEBP instantly without servers.">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
-        ::selection { background-color: #0ea5e9; color: #ffffff; }
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
-
-        body {
-            background-color: #020617; color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-            margin: 0; padding: 0; padding-top: 80px; 
-            display: flex; flex-direction: column; min-height: 100vh;
+        .upload-zone {
+            background: var(--bg-base); border: 2px dashed var(--surface-border);
+            border-radius: var(--radius-lg); padding: 50px 20px; text-align: center;
+            cursor: pointer; transition: all 0.3s ease; position: relative;
         }
-
-        /* Navbar */
-        .phantomix-navbar {
-            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14, 165, 233, 0.2);
-            z-index: 1000; box-sizing: border-box;
-        }
-        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; }
-        .nav-actions { display: flex; gap: 12px; }
-        .nav-btn {
-            background: rgba(14, 165, 233, 0.1); color: #0ea5e9; padding: 8px 18px;
-            border: 1px solid #0ea5e9; border-radius: 6px; text-decoration: none;
-            font-size: 14px; font-weight: 600; transition: all 0.3s ease;
-        }
-        .nav-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
-
-        /* Main App Wrapper */
-        .main-wrapper {
-            flex-grow: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px;
-        }
-
-        .app-container {
-            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(14, 165, 233, 0.3);
-            border-radius: 16px; padding: 30px; width: 100%; max-width: 500px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5); text-align: center;
-        }
-
-        h2 { margin: 0 0 5px 0; color: #f8fafc; font-size: 26px; }
-        h2 span { color: #0ea5e9; }
-        p.subtitle { color: #94a3b8; font-size: 13px; margin-bottom: 25px; }
-
-        .upload-area {
-            border: 2px dashed #334155; border-radius: 12px; padding: 30px 20px;
-            background: rgba(2, 6, 23, 0.5); cursor: pointer; transition: 0.3s;
-            position: relative; overflow: hidden;
-        }
-        .upload-area:hover { border-color: #0ea5e9; background: rgba(14, 165, 233, 0.05); }
-        .upload-area i { font-size: 30px; color: #0ea5e9; margin-bottom: 10px; }
-        .upload-area p { margin: 0; font-size: 14px; font-weight: 600; color: #cbd5e1; }
-        input[type="file"] { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
-
-        .convert-section { display: none; margin-top: 25px; text-align: left; }
+        .upload-zone:hover { border-color: var(--brand-secondary); background: rgba(139, 92, 246, 0.05); }
+        .upload-zone i { font-size: 48px; color: var(--brand-secondary); margin-bottom: 15px; }
+        .upload-zone h4 { color: var(--text-primary); margin: 0 0 5px 0; font-size: 18px; }
+        .upload-zone p { color: var(--text-muted); font-size: 13px; margin: 0; }
         
-        .file-info {
-            background: #020617; padding: 12px 15px; border-radius: 8px;
-            border: 1px solid #334155; margin-bottom: 15px; text-align: center;
-        }
-        .file-name { font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 5px; word-break: break-all; }
-        .file-meta { font-size: 11px; color: #0ea5e9; text-transform: uppercase; letter-spacing: 1px; }
+        #fileInput { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
 
-        .format-group { margin-bottom: 20px; }
-        .format-group label { display: block; font-size: 13px; font-weight: 600; color: #cbd5e1; margin-bottom: 8px; }
+        .workspace { display: none; margin-top: 25px; animation: fadeIn 0.4s; }
+        
+        .file-info-card {
+            background: var(--bg-base); border: 1px solid var(--surface-border);
+            border-radius: var(--radius-md); padding: 20px; margin-bottom: 25px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .file-name { font-weight: 600; color: var(--text-primary); font-size: 15px; margin: 0 0 5px 0; word-break: break-all; }
+        .file-meta { font-size: 12px; color: var(--text-muted); font-family: 'Fira Code', monospace; }
+        
+        .format-badge {
+            background: rgba(139, 92, 246, 0.1); color: var(--brand-secondary);
+            padding: 8px 15px; border-radius: var(--radius-sm); font-weight: bold;
+            border: 1px solid rgba(139, 92, 246, 0.3); font-size: 14px;
+        }
+
+        .settings-panel {
+            background: var(--surface-elevated); padding: 25px; border-radius: var(--radius-md);
+            border: 1px solid var(--surface-border); margin-bottom: 25px;
+        }
+        .settings-panel label { display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        
         select {
-            width: 100%; padding: 12px; background: #020617; border: 1px solid #334155;
-            color: #f8fafc; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 14px; outline: none;
+            width: 100%; padding: 15px; background: var(--bg-base); border: 1px solid var(--surface-border);
+            color: var(--text-primary); border-radius: var(--radius-sm); font-family: var(--font-sans);
+            font-size: 15px; outline: none; cursor: pointer; transition: 0.3s;
         }
-        select:focus { border-color: #0ea5e9; }
+        select:focus { border-color: var(--brand-secondary); box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
 
-        .action-btn {
-            width: 100%; padding: 14px; background: linear-gradient(135deg, #0ea5e9, #3b82f6);
-            color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700;
-            cursor: pointer; transition: 0.3s;
+        .btn-morph {
+            width: 100%; padding: 16px; background: linear-gradient(135deg, var(--brand-secondary), #c084fc);
+            color: #fff; border: none; border-radius: var(--radius-sm); font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;
         }
-        .action-btn:hover { box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); transform: translateY(-2px); }
-        
-        #statusMsg { font-size: 13px; font-weight: 600; text-align: center; margin-top: 15px; display: none; }
-
-        /* Footer */
-        .phantomix-footer { background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2); padding: 30px 5%; margin-top: auto; font-size: 13px; color: #64748b; text-align: center; width: 100%; box-sizing: border-box; }
+        .btn-morph:hover { box-shadow: 0 0 25px rgba(139, 92, 246, 0.4); transform: translateY(-2px); }
 
         @media (max-width: 600px) {
-            .phantomix-navbar { padding: 0 15px; }
-            .nav-logo { font-size: 16px; }
-            .nav-btn { padding: 6px 12px; font-size: 12px; }
+            .file-info-card { flex-direction: column; text-align: center; gap: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="phantomix-navbar">
-        <a href="index.html" class="nav-logo"><i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i> Phantomix</a>
-        <div class="nav-actions">
-            <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Back to Hub</a>
-        </div>
+    <!-- GLOBAL NAVBAR -->
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 1px solid var(--surface-border); background: var(--surface-main); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;">
+        <a href="index.html" style="font-weight: bold; font-size: 18px; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
+        </a>
+        <a href="apps.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 16px; background: rgba(14, 165, 233, 0.1); border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); color: var(--brand-primary);"><i class="fas fa-arrow-left"></i> Hub</a>
     </nav>
 
-    <div class="main-wrapper">
-        <div class="app-container">
-            <h2>Phantom <span>Morph</span></h2>
-            <p class="subtitle"><i class="fas fa-exchange-alt"></i> Offline Image Format Converter</p>
+    <div class="app-layout" style="max-width: 700px; grid-template-columns: 1fr;">
+        
+        <div style="text-align: center; margin-bottom: 10px;">
+            <h1 style="font-size: 28px; margin-bottom: 10px;">Phantom <span style="color: var(--brand-secondary);">Morph</span></h1>
+            <p style="color: var(--text-secondary); font-size: 14px;">100% offline image format converter. Your files never touch a server.</p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                <span style="font-size: 10px; font-weight: bold; padding: 4px 10px; border-radius: 4px; background: rgba(139, 92, 246, 0.1); color: var(--brand-secondary); border: 1px solid rgba(139, 92, 246, 0.3);"><i class="fas fa-microchip"></i> 100% LOCAL</span>
+            </div>
+        </div>
 
-            <div class="upload-area" id="dropZone">
-                <i class="fas fa-images"></i>
-                <p>Click or Drop Image (JPG, PNG, WEBP)</p>
+        <section style="background: var(--surface-main); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); padding: var(--space-xl);">
+            
+            <div class="upload-zone" id="dropZone">
+                <i class="fas fa-exchange-alt"></i>
+                <h4>Select an Image</h4>
+                <p>Drop your JPG, PNG, or WEBP file here.</p>
                 <input type="file" id="fileInput" accept="image/jpeg, image/png, image/webp">
             </div>
 
-            <div class="convert-section" id="convertSection">
-                <div class="file-info">
-                    <div class="file-name" id="fileName">image.jpg</div>
-                    <div class="file-meta" id="fileMeta">Original: JPG | Size: 0 KB</div>
+            <!-- Workspace: Appears after file is selected -->
+            <div class="workspace" id="convertSection">
+                
+                <div class="file-info-card">
+                    <div>
+                        <p class="file-name" id="fileName">image.jpg</p>
+                        <p class="file-meta" id="fileMeta">Size: 0 MB</p>
+                    </div>
+                    <div class="format-badge" id="originalFormat">JPG</div>
                 </div>
 
-                <div class="format-group">
-                    <label>Convert To:</label>
+                <div class="settings-panel">
+                    <label>Target Format</label>
                     <select id="outputFormat">
-                        <option value="image/png">PNG (Lossless & Transparent)</option>
-                        <option value="image/jpeg">JPG (Smaller Size)</option>
+                        <option value="image/png">PNG (Lossless / Transparent)</option>
+                        <option value="image/jpeg">JPG (Standard / Smaller Size)</option>
                         <option value="image/webp">WEBP (Next-Gen Web Format)</option>
                     </select>
                 </div>
 
-                <button class="action-btn" id="convertBtn"><i class="fas fa-sync-alt"></i> Convert & Download</button>
-                <div id="statusMsg"></div>
-            </div>
-        </div>
-    </div>
+                <div style="display: flex; gap: 15px;">
+                    <button class="btn-morph" id="convertBtn" style="flex: 2;">
+                        <i class="fas fa-bolt"></i> Morph & Download
+                    </button>
+                    <button onclick="resetTool()" style="flex: 1; background: var(--bg-base); color: var(--text-primary); border: 1px solid var(--surface-border); border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; transition: 0.3s;">
+                        <i class="fas fa-redo"></i> New
+                    </button>
+                </div>
 
-    <footer class="phantomix-footer">
-        <p>&copy; 2026 Phantomix. All rights reserved. Built with passion by Shrikant Prajapati & Ranjan Gupta.</p>
-    </footer>
+            </div>
+
+        </section>
+    </div>
 
     <script>
         const fileInput = document.getElementById('fileInput');
+        const dropZone = document.getElementById('dropZone');
         const convertSection = document.getElementById('convertSection');
+        
         const fileNameDisplay = document.getElementById('fileName');
         const fileMetaDisplay = document.getElementById('fileMeta');
+        const originalFormatBadge = document.getElementById('originalFormat');
+        
         const outputFormat = document.getElementById('outputFormat');
         const convertBtn = document.getElementById('convertBtn');
-        const statusMsg = document.getElementById('statusMsg');
 
         let originalFile = null;
 
@@ -180,29 +164,37 @@
             if (!file) return;
 
             originalFile = file;
-            fileNameDisplay.innerText = file.name;
             
-            // Extract extension for display
+            // Switch UI State
+            dropZone.style.display = 'none';
+            convertSection.style.display = 'block';
+
+            // Populate File Data
+            fileNameDisplay.innerText = file.name;
+            fileMetaDisplay.innerText = `Size: ${formatBytes(file.size)}`;
+
+            // Extract & Display Original Extension
             let ext = file.type.split('/')[1].toUpperCase();
             if (ext === 'JPEG') ext = 'JPG';
+            originalFormatBadge.innerText = ext;
             
-            fileMetaDisplay.innerText = `Original: ${ext} | Size: ${formatBytes(file.size)}`;
-            
-            convertSection.style.display = 'block';
-            statusMsg.style.display = 'none';
+            // Reset Button State
+            convertBtn.innerHTML = '<i class="fas fa-bolt"></i> Morph & Download';
+            convertBtn.style.background = 'linear-gradient(135deg, var(--brand-secondary), #c084fc)';
         });
 
         convertBtn.addEventListener('click', () => {
             if (!originalFile) return;
-            
-            statusMsg.style.display = 'block';
-            statusMsg.style.color = "#0ea5e9";
-            statusMsg.innerText = "Morphing file... Please wait.";
+
+            // Loading State
+            convertBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing...';
+            convertBtn.style.background = 'var(--surface-border)';
 
             const reader = new FileReader();
             reader.onload = (event) => {
                 const img = new Image();
                 img.src = event.target.result;
+                
                 img.onload = () => {
                     const canvas = document.createElement('canvas');
                     canvas.width = img.width;
@@ -214,10 +206,11 @@
                     let newExt = targetType.split('/')[1];
                     if (newExt === 'jpeg') newExt = 'jpg';
 
-                    // Remove old extension and add new one
+                    // Prepare new filename
                     const baseName = originalFile.name.substring(0, originalFile.name.lastIndexOf('.')) || originalFile.name;
-                    const newFileName = `${baseName}_morphed.${newExt}`;
+                    const newFileName = `Phantom_${baseName}.${newExt}`;
 
+                    // Native Canvas Conversion
                     canvas.toBlob((blob) => {
                         const url = URL.createObjectURL(blob);
                         const a = document.createElement('a');
@@ -227,13 +220,27 @@
                         a.click();
                         document.body.removeChild(a);
 
-                        statusMsg.style.color = "#10b981";
-                        statusMsg.innerText = `✅ Success! Downloaded as ${newExt.toUpperCase()}`;
-                    }, targetType, 1.0); // 1.0 ensures maximum quality
+                        // Success State
+                        convertBtn.innerHTML = '<i class="fas fa-check"></i> Downloaded Successfully';
+                        convertBtn.style.background = 'var(--status-success)';
+                        
+                        setTimeout(() => {
+                            convertBtn.innerHTML = '<i class="fas fa-bolt"></i> Morph Again';
+                            convertBtn.style.background = 'linear-gradient(135deg, var(--brand-secondary), #c084fc)';
+                        }, 3000);
+
+                    }, targetType, 1.0); // 1.0 max quality
                 };
             };
             reader.readAsDataURL(originalFile);
         });
+
+        function resetTool() {
+            fileInput.value = '';
+            originalFile = null;
+            convertSection.style.display = 'none';
+            dropZone.style.display = 'block';
+        }
     </script>
 </body>
 </html>
