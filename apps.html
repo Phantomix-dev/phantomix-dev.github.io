@@ -13,398 +13,606 @@
     <title>All Apps | Phantomix Ecosystem</title>
     <link rel="icon" type="image/png" href="./logo.png">
     
+    <!-- Link to our global Design System -->
     <link rel="stylesheet" href="core.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Ensuring custom logos fit perfectly in the new premium layout */
+        /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
+        ::selection { background-color: var(--brand-primary); color: #ffffff; }
+        ::-moz-selection { background-color: var(--brand-primary); color: #ffffff; }
+
+        /* ✨ PREMIUM FADE-IN ANIMATION */
+        body {
+            animation: appLoad 0.8s ease-out forwards;
+            margin: 0; padding: 0; padding-top: 80px;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-base); color: var(--text-primary);
+            overflow-x: hidden; position: relative;
+        }
+
+        @keyframes appLoad {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom Cyber Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary); }
+
+        /* GLOBAL NAVBAR */
+        .phantomix-navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--surface-border);
+            z-index: 1000; box-sizing: border-box;
+        }
+        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; gap: 8px; }
+        
+        .nav-controls { display: flex; gap: 15px; align-items: center; }
+        .cmd-hint {
+            display: none; background: rgba(255,255,255,0.05); border: 1px solid var(--surface-border);
+            padding: 4px 10px; border-radius: 4px; font-family: 'Fira Code', monospace;
+            font-size: 11px; color: var(--text-muted); align-items: center; gap: 5px;
+        }
+        @media (min-width: 768px) { .cmd-hint { display: flex; } }
+
+        .nav-btn {
+            background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); padding: 8px 18px;
+            border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); text-decoration: none;
+            font-size: 14px; font-weight: 600; transition: all 0.3s ease;
+        }
+        .nav-btn:hover { background: var(--brand-primary); color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+
+        /* HEADER & SEARCH */
+        .hub-header { max-width: 1200px; margin: 0 auto; padding: 40px 5% 20px 5%; text-align: center; }
+        .hub-title { font-size: 38px; margin: 0 0 10px 0; font-weight: 800; }
+        .hub-desc { color: var(--text-secondary); margin-bottom: 30px; font-size: 15px; max-width: 600px; margin-left: auto; margin-right: auto;}
+        
+        .search-container { max-width: 600px; margin: 0 auto 30px auto; position: relative; }
+        .search-container i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--brand-primary); font-size: 18px; }
+        #appSearch {
+            width: 100%; padding: 16px 16px 16px 50px; background: rgba(2, 6, 23, 0.8);
+            border: 1px solid var(--surface-border); border-radius: var(--radius-md);
+            color: var(--text-primary); font-family: 'Poppins', sans-serif; font-size: 16px;
+            outline: none; box-sizing: border-box; transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        #appSearch:focus { border-color: var(--brand-primary); box-shadow: 0 0 20px rgba(14, 165, 233, 0.2); }
+
+        /* FILTER PILLS */
+        .filter-scroll {
+            display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;
+        }
+        .filter-pill {
+            padding: 8px 16px; background: var(--surface-main); border: 1px solid var(--surface-border);
+            border-radius: 20px; color: var(--text-secondary); font-size: 13px; font-weight: 600;
+            cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px;
+        }
+        .filter-pill:hover { border-color: var(--text-muted); color: var(--text-primary); }
+        .filter-pill.active { background: var(--brand-primary); border-color: var(--brand-primary); color: #020617; box-shadow: 0 0 15px rgba(14, 165, 233, 0.3); }
+
+        /* WORKSPACE SECTIONS */
+        .workspace-section { max-width: 1200px; margin: 0 auto 40px auto; padding: 0 5%; display: none; }
+        .workspace-section.active { display: block; }
+        .section-title {
+            font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px;
+            display: flex; align-items: center; gap: 10px; padding-bottom: 10px;
+            border-bottom: 1px solid var(--surface-border);
+        }
+
+        /* APPS GRID */
+        .apps-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;
+        }
+
+        /* APP CARD SYSTEM */
+        .app-card {
+            background: var(--surface-main); border: 1px solid var(--surface-border);
+            border-radius: var(--radius-md); padding: 20px; text-decoration: none;
+            transition: all 0.3s ease; position: relative; display: flex; flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .app-card:hover { border-color: rgba(14, 165, 233, 0.5); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15); }
+        
+        /* Favorite Toggle Button */
+        .fav-toggle {
+            position: absolute; top: 15px; right: 15px; color: var(--surface-border);
+            font-size: 20px; cursor: pointer; transition: 0.3s; z-index: 10;
+        }
+        .fav-toggle:hover { color: var(--status-warning); transform: scale(1.1); }
+        .fav-toggle.is-fav { color: var(--status-warning); text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
+
+        .app-header { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; }
         .app-logo-img {
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius-md);
-            object-fit: cover;
-            flex-shrink: 0;
-            background-color: var(--bg-base);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            width: 50px; height: 50px; border-radius: 10px; object-fit: cover; flex-shrink: 0;
+            background: var(--bg-base); border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .app-content { flex: 1; }
+        .app-title { font-size: 16px; margin: 0 0 5px 0; color: var(--text-primary); font-weight: 700; padding-right: 25px; }
+        .app-desc { color: var(--text-secondary); font-size: 13px; line-height: 1.5; margin: 0; }
+
+        /* Standardized Badges */
+        .badge-container { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 15px; }
+        .badge {
+            font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 700;
+            padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px;
+            display: flex; align-items: center; gap: 4px; text-transform: uppercase;
+        }
+        .b-live { background: rgba(16, 185, 129, 0.1); color: var(--status-success); border: 1px solid rgba(16, 185, 129, 0.2); }
+        .b-demo { background: rgba(245, 158, 11, 0.1); color: var(--status-warning); border: 1px solid rgba(245, 158, 11, 0.2); }
+        .b-soon { background: rgba(139, 92, 246, 0.1); color: var(--brand-secondary); border: 1px solid rgba(139, 92, 246, 0.2); }
+        
+        .b-local { background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); border: 1px solid rgba(14, 165, 233, 0.2); }
+        .b-cloud { background: rgba(255, 255, 255, 0.05); color: var(--text-secondary); border: 1px solid var(--surface-border); }
+
+        #noResultsMsg { display: none; text-align: center; color: var(--status-warning); padding: 40px 20px; font-weight: bold; }
+
+        @media (max-width: 600px) {
+            .phantomix-navbar { padding: 0 15px; height: 60px; }
+            .hub-title { font-size: 28px; }
         }
     </style>
 </head>
 <body>
 
     <!-- GLOBAL NAVBAR -->
-    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 1px solid var(--surface-border); background: var(--surface-main); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;">
-        <a href="index.html" style="font-weight: bold; font-size: 18px; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+    <nav class="phantomix-navbar">
+        <a href="index.html" class="nav-logo">
             <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
         </a>
-        <div style="display: flex; gap: 20px;">
-            <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600;"><i class="fas fa-arrow-left"></i> <span class="mobile-hide">Home</span></a>
+        <div class="nav-controls">
+            <div class="cmd-hint"><i class="fas fa-search"></i> Ctrl + K</div>
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i></a>
         </div>
     </nav>
 
     <!-- HEADER & SEARCH -->
-    <header style="max-width: 1200px; margin: 0 auto; padding: var(--space-xl) 5% 0 5%; text-align: center;">
-        <span style="background: rgba(16, 185, 129, 0.1); color: var(--status-success); padding: 6px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3); display: inline-block; margin-bottom: 20px;">
-            <i class="fas fa-heart"></i> Made for Everyday Humans
-        </span>
-        <h1 style="font-size: 36px; margin-bottom: 10px;">Explore the <span style="color: var(--brand-primary);">Arsenal</span></h1>
-        <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 15px;">Zero-storage utilities built for privacy, speed, and the new web.</p>
+    <header class="hub-header">
+        <h1 class="hub-title">Explore the <span style="color: var(--brand-primary);">Arsenal</span></h1>
+        <p class="hub-desc">Zero-storage utilities built for privacy, speed, and the new web.</p>
         
         <!-- Search Bar -->
-        <div style="max-width: 600px; margin: 0 auto 25px auto; position: relative;">
-            <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--brand-primary);"></i>
-            <input type="text" id="appSearch" placeholder="Search tools (e.g. compress, vault, glitch)..." style="width: 100%; padding: 15px 15px 15px 45px; background: var(--bg-base); border: 1px solid var(--surface-border); border-radius: var(--radius-md); color: var(--text-primary); font-family: var(--font-sans); font-size: 15px; outline: none; box-sizing: border-box; transition: 0.3s;">
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="appSearch" placeholder="Search tools (e.g. compress, vault, glitch)..." autocomplete="off">
         </div>
 
         <!-- CATEGORY FILTERS -->
-        <div class="filter-scroll" style="justify-content: center;">
-            <div class="filter-pill active" data-filter="all">All Tools</div>
-            <div class="filter-pill" data-filter="privacy">🔒 Privacy</div>
-            <div class="filter-pill" data-filter="security">🛡️ Security</div>
-            <div class="filter-pill" data-filter="creative">🎨 Creative</div>
-            <div class="filter-pill" data-filter="utilities">🛠️ Utilities</div>
+        <div class="filter-scroll">
+            <div class="filter-pill active" data-filter="all"><i class="fas fa-layer-group"></i> All Tools</div>
+            <div class="filter-pill" data-filter="privacy"><i class="fas fa-user-shield"></i> Privacy</div>
+            <div class="filter-pill" data-filter="security"><i class="fas fa-lock"></i> Security</div>
+            <div class="filter-pill" data-filter="utilities"><i class="fas fa-wrench"></i> Utilities</div>
+            <div class="filter-pill" data-filter="creative"><i class="fas fa-paint-brush"></i> Creative</div>
         </div>
     </header>
 
-    <div id="noResultsMsg" style="display: none; text-align: center; color: var(--status-danger); margin-top: 40px; font-weight: bold;">
-        <i class="fas fa-exclamation-triangle"></i> No tools found for your search.
+    <div id="noResultsMsg">
+        <i class="fas fa-ghost" style="font-size: 30px; margin-bottom: 10px; display: block;"></i>
+        No tools found matching your search.
     </div>
 
-    <!-- APPS GRID WORKSPACE -->
-    <main style="max-width: 1200px; margin: 0 auto; padding: 0 5% var(--space-xl) 5%;">
-        <div class="apps-grid">
+    <!-- FAVORITES SECTION -->
+    <section class="workspace-section" id="favorites-section">
+        <h2 class="section-title"><i class="fas fa-star" style="color: var(--status-warning);"></i> My Favorites</h2>
+        <div class="apps-grid" id="favorites-grid"></div>
+    </section>
+
+    <!-- RECENTLY USED SECTION -->
+    <section class="workspace-section" id="recent-section">
+        <h2 class="section-title"><i class="fas fa-clock" style="color: var(--brand-secondary);"></i> Recently Used</h2>
+        <div class="apps-grid" id="recent-grid"></div>
+    </section>
+
+    <!-- ALL APPS WORKSPACE (Master Database) -->
+    <section class="workspace-section active" id="all-apps-section">
+        <h2 class="section-title" id="all-apps-title"><i class="fas fa-box-open" style="color: var(--brand-primary);"></i> All Applications</h2>
+        
+        <div class="apps-grid" id="master-grid">
             
-            <!-- 1. DiamondMax -->
-            <a href="diamondmax-login.html" class="app-card" data-category="utilities">
+            <!-- MASTER APP CARDS (Data Source) -->
+
+            <a href="diamondmax-login.html" class="app-card" data-appid="dmax" data-category="utilities">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bdiamondmax-logo.png" alt="DiamondMax" class="app-logo-img" loading="lazy">
-                    <div>
+                    <div class="app-content">
                         <h3 class="app-title">DiamondMax</h3>
-                        <p class="app-desc">Our flagship reward ecosystem. Complete elite missions and earn real-world rewards safely and instantly.</p>
+                        <p class="app-desc">Our flagship reward ecosystem. Complete elite missions and earn real-world rewards safely.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-beta">◐ DEMO LIVE</span>
-                    <span class="badge badge-p2p"><i class="fas fa-server"></i> Cloud</span>
+                    <span class="badge b-demo">● DEMO</span>
+                    <span class="badge b-cloud"><i class="fas fa-server"></i> Cloud</span>
                 </div>
             </a>
 
-            <!-- 2. Diamond-Vault -->
-            <a href="vault.html" class="app-card" data-category="security">
+            <a href="vault.html" class="app-card" data-appid="vault" data-category="security">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bvault-logo.png" alt="Diamond-Vault" class="app-logo-img" loading="lazy">
-                    <div>
+                    <div class="app-content">
                         <h3 class="app-title">Diamond-Vault</h3>
-                        <p class="app-desc">App is in development, but you can try our military-grade password generator directly on our website for free.</p>
+                        <p class="app-desc">Military-grade offline password generator. Create unbreakable passwords directly in your browser.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-microchip"></i> Local</span>
                 </div>
             </a>
 
-            <!-- 3. Phantom Wormhole -->
-            <a href="wormhole.html" class="app-card" data-category="privacy security">
+            <a href="wormhole.html" class="app-card" data-appid="wormhole" data-category="privacy security">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="wormhole-logo.png" alt="Phantom Wormhole" class="app-logo-img" loading="lazy">
-                    <div>
+                    <div class="app-content">
                         <h3 class="app-title">Phantom-Wormhole</h3>
-                        <p class="app-desc">Zero-server peer-to-peer file transfer. Share files directly across devices with military-grade encryption.</p>
+                        <p class="app-desc">Zero-server peer-to-peer file transfer. Share files directly across devices with encryption.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-p2p"><i class="fas fa-network-wired"></i> WebRTC P2P</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-network-wired"></i> P2P</span>
                 </div>
             </a>
 
-            <!-- 4. Phantom Shrink -->
-            <a href="compressor.html" class="app-card" data-category="utilities">
+            <a href="compressor.html" class="app-card" data-appid="shrink" data-category="utilities">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="shrink-logo.png" alt="Phantom Shrink" class="app-logo-img" loading="lazy">
-                    <div>
+                    <div class="app-content">
                         <h3 class="app-title">Phantom-Shrink</h3>
-                        <p class="app-desc">100% offline, zero-server image compressor. Reduce file sizes instantly on your device without compromising privacy.</p>
+                        <p class="app-desc">100% offline, zero-server image compressor. Reduce file sizes instantly without compromising privacy.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-microchip"></i> Local</span>
                 </div>
             </a>
 
-            <!-- 5. Phantom Morph -->
-            <a href="converter.html" class="app-card" data-category="utilities">
+            <a href="converter.html" class="app-card" data-appid="morph" data-category="utilities">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="morph-logo.png" alt="Phantom Morph" class="app-logo-img" loading="lazy">
-                    <div>
+                    <div class="app-content">
                         <h3 class="app-title">Phantom-Morph</h3>
-                        <p class="app-desc">100% offline image format converter. Switch between JPG, PNG, and WEBP instantly without server uploads.</p>
+                        <p class="app-desc">100% offline image format converter. Switch between JPG, PNG, and WEBP instantly without uploads.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-microchip"></i> Local</span>
                 </div>
             </a>
 
-            <!-- 6. Photo Privacy Cleaner (Stripper) -->
-            <a href="stripper.html" class="app-card" data-category="privacy">
-                <div class="app-header">
-                    <img src="stripper-logo.png" alt="Photo Privacy Cleaner" class="app-logo-img" loading="lazy">
-                    <div>
-                        <h3 class="app-title">Photo Privacy Cleaner</h3>
-                        <p class="app-desc">Remove hidden location (GPS) and camera data from your photos before sharing them on social media.</p>
-                    </div>
-                </div>
-                <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
-                </div>
-            </a>
-
-            <!-- 7. Browser Privacy Auditor -->
-            <a href="fingerprint.html" class="app-card" data-category="privacy security">
+            <a href="fingerprint.html" class="app-card" data-appid="audit" data-category="privacy security">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="fingerprint-logo.png" alt="Browser Privacy Auditor" class="app-logo-img" loading="lazy">
-                    <div>
+                    <div class="app-content">
                         <h3 class="app-title">Privacy Auditor</h3>
-                        <p class="app-desc">Find out exactly what hardware and browser data your phone is silently leaking to websites.</p>
+                        <p class="app-desc">Find out exactly what hardware and browser data your device is silently leaking to websites.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-laptop"></i> Client-Side</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-search"></i> Scanner</span>
                 </div>
             </a>
 
-            <!-- 8. Private Note Sender (Burner) -->
-            <a href="burner.html" class="app-card" data-category="privacy">
+            <a href="burner.html" class="app-card" data-appid="burner" data-category="privacy">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="burner-logo.png" alt="Private Note Sender" class="app-logo-img" loading="lazy">
-                    <div>
-                        <h3 class="app-title">Private Note Sender</h3>
+                    <div class="app-content">
+                        <h3 class="app-title">Burner Protocol</h3>
                         <p class="app-desc">Send sensitive information safely. Once the receiver reads the note, it automatically deletes itself forever.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-p2p"><i class="fas fa-server"></i> Encrypted Server</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-cloud"><i class="fas fa-server"></i> Encrypted DB</span>
                 </div>
             </a>
 
-            <!-- 9. Smart Temp Mail -->
-            <a href="mail.html" class="app-card" data-category="privacy utilities">
+            <a href="mail.html" class="app-card" data-appid="mail" data-category="privacy utilities">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="mail-logo.png" alt="Smart Temp Mail" class="app-logo-img" loading="lazy">
-                    <div>
-                        <h3 class="app-title">Smart Temp Mail</h3>
-                        <p class="app-desc">Keep your real inbox 100% spam-free. Generate a temporary email address instantly for quick sign-ups.</p>
+                    <div class="app-content">
+                        <h3 class="app-title">Burner Mail Proxy</h3>
+                        <p class="app-desc">Keep your real inbox 100% spam-free. Generate a temporary email sandbox instantly.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-beta"><i class="fas fa-globe"></i> 3rd-Party API</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-cloud"><i class="fas fa-globe"></i> External API</span>
                 </div>
             </a>
 
-            <!-- 10. Secure Message Encoder -->
-            <a href="encoder.html" class="app-card" data-category="security privacy">
-                <div class="app-header">
-                    <img src="encoder-logo.png" alt="Secure Message Encoder" class="app-logo-img" loading="lazy">
-                    <div>
-                        <h3 class="app-title">Message Encoder</h3>
-                        <p class="app-desc">Turn your private text into unreadable secret codes before sending them to friends. Only trusted circles can decode.</p>
-                    </div>
-                </div>
-                <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
-                </div>
-            </a>
-
-            <!-- 11. Password Strength Check -->
-            <a href="password.html" class="app-card" data-category="security">
+            <a href="password.html" class="app-card" data-appid="bruteforce" data-category="security">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="password-logo.png" alt="Password Strength Check" class="app-logo-img" loading="lazy">
-                    <div>
-                        <h3 class="app-title">Password Auditor</h3>
-                        <p class="app-desc">Find out how secure your passwords really are. Test them against modern algorithms and make them stronger.</p>
+                    <div class="app-content">
+                        <h3 class="app-title">Bruteforce Simulator</h3>
+                        <p class="app-desc">Find out how secure your passwords really are against mathematical GPU cracking algorithms.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-microchip"></i> Local</span>
                 </div>
             </a>
 
-            <!-- 12. Scam Spotter Training -->
-            <a href="detective.html" class="app-card" data-category="security">
+            <a href="detective.html" class="app-card" data-appid="phish" data-category="security">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="detective-logo.png" alt="Scam Spotter Training" class="app-logo-img" loading="lazy">
-                    <div>
-                        <h3 class="app-title">Scam Spotter</h3>
-                        <p class="app-desc">Learn how to spot fake links and scam emails before they trick you. An interactive safety quiz.</p>
+                    <div class="app-content">
+                        <h3 class="app-title">Phishing Detective</h3>
+                        <p class="app-desc">Learn how to spot fake links and scam emails before they trick you in this interactive cyber game.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-graduation-cap"></i> Educational</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-gamepad"></i> Game</span>
                 </div>
             </a>
 
-            <!-- 13. Phantom Calc -->
-            <a href="calculator.html" class="app-card" data-category="utilities">
+            <a href="calculator.html" class="app-card" data-appid="calc" data-category="utilities">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="calc-logo.png" alt="Phantom Calc" class="app-logo-img" loading="lazy">
-                    <div>
+                    <div class="app-content">
                         <h3 class="app-title">Phantom Calc</h3>
-                        <p class="app-desc">The Omni-Calculator. Solve standard math, calculate financial returns, convert data storage, and process discounts.</p>
+                        <p class="app-desc">The Omni-Calculator. Solve standard math, calculate financial returns, and process discounts.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-microchip"></i> Local</span>
                 </div>
             </a>
 
-            <!-- 14. Custom QR Studio -->
-            <a href="qr.html" class="app-card" data-category="utilities creative">
+            <a href="qr.html" class="app-card" data-appid="qrstudio" data-category="utilities creative">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="qr-logo.png" alt="Custom QR Studio" class="app-logo-img" loading="lazy">
-                    <div>
-                        <h3 class="app-title">Custom QR Studio</h3>
-                        <p class="app-desc">Create beautiful, high-quality QR codes for your links, Wi-Fi, or business cards in seconds. No ads.</p>
+                    <div class="app-content">
+                        <h3 class="app-title">Phantom QR Studio</h3>
+                        <p class="app-desc">Create beautiful, high-quality vector QR codes for your links, Wi-Fi, or business cards in seconds.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-microchip"></i> Local</span>
                 </div>
             </a>
 
-            <!-- 15. Custom Payment QR -->
-            <a href="payment-qr-terminal.html" class="app-card" data-category="utilities">
+            <a href="payment-qr-terminal.html" class="app-card" data-appid="payqr" data-category="utilities">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="payment-logo.png" alt="Custom Payment QR" class="app-logo-img" loading="lazy">
-                    <div>
-                        <h3 class="app-title">Payment QR</h3>
-                        <p class="app-desc">Generate dynamic UPI merchant or personal payment QR codes securely and instantly for smooth transactions.</p>
+                    <div class="app-content">
+                        <h3 class="app-title">Payment QR Terminal</h3>
+                        <p class="app-desc">Generate dynamic UPI merchant or personal payment QR codes securely. 0% processing fees.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-microchip"></i> Local</span>
                 </div>
             </a>
 
-            <!-- 16. Glitch Text Generator -->
-            <a href="glitch.html" class="app-card" data-category="creative">
+            <a href="glitch.html" class="app-card" data-appid="glitch" data-category="creative">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="glitch-logo.png" alt="Glitch Text Generator" class="app-logo-img" loading="lazy">
-                    <div>
-                        <h3 class="app-title">Glitch Text</h3>
+                    <div class="app-content">
+                        <h3 class="app-title">Glitch Generator</h3>
                         <p class="app-desc">Convert normal text into corrupted, cyber hacker style typography instantly.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-microchip"></i> Local</span>
                 </div>
             </a>
 
-            <!-- 17. Code-to-Canvas -->
-            <a href="canvas.html" class="app-card" data-category="creative">
+            <a href="canvas.html" class="app-card" data-appid="canvas" data-category="creative">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="canvas-logo.png" alt="Code-to-Canvas" class="app-logo-img" loading="lazy">
-                    <div>
+                    <div class="app-content">
                         <h3 class="app-title">Code-to-Canvas</h3>
                         <p class="app-desc">Convert raw code into beautiful, neon-cyberpunk snippets for sharing on social media.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-microchip"></i> Local</span>
                 </div>
             </a>
 
-            <!-- 18. Word Cipher -->
-            <a href="cipher.html" class="app-card" data-category="creative">
+            <a href="cipher.html" class="app-card" data-appid="cipher" data-category="creative games">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bwordcipher-logo.png" alt="Word Cipher" class="app-logo-img" loading="lazy">
-                    <div>
+                    <div class="app-content">
                         <h3 class="app-title">Word Cipher</h3>
-                        <p class="app-desc">A highly addictive brain-teaser game. Decrypt secret words to prove your intelligence and unlock perks.</p>
+                        <p class="app-desc">A highly addictive brain-teaser game. Decrypt secret server nodes to prove your intelligence.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-beta">◐ UPCOMING</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-gamepad"></i> Game</span>
                 </div>
             </a>
 
-            <!-- 19. Terminal Simulator -->
-            <a href="terminal.1.html" class="app-card" data-category="utilities">
-                <div class="app-header">
-                    <img src="terminal-logo.png" alt="Terminal Simulator" class="app-logo-img" loading="lazy" onerror="this.src='https://via.placeholder.com/56x56/0f172a/0ea5e9?text=T'">
-                    <div>
-                        <h3 class="app-title">Terminal Simulator</h3>
-                        <p class="app-desc">Test your raw typing speed in a cyberpunk terminal environment. Are you faster than a DiamondMax server?</p>
-                    </div>
-                </div>
-                <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
-                </div>
-            </a>
-
-            <!-- 20. The Void -->
-            <a href="void.html" class="app-card" data-category="creative">
+            <a href="void.html" class="app-card" data-appid="void" data-category="creative utilities">
+                <div class="fav-toggle"><i class="fas fa-star"></i></div>
                 <div class="app-header">
                     <img src="void-logo.png" alt="The Void" class="app-logo-img" loading="lazy">
-                    <div>
+                    <div class="app-content">
                         <h3 class="app-title">The Void</h3>
-                        <p class="app-desc">Extreme flow-state editor. Stop typing for 15 seconds, and your text is destroyed forever. Use at your own risk.</p>
+                        <p class="app-desc">Extreme flow-state editor. Stop typing for 15 seconds, and your text is destroyed forever.</p>
                     </div>
                 </div>
                 <div class="badge-container">
-                    <span class="badge badge-live">● LIVE</span>
-                    <span class="badge badge-local"><i class="fas fa-microchip"></i> Local</span>
-                </div>
-            </a>
-
-            <!-- 21. Phantom Trade -->
-            <a href="exchange.html" class="app-card" data-category="utilities">
-                <div class="app-header">
-                    <img src="trade-logo.png" alt="Phantom Trade" class="app-logo-img" loading="lazy" onerror="this.src='https://via.placeholder.com/56x56/0f172a/f43f5e?text=T'">
-                    <div>
-                        <h3 class="app-title">Phantom Trade</h3>
-                        <p class="app-desc">Exchange your unused gift cards for Crypto or UPI instantly. (Currently disabled for maintenance).</p>
-                    </div>
-                </div>
-                <div class="badge-container">
-                    <span class="badge" style="background: rgba(239, 68, 68, 0.1); color: var(--status-danger); border: 1px solid rgba(239, 68, 68, 0.3);">✕ DISABLED</span>
+                    <span class="badge b-live">● LIVE</span>
+                    <span class="badge b-local"><i class="fas fa-microchip"></i> Local</span>
                 </div>
             </a>
 
         </div>
-    </main>
+    </section>
 
-    <!-- JS For Search & Category Filters -->
+    <!-- CORE LOGIC: SEARCH, FILTERS, FAVORITES, RECENT -->
     <script>
-        const searchInput = document.getElementById('appSearch');
-        const appCards = document.querySelectorAll('.app-card');
-        const noResultsMsg = document.getElementById('noResultsMsg');
-        const filterPills = document.querySelectorAll('.filter-pill');
-        
-        let activeCategory = 'all';
+        // Data Arrays from LocalStorage
+        let favorites = JSON.parse(localStorage.getItem('phantomix_favs')) || [];
+        let recent = JSON.parse(localStorage.getItem('phantomix_recent')) || [];
 
+        const masterGrid = document.getElementById('master-grid');
+        const favsGrid = document.getElementById('favorites-grid');
+        const recentGrid = document.getElementById('recent-grid');
+        
+        const favsSection = document.getElementById('favorites-section');
+        const recentSection = document.getElementById('recent-section');
+        const allSection = document.getElementById('all-apps-section');
+        const allTitle = document.getElementById('all-apps-title');
+
+        const searchInput = document.getElementById('appSearch');
+        const filterPills = document.querySelectorAll('.filter-pill');
+        const noResultsMsg = document.getElementById('noResultsMsg');
+
+        // 1. Initialize System
+        function initAppSystem() {
+            updateMasterStars();
+            renderDynamicShelves();
+            attachClickListeners();
+        }
+
+        // 2. Render Stars on Master List based on LocalStorage
+        function updateMasterStars() {
+            document.querySelectorAll('#master-grid .app-card').forEach(card => {
+                const appId = card.getAttribute('data-appid');
+                const starIcon = card.querySelector('.fav-toggle i');
+                const favBtn = card.querySelector('.fav-toggle');
+                
+                if (favorites.includes(appId)) {
+                    starIcon.className = 'fas fa-star';
+                    favBtn.classList.add('is-fav');
+                } else {
+                    starIcon.className = 'far fa-star';
+                    favBtn.classList.remove('is-fav');
+                }
+            });
+        }
+
+        // 3. Render Favorites & Recent Sections
+        function renderDynamicShelves() {
+            favsGrid.innerHTML = '';
+            recentGrid.innerHTML = '';
+
+            let masterCards = Array.from(document.querySelectorAll('#master-grid .app-card'));
+
+            // Render Favorites
+            if(favorites.length > 0) {
+                favorites.forEach(id => {
+                    const original = masterCards.find(c => c.getAttribute('data-appid') === id);
+                    if(original) favsGrid.appendChild(original.cloneNode(true));
+                });
+                favsSection.classList.add('active');
+            } else {
+                favsSection.classList.remove('active');
+            }
+
+            // Render Recent (Max 3)
+            if(recent.length > 0) {
+                recent.slice(0, 3).forEach(id => {
+                    const original = masterCards.find(c => c.getAttribute('data-appid') === id);
+                    if(original) recentGrid.appendChild(original.cloneNode(true));
+                });
+                recentSection.classList.add('active');
+            } else {
+                recentSection.classList.remove('active');
+            }
+        }
+
+        // 4. Handle Clicks (Routing vs Favoriting)
+        function attachClickListeners() {
+            document.body.addEventListener('click', (e) => {
+                const card = e.target.closest('.app-card');
+                const favBtn = e.target.closest('.fav-toggle');
+
+                if (favBtn && card) {
+                    e.preventDefault(); // Stop navigation
+                    e.stopPropagation();
+                    toggleFavorite(card.getAttribute('data-appid'));
+                    return;
+                }
+
+                if (card) {
+                    // It's a normal click, log as recent before navigating
+                    logRecent(card.getAttribute('data-appid'));
+                }
+            });
+        }
+
+        function toggleFavorite(appId) {
+            if (favorites.includes(appId)) {
+                favorites = favorites.filter(id => id !== appId); // Remove
+            } else {
+                favorites.push(appId); // Add
+            }
+            localStorage.setItem('phantomix_favs', JSON.stringify(favorites));
+            
+            // Re-render
+            updateMasterStars();
+            renderDynamicShelves();
+        }
+
+        function logRecent(appId) {
+            // Remove if already exists to push to front
+            recent = recent.filter(id => id !== appId);
+            recent.unshift(appId); // Add to beginning
+            
+            // Keep max 10 in history
+            if(recent.length > 10) recent.pop();
+            
+            localStorage.setItem('phantomix_recent', JSON.stringify(recent));
+        }
+
+        // 5. Search and Filter Logic
         function filterApps() {
             const searchTerm = searchInput.value.toLowerCase().trim();
+            const activeCategory = document.querySelector('.filter-pill.active').getAttribute('data-filter');
             let visibleCount = 0;
 
-            appCards.forEach(card => {
+            const allCards = document.querySelectorAll('#master-grid .app-card');
+
+            // If searching or filtering, hide Favs & Recent to avoid confusion
+            if(searchTerm !== "" || activeCategory !== "all") {
+                favsSection.style.display = 'none';
+                recentSection.style.display = 'none';
+                allTitle.style.display = 'none';
+            } else {
+                favsSection.style.display = '';
+                recentSection.style.display = '';
+                allTitle.style.display = 'flex';
+            }
+
+            allCards.forEach(card => {
                 const title = card.querySelector('.app-title').innerText.toLowerCase();
                 const desc = card.querySelector('.app-desc').innerText.toLowerCase();
                 const category = card.getAttribute('data-category') || '';
@@ -429,10 +637,12 @@
             pill.addEventListener('click', () => {
                 filterPills.forEach(p => p.classList.remove('active'));
                 pill.classList.add('active');
-                activeCategory = pill.getAttribute('data-filter');
                 filterApps();
             });
         });
+
+        // Run on Startup
+        initAppSystem();
     </script>
 </body>
 </html>
