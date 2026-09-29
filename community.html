@@ -2,218 +2,310 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Community | Phantomix</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <title>Global Community | Phantomix Network</title>
     <link rel="icon" type="image/png" href="logo.png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Global Design System -->
+    <link rel="stylesheet" href="core.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
-        ::selection {
-            background-color: #0ea5e9; /* Neon Blue */
-            color: #ffffff; /* White Text */
-        }
-        
-        /* Firefox browser ke liye */
-        ::-moz-selection {
-            background-color: #0ea5e9;
-            color: #ffffff;
-        }
+        ::selection { background-color: var(--brand-primary, #0ea5e9); color: #ffffff; }
+
         /* ✨ PREMIUM FADE-IN ANIMATION */
         body {
-            animation: appLoad 0.8s ease-out forwards;
+            animation: appLoad 0.5s ease-out forwards;
+            margin: 0; padding: 0; font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-base, #020617); color: var(--text-primary, #f8fafc);
+            overflow: hidden; /* Lock scroll for app-like feel */
+            display: flex; flex-direction: column; height: 100vh;
         }
 
         @keyframes appLoad {
-            0% {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        body {
-            margin: 0; padding: 0; padding-top: 80px;
-            font-family: 'Poppins', sans-serif;
-            background-color: #020617; 
-            color: #ffffff;
-            text-align: center; overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 60%);
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.3); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary, #0ea5e9); }
 
+        /* NAVBAR */
         .phantomix-navbar {
-            position: fixed; top: 0; left: 0; width: 100%; height: 65px;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; box-sizing: border-box;
-            background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(14, 165, 233, 0.3); z-index: 1000;
+            height: 65px; display: flex; justify-content: space-between; align-items: center;
+            padding: 0 20px; background: rgba(2, 6, 23, 0.95); border-bottom: 1px solid var(--surface-border, #1e293b);
+            z-index: 1000; flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        .nav-logo { font-size: 18px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; }
-        .back-btn {
-            background: rgba(14, 165, 233, 0.1); color: #0ea5e9;
-            padding: 6px 14px; border: 1px solid #0ea5e9; border-radius: 6px;
+        .nav-logo { font-size: 18px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; gap: 8px; }
+        
+        .nav-actions { display: flex; gap: 15px; align-items: center; }
+        .nav-btn {
+            background: rgba(14, 165, 233, 0.1); color: var(--brand-primary, #0ea5e9);
+            padding: 6px 14px; border: 1px solid var(--brand-primary, #0ea5e9); border-radius: var(--radius-sm, 6px);
             text-decoration: none; font-size: 13px; font-weight: 600; transition: all 0.3s ease;
         }
-        .back-btn:hover { background: #0ea5e9; color: #020617; box-shadow: 0 0 15px rgba(14, 165, 233, 0.6); }
-        .logout-btn {
-            background: rgba(239, 68, 68, 0.1); color: #ef4444; margin-left: 10px;
-            padding: 6px 14px; border: 1px solid #ef4444; border-radius: 6px;
-            cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.3s;
-        }
-        .logout-btn:hover { background: #ef4444; color: white; box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
-
-        .chat-wrapper { max-width: 800px; margin: 20px auto 40px; padding: 0 20px; }
-        .chat-header { margin-bottom: 20px; }
-        .chat-header h1 { color: #0ea5e9; font-size: 32px; margin: 0 0 10px 0; text-shadow: 0 0 15px rgba(14, 165, 233, 0.3); }
-        .chat-header p { color: #94a3b8; font-size: 14px; margin: 0; }
-
-        .chat-box {
-            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(14, 165, 233, 0.3);
-            border-radius: 15px; padding: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            display: flex; flex-direction: column; height: 60vh; min-height: 400px;
-        }
-
-        #chat-messages {
-            flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 15px;
-            padding-right: 10px; margin-bottom: 20px; text-align: left;
-        }
-
-        .msg-bubble {
-            background: rgba(30, 41, 59, 0.6); padding: 12px 18px; 
-            border-radius: 12px; border-left: 3px solid #0ea5e9; 
-            font-size: 14px; line-height: 1.5; animation: fadeIn 0.3s ease;
-        }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .nav-btn:hover { background: var(--brand-primary, #0ea5e9); color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
         
-        .msg-sender { color: #0ea5e9; font-weight: 700; font-family: 'Courier Prime', monospace; margin-right: 8px; }
-        .msg-time { color: #64748b; font-size: 11px; }
-        .msg-text { color: #e2e8f0; display: block; margin-top: 5px; word-wrap: break-word; }
+        .mobile-menu-btn { display: none; background: transparent; border: none; color: white; font-size: 20px; cursor: pointer; }
 
-        .input-group { display: flex; gap: 10px; }
-        .sender-input {
-            width: 140px; padding: 12px; border-radius: 8px;
-            border: 1px solid #334155; background: #020617; color: #10b981;
-            font-size: 14px; font-family: 'Courier Prime', monospace; font-weight: bold;
-            outline: none; transition: all 0.3s;
-        }
-        .msg-input {
-            flex: 1; padding: 12px 15px; border-radius: 8px;
-            border: 1px solid #334155; background: #020617; color: white;
-            font-size: 14px; font-family: 'Poppins', sans-serif; outline: none; transition: all 0.3s;
-        }
-        .msg-input:focus { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.2); }
-        
-        .send-btn {
-            background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white;
-            border: none; padding: 0 20px; border-radius: 8px;
-            font-weight: 700; cursor: pointer; transition: all 0.3s; font-size: 16px;
-        }
-        .send-btn:hover { box-shadow: 0 0 15px rgba(14, 165, 233, 0.5); transform: translateY(-2px); }
+        /* MAIN APP LAYOUT */
+        .app-container { display: flex; flex: 1; overflow: hidden; position: relative; }
 
-        @media (max-width: 600px) {
-            .input-group { flex-wrap: wrap; }
-            .sender-input { width: 100%; }
-        }
-        /* 🎚️ CUSTOM CYBER SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 8px; /* Scrollbar ki motai */
+        /* SIDEBAR (Channels & Users) */
+        .sidebar {
+            width: 260px; background: rgba(15, 23, 42, 0.6); border-right: 1px solid var(--surface-border, #1e293b);
+            display: flex; flex-direction: column; transition: transform 0.3s ease; z-index: 100;
         }
         
-        ::-webkit-scrollbar-track {
-            background: #0f172a; /* Dark background */
+        .network-status {
+            padding: 20px; border-bottom: 1px solid var(--surface-border, #1e293b);
+            font-family: 'Fira Code', monospace; font-size: 12px; font-weight: 600; color: var(--text-secondary, #94a3b8);
+            display: flex; align-items: center; gap: 10px;
         }
+        .status-dot { width: 8px; height: 8px; background: var(--status-success, #10b981); border-radius: 50%; box-shadow: 0 0 10px var(--status-success, #10b981); animation: pulse 2s infinite; }
+
+        .channels-list { flex: 1; padding: 20px 10px; overflow-y: auto; }
+        .channel-category { font-size: 11px; font-weight: 700; color: var(--text-muted, #64748b); text-transform: uppercase; margin: 0 0 10px 10px; letter-spacing: 1px; }
         
-        ::-webkit-scrollbar-thumb {
-            background: rgba(14, 165, 233, 0.5); /* Neon Blue semi-transparent */
-            border-radius: 10px;
+        .channel-item {
+            display: flex; align-items: center; gap: 10px; padding: 10px 15px;
+            border-radius: var(--radius-sm, 6px); color: var(--text-secondary, #94a3b8);
+            text-decoration: none; font-size: 14px; font-weight: 500; cursor: pointer; transition: 0.2s;
+            margin-bottom: 5px;
         }
+        .channel-item:hover { background: rgba(255,255,255,0.05); color: var(--text-primary, #f8fafc); }
+        .channel-item.active { background: rgba(14, 165, 233, 0.15); color: var(--brand-primary, #0ea5e9); font-weight: 600; }
+        .channel-item.active i { color: var(--brand-primary, #0ea5e9); }
+        .channel-item i { font-size: 16px; color: var(--text-muted, #64748b); }
+
+        /* Current User Profile Bottom Bar */
+        .user-profile-bar {
+            padding: 15px; background: rgba(2, 6, 23, 0.8); border-top: 1px solid var(--surface-border, #1e293b);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .user-info { display: flex; align-items: center; gap: 10px; }
+        .user-avatar {
+            width: 35px; height: 35px; border-radius: 8px; background: linear-gradient(135deg, var(--brand-primary, #0ea5e9), var(--brand-secondary, #8b5cf6));
+            display: flex; justify-content: center; align-items: center; font-weight: 700; font-size: 14px; color: white;
+        }
+        .user-alias { font-size: 14px; font-weight: 600; color: var(--text-primary, #f8fafc); font-family: 'Fira Code', monospace; }
+        .user-role { font-size: 11px; color: var(--text-muted, #64748b); display: block; }
         
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(14, 165, 233, 1); /* Hover par full bright Neon Blue */
+        .logout-icon { color: var(--status-danger, #ef4444); cursor: pointer; padding: 8px; border-radius: 6px; transition: 0.2s; }
+        .logout-icon:hover { background: rgba(239, 68, 68, 0.1); }
+
+        /* MAIN CHAT AREA */
+        .chat-area { flex: 1; display: flex; flex-direction: column; background: var(--bg-base, #020617); position: relative; }
+        
+        .chat-header {
+            padding: 15px 20px; border-bottom: 1px solid var(--surface-border, #1e293b);
+            display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.4);
+        }
+        .chat-header h2 { margin: 0; font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .chat-header h2 i { color: var(--text-muted, #64748b); font-size: 18px; }
+        .chat-desc { font-size: 13px; color: var(--text-secondary, #94a3b8); margin-top: 2px; }
+
+        .messages-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 20px; }
+
+        /* Discord Style Message Block */
+        .msg-block { display: flex; gap: 15px; animation: fadeIn 0.3s ease; }
+        .msg-avatar {
+            width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0;
+            background: rgba(51, 65, 85, 0.5); display: flex; justify-content: center; align-items: center;
+            font-weight: 700; font-size: 14px; color: var(--text-secondary, #94a3b8); border: 1px solid rgba(255,255,255,0.05);
+        }
+        .msg-content { flex: 1; }
+        .msg-meta { display: flex; align-items: baseline; gap: 10px; margin-bottom: 5px; }
+        .msg-name { font-weight: 600; font-size: 15px; color: var(--brand-primary, #0ea5e9); font-family: 'Fira Code', monospace; }
+        .msg-time { font-size: 11px; color: var(--text-muted, #64748b); }
+        .msg-text { font-size: 14px; color: var(--text-primary, #f8fafc); line-height: 1.5; word-wrap: break-word; }
+
+        /* Chat Input Area */
+        .input-area { padding: 0 20px 20px 20px; background: transparent; }
+        .input-wrapper {
+            display: flex; align-items: center; background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--surface-border, #334155); border-radius: 12px; padding: 5px 5px 5px 15px;
+            transition: border-color 0.3s;
+        }
+        .input-wrapper:focus-within { border-color: var(--brand-primary, #0ea5e9); box-shadow: 0 0 15px rgba(14, 165, 233, 0.1); }
+        
+        .input-wrapper i.fa-plus-circle { color: var(--text-muted, #64748b); font-size: 18px; cursor: not-allowed; margin-right: 10px; }
+        
+        .chat-input {
+            flex: 1; background: transparent; border: none; color: var(--text-primary, #f8fafc);
+            font-family: 'Poppins', sans-serif; font-size: 15px; padding: 12px 0; outline: none;
+        }
+        .chat-input::placeholder { color: var(--text-muted, #64748b); }
+
+        .btn-send {
+            background: linear-gradient(135deg, var(--brand-primary, #0ea5e9), #3b82f6); color: white;
+            border: none; width: 40px; height: 40px; border-radius: 8px; display: flex; justify-content: center; align-items: center;
+            cursor: pointer; transition: 0.3s; font-size: 14px;
+        }
+        .btn-send:hover { box-shadow: 0 0 15px rgba(14, 165, 233, 0.5); transform: scale(1.05); }
+
+        /* System Messages */
+        .sys-msg { text-align: center; color: var(--text-muted, #64748b); font-size: 12px; margin: 10px 0; font-family: 'Fira Code', monospace; }
+
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; transform: scale(1.2); } 100% { opacity: 0.5; } }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .sidebar { position: absolute; height: 100%; transform: translateX(-100%); background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(20px); }
+            .sidebar.open { transform: translateX(0); box-shadow: 10px 0 30px rgba(0,0,0,0.5); }
         }
     </style>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
 </head>
 <body>
 
+    <!-- Cyber Toast for UX -->
+    <div id="cyber-toast" style="display: none; position: fixed; top: 80px; left: 50%; transform: translateX(-50%); background: rgba(2, 6, 23, 0.9); border: 1px solid var(--status-warning, #f59e0b); color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-family: 'Fira Code', monospace; z-index: 10000; align-items: center; gap: 10px; box-shadow: 0 5px 20px rgba(245, 158, 11, 0.3);">
+        <i class="fas fa-tools" style="color: var(--status-warning, #f59e0b);"></i> <span id="toast-message">Channel under construction</span>
+    </div>
+
+    <!-- NAVBAR -->
     <nav class="phantomix-navbar">
-        <a href="index.html" class="nav-logo">
-            <i class="fa-solid fa-users" style="color: #0ea5e9; margin-right: 8px;"></i> Community
-        </a>
-        <div>
-            <a href="index.html" class="back-btn"><i class="fas fa-home"></i> Home</a>
-            <button class="logout-btn" onclick="logoutNode()"><i class="fas fa-power-off"></i> Logout</button>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button class="mobile-menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+            <a href="index.html" class="nav-logo">
+                <i class="fa-solid fa-gem" style="color: var(--brand-primary, #0ea5e9);"></i> PHANTOMIX
+            </a>
+        </div>
+        <div class="nav-actions">
+            <a href="apps.html" class="nav-btn"><i class="fas fa-th-large"></i> <span style="display:none; @media(min-width: 600px){display:inline;}">Hub</span></a>
         </div>
     </nav>
 
-    <div class="chat-wrapper">
-        <div class="chat-header">
-            <h1>Global Node Chat</h1>
-            <p>Connect with other verified founders and early adopters.</p>
-        </div>
+    <!-- MAIN APP -->
+    <div class="app-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="network-status">
+                <div class="status-dot"></div> MAIN NODE SECURED
+            </div>
 
-        <div class="chat-box">
-            <div id="chat-messages">
-                <div style="text-align: center; color: #64748b; font-size: 13px; margin-top: auto; margin-bottom: auto;">
-                    <i class="fas fa-satellite-dish fa-spin"></i> Authenticating and Connecting to Mainframe...
+            <div class="channels-list">
+                <div class="channel-category">TEXT CHANNELS</div>
+                <div class="channel-item active" onclick="switchChannel(this, 'general')">
+                    <i class="fas fa-hashtag"></i> general
+                </div>
+                <div class="channel-item" onclick="switchChannel(this, 'phantomix-tools')">
+                    <i class="fas fa-hashtag"></i> phantomix-tools
+                </div>
+                <div class="channel-item" onclick="switchChannel(this, 'diamondmax')">
+                    <i class="fas fa-hashtag"></i> diamondmax
+                </div>
+                <div class="channel-item" onclick="switchChannel(this, 'feedback')">
+                    <i class="fas fa-hashtag"></i> feedback
+                </div>
+
+                <div class="channel-category" style="margin-top: 25px;">SUPPORT</div>
+                <div class="channel-item" onclick="switchChannel(this, 'help-desk')">
+                    <i class="fas fa-life-ring"></i> help-desk
                 </div>
             </div>
 
-            <div class="input-group">
-                <input type="text" id="chat-sender" class="sender-input" readonly>
-                <input type="text" id="chat-text" class="msg-input" placeholder="Transmit secure message..." autocomplete="off" onkeypress="if(event.key === 'Enter') sendChatMessage()">
-                <button class="send-btn" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            <div class="user-profile-bar">
+                <div class="user-info">
+                    <div class="user-avatar" id="display-avatar">--</div>
+                    <div>
+                        <span class="user-alias" id="display-alias">Loading...</span>
+                        <span class="user-role">Verified Node</span>
+                    </div>
+                </div>
+                <i class="fas fa-sign-out-alt logout-icon" title="Disconnect Node" onclick="logoutNode()"></i>
             </div>
-        </div>
+        </aside>
+
+        <!-- CHAT AREA -->
+        <main class="chat-area" onclick="closeSidebarMobile()">
+            
+            <header class="chat-header">
+                <div>
+                    <h2><i class="fas fa-hashtag"></i> <span id="current-channel-name">general</span></h2>
+                    <div class="chat-desc">Global communications for all Phantomix nodes.</div>
+                </div>
+                <i class="fas fa-users" style="color: var(--text-muted, #64748b); cursor: pointer;" title="Online Members"></i>
+            </header>
+
+            <div class="messages-container" id="chat-messages">
+                <div class="sys-msg"><i class="fas fa-satellite-dish fa-spin"></i> Authenticating and Syncing with Mainframe...</div>
+            </div>
+
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <i class="fas fa-plus-circle" title="Attachments disabled"></i>
+                    <input type="text" id="chat-text" class="chat-input" placeholder="Message #general" autocomplete="off" onkeypress="if(event.key === 'Enter') sendChatMessage()">
+                    <button class="btn-send" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </main>
+
     </div>
 
+    <!-- ORIGINAL SUPABASE LOGIC (Preserved perfectly) -->
     <script>
-        // 🔒 DIGITAL BOUNCER: Checking if user is logged in
+        // UI Logic: Sidebar Toggle for Mobile
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+        function closeSidebarMobile() {
+            if(window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        }
+
+        // UI Logic: Channel Switching Mock
+        function switchChannel(element, channelName) {
+            if(channelName === 'general') {
+                document.querySelectorAll('.channel-item').forEach(el => el.classList.remove('active'));
+                element.classList.add('active');
+                document.getElementById('current-channel-name').innerText = channelName;
+                document.getElementById('chat-text').placeholder = "Message #" + channelName;
+            } else {
+                // Show toast for channels under construction
+                const toast = document.getElementById("cyber-toast");
+                toast.style.display = "flex";
+                setTimeout(() => { toast.style.display = "none"; }, 3000);
+            }
+            closeSidebarMobile();
+        }
+
+        // --- CORE BACKEND LOGIC ---
+        
+        // 🔒 DIGITAL BOUNCER
         const userToken = localStorage.getItem("phantomix_token");
         const userId = localStorage.getItem("phantomix_user_id");
         const savedAlias = localStorage.getItem("phantomix_alias");
 
         if (!userToken || !userId || !savedAlias) {
-            // Agar login nahi hai, sidha login page par feko
             window.location.href = "login.html";
         }
+
+        // Set UI Profile Info
+        window.addEventListener('DOMContentLoaded', () => {
+            if(savedAlias) {
+                document.getElementById("display-alias").innerText = savedAlias;
+                document.getElementById("display-avatar").innerText = savedAlias.substring(0, 2).toUpperCase();
+            }
+        });
 
         // ⚠️ APNI ASLI API KEYS YAHAN ZAROOR DALEIN
         const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
-
-        // Setting the locked Alias in the input box
-        window.addEventListener('DOMContentLoaded', () => {
-            document.getElementById("chat-sender").value = savedAlias;
-            document.getElementById("chat-sender").style.background = "#0f172a";
-        });
 
         // 🚪 Logout Function
         function logoutNode() {
@@ -223,9 +315,16 @@
             window.location.href = "login.html";
         }
 
+        // Generate Avatar color based on Alias
+        function getAvatarColor(alias) {
+            const colors = ['#0ea5e9', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444', '#ec4899'];
+            let hash = 0;
+            for (let i = 0; i < alias.length; i++) hash = alias.charCodeAt(i) + ((hash << 5) - hash);
+            return colors[Math.abs(hash) % colors.length];
+        }
+
         async function fetchChatMessages() {
             try {
-                // Fetching messages (Read is allowed for anyone, but we pass token for good measure)
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/global_chat?select=*&order=created_at.desc&limit=50`, {
                     headers: { 
                         "apikey": SUPABASE_KEY, 
@@ -233,11 +332,7 @@
                     }
                 });
                 
-                if (response.status === 401) {
-                    // Token expired or invalid
-                    logoutNode();
-                    return;
-                }
+                if (response.status === 401) { logoutNode(); return; }
 
                 const messages = await response.json();
                 const chatBox = document.getElementById("chat-messages");
@@ -245,28 +340,33 @@
                 
                 const isScrolledToBottom = chatBox.scrollHeight - chatBox.clientHeight <= chatBox.scrollTop + 50;
 
-                chatBox.innerHTML = "";
+                chatBox.innerHTML = '<div class="sys-msg"><i class="fas fa-lock"></i> End-to-end connection established. Welcome to #general.</div>';
+                
                 messages.forEach(msg => {
                     const time = new Date(msg.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
                     
-                    // Basic Word Filter (Security check)
                     let safeMsg = msg.message.replace(/</g, "&lt;").replace(/>/g, "&gt;"); 
                     let safeAlias = msg.alias.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    let initials = safeAlias.substring(0, 2).toUpperCase();
+                    let color = getAvatarColor(safeAlias);
 
                     chatBox.innerHTML += `
-                        <div class="msg-bubble">
-                            <span class="msg-sender">[${safeAlias}]</span> 
-                            <span class="msg-time">${time}</span>
-                            <span class="msg-text">${safeMsg}</span>
+                        <div class="msg-block">
+                            <div class="msg-avatar" style="color: ${color}; border-color: ${color}40;">${initials}</div>
+                            <div class="msg-content">
+                                <div class="msg-meta">
+                                    <span class="msg-name" style="color: ${color};">${safeAlias}</span>
+                                    <span class="msg-time">${time}</span>
+                                </div>
+                                <span class="msg-text">${safeMsg}</span>
+                            </div>
                         </div>
                     `;
                 });
 
                 if (isScrolledToBottom) chatBox.scrollTop = chatBox.scrollHeight;
 
-            } catch(e) { 
-                console.error("Chat sync failed", e); 
-            }
+            } catch(e) { console.error("Chat sync failed", e); }
         }
 
         async function sendChatMessage() {
@@ -274,28 +374,24 @@
             const message = messageInput.value.trim();
 
             if(!message) return;
-
             messageInput.value = ""; 
             
             try {
-                // Sending message with secure Token and User ID
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/global_chat`, {
                     method: "POST",
                     headers: {
                         "apikey": SUPABASE_KEY,
-                        "Authorization": `Bearer ${userToken}`, // Token proves who is sending
+                        "Authorization": `Bearer ${userToken}`,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({ 
-                        user_id: userId,   // Yeh database match karega!
-                        alias: savedAlias, // User ka locked naam
+                        user_id: userId,   
+                        alias: savedAlias, 
                         message: message 
                     })
                 });
 
-                if (!response.ok) {
-                    throw new Error("Unauthorized Transmission");
-                }
+                if (!response.ok) throw new Error("Unauthorized Transmission");
                 
                 fetchChatMessages(); 
                 
@@ -309,7 +405,6 @@
             }
         }
 
-        // Auto-refresh chat every 3 seconds
         setInterval(fetchChatMessages, 3000);
         window.addEventListener('load', fetchChatMessages);
     </script>
