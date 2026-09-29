@@ -2,267 +2,226 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Burner Protocol | Phantomix</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <meta name="description" content="Send secure, encrypted messages that self-destruct automatically after reading. Zero logs, maximum privacy with Phantomix.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Courier+Prime&display=swap" rel="stylesheet">
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
-        ::selection { background-color: #0ea5e9; color: #ffffff; }
-        ::-moz-selection { background-color: #0ea5e9; color: #ffffff; }
-
-        /* ✨ PREMIUM FADE-IN ANIMATION */
-        body {
-            animation: appLoad 0.8s ease-out forwards;
-            margin: 0; padding: 0; padding-top: 100px;
-            font-family: 'Poppins', sans-serif;
-            background-color: #020617; color: #ffffff;
-            text-align: center; overflow-x: hidden;
-            background-image: radial-gradient(circle at top, rgba(14,165,233,0.1) 0%, transparent 50%);
-        }
-        @keyframes appLoad {
-            0% { opacity: 0; transform: translateY(15px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Phantomix Standard Unified Navbar --- */
-        .phantomix-navbar {
-            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; box-sizing: border-box;
-            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(14, 165, 233, 0.2); z-index: 1000;
-        }
-        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; letter-spacing: 1px; gap: 8px; }
-        .back-btn {
-            background: rgba(14, 165, 233, 0.1); color: #0ea5e9;
-            padding: 8px 18px; border: 1px solid #0ea5e9; border-radius: 6px;
-            text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.3s ease;
-        }
-        .back-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
-
-        /* --- Burner Box Layout --- */
-        .burner-wrapper { max-width: 650px; margin: 30px auto; padding: 0 20px; }
-        
-        .burner-header h1 {
-            font-size: 32px; font-weight: 800; margin: 0 0 10px 0; color: #ffffff;
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-        }
-        .burner-header h1 i { color: #ef4444; }
-        .burner-header p { color: #94a3b8; font-size: 14px; margin: 0 0 30px 0; font-family: 'Courier Prime', monospace; }
-
         .burner-box {
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid #0ea5e9; border-radius: 16px;
-            padding: 40px 30px; position: relative; overflow: hidden;
-            box-shadow: 0 10px 50px rgba(14, 165, 233, 0.15);
-            backdrop-filter: blur(10px); text-align: left;
+            background: var(--surface-main); border: 1px solid var(--status-danger);
+            border-radius: var(--radius-lg); padding: 30px; text-align: left;
+            position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(239, 68, 68, 0.15);
         }
+        /* Top Glowing Bar */
         .burner-box::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-            background: linear-gradient(90deg, #ef4444, #0ea5e9, #ef4444);
+            background: linear-gradient(90deg, var(--status-danger), var(--status-warning), var(--status-danger));
+            background-size: 200% auto; animation: shine 3s linear infinite;
         }
+        @keyframes shine { to { background-position: 200% center; } }
 
-        textarea {
-            width: 100%; height: 160px; box-sizing: border-box;
-            background: rgba(2, 6, 23, 0.8); border: 1px solid rgba(51, 65, 85, 0.8);
-            color: #10b981; font-family: 'Courier Prime', monospace; font-size: 15px;
-            padding: 15px; border-radius: 8px; outline: none; resize: none; transition: 0.3s;
+        .stealth-textarea {
+            width: 100%; height: 200px; background: rgba(2, 6, 23, 0.8); border: 1px dashed var(--surface-border);
+            color: var(--status-success); font-family: 'Fira Code', monospace; font-size: 15px;
+            padding: 20px; border-radius: var(--radius-md); outline: none; resize: none; transition: 0.3s;
+            box-sizing: border-box; margin-bottom: 20px;
         }
-        textarea:focus { border-color: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.2); }
+        .stealth-textarea:focus { border-color: var(--status-danger); box-shadow: 0 0 15px rgba(239, 68, 68, 0.2); }
+        .stealth-textarea::placeholder { color: var(--text-muted); opacity: 0.5; }
 
-        .burner-btn {
-            width: 100%; padding: 15px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white;
-            border: none; border-radius: 8px; font-weight: bold; font-size: 15px;
-            cursor: pointer; transition: 0.3s; margin-top: 20px; display: flex; justify-content: center; align-items: center; gap: 8px;
-            font-family: 'Poppins', sans-serif; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        .btn-burn {
+            width: 100%; padding: 15px; background: linear-gradient(135deg, var(--status-danger), #b91c1c);
+            color: white; border: none; border-radius: var(--radius-md); font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;
         }
-        .burner-btn:hover { box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5); transform: translateY(-2px); }
+        .btn-burn:hover { box-shadow: 0 0 25px rgba(239, 68, 68, 0.4); transform: translateY(-2px); }
 
         #link-box {
-            margin-top: 20px; font-size: 14px; color: #cbd5e1; word-break: break-all;
-            background: rgba(2, 6, 23, 0.5); padding: 15px; border-radius: 8px; border: 1px dashed #334155;
-            font-family: 'Courier Prime', monospace;
+            margin-top: 25px; background: #020617; padding: 20px; border-radius: var(--radius-sm);
+            border: 1px solid var(--surface-border); display: none; animation: fadeIn 0.4s;
         }
-        .hidden { display: none; }
+        
+        .link-input {
+            width: 100%; padding: 12px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--status-success);
+            color: var(--status-success); border-radius: var(--radius-sm); font-family: 'Fira Code', monospace;
+            font-size: 13px; text-align: center; outline: none; box-sizing: border-box; margin-bottom: 15px;
+        }
 
-        /* Custom Cyber Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.5); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(14, 165, 233, 1); }
+        .action-row { display: flex; gap: 10px; }
+        .btn-secondary {
+            flex: 1; padding: 12px; background: var(--surface-elevated); color: var(--text-primary);
+            border: 1px solid var(--surface-border); border-radius: var(--radius-sm); font-weight: 600;
+            cursor: pointer; transition: 0.3s;
+        }
+        .btn-secondary:hover { background: rgba(14, 165, 233, 0.1); border-color: var(--brand-primary); color: var(--brand-primary); }
+
+        .warning-text { color: var(--status-danger); font-size: 13px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        
+        .hidden { display: none !important; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <nav class="phantomix-navbar">
-        <a href="apps.html" class="nav-logo">
-            <i class="fa-solid fa-gem" style="color: #0ea5e9;"></i> Phantomix
+    <!-- GLOBAL NAVBAR -->
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 1px solid var(--surface-border); background: var(--surface-main); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;">
+        <a href="index.html" style="font-weight: bold; font-size: 18px; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
         </a>
-        <a href="apps.html" class="back-btn"><i class="fas fa-arrow-left"></i> App Hub</a>
+        <a href="apps.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 16px; background: rgba(14, 165, 233, 0.1); border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); color: var(--brand-primary);"><i class="fas fa-arrow-left"></i> Hub</a>
     </nav>
 
+    <div class="app-layout" style="max-width: 700px; grid-template-columns: 1fr;">
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h1 style="font-size: 32px; margin-bottom: 10px;">The <span style="color: var(--status-danger);">Burner Protocol</span></h1>
+            <p style="color: var(--text-secondary); font-size: 14px;">Secure transmissions that self-destruct immediately after reading. Zero logs.</p>
+        </div>
 
-    <h1>🔥 The Burner Protocol</h1>
-    <p>Self-destructing secure transmissions.</p>
+        <!-- CREATE NOTE SECTION -->
+        <section class="burner-box" id="create-section">
+            <h3 style="margin: 0 0 15px 0; font-size: 16px; color: var(--text-primary);"><i class="fas fa-pen-nib"></i> Compose Secret</h3>
+            <textarea id="secret-message" class="stealth-textarea" placeholder="Type your highly sensitive message here..."></textarea>
+            
+            <button class="btn-burn" id="generate-btn" onclick="createNote()">
+                <i class="fas fa-fire"></i> Generate Burner Link
+            </button>
 
-    <div id="create-section">
-        <textarea id="secret-message" placeholder="Type your secret message here..."></textarea><br>
-        <button onclick="createNote()">Generate Burner Link</button>
-        <div id="link-box"></div>
-    </div>
-
-    <div id="read-section" class="hidden">
-        <h3 style="color: red;">WARNING: This message will self-destruct after you close this page.</h3>
-        <textarea id="decrypted-message" readonly></textarea>
-    </div>
-    <footer class="phantomix-footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3><i class="fa-solid fa-gem" style="color: #0ea5e9;"></i> Phantomix</h3>
-                <p>Building the future of digital experience. Fast, secure, and premium. Join the revolution with DiamondMax.</p>
-            </div>
-            <div class="footer-social">
-                <h4>Connect</h4>
-                <div class="social-icons">
-                    <a href="https://twitter.com/ceophantomix" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://github.com/Phantomix-dev" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://youtube.com/@phantomix_sp" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <!-- Link Generated Output -->
+            <div id="link-box">
+                <p style="margin: 0 0 10px 0; font-size: 12px; color: var(--text-muted); text-transform: uppercase; font-weight: bold;">Transmission Ready</p>
+                <input type="text" id="generatedLink" class="link-input" readonly>
+                <div class="action-row">
+                    <button class="btn-secondary" id="copyBtn" onclick="copyLink()"><i class="fas fa-copy"></i> Copy Link</button>
+                    <button class="btn-secondary" onclick="shareLink()"><i class="fas fa-share-nodes"></i> Share</button>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Phantomix. All rights reserved.</p>
-            <p>Made with <span style="color: #ef4444; animation: pulse 1.5s infinite;">❤</span> in India by Shrikant Prajapati and Ranjan Gupta</p>
-        </div>
-    </footer>
+        </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <script>
-    // 1. Supabase Connection Set Karein (Clash Fix)
-const url = "https://pekmsttmosuzcvielala.supabase.co";
-const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
-
-// library object alag hai aur hamara instance variable alag
-const clientSupabase = supabase.createClient(url, key);
-
-// 2. Note Banane Ka Function
-async function createNote() {
-    const message = document.getElementById('secret-message').value;
-    
-    if (!message) {
-        alert("Please type your message first!");
-        return;
-    }
-
-    // Client variable update kiya yahan
-    const { data, error } = await clientSupabase
-        .from('burner_notes')
-        .insert([{ message: message }])
-        .select();
-
-    if (error) {
-        console.error("Supabase Error:", error);
-        alert("Transmission failed. Error: " + error.message);
-    } else if (data && data.length > 0) {
-        const noteId = data[0].id;
-        const link = window.location.origin + window.location.pathname + "?note=" + noteId;
-        
-        // YAHAN COPY AUR SHARE KE BUTTONS ADD KIYE GAYE HAIN
-        document.getElementById('link-box').innerHTML = `
-            <p>Transmission Ready! Send this link:</p>
-            <input type="text" id="generatedLink" value="${link}" readonly style="width: 100%; padding: 8px; margin-bottom: 10px; background: #222; color: #00ff00; border: 1px solid #00ff00; border-radius: 4px;">
-            <br>
-            <div style="display: flex; gap: 10px; margin-top: 10px;">
-                <button onclick="copyLink()" id="copyBtn" style="padding: 8px 15px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; font-weight: bold;">Copy Link</button>
-                <button onclick="shareLink()" id="shareBtn" style="padding: 8px 15px; cursor: pointer; background-color: #28a745; color: white; border: none; border-radius: 4px; font-weight: bold;">Share Link</button>
+        <!-- READ NOTE SECTION (Hidden by default) -->
+        <section class="burner-box hidden" id="read-section">
+            <div class="warning-text">
+                <i class="fas fa-triangle-exclamation"></i> WARNING: This message has been permanently deleted from our servers. Once you close this page, it is gone forever.
             </div>
-        `;
-        document.getElementById('secret-message').value = "";
-    }
-}
-
-// 3. Link Check aur Self-Destruct Function
-async function checkUrlForNote() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const noteId = urlParams.get('note');
-
-    if (noteId) {
-        document.getElementById('create-section').classList.add('hidden');
-        document.getElementById('read-section').classList.remove('hidden');
-
-        // Client variable update kiya yahan bhi
-        const { data, error } = await clientSupabase
-            .from('burner_notes')
-            .select('message')
-            .eq('id', noteId)
-            .single();
-
-        if (data) {
-            document.getElementById('decrypted-message').value = data.message;
+            <textarea id="decrypted-message" class="stealth-textarea" style="color: var(--brand-primary); border-color: var(--brand-primary);" readonly></textarea>
             
-            await clientSupabase
+            <button class="btn-secondary" style="width: 100%; margin-top: 15px;" onclick="window.location.href='burner.html'">
+                <i class="fas fa-plus"></i> Create New Burner
+            </button>
+        </section>
+
+    </div>
+
+    <!-- SUPABASE ORIGINAL LOGIC -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const url = "https://pekmsttmosuzcvielala.supabase.co";
+        const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
+        const clientSupabase = supabase.createClient(url, key);
+
+        async function createNote() {
+            const message = document.getElementById('secret-message').value;
+            const btn = document.getElementById('generate-btn');
+
+            if (!message) {
+                alert("Please type a message first!");
+                return;
+            }
+
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Encrypting...';
+            btn.style.opacity = '0.7';
+
+            const { data, error } = await clientSupabase
                 .from('burner_notes')
-                .delete()
-                .eq('id', noteId);
-        } else {
-            document.getElementById('decrypted-message').value = "[ERROR] Message not found. It has already self-destructed. 💥";
-            document.getElementById('decrypted-message').style.color = "red";
+                .insert([{ message: message }])
+                .select();
+
+            btn.innerHTML = '<i class="fas fa-fire"></i> Generate Burner Link';
+            btn.style.opacity = '1';
+
+            if (error) {
+                alert("Transmission failed. Database Error.");
+            } else if (data && data.length > 0) {
+                const noteId = data[0].id;
+                const link = window.location.origin + window.location.pathname + "?note=" + noteId;
+
+                document.getElementById('generatedLink').value = link;
+                document.getElementById('link-box').style.display = 'block';
+                document.getElementById('secret-message').value = ""; // Clear text for safety
+            }
         }
-    }
-}
 
-// 4. Copy aur Share Functions (Naye Add Kiye Gaye Hain)
-function copyLink() {
-    const linkInput = document.getElementById("generatedLink");
-    navigator.clipboard.writeText(linkInput.value).then(() => {
-        const copyBtn = document.getElementById("copyBtn");
-        copyBtn.innerText = "Copied! ✔";
-        copyBtn.style.backgroundColor = "#20c997";
-        setTimeout(() => {
-            copyBtn.innerText = "Copy Link";
-            copyBtn.style.backgroundColor = "#007bff";
-        }, 2000);
-    }).catch(err => {
-        console.error("Error in copying text: ", err);
-        alert("Copy fail ho gaya, kripya manually copy karein.");
-    });
-}
+        async function checkUrlForNote() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const noteId = urlParams.get('note');
 
-function shareLink() {
-    const linkInput = document.getElementById("generatedLink").value;
-    if (navigator.share) {
-        navigator.share({
-            title: 'Secret Burner Note',
-            text: 'I sent you a self-destructing secret message. Open it carefully:',
-            url: linkInput
-        }).then(() => {
-            console.log('Successfully shared');
-        }).catch((error) => {
-            console.log('Error sharing', error);
-        });
-    } else {
-        alert("Aapka browser direct share support nahi karta. Kripya link copy karke share karein.");
-    }
-}
+            if (noteId) {
+                document.getElementById('create-section').classList.add('hidden');
+                document.getElementById('read-section').classList.remove('hidden');
+                
+                const decMessage = document.getElementById('decrypted-message');
+                decMessage.value = "Decrypting transmission...";
 
-window.onload = checkUrlForNote;
+                const { data, error } = await clientSupabase
+                    .from('burner_notes')
+                    .select('message')
+                    .eq('id', noteId)
+                    .single();
+
+                if (data) {
+                    decMessage.value = data.message;
+                    // Burn it!
+                    await clientSupabase.from('burner_notes').delete().eq('id', noteId);
+                } else {
+                    decMessage.value = "[ERROR] Transmission not found. The message has already self-destructed or the link is invalid. 💥";
+                    decMessage.style.color = "var(--status-danger)";
+                    decMessage.style.borderColor = "var(--status-danger)";
+                }
+            }
+        }
+
+        function copyLink() {
+            const linkInput = document.getElementById("generatedLink");
+            navigator.clipboard.writeText(linkInput.value).then(() => {
+                const copyBtn = document.getElementById("copyBtn");
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                copyBtn.style.background = 'rgba(16, 185, 129, 0.1)';
+                copyBtn.style.color = 'var(--status-success)';
+                copyBtn.style.borderColor = 'var(--status-success)';
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy Link';
+                    copyBtn.style = ''; // reset styles
+                }, 2000);
+            });
+        }
+
+        function shareLink() {
+            const linkInput = document.getElementById("generatedLink").value;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Secret Burner Note',
+                    text: 'I sent you a self-destructing secret message. Open it carefully:',
+                    url: linkInput
+                }).catch((error) => console.log('Error sharing', error));
+            } else {
+                alert("Your browser does not support native sharing.");
+            }
+        }
+
+        window.onload = checkUrlForNote;
     </script>
-   
+
 </body>
 </html>
