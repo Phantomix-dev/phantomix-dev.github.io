@@ -2,169 +2,272 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Void | Phantomix</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>The Void | Extreme Flow-State Editor</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/phantomix-dev/phantomix-dev.github.io/void-logo.png">
-<meta name="description" content="The Void by Phantomix. An extreme flow-state editor that destroys your text if you stop typing for 15 seconds.">
-<meta name="keywords" content="Flow state editor, writing tool, hardcore productivity, auto-delete text">
-<meta name="author" content="Shrikant Prajapati & Ranjan Gupta">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://phantomix-dev.github.io/void.html">
-<meta property="og:title" content="The Void - Extreme Editor | Phantomix">
-<meta property="og:description" content="Don't stop typing. 15 seconds of inactivity and your text is gone forever. Try the challenge.">
-<meta property="og:image" content="https://raw.githubusercontent.com/phantomix-dev/phantomix-dev.github.io/void-logo.png">
-
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://phantomix-dev.github.io/void.html">
-<meta property="twitter:title" content="The Void - Extreme Editor | Phantomix">
-<meta property="twitter:description" content="Don't stop typing. 15 seconds of inactivity and your text is gone forever. Try the challenge.">
-<meta property="twitter:image" content="https://raw.githubusercontent.com/phantomix-dev/phantomix-dev.github.io/main/void-logo.png">
+    <meta name="description" content="The Void by Phantomix. An extreme flow-state editor that destroys your text if you stop typing for 15 seconds.">
+    
     <style>
-        ::selection { background: #ef4444; color: #fff; }
+        /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
+        ::selection { background-color: #ef4444; color: #ffffff; }
+        ::-moz-selection { background-color: #ef4444; color: #ffffff; }
+
+        /* Custom Cyber Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(239, 68, 68, 0.3); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ef4444; }
+
         body { 
             background-color: #020617; 
             color: #cbd5e1; 
-            font-family: 'JetBrains Mono', monospace; 
+            font-family: 'Poppins', sans-serif; 
             margin: 0; 
-            padding: 40px 10%; 
+            padding: 0;
             display: flex; 
             flex-direction: column; 
             height: 100vh; 
-            box-sizing: border-box; 
             overflow: hidden; 
+            transition: background 0.3s ease;
         }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px dashed #334155;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+        /* GLOBAL NAVBAR */
+        .phantomix-navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; background: rgba(2, 6, 23, 0.9);
+            border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 1000;
+        }
+        .nav-logo { font-size: 18px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; gap: 8px; }
+        .nav-btn {
+            background: rgba(14, 165, 233, 0.1); color: #0ea5e9; padding: 6px 15px;
+            border: 1px solid #0ea5e9; border-radius: 6px; text-decoration: none;
+            font-size: 13px; font-weight: 600; transition: all 0.3s ease;
+        }
+        .nav-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+
+        /* Timer Pressure Bar */
+        .pressure-bar-container {
+            width: 100%; height: 4px; background: rgba(255,255,255,0.05); position: relative;
+        }
+        .pressure-bar {
+            height: 100%; width: 100%; background: #10b981;
+            box-shadow: 0 0 15px #10b981; transition: width 0.1s linear, background 0.3s, box-shadow 0.3s;
         }
 
-        .brand { color: #64748b; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
-        .brand span { color: #0ea5e9; font-weight: bold; }
+        /* Workspace Header */
+        .workspace-header {
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+        }
+        .void-title { font-size: 24px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
+        .warning-badge {
+            background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444; padding: 8px 12px; font-size: 11px; font-weight: 700;
+            border-radius: 6px; text-transform: uppercase; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        #status { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: bold; color: #64748b; transition: 0.3s; }
+
+        /* The Editor */
+        .editor-container {
+            flex-grow: 1; padding: 0 5%; display: flex; flex-direction: column; position: relative;
+        }
         
-        h1 { color: #f8fafc; margin: 0; font-size: 28px; text-transform: uppercase; letter-spacing: 4px; }
-        
-        .warning-box {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #ef4444;
-            padding: 10px 15px;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 6px;
-            text-transform: uppercase;
-        }
-
-        .status-indicator { font-weight: bold; font-size: 14px; transition: color 0.3s ease; }
-
         textarea { 
-            flex-grow: 1; 
-            background: transparent; 
-            border: none; 
-            color: #f8fafc; 
-            font-family: inherit; 
-            font-size: 18px; 
-            line-height: 1.6;
-            outline: none; 
-            resize: none; 
-            transition: color 1.5s ease; 
-            width: 100%; 
+            flex-grow: 1; background: transparent; border: none; 
+            color: #f8fafc; font-family: 'JetBrains Mono', monospace; 
+            font-size: 20px; line-height: 1.8; outline: none; resize: none; 
+            transition: color 0.5s ease, text-shadow 0.5s ease; width: 100%; 
+            padding: 20px 0;
         }
+        textarea::placeholder { color: rgba(100, 116, 139, 0.3); font-weight: 300; }
         
-        textarea::placeholder { color: #334155; }
+        /* The Danger Phase Animations */
+        .danger-mode { 
+            color: #ef4444 !important; 
+            text-shadow: 0 0 15px rgba(239,68,68,0.6); 
+        }
+        body.danger-bg { background-color: #1a0505; }
         
-        /* The Danger Phase */
-        .danger-mode { color: #ef4444 !important; text-shadow: 0 0 10px rgba(239,68,68,0.5); }
+        /* Footer Stats */
+        .workspace-footer {
+            padding: 15px 5%; border-top: 1px dashed rgba(255,255,255,0.05);
+            display: flex; justify-content: space-between; align-items: center;
+            background: #020617;
+        }
+        .word-count { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #64748b; }
         
-        .word-count { text-align: right; font-size: 12px; color: #64748b; margin-top: 10px; }
+        .btn-save {
+            background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid #10b981;
+            padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;
+            transition: 0.3s; font-family: 'Poppins', sans-serif;
+        }
+        .btn-save:hover { background: #10b981; color: #020617; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
+        }
+        .shake-active { animation: shake 0.2s infinite; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div>
-            <div class="brand">Built by <span>Phantomix</span></div>
-            <h1>The Void</h1>
-        </div>
-        <div class="warning-box">
-            ⚠️ WARNING: KEEP TYPING.<br>STOPPING FOR 15 SECONDS WILL PERMANENTLY DESTROY YOUR TEXT.
-        </div>
+    <!-- Phantomix Navbar -->
+    <nav class="phantomix-navbar">
+        <a href="index.html" class="nav-logo">
+            <i class="fa-solid fa-gem" style="color: #0ea5e9;"></i> PHANTOMIX
+        </a>
+        <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Hub</a>
+    </nav>
+
+    <!-- Visual Pressure Bar -->
+    <div class="pressure-bar-container">
+        <div class="pressure-bar" id="pressure-bar"></div>
     </div>
 
-    <div id="status" class="status-indicator" style="color: #64748b;">WAITING FOR INPUT...</div>
+    <div class="workspace-header">
+        <div>
+            <h1 class="void-title">THE VOID</h1>
+            <div id="status">WAITING FOR INITIALIZATION...</div>
+        </div>
+        <div class="warning-badge">
+            <i class="fas fa-skull"></i> 15 SECONDS IDLE = DATA PURGE
+        </div>
+    </div>
     
-    <textarea id="editor" placeholder="Start typing your ideas... Do not stop."></textarea>
+    <div class="editor-container">
+        <textarea id="editor" placeholder="Start typing your thoughts. Do not stop. The void is hungry..." spellcheck="false"></textarea>
+    </div>
     
-    <div id="wordCount" class="word-count">Words: 0</div>
+    <div class="workspace-footer">
+        <div id="wordCount" class="word-count">WORDS: 0 | CHARS: 0</div>
+        <button class="btn-save" onclick="saveText()"><i class="fas fa-download"></i> EXPORT SURVIVED TEXT</button>
+    </div>
 
     <script>
         const editor = document.getElementById('editor');
         const status = document.getElementById('status');
         const wordCountDisplay = document.getElementById('wordCount');
+        const pressureBar = document.getElementById('pressure-bar');
         
-        let warningTimer;
-        let destroyTimer;
+        let lastTypedTime = 0;
+        let isTyping = false;
+        let trackerInterval;
+        const MAX_IDLE_TIME = 15000; // 15 seconds
+        const DANGER_TIME = 7000;    // 7 seconds
 
-        // Count words
         function updateWordCount() {
             const text = editor.value.trim();
             const words = text === "" ? 0 : text.split(/\s+/).length;
-            wordCountDisplay.innerText = `Words: ${words}`;
+            const chars = text.length;
+            wordCountDisplay.innerText = `WORDS: ${words} | CHARS: ${chars}`;
         }
 
-        // Timer Logic
-        function resetTimers() {
-            clearTimeout(warningTimer);
-            clearTimeout(destroyTimer);
+        function saveText() {
+            const text = editor.value.trim();
+            if(!text) return alert("The void is empty. Nothing to save.");
             
+            const blob = new Blob([text], { type: "text/plain" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "Void_Survivor_Draft.txt";
+            link.click();
+        }
+
+        function destroyData() {
+            editor.value = "";
+            isTyping = false;
             editor.classList.remove('danger-mode');
+            document.body.classList.remove('danger-bg');
+            editor.classList.remove('shake-active');
             
-            if (editor.value.trim() !== "") {
-                status.innerText = "🟢 FLOW STATE ACTIVE";
-                status.style.color = "#10b981";
-
-                // 7 seconds of inactivity -> Warning
-                warningTimer = setTimeout(() => {
-                    editor.classList.add('danger-mode');
-                    status.innerText = "🔴 CRITICAL: TYPE NOW OR LOSE EVERYTHING!";
-                    status.style.color = "#ef4444";
-                }, 7000); 
-
-                // 15 seconds of inactivity -> Boom!
-                destroyTimer = setTimeout(() => {
-                    editor.value = "";
-                    editor.classList.remove('danger-mode');
-                    status.innerText = "💀 DATA DESTROYED. START OVER.";
-                    status.style.color = "#64748b";
-                    updateWordCount();
-                }, 15000);
-            } else {
-                status.innerText = "WAITING FOR INPUT...";
-                status.style.color = "#64748b";
-            }
+            status.innerText = "💀 DATA PURGED TO THE VOID. START AGAIN.";
+            status.style.color = "#ef4444";
+            pressureBar.style.width = "100%";
+            pressureBar.style.background = "#64748b";
+            pressureBar.style.boxShadow = "none";
             
             updateWordCount();
+            clearInterval(trackerInterval);
         }
 
-        editor.addEventListener('input', resetTimers);
+        function trackFlow() {
+            if (!isTyping) return;
+
+            const now = Date.now();
+            const idleTime = now - lastTypedTime;
+            const timeLeft = MAX_IDLE_TIME - idleTime;
+            
+            // Calculate Progress Bar Width (100% to 0%)
+            const percentage = Math.max(0, (timeLeft / MAX_IDLE_TIME) * 100);
+            pressureBar.style.width = `${percentage}%`;
+
+            if (idleTime >= MAX_IDLE_TIME) {
+                // Time's Up!
+                destroyData();
+            } 
+            else if (idleTime >= DANGER_TIME) {
+                // Danger Zone (Red)
+                editor.classList.add('danger-mode');
+                document.body.classList.add('danger-bg');
+                editor.classList.add('shake-active');
+                
+                pressureBar.style.background = "#ef4444";
+                pressureBar.style.boxShadow = "0 0 15px #ef4444";
+                
+                status.innerText = `🔴 CRITICAL WARNING: ${Math.ceil(timeLeft/1000)}s BEFORE PURGE!`;
+                status.style.color = "#ef4444";
+            } 
+            else {
+                // Safe Zone (Green)
+                editor.classList.remove('danger-mode');
+                document.body.classList.remove('danger-bg');
+                editor.classList.remove('shake-active');
+                
+                pressureBar.style.background = "#10b981";
+                pressureBar.style.boxShadow = "0 0 15px #10b981";
+                
+                status.innerText = "🟢 NEURAL FLOW LINKED. KEEP GOING.";
+                status.style.color = "#10b981";
+            }
+        }
+
+        editor.addEventListener('input', () => {
+            lastTypedTime = Date.now();
+            updateWordCount();
+            
+            if (!isTyping && editor.value.trim() !== "") {
+                isTyping = true;
+                clearInterval(trackerInterval);
+                trackerInterval = setInterval(trackFlow, 50); // High refresh rate for smooth bar
+            }
+            
+            // Reset to Safe visual immediately on keystroke
+            if(isTyping) {
+                editor.classList.remove('danger-mode');
+                document.body.classList.remove('danger-bg');
+                editor.classList.remove('shake-active');
+                pressureBar.style.width = "100%";
+                pressureBar.style.background = "#10b981";
+                pressureBar.style.boxShadow = "0 0 15px #10b981";
+                status.innerText = "🟢 NEURAL FLOW LINKED. KEEP GOING.";
+                status.style.color = "#10b981";
+            }
+        });
     </script>
 
 </body>
