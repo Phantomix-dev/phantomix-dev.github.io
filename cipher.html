@@ -2,228 +2,274 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Cipher | Phantomix</title>
+    <title>Word Cipher | Phantomix Decryption Terminal</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="icon" type="image/png" href="./wordcipher-logo.png">
+    <meta name="description" content="Decrypt the mainframe nodes. Train your brain with the Phantomix Word Cipher cyber game.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
         /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
-        ::selection { background-color: #0ea5e9; color: #ffffff; }
-        ::-moz-selection { background-color: #0ea5e9; color: #ffffff; }
+        ::selection { background-color: var(--brand-primary); color: #ffffff; }
+        ::-moz-selection { background-color: var(--brand-primary); color: #ffffff; }
 
         /* ✨ PREMIUM FADE-IN ANIMATION */
-        body { animation: appLoad 0.8s ease-out forwards; }
+        body {
+            animation: appLoad 0.8s ease-out forwards;
+            margin: 0; padding: 0; padding-top: 90px;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-base); color: var(--text-primary);
+            text-align: center; overflow-x: hidden; position: relative;
+            display: flex; flex-direction: column; min-height: 100vh;
+        }
+
         @keyframes appLoad {
             0% { opacity: 0; transform: translateY(15px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        body {
-            margin: 0; padding: 0; padding-top: 90px;
-            font-family: 'Poppins', sans-serif;
-            background-color: #020617; 
-            color: #ffffff;
-            text-align: center; overflow-x: hidden;
-            /* Premium Phantomix Background Gradient */
-            background-image: radial-gradient(circle at top, rgba(14,165,233,0.1) 0%, transparent 50%);
+        /* Custom Cyber Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary); }
+
+        /* PREMIUM ANIMATED GLOWING BACKGROUND */
+        .bg-animation {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; overflow: hidden; background: #020617;
+        }
+        .glow-shape {
+            position: absolute; filter: blur(80px); opacity: 0.3;
+            animation: float 10s infinite alternate ease-in-out; border-radius: 50%;
+        }
+        .shape1 { width: 400px; height: 400px; background: #0ea5e9; top: -10%; left: -10%; animation-duration: 12s; }
+        .shape2 { width: 500px; height: 500px; background: #8b5cf6; bottom: -20%; right: -10%; animation-duration: 15s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-50px) scale(1.1); }
         }
 
-        /* --- Phantomix Premium Navbar --- */
+        /* GLOBAL NAVBAR */
         .phantomix-navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 70px;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; box-sizing: border-box;
-            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(14, 165, 233, 0.2); z-index: 1000;
+            padding: 0 5%; background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--surface-border);
+            z-index: 1000; box-sizing: border-box;
         }
-        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; letter-spacing: 1px; }
-        .back-btn {
-            background: rgba(14, 165, 233, 0.1); color: #0ea5e9;
-            padding: 8px 18px; border: 1px solid #0ea5e9; border-radius: 6px;
-            text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.3s ease;
+        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; gap: 8px; }
+        .nav-btn {
+            background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); padding: 8px 18px;
+            border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); text-decoration: none;
+            font-size: 14px; font-weight: 600; transition: all 0.3s ease;
         }
-        .back-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+        .nav-btn:hover { background: var(--brand-primary); color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
 
-        /* --- Game Container (Phantomix Glassmorphism) --- */
-        .game-wrapper { max-width: 650px; margin: 40px auto; padding: 0 20px; }
+        /* Workspace Layout */
+        .content-wrapper { flex: 1; display: flex; justify-content: center; align-items: flex-start; padding: 20px; }
         
-        .game-header { margin-bottom: 30px; }
-        .game-header h1 {
-            color: #ffffff; font-family: 'Poppins', sans-serif; font-weight: 800;
-            font-size: 32px; margin: 0 0 5px 0; display: flex; justify-content: center; align-items: center; gap: 10px;
+        .game-workspace {
+            width: 100%; max-width: 650px; background: var(--surface-main); 
+            border: 1px solid var(--surface-border); border-radius: var(--radius-lg); 
+            padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            text-align: center; position: relative; z-index: 10; overflow: hidden;
         }
-        .game-header h1 i { color: #10b981; }
-        .game-header p { color: #94a3b8; font-size: 14px; margin: 0; font-family: 'Courier Prime', monospace; }
 
-        .cipher-box {
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid #0ea5e9; border-radius: 16px;
-            padding: 40px 30px; position: relative; overflow: hidden;
-            box-shadow: 0 10px 50px rgba(14, 165, 233, 0.15);
-            backdrop-filter: blur(10px);
-        }
-        
-        /* Top Glowing Border Line */
-        .cipher-box::before {
+        /* Top Glowing Bar */
+        .game-workspace::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-            background: linear-gradient(90deg, #0ea5e9, #8b5cf6, #0ea5e9);
+            background: linear-gradient(90deg, var(--brand-primary), #8b5cf6, var(--brand-primary));
+            background-size: 200% auto; animation: shine 3s linear infinite;
         }
+        @keyframes shine { to { background-position: 200% center; } }
 
+        /* Stats Bar */
         .stats-bar {
-            display: flex; justify-content: space-between;
-            font-family: 'Courier Prime', monospace; font-size: 16px;
-            color: #cbd5e1; margin-bottom: 25px;
-            border-bottom: 1px dashed rgba(51, 65, 85, 0.8); padding-bottom: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(2, 6, 23, 0.6); border: 1px dashed var(--surface-border);
+            padding: 15px 20px; border-radius: var(--radius-sm); margin-bottom: 30px;
+            font-family: 'Fira Code', monospace; font-size: 15px; color: var(--text-muted);
         }
-        .timer { color: #ef4444; font-weight: bold; animation: pulse 1.5s infinite; }
-        .score { color: #0ea5e9; font-weight: bold; }
+        .timer-box { display: flex; align-items: center; gap: 10px; }
+        .timer-val { color: var(--status-danger); font-weight: 700; font-size: 18px; }
+        .score-val { color: var(--brand-primary); font-weight: 700; font-size: 18px; }
 
-        .scrambled-word {
-            font-size: 42px; font-weight: 700; letter-spacing: 12px;
-            margin: 10px 0 20px; color: #10b981;
-            font-family: 'Courier Prime', monospace; text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        /* Cipher Display */
+        .cipher-display {
+            background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 30px 20px; border-radius: var(--radius-md); margin-bottom: 25px;
         }
+        .scrambled-word {
+            font-size: 46px; font-weight: 700; letter-spacing: 12px;
+            color: var(--status-success); font-family: 'Fira Code', monospace; 
+            text-transform: uppercase; text-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+            word-wrap: break-word; line-height: 1.2;
+        }
+
+        /* Input Area */
+        .input-group { display: flex; gap: 15px; margin-bottom: 20px; justify-content: center; }
+        
+        .cyber-input {
+            flex: 1; padding: 18px 20px; background: rgba(2, 6, 23, 0.8);
+            border: 1px solid var(--surface-border); color: var(--text-primary);
+            border-radius: var(--radius-sm); font-family: 'Fira Code', monospace;
+            font-size: 20px; text-transform: uppercase; outline: none; transition: 0.3s;
+            text-align: center; letter-spacing: 3px; font-weight: bold;
+        }
+        .cyber-input:focus { border-color: var(--brand-primary); box-shadow: 0 0 20px rgba(14, 165, 233, 0.2); }
+        .cyber-input:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Buttons */
+        .btn-action {
+            padding: 0 25px; font-size: 15px; font-weight: 700; border-radius: var(--radius-sm);
+            cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--brand-primary), #3b82f6); color: #fff; border: none;
+        }
+        .btn-submit:hover:not(:disabled) { box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); transform: translateY(-2px); }
+        .btn-submit:disabled { background: var(--surface-border); color: var(--text-muted); cursor: not-allowed; }
+
+        .btn-hint {
+            background: rgba(245, 158, 11, 0.1); color: var(--status-warning);
+            border: 1px solid var(--status-warning); padding: 12px 20px; width: 100%;
+            margin-bottom: 20px;
+        }
+        .btn-hint:hover:not(:disabled) { background: var(--status-warning); color: #020617; }
+        .btn-hint:disabled { opacity: 0.5; cursor: not-allowed; }
 
         .hint-text {
-            color: #8b5cf6; font-size: 14px; font-weight: 600;
-            min-height: 20px; margin-bottom: 25px; font-family: 'Courier Prime', monospace;
+            color: var(--status-warning); font-size: 13px; font-family: 'Fira Code', monospace;
+            min-height: 20px; margin-bottom: 20px; font-weight: 600;
         }
 
-        .input-group {
-            display: flex; gap: 10px; margin: 0 auto; flex-wrap: wrap; justify-content: center;
-        }
-        .guess-input {
-            width: 100%; padding: 15px; border-radius: 8px; box-sizing: border-box;
-            background: rgba(2, 6, 23, 0.8); border: 1px solid rgba(51, 65, 85, 0.8);
-            color: #ffffff; font-size: 20px; font-family: 'Courier Prime', monospace; text-transform: uppercase;
-            text-align: center; outline: none; transition: all 0.3s; margin-bottom: 15px;
-            letter-spacing: 2px;
-        }
-        .guess-input:focus { border-color: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.3); }
-        
-        .action-btn {
-            background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white;
-            border: none; padding: 14px 25px; border-radius: 8px;
-            font-weight: 700; font-family: 'Poppins', sans-serif;
-            cursor: pointer; transition: all 0.3s; font-size: 15px; flex: 1; min-width: 120px;
-        }
-        .action-btn:hover { box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4); transform: translateY(-2px); }
-        .action-btn:disabled { background: #334155; cursor: not-allowed; box-shadow: none; transform: none; color: #94a3b8; }
-        
-        .hint-btn { background: rgba(30, 41, 59, 0.8); border: 1px solid #334155; color: #cbd5e1; }
-        .hint-btn:hover { background: #334155; box-shadow: 0 0 15px rgba(51, 65, 85, 0.5); }
-        .hint-btn:disabled { opacity: 0.5; }
-
-        .message { margin-top: 25px; font-size: 15px; font-weight: 600; height: 20px; font-family: 'Courier Prime', monospace; letter-spacing: 1px;}
-        .correct { color: #10b981; }
-        .wrong { color: #ef4444; animation: shake 0.4s; }
+        .feedback-msg { font-size: 14px; font-weight: 700; font-family: 'Fira Code', monospace; height: 20px; }
+        .correct { color: var(--status-success); }
+        .wrong { color: var(--status-danger); animation: shake 0.4s; }
 
         @keyframes shake {
-            0% { transform: translateX(0); }
+            0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
+            75% { transform: translateX(5px); }
         }
 
+        /* Game Over Modal */
         .game-over-screen {
-            display: none; position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; background: rgba(2, 6, 23, 0.95);
-            flex-direction: column; justify-content: center; align-items: center; z-index: 10;
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(5px);
+            flex-direction: column; justify-content: center; align-items: center; z-index: 20;
+            border-radius: var(--radius-lg);
         }
-        .game-over-screen h2 { color: #ef4444; font-family: 'Courier Prime', monospace; font-size: 28px; margin-bottom: 10px; }
-        .final-score { font-size: 55px; font-weight: bold; color: #0ea5e9; margin: 10px 0 30px; text-shadow: 0 0 20px rgba(14, 165, 233, 0.4); }
+        .game-over-screen h2 { color: var(--status-danger); font-family: 'Fira Code', monospace; font-size: 32px; margin-bottom: 10px; }
+        .final-score { font-size: 60px; font-weight: 800; color: var(--brand-primary); margin: 10px 0 30px; text-shadow: 0 0 30px rgba(14, 165, 233, 0.4); }
 
-        /* 🎚️ CUSTOM CYBER SCROLLBAR */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.5); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(14, 165, 233, 1); }
-        
-        /* Phantomix Standard Footer */
-        .phantomix-footer {
-            background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2);
-            padding: 50px 5% 20px 5%; margin-top: 60px; font-family: 'Poppins', sans-serif; text-align: left;
+        @media (max-width: 600px) {
+            .phantomix-navbar { padding: 0 15px; height: 60px; }
+            .nav-logo { font-size: 16px; }
+            .nav-btn { padding: 6px 12px; font-size: 12px; }
+            .input-group { flex-direction: column; }
+            .btn-action { padding: 16px; }
+            .scrambled-word { font-size: 32px; letter-spacing: 8px; }
         }
-        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; max-width: 1200px; margin-left: auto; margin-right: auto; }
-        .footer-brand h3 { color: white; font-size: 24px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .footer-brand p { color: #94a3b8; font-size: 14px; line-height: 1.6; max-width: 300px; }
-        .footer-social h4 { color: white; margin-bottom: 15px; font-size: 18px; }
-        .social-icons { display: flex; gap: 15px; }
-        .social-icons a {
-            color: #94a3b8; font-size: 20px; background: rgba(255, 255, 255, 0.05);
-            padding: 10px; border-radius: 8px; transition: all 0.3s ease;
-            display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
-        }
-        .social-icons a:hover { color: white; background: #0ea5e9; transform: translateY(-5px); box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4); }
-        .footer-bottom {
-            border-top: 1px solid rgba(51, 65, 85, 0.5); padding-top: 20px;
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
-            color: #64748b; font-size: 13px; max-width: 1200px; margin-left: auto; margin-right: auto;
-        }
-        @media (max-width: 768px) { .footer-bottom { flex-direction: column; text-align: center; justify-content: center; } }
+
+        /* Footer */
+        .phantomix-footer { background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2); padding: 40px 5% 20px 5%; margin-top: auto; font-family: 'Poppins', sans-serif; text-align: left; width: 100%; box-sizing: border-box;}
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 30px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-brand h3 { color: white; font-size: 22px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .footer-brand p { color: #94a3b8; font-size: 14px; line-height: 1.6; margin: 0; max-width: 300px; }
+        .footer-social h4 { color: white; margin-bottom: 12px; font-size: 16px; }
+        .social-icons { display: flex; gap: 12px; }
+        .social-icons a { color: #94a3b8; font-size: 18px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; text-decoration: none; }
+        .social-icons a:hover { color: white; background: #0ea5e9; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4); }
+        .footer-bottom { border-top: 1px solid rgba(51, 65, 85, 0.4); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; color: #64748b; font-size: 13px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-bottom p { margin: 0; }
     </style>
 </head>
 <body>
 
+    <div class="bg-animation">
+        <div class="glow-shape shape1"></div>
+        <div class="glow-shape shape2"></div>
+    </div>
+
+    <!-- GLOBAL NAVBAR -->
     <nav class="phantomix-navbar">
-        <a href="apps.html" class="nav-logo">
-            <i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i> Phantomix
+        <a href="index.html" class="nav-logo">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
         </a>
-        <a href="apps.html" class="back-btn"><i class="fas fa-arrow-left"></i> App Hub</a>
+        <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Back to Hub</a>
     </nav>
 
-    <div class="game-wrapper">
-        <div class="game-header">
-            <h1><i class="fa-solid fa-terminal"></i> WORD CIPHER</h1>
-            <p>// DECRYPT THE MAINFRAME NODES //</p>
-        </div>
-
-        <div class="cipher-box" id="game-box">
-            <div class="stats-bar">
-                <div>TIME: <span class="timer" id="time-left">60s</span></div>
-                <div>SCORE: <span class="score" id="score-val">0</span></div>
+    <div class="content-wrapper">
+        <div class="game-workspace">
+            
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h1 style="font-size: 32px; margin-bottom: 5px;"><i class="fas fa-terminal" style="color: var(--status-success); margin-right: 10px;"></i>Word Cipher</h1>
+                <p style="color: var(--text-muted); font-size: 13px; font-family: 'Fira Code', monospace;">// DECRYPT THE MAINFRAME NODES //</p>
             </div>
 
-            <div class="scrambled-word" id="scrambled-text">START</div>
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="timer-box">
+                    <i class="fas fa-stopwatch"></i> TIME: <span class="timer-val" id="time-left">60s</span>
+                </div>
+                <div>SCORE: <span class="score-val" id="score-val">0</span></div>
+            </div>
+
+            <!-- Game Arena -->
+            <div class="cipher-display">
+                <div class="scrambled-word" id="scrambled-text">SYSTEM</div>
+            </div>
+
             <div class="hint-text" id="hint-display"></div>
 
+            <button class="btn-action btn-hint" id="hint-btn" onclick="showHint()" disabled>
+                <i class="fas fa-lightbulb"></i> REQUEST HINT (-2 PTS)
+            </button>
+
             <div class="input-group">
-                <input type="text" id="user-guess" class="guess-input" placeholder="Enter decrypted word..." autocomplete="off" disabled>
-                <button class="action-btn hint-btn" id="hint-btn" onclick="showHint()" disabled><i class="fas fa-lightbulb"></i> HINT</button>
-                <button class="action-btn" id="submit-btn" onclick="startGame()">INITIALIZE</button>
+                <input type="text" id="user-guess" class="cyber-input" placeholder="ENTER DECRYPTED WORD..." autocomplete="off" disabled>
+                <button class="btn-action btn-submit" id="submit-btn" onclick="startGame()">INITIALIZE</button>
             </div>
 
-            <div class="message" id="feedback-msg"></div>
+            <div class="feedback-msg" id="feedback-msg"></div>
 
+            <!-- Game Over Overlay -->
             <div class="game-over-screen" id="game-over">
                 <h2>CONNECTION SEVERED</h2>
-                <div style="color: #94a3b8; font-family: 'Poppins', sans-serif;">Final Decryption Score</div>
+                <div style="color: var(--text-muted); font-family: 'Fira Code', monospace;">FINAL DECRYPTION SCORE</div>
                 <div class="final-score" id="final-score-val">0</div>
-                <button class="action-btn" style="padding: 15px 30px;" onclick="startGame()"><i class="fas fa-power-off"></i> REBOOT SYSTEM</button>
+                <button class="btn-action btn-submit" style="padding: 16px 35px;" onclick="startGame()">
+                    <i class="fas fa-power-off"></i> REBOOT SYSTEM
+                </button>
             </div>
+
         </div>
     </div>
 
+    <!-- FOOTER -->
     <footer class="phantomix-footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <h3><i class="fa-solid fa-gem" style="color: #0ea5e9;"></i> Phantomix</h3>
+                <h3><i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> Phantomix</h3>
                 <p>Building the future of digital experience. Fast, secure, and premium. Join the revolution with DiamondMax.</p>
             </div>
             <div class="footer-social">
@@ -237,7 +283,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Phantomix. All rights reserved.</p>
-            <p>Made with <span style="color: #ef4444; animation: pulse 1.5s infinite;">❤</span> in India by Shrikant Prajapati and Ranjan Gupta</p>
+            <p>Made with <span style="color: var(--status-danger); animation: pulse 1.5s infinite;">❤</span> in India by Shrikant Prajapati and Ranjan Gupta</p>
         </div>
     </footer>
 
@@ -257,7 +303,9 @@
             { word: "DIAMOND", hint: "The hardest natural substance / Max reward" },
             { word: "VAULT", hint: "A highly secure place to store passwords" },
             { word: "CYBER", hint: "Relating to computers and virtual reality" },
-            { word: "CODE", hint: "Instructions written by a programmer" }
+            { word: "CODE", hint: "Instructions written by a programmer" },
+            { word: "ALGORITHM", hint: "A set of rules for solving a problem" },
+            { word: "FIREWALL", hint: "A network security system" }
         ];
 
         let currentWord = "";
@@ -298,14 +346,15 @@
             }
             
             scrambledText.innerText = scrambled;
-            hintDisplay.innerText = ""; // Hide hint initially
+            hintDisplay.innerText = ""; 
             guessInput.value = "";
             guessInput.focus();
+            guessInput.style.borderColor = "var(--surface-border)";
         }
 
         function showHint() {
             if(isPlaying) {
-                hintDisplay.innerText = "> HINT: " + currentHint;
+                hintDisplay.innerHTML = "<i class='fas fa-info-circle'></i> HINT: " + currentHint;
                 score = Math.max(0, score - 2); // Penalty for hint
                 scoreDisplay.innerText = score;
             }
@@ -317,7 +366,7 @@
             timeLeft = 60;
             scoreDisplay.innerText = score;
             timeDisplay.innerText = timeLeft + "s";
-            timeDisplay.style.color = "#ef4444";
+            timeDisplay.style.color = "var(--status-danger)";
             
             gameOverScreen.style.display = "none";
             guessInput.disabled = false;
@@ -335,6 +384,8 @@
                 
                 if (timeLeft <= 10) {
                     timeDisplay.style.animation = "shake 0.5s infinite";
+                } else {
+                    timeDisplay.style.animation = "none";
                 }
                 
                 if (timeLeft <= 0) {
@@ -352,11 +403,13 @@
                 score += 10;
                 scoreDisplay.innerText = score;
                 feedbackMsg.innerText = "[+] ACCESS GRANTED +10";
-                feedbackMsg.className = "message correct";
-                loadNewWord();
+                feedbackMsg.className = "feedback-msg correct";
+                guessInput.style.borderColor = "var(--status-success)";
+                setTimeout(() => { loadNewWord(); }, 400); // Slight delay for visual feedback
             } else {
                 feedbackMsg.innerText = "[-] ACCESS DENIED";
-                feedbackMsg.className = "message wrong";
+                feedbackMsg.className = "feedback-msg wrong";
+                guessInput.style.borderColor = "var(--status-danger)";
                 guessInput.value = "";
                 guessInput.focus();
             }
