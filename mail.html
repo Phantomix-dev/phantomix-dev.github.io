@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Burner Mail Terminal | Free Disposable Temporary Email Inbox</title>
+    <title>Burner Mail Terminal | Free Disposable Temporary Email Inbox</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -14,99 +22,173 @@
     <meta property="og:description" content="Deploy a temporary disposable mailbox and intercept verification codes securely.">
     <meta property="og:url" content="https://phantomix-dev.github.io/mail.html">
     <meta property="og:image" content="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bdiamondmax-logo.png">
-    <meta name="theme-color" content="#0B1221">
+    <meta name="theme-color" content="#020617">
+
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
-        ::selection {
-            background-color: #0ea5e9; /* Neon Blue */
-            color: #ffffff; /* White Text */
-        }
-        
-        /* Firefox browser ke liye */
-        ::-moz-selection {
-            background-color: #0ea5e9;
-            color: #ffffff;
-        }
+        ::selection { background-color: var(--brand-primary); color: #ffffff; }
+        ::-moz-selection { background-color: var(--brand-primary); color: #ffffff; }
+
         /* ✨ PREMIUM FADE-IN ANIMATION */
         body {
             animation: appLoad 0.8s ease-out forwards;
+            margin: 0; padding: 0; padding-top: 90px;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-base); color: var(--text-primary);
+            text-align: center; overflow-x: hidden; position: relative;
         }
 
         @keyframes appLoad {
-            0% {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-        :root {
-            --bg-main: #0B1221;
-            --card-bg: #151E32;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
+
+        /* Custom Cyber Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary); }
+
+        /* PREMIUM ANIMATED GLOWING BACKGROUND */
+        .bg-animation {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; overflow: hidden; background: #020617;
         }
-        body { background-color: var(--bg-main); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px 15px; display: flex; justify-content: center; }
-        .terminal-container { width: 100%; max-width: 900px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); text-align: center; box-sizing: border-box; }
-        h1 { font-size: 1.6em; margin-top: 0; margin-bottom: 5px; font-weight: 700; }
-        p { color: var(--text-muted); font-size: 0.95em; margin-bottom: 20px; }
-        .info-bar { background: rgba(59, 130, 246, 0.1); color: #60A5FA; border: 1px solid rgba(59, 130, 246, 0.3); padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9em; text-align: left; line-height: 1.5; }
-        iframe { width: 100%; height: 600px; border: 1px solid var(--border-color); background: #fff; border-radius: 8px; }
-    /* 🎚️ CUSTOM CYBER SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 8px; /* Scrollbar ki motai */
+        .glow-shape {
+            position: absolute; filter: blur(80px); opacity: 0.3;
+            animation: float 10s infinite alternate ease-in-out; border-radius: 50%;
         }
-        
-        ::-webkit-scrollbar-track {
-            background: #0f172a; /* Dark background */
+        .shape1 { width: 400px; height: 400px; background: #0ea5e9; top: -10%; left: -10%; animation-duration: 12s; }
+        .shape2 { width: 500px; height: 500px; background: #8b5cf6; bottom: -20%; right: -10%; animation-duration: 15s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-50px) scale(1.1); }
         }
-        
-        ::-webkit-scrollbar-thumb {
-            background: rgba(14, 165, 233, 0.5); /* Neon Blue semi-transparent */
-            border-radius: 10px;
+
+        /* GLOBAL NAVBAR */
+        .phantomix-navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--surface-border);
+            z-index: 1000; box-sizing: border-box;
         }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(14, 165, 233, 1); /* Hover par full bright Neon Blue */
+        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; gap: 8px; }
+        .nav-btn {
+            background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); padding: 8px 18px;
+            border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); text-decoration: none;
+            font-size: 14px; font-weight: 600; transition: all 0.3s ease;
+        }
+        .nav-btn:hover { background: var(--brand-primary); color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+
+        /* Workspace Layout */
+        .app-layout { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 15px 20px; border-radius: var(--radius-sm); margin-bottom: 25px; text-align: left;
+            display: flex; align-items: center; gap: 15px; box-shadow: 0 5px 20px rgba(245, 158, 11, 0.1);
+        }
+        .warning-icon { font-size: 24px; color: var(--status-warning); }
+        .warning-text { margin: 0; color: var(--text-primary); font-size: 13px; line-height: 1.5; font-family: 'Fira Code', monospace; }
+
+        /* Secure Sandbox Iframe Container */
+        .sandbox-container {
+            background: var(--surface-main); border: 1px solid var(--surface-border);
+            border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            position: relative; display: flex; flex-direction: column;
+        }
+
+        /* Terminal Window Header */
+        .sandbox-header {
+            background: rgba(2, 6, 23, 0.9); border-bottom: 1px solid var(--surface-border);
+            padding: 12px 20px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .sandbox-title {
+            color: var(--status-success); font-family: 'Fira Code', monospace; font-size: 12px; font-weight: 700;
+            display: flex; align-items: center; gap: 8px; margin: 0; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .status-dot {
+            width: 8px; height: 8px; background: var(--status-success); border-radius: 50%;
+            box-shadow: 0 0 10px var(--status-success); animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0.5; transform: scale(0.9); }
+        }
+
+        /* Iframe Proper Sizing */
+        .sandbox-iframe {
+            width: 100%; height: 75vh; min-height: 600px; border: none; background: #ffffff;
+            display: block; /* Removes bottom whitespace */
+        }
+
+        @media (max-width: 600px) {
+            .phantomix-navbar { padding: 0 15px; height: 60px; }
+            .nav-logo { font-size: 16px; }
+            .nav-btn { padding: 6px 12px; font-size: 12px; }
+            .warning-box { align-items: flex-start; }
+            .sandbox-iframe { height: 80vh; }
         }
     </style>
 </head>
 <body>
-    <style>
-    body { padding-top: 80px; } /* Navbar ke liye space */
-    .phantomix-top-nav {
-        position: fixed; top: 0; left: 0; width: 100%; height: 60px;
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 0 20px; box-sizing: border-box;
-        background: rgba(11, 18, 33, 0.85); backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(59, 130, 246, 0.2); z-index: 9999;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    .nav-brand { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .nav-brand span { color: #3B82F6; }
-    .nav-back {
-        background: rgba(59, 130, 246, 0.1); color: #3B82F6;
-        padding: 6px 14px; border: 1px solid #3B82F6; border-radius: 6px;
-        text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s;
-    }
-    .nav-back:hover { background: #3B82F6; color: #fff; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
-</style>
-<nav class="phantomix-top-nav">
-    <a href="apps.html" class="nav-brand"><span>✦</span> Phantomix</a>
-    <a href="apps.html" class="nav-back">← Hub</a>
-</nav>
 
-    <div class="terminal-container">
-        <h1>📧 Burner Mail Terminal</h1>
-        <p>Secure dynamic packet redirection enabled.</p>
-        <div class="info-bar">
-            <strong>[SYSTEM NOTE]:</strong> Third Party Service: This feature redirects to an independent temparary-email provider. Phantomix does not control its data processing, retention, security or availability.
-        </div>
-        <iframe src="https://emailondeck.com" title="Temporary Mail Engine"></iframe>
+    <div class="bg-animation">
+        <div class="glow-shape shape1"></div>
+        <div class="glow-shape shape2"></div>
     </div>
+
+    <!-- GLOBAL NAVBAR -->
+    <nav class="phantomix-navbar">
+        <a href="index.html" class="nav-logo">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
+        </a>
+        <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Back to Hub</a>
+    </nav>
+
+    <div class="app-layout">
+        
+        <div style="text-align: center; margin-bottom: 25px;">
+            <h1 style="font-size: 32px; margin-bottom: 10px;">Burner <span style="color: var(--brand-primary);">Mail Proxy</span></h1>
+            <p style="color: var(--text-secondary); font-size: 15px; max-width: 600px; margin: 0 auto;">
+                Deploy a temporary disposable mailbox. Intercept verification codes securely without exposing your real identity.
+            </p>
+        </div>
+
+        <div class="warning-box">
+            <i class="fas fa-user-shield warning-icon"></i>
+            <p class="warning-text">
+                <strong style="color: var(--status-warning);">[SYSTEM NOTE] EXTERNAL TUNNEL:</strong> This module routes traffic to an independent temporary email engine (emailondeck). Phantomix does not control or log the data processed within this secure sandbox.
+            </p>
+        </div>
+
+        <div class="sandbox-container">
+            <div class="sandbox-header">
+                <p class="sandbox-title"><i class="fas fa-lock"></i> Connection Encrypted | Proxy Active</p>
+                <div style="display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 12px; font-family: 'Fira Code', monospace;">
+                    Live Stream <div class="status-dot"></div>
+                </div>
+            </div>
+            
+            <!-- External Temp Mail Engine -->
+            <iframe class="sandbox-iframe" src="https://emailondeck.com" title="Temporary Mail Engine" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+            
+        </div>
+        
+        <p style="text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 20px;">
+            <i class="fas fa-info-circle"></i> Service provided by third-party engine. Clear your cookies if you experience access issues.
+        </p>
+    </div>
+
 </body>
 </html>
