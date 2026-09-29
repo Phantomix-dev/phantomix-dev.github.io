@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Core Team & Founders | Phantomix Ecosystem</title>
+    
     <meta name="description" content="Meet the core executive team behind Phantomix and DiamondMax. Built by visionary tech leaders and branding experts.">
     <meta name="keywords" content="Phantomix team, DiamondMax founders, CEO of Phantomix, Phantomix VP of Brand, Tech Startup Team">
     <meta name="author" content="Phantomix">
+    <meta name="theme-color" content="#020617">
 
     <script type="application/ld+json">
     {
@@ -33,7 +33,7 @@
           "@type": "Person",
           "name": "Nancy Raghav",
           "jobTitle": "VP of Brand Experience"
-        }
+        },
         {
           "@type": "Person",
           "name": "Ranjan Gupta",
@@ -42,106 +42,159 @@
       ]
     }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        ::selection { background-color: #0ea5e9; color: #ffffff; }
-        
+        /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
+        ::selection { background-color: var(--brand-primary); color: #ffffff; }
+        ::-moz-selection { background-color: var(--brand-primary); color: #ffffff; }
+
+        /* ✨ PREMIUM FADE-IN ANIMATION */
         body {
+            animation: appLoad 0.8s ease-out forwards;
             margin: 0; padding: 0; padding-top: 80px;
             font-family: 'Poppins', sans-serif;
-            background-color: #020617; /* Deep Cyber Dark */
-            color: #ffffff; text-align: center;
-            overflow-x: hidden;
+            background-color: var(--bg-base); color: var(--text-primary);
+            text-align: center; overflow-x: hidden; position: relative;
         }
+
+        @keyframes appLoad {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom Cyber Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary); }
 
         /* Ambient Glow Background */
         .bg-glow {
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 80vw; height: 80vh;
+            position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%);
+            width: 80vw; height: 80vh; border-radius: 50%;
             background: radial-gradient(circle, rgba(14,165,233,0.1) 0%, rgba(2,6,23,0) 70%);
-            z-index: -1; filter: blur(50px);
+            z-index: -1; filter: blur(60px);
         }
 
-        /* Navbar (Same as apps.html) */
+        /* GLOBAL NAVBAR */
         .phantomix-navbar {
-            position: fixed; top: 0; left: 0; width: 100%; height: 65px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; box-sizing: border-box;
-            background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(14, 165, 233, 0.2); z-index: 1000;
+            padding: 0 5%; background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--surface-border);
+            z-index: 1000; box-sizing: border-box;
         }
-        .nav-logo { font-size: 18px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; }
-        .back-btn {
-            background: rgba(14, 165, 233, 0.1); color: #0ea5e9;
-            padding: 6px 14px; border: 1px solid #0ea5e9; border-radius: 6px;
-            text-decoration: none; font-size: 13px; font-weight: 600; transition: all 0.3s ease;
+        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; gap: 8px; }
+        .nav-btn {
+            background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); padding: 8px 18px;
+            border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); text-decoration: none;
+            font-size: 14px; font-weight: 600; transition: all 0.3s ease;
         }
-        .back-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+        .nav-btn:hover { background: var(--brand-primary); color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
 
         /* Hero Section */
-        .team-hero { padding: 40px 20px 20px; }
-        .team-tagline { color: #0ea5e9; font-size: 13px; font-family: monospace; letter-spacing: 3px; display: block; margin-bottom: 10px; }
-        .team-title { font-size: 40px; margin: 0; font-weight: 800; text-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
-        .team-desc { color: #94a3b8; font-size: 15px; max-width: 600px; margin: 15px auto 50px; line-height: 1.6; }
+        .team-hero { padding: 50px 20px 30px; }
+        .cyber-tag {
+            font-family: 'Fira Code', monospace; color: var(--brand-primary); font-size: 12px;
+            letter-spacing: 3px; display: inline-block; margin-bottom: 15px; padding: 6px 12px;
+            background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 4px;
+        }
+        .team-title { font-size: 42px; margin: 0 0 15px 0; font-weight: 800; text-shadow: 0 0 20px rgba(14, 165, 233, 0.2); }
+        .team-desc { color: var(--text-secondary); font-size: 15px; max-width: 600px; margin: 0 auto 50px; line-height: 1.6; }
 
         /* Team Grid */
         .team-grid {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 35px;
             max-width: 1100px; margin: 0 auto 80px; padding: 0 20px;
         }
 
-        /* Cyberpunk Card */
+        /* 3D Cyberpunk Card */
         .team-card {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(51, 65, 85, 0.6);
-            border-radius: 16px; padding: 30px 20px;
-            width: 260px; text-align: center;
-            backdrop-filter: blur(10px);
-            position: relative; overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            transition: border-color 0.3s ease;
+            background: var(--surface-main); border: 1px solid var(--surface-border);
+            border-radius: var(--radius-lg); padding: 35px 25px; text-align: center;
+            position: relative; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            transition: 0.3s ease; transform-style: preserve-3d;
         }
-
-        /* Animated Top Border */
         .team-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, transparent, #0ea5e9, transparent);
+            background: linear-gradient(90deg, transparent, var(--brand-primary), transparent);
             transform: translateX(-100%); transition: 0.5s;
         }
         .team-card:hover::before { transform: translateX(100%); }
-        .team-card:hover { border-color: rgba(14, 165, 233, 0.5); }
+        .team-card:hover { border-color: rgba(14, 165, 233, 0.4); }
 
         .profile-img-wrapper {
-            width: 110px; height: 110px; margin: 0 auto 20px;
-            border-radius: 50%; padding: 4px;
-            background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+            width: 120px; height: 120px; margin: 0 auto 20px; border-radius: 50%; padding: 4px;
+            transform: translateZ(30px); /* 3D pop effect */
         }
-        .profile-img {
-            width: 100%; height: 100%; object-fit: cover;
-            border-radius: 50%; border: 3px solid #0f172a;
-        }
+        .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 3px solid var(--bg-base); }
 
-        .member-name { font-size: 20px; margin: 0 0 5px; color: #f8fafc; }
-        .member-role { font-size: 13px; color: #0ea5e9; font-weight: 600; margin: 0 0 15px; font-family: monospace;}
-        .member-bio { font-size: 13px; color: #cbd5e1; line-height: 1.6; margin: 0 0 20px; }
+        .member-name { font-size: 22px; margin: 0 0 5px; color: var(--text-primary); transform: translateZ(20px); }
+        .member-role { font-size: 12px; font-weight: 700; margin: 0 0 15px; font-family: 'Fira Code', monospace; letter-spacing: 1px; transform: translateZ(15px); }
+        .member-bio { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0 0 20px; transform: translateZ(10px); }
 
         /* Social Icons */
-        .card-social { display: flex; justify-content: center; gap: 15px; }
+        .card-social { display: flex; justify-content: center; gap: 15px; transform: translateZ(20px); }
         .card-social a {
-            color: #64748b; font-size: 18px; transition: 0.3s;
+            color: var(--text-muted); font-size: 18px; transition: 0.3s;
+            width: 35px; height: 35px; display: flex; justify-content: center; align-items: center;
+            background: rgba(255,255,255,0.05); border-radius: 50%;
         }
-        .card-social a:hover { color: #ffffff; transform: translateY(-3px); text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .card-social a:hover { color: #ffffff; background: var(--brand-primary); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4); }
 
-        /* Specific Role Colors */
-        .role-ceo { color: #0ea5e9; }
-        .role-co { color: #8b5cf6; }
-        .role-cso { color: #10b981; }
-        .role-brand { color: #f43f5e; }
+        /* Role Colors */
+        .role-ceo { color: var(--brand-primary); }
+        .role-co { color: var(--brand-secondary); }
+        .role-cso { color: var(--status-success); }
+        .role-brand { color: var(--status-danger); }
+
+        .bg-ceo { background: linear-gradient(135deg, var(--brand-primary), #38bdf8); }
+        .bg-co { background: linear-gradient(135deg, var(--brand-secondary), #c084fc); }
+        .bg-cso { background: linear-gradient(135deg, var(--status-success), #34d399); }
+        .bg-brand { background: linear-gradient(135deg, var(--status-danger), #fb7185); }
+
+        /* The Directive Section */
+        .directive-section {
+            max-width: 900px; margin: 0 auto 80px; padding: 50px 40px;
+            background: var(--surface-main); border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-lg); position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            text-align: left;
+        }
+        .directive-icon {
+            position: absolute; top: -25px; left: 50%; transform: translateX(-50%);
+            background: var(--bg-base); border: 1px solid var(--status-success); color: var(--status-success);
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 20px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .directive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
+        .directive-item { display: flex; gap: 15px; align-items: flex-start; }
+        .directive-item i { font-size: 24px; margin-top: 2px; }
+        .directive-item h4 { margin: 0 0 5px 0; font-size: 16px; color: var(--text-primary); }
+        .directive-item p { margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Careers Section */
+        .careers-section {
+            max-width: 1000px; margin: 0 auto 80px; text-align: center; padding: 60px 20px;
+            background: linear-gradient(180deg, transparent, rgba(14, 165, 233, 0.05));
+            border-bottom: 1px solid var(--brand-primary); border-radius: 0 0 20px 20px;
+        }
+        .job-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+        .job-card {
+            background: rgba(2, 6, 23, 0.8); border: 1px dashed var(--surface-border);
+            padding: 20px 25px; border-radius: var(--radius-md); text-align: left;
+            transition: 0.3s; flex: 1; min-width: 250px; max-width: 350px;
+        }
+        .job-card:hover { border-color: var(--brand-primary); background: rgba(14, 165, 233, 0.05); transform: translateY(-5px); }
 
         @media (max-width: 600px) {
             .team-title { font-size: 32px; }
-            .team-card { width: 100%; max-width: 300px; }
+            .directive-section { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -149,27 +202,30 @@
 
     <div class="bg-glow"></div>
 
+    <!-- GLOBAL NAVBAR -->
     <nav class="phantomix-navbar">
         <a href="index.html" class="nav-logo">
-            <i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i> Phantomix
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
         </a> 
-        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+        <a href="index.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Home</a>
     </nav>
 
+    <!-- HERO -->
     <div class="team-hero">
-        <span class="team-tagline">THE ARCHITECTS BEHIND THE CODE</span>
-        <h1 class="team-title">Meet the <span style="color: #0ea5e9;">Mainframe.</span></h1>
+        <span class="cyber-tag">THE ARCHITECTS BEHIND THE CODE</span>
+        <h1 class="team-title">Meet the <span style="color: var(--brand-primary);">Mainframe.</span></h1>
         <p class="team-desc">A small, elite team of developers, strategists, and visionaries building the next generation of privacy-first digital tools.</p>
     </div>
 
+    <!-- TEAM GRID (Vanilla Tilt enabled) -->
     <div class="team-grid">
         
-        <div class="team-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
-            <div class="profile-img-wrapper" style="background: linear-gradient(135deg, #0ea5e9, #38bdf8);">
+        <div class="team-card" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+            <div class="profile-img-wrapper bg-ceo">
                 <img src="your-real-photo.jpg" alt="Shrikant Prajapati" class="profile-img">
             </div>
             <h3 class="member-name">Shrikant Prajapati</h3>
-            <p class="member-role role-ceo">CEO & Founder</p>
+            <p class="member-role role-ceo">CEO & FOUNDER</p>
             <p class="member-bio">The visionary hacker driving the Phantomix ecosystem. Obsessed with clean code, ultra-fast UI, and digital privacy.</p>
             <div class="card-social">
                 <a href="https://github.com/Phantomix-dev/"><i class="fab fa-github"></i></a>
@@ -177,126 +233,124 @@
             </div>
         </div>
 
-        <div class="team-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
-            <div class="profile-img-wrapper" style="background: linear-gradient(135deg, #8b5cf6, #c084fc);">
+        <div class="team-card" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+            <div class="profile-img-wrapper bg-co">
                 <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" class="profile-img">
             </div>
             <h3 class="member-name">Ranjan Gupta</h3>
-            <p class="member-role role-co">Co-Founder & Lead Architect</p>
+            <p class="member-role role-co">CO-FOUNDER & ARCHITECT</p>
             <p class="member-bio">The backend mastermind. Scaling databases, managing server loads, and ensuring the DiamondMax engine never sleeps.</p>
-        
         </div>
 
-        <div class="team-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
-            <div class="profile-img-wrapper" style="background: linear-gradient(135deg, #10b981, #34d399);">
+        <div class="team-card" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+            <div class="profile-img-wrapper bg-cso">
                 <img src="unknown.jpg" alt="Sumit" class="profile-img">
             </div>
             <h3 class="member-name">Sumit</h3>
-            <p class="member-role role-cso">Chief Strategy Officer</p>
+            <p class="member-role role-cso">CHIEF STRATEGY OFFICER</p>
             <p class="member-bio">The tactical brain of the operation. Connecting the dots between raw ideas, product features, and aggressive market execution.</p>
         </div>
 
-        <div class="team-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
-            <div class="profile-img-wrapper" style="background: linear-gradient(135deg, #f43f5e, #fb7185);">
-                <img src="vp.jpg" alt="Nancy Raghav । VP of Brand Experience" class="profile-img">
+        <div class="team-card" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+            <div class="profile-img-wrapper bg-brand">
+                <img src="vp.jpg" alt="Nancy Raghav" class="profile-img">
             </div>
             <h3 class="member-name">Nancy Raghav</h3>
-            <p class="member-role role-brand">VP of Brand Experience</p>
+            <p class="member-role role-brand">VP OF BRAND EXPERIENCE</p>
             <p class="member-bio">The creative force shaping Phantomix's culture. Managing the community vibe, aesthetics, and ensuring our tools feel premium.</p>
         </div>
 
     </div>
 
-    <div style="max-width: 800px; margin: 0 auto 80px; padding: 40px 20px; background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px; backdrop-filter: blur(10px); position: relative;">
+    <!-- MISSION / DIRECTIVE -->
+    <div class="directive-section">
+        <div class="directive-icon"><i class="fas fa-terminal"></i></div>
+        <h2 style="color: var(--status-success); font-size: 26px; margin: 0 0 10px; text-align: center; text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);">The Phantomix Directive</h2>
+        <p style="text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 30px;">Our core protocols for building the next era of the web.</p>
         
-        <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); background: #020617; border: 1px solid #10b981; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #10b981; font-size: 18px; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);">
-            <i class="fas fa-terminal"></i>
-        </div>
-
-        <h2 style="color: #10b981; font-size: 24px; margin: 10px 0 20px; text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);">The Phantomix Directive</h2>
-        
-        <div style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
-            <div style="display: flex; gap: 15px; align-items: flex-start;">
-                <i class="fas fa-lock" style="color: #0ea5e9; font-size: 20px; margin-top: 4px;"></i>
+        <div class="directive-grid">
+            <div class="directive-item">
+                <i class="fas fa-user-ninja" style="color: var(--brand-primary);"></i>
                 <div>
-                    <strong style="color: #f8fafc; font-size: 16px;">Zero-Knowledge Privacy</strong>
-                    <p style="color: #94a3b8; font-size: 14px; margin: 5px 0 0;">We build systems where even we cannot see your data. Complete digital autonomy for every human.</p>
+                    <h4>Zero-Knowledge Privacy</h4>
+                    <p>We build systems where even we cannot see your data. Complete digital autonomy for every human.</p>
                 </div>
             </div>
-            
-            <div style="display: flex; gap: 15px; align-items: flex-start;">
-                <i class="fas fa-bolt" style="color: #f59e0b; font-size: 20px; margin-top: 4px;"></i>
+            <div class="directive-item">
+                <i class="fas fa-bolt" style="color: var(--status-warning);"></i>
                 <div>
-                    <strong style="color: #f8fafc; font-size: 16px;">Uncompromising Speed</strong>
-                    <p style="color: #94a3b8; font-size: 14px; margin: 5px 0 0;">Bloatware is the enemy. Our code is stripped to the bone for instant execution across all global nodes.</p>
+                    <h4>Uncompromising Speed</h4>
+                    <p>Bloatware is the enemy. Our code is stripped to the bone for instant execution across all global nodes.</p>
                 </div>
             </div>
-
-            <div style="display: flex; gap: 15px; align-items: flex-start;">
-                <i class="fas fa-gem" style="color: #8b5cf6; font-size: 20px; margin-top: 4px;"></i>
+            <div class="directive-item">
+                <i class="fas fa-gem" style="color: var(--brand-secondary);"></i>
                 <div>
-                    <strong style="color: #f8fafc; font-size: 16px;">The Diamond Standard</strong>
-                    <p style="color: #94a3b8; font-size: 14px; margin: 5px 0 0;">We don't settle for 'good enough'. Every interface, every feature is crafted to feel elite and premium.</p>
+                    <h4>The Diamond Standard</h4>
+                    <p>We don't settle for 'good enough'. Every interface, every feature is crafted to feel elite and premium.</p>
                 </div>
             </div>
         </div>
     </div>
-    <div style="max-width: 800px; margin: 0 auto 80px; text-align: center; padding: 50px 20px; background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(14, 165, 233, 0.05) 100%); border-bottom: 2px solid #0ea5e9; border-radius: 0 0 20px 20px;">
+
+    <!-- CAREERS -->
+    <div class="careers-section">
+        <h2 style="font-size: 28px; margin: 0 0 10px;">Join the <span style="color: var(--brand-primary);">Mainframe</span></h2>
+        <p style="color: var(--text-secondary); font-size: 15px; max-width: 500px; margin: 0 auto;">We are always looking for elite developers, UI/UX designers, and cyber-enthusiasts. Think you have what it takes?</p>
         
-        <h2 style="color: #ffffff; font-size: 28px; margin: 0 0 15px;">Join the <span style="color: #0ea5e9;">Mainframe</span></h2>
-        <p style="color: #94a3b8; font-size: 15px; max-width: 500px; margin: 0 auto 30px; line-height: 1.6;">We are always looking for elite developers, UI/UX designers, and cyber-enthusiasts. Think you have what it takes to build the new web?</p>
-        
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <div style="background: rgba(2, 6, 23, 0.6); border: 1px solid rgba(51, 65, 85, 0.5); padding: 15px 25px; border-radius: 12px; text-align: left; min-width: 200px; transition: 0.3s;" onmouseover="this.style.borderColor='#0ea5e9'" onmouseout="this.style.borderColor='rgba(51, 65, 85, 0.5)'">
-                <span style="color: #10b981; font-size: 11px; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 5px; font-family: monospace;">● OPEN ROLE</span>
-                <h4 style="color: #f8fafc; margin: 0 0 10px; font-size: 16px;">Frontend Architect</h4>
-                <a href="mailto:phantomix.00@gmail.com?subject=Application:%20Frontend%20Architect" style="color: #0ea5e9; text-decoration: none; font-size: 13px; font-weight: 600;">Apply Now &rarr;</a>
+        <div class="job-grid">
+            <div class="job-card">
+                <span style="color: var(--status-success); font-size: 11px; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 8px; font-family: 'Fira Code', monospace;"><i class="fas fa-circle" style="font-size: 8px; vertical-align: middle;"></i> OPEN ROLE</span>
+                <h4 style="color: var(--text-primary); margin: 0 0 10px; font-size: 16px;">Frontend Architect</h4>
+                <a href="mailto:phantomix.00@gmail.com?subject=Application:%20Frontend%20Architect" style="color: var(--brand-primary); text-decoration: none; font-size: 13px; font-weight: 600;">Apply Now &rarr;</a>
             </div>
 
-            <div style="background: rgba(2, 6, 23, 0.6); border: 1px solid rgba(51, 65, 85, 0.5); padding: 15px 25px; border-radius: 12px; text-align: left; min-width: 200px; transition: 0.3s;" onmouseover="this.style.borderColor='#8b5cf6'" onmouseout="this.style.borderColor='rgba(51, 65, 85, 0.5)'">
-                <span style="color: #10b981; font-size: 11px; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 5px; font-family: monospace;">● OPEN ROLE</span>
-                <h4 style="color: #f8fafc; margin: 0 0 10px; font-size: 16px;">Cyber Security Analyst</h4>
-                <a href="mailto:phantomix.00@gmail.com?subject=Application:%20Cyber%20Security%20Analyst" style="color: #8b5cf6; text-decoration: none; font-size: 13px; font-weight: 600;">Apply Now &rarr;</a>
+            <div class="job-card">
+                <span style="color: var(--status-success); font-size: 11px; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 8px; font-family: 'Fira Code', monospace;"><i class="fas fa-circle" style="font-size: 8px; vertical-align: middle;"></i> OPEN ROLE</span>
+                <h4 style="color: var(--text-primary); margin: 0 0 10px; font-size: 16px;">Cyber Security Analyst</h4>
+                <a href="mailto:phantomix.00@gmail.com?subject=Application:%20Cyber%20Security%20Analyst" style="color: var(--brand-secondary); text-decoration: none; font-size: 13px; font-weight: 600;">Apply Now &rarr;</a>
             </div>
         </div>
         
-        <p style="color: #64748b; font-size: 13px; margin-top: 30px; font-family: monospace;">Or drop your raw resume at <span style="color: #cbd5e1;">phantomix.00@gmail.com</span></p>
+        <p style="color: var(--text-muted); font-size: 13px; margin-top: 30px; font-family: 'Fira Code', monospace;">Or drop your raw resume at <span style="color: var(--text-primary);">phantomix.00@gmail.com</span></p>
     </div>
 
-    <footer style="background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2); padding: 50px 5% 20px; margin-top: 50px; font-family: 'Poppins', sans-serif; text-align: left;">
+    <!-- FOOTER -->
+    <footer style="background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2); padding: 50px 5% 20px; font-family: 'Poppins', sans-serif; text-align: left;">
         <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; max-width: 1200px; margin: 0 auto 40px;">
             
             <div style="flex: 1; min-width: 250px;">
                 <h3 style="color: white; font-size: 24px; margin: 0 0 15px; display: flex; align-items: center; gap: 10px;">
-                    <i class="fa-solid fa-gem" style="color: #0ea5e9;"></i> Phantomix
+                    <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> Phantomix
                 </h3>
-                <p style="color: #94a3b8; font-size: 14px; line-height: 1.6; margin: 0;">Building the future of digital experience. Fast, secure, and premium. Join the revolution with DiamondMax.</p>
+                <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin: 0; max-width: 300px;">Building the future of digital experience. Fast, secure, and premium. Join the revolution with DiamondMax.</p>
             </div>
             
             <div style="display: flex; flex-direction: column; gap: 12px; min-width: 150px;">
                 <h4 style="color: white; margin: 0 0 10px; font-size: 18px;">Quick Links</h4>
-                <a href="index.html" style="color: #94a3b8; text-decoration: none; font-size: 14px; transition: 0.3s;" onmouseover="this.style.color='#0ea5e9'" onmouseout="this.style.color='#94a3b8'">Home</a>
-                <a href="apps.html" style="color: #94a3b8; text-decoration: none; font-size: 14px; transition: 0.3s;" onmouseover="this.style.color='#0ea5e9'" onmouseout="this.style.color='#94a3b8'">Our Apps</a>
-                <a href="team.html" style="color: #0ea5e9; text-decoration: none; font-size: 14px; font-weight: bold;">Team Core</a>
-                <a href="mailto:phantomix.00@gmail.com" style="color: #94a3b8; text-decoration: none; font-size: 14px; transition: 0.3s;" onmouseover="this.style.color='#0ea5e9'" onmouseout="this.style.color='#94a3b8'">Contact Us</a>
+                <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: 0.3s;" onmouseover="this.style.color='var(--brand-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Home</a>
+                <a href="apps.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: 0.3s;" onmouseover="this.style.color='var(--brand-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Our Apps</a>
+                <a href="team.html" style="color: var(--brand-primary); text-decoration: none; font-size: 14px; font-weight: bold;">Team Core</a>
+                <a href="mailto:phantomix.00@gmail.com" style="color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: 0.3s;" onmouseover="this.style.color='var(--brand-primary)'" onmouseout="this.style.color='var(--text-secondary)'">Contact Us</a>
             </div>
 
             <div style="min-width: 150px;">
                 <h4 style="color: white; margin: 0 0 15px; font-size: 18px;">Connect</h4>
                 <div style="display: flex; gap: 15px;">
-                    <a href="https://instagram.com/shrikantxprajapatii" target="_blank" style="color: #94a3b8; font-size: 20px; background: rgba(255,255,255,0.05); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: 0.3s; text-decoration: none;" onmouseover="this.style.background='#0ea5e9'; this.style.color='white'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#94a3b8'; this.style.transform='translateY(0)'"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@Phantomix_SP" target="_blank" style="color: #94a3b8; font-size: 20px; background: rgba(255,255,255,0.05); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: 0.3s; text-decoration: none;" onmouseover="this.style.background='#0ea5e9'; this.style.color='white'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#94a3b8'; this.style.transform='translateY(0)'"><i class="fab fa-youtube"></i></a>
-                    <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank" style="color: #94a3b8; font-size: 20px; background: rgba(255,255,255,0.05); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: 0.3s; text-decoration: none;" onmouseover="this.style.background='#0ea5e9'; this.style.color='white'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='#94a3b8'; this.style.transform='translateY(0)'"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/shrikantxprajapatii" target="_blank" style="color: var(--text-secondary); font-size: 20px; background: rgba(255,255,255,0.05); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: 0.3s; text-decoration: none;" onmouseover="this.style.background='var(--brand-primary)'; this.style.color='white'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-secondary)'; this.style.transform='translateY(0)'"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@Phantomix_SP" target="_blank" style="color: var(--text-secondary); font-size: 20px; background: rgba(255,255,255,0.05); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: 0.3s; text-decoration: none;" onmouseover="this.style.background='var(--brand-primary)'; this.style.color='white'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-secondary)'; this.style.transform='translateY(0)'"><i class="fab fa-youtube"></i></a>
+                    <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank" style="color: var(--text-secondary); font-size: 20px; background: rgba(255,255,255,0.05); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: 0.3s; text-decoration: none;" onmouseover="this.style.background='var(--brand-primary)'; this.style.color='white'; this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='var(--text-secondary)'; this.style.transform='translateY(0)'"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
         
         <div style="border-top: 1px solid rgba(51, 65, 85, 0.5); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; color: #64748b; font-size: 13px; max-width: 1200px; margin: 0 auto;">
-            <p style="margin: 0;">&copy; 2026 Phantomix. All rights reserved. <span style="margin: 0 10px; color: #334155;">|</span> <a href="privacy.html" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a></p>
-            <p style="margin: 0;">Made with <span style="color: #ef4444; animation: pulse 1.5s infinite;">❤</span> in India by Shrikant Prajapati and Ranjan Gupta</p>
+            <p style="margin: 0;">&copy; 2026 Phantomix. All rights reserved. <span style="margin: 0 10px; color: #334155;">|</span> <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a></p>
+            <p style="margin: 0;">Made with <span style="color: var(--status-danger); animation: pulse 1.5s infinite;">❤</span> in India by Shrikant Prajapati and Ranjan Gupta</p>
         </div>
     </footer>
         
+    <!-- 3D Card Hover Effect -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
 </body>
