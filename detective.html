@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Phishing Detective | Interactive Cyber Security Quiz Game</title>
+    <title>Phishing Detective | Cyber Threat Audit</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -22,148 +22,262 @@
     <meta property="og:description" content="Analyze incoming data packets, fake URLs, and spoofed headers. Can you spot the cyber trap?">
     <meta property="og:url" content="https://phantomix-dev.github.io/detective.html">
     <meta property="og:image" content="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bdiamondmax-logo.png">
-    <meta name="theme-color" content="#0B1221">
+    <meta name="theme-color" content="#020617">
+
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
-        ::selection {
-            background-color: #0ea5e9; /* Neon Blue */
-            color: #ffffff; /* White Text */
-        }
-        
-        /* Firefox browser ke liye */
-        ::-moz-selection {
-            background-color: #0ea5e9;
-            color: #ffffff;
-        }
+        ::selection { background-color: var(--brand-primary); color: #ffffff; }
+        ::-moz-selection { background-color: var(--brand-primary); color: #ffffff; }
+
         /* ✨ PREMIUM FADE-IN ANIMATION */
         body {
             animation: appLoad 0.8s ease-out forwards;
+            margin: 0; padding: 0; padding-top: 90px;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-base); color: var(--text-primary);
+            text-align: center; overflow-x: hidden; position: relative;
         }
 
         @keyframes appLoad {
-            0% {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-        :root {
-            --bg-main: #0B1221;
-            --card-bg: #151E32;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
-            --accent-green: #10B981;
-            --accent-red: #EF4444;
+
+        /* Custom Cyber Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary); }
+
+        /* GLOBAL NAVBAR */
+        .phantomix-navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--surface-border);
+            z-index: 1000; box-sizing: border-box;
         }
-        body { background-color: var(--bg-main); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-align: center; padding: 20px 15px; margin: 0; display: flex; justify-content: center; }
-        .game-container { width: 100%; max-width: 650px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); box-sizing: border-box; }
-        h1 { font-size: 1.6em; margin-top: 0; margin-bottom: 5px; font-weight: 700; }
-        .score-board { display: flex; justify-content: space-between; background: rgba(0,0,0,0.2); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 20px; margin-bottom: 25px; font-weight: 600; color: var(--accent-green); }
-        .case-card { background: rgba(0,0,0,0.15); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; text-align: left; margin-bottom: 25px; min-height: 150px; }
-        .sender-info { color: var(--text-muted); font-size: 0.9em; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
-        .email-body { font-size: 1.05em; line-height: 1.6; color: var(--text-main); }
-        .url-box { background: rgba(0,0,0,0.3); padding: 12px; border-left: 4px solid var(--accent-green); border-radius: 4px; font-size: 0.9em; color: #60A5FA; word-break: break-all; margin-top: 15px; font-family: monospace; }
-        .choice-btn { width: 45%; padding: 14px; font-size: 1em; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; transition: 0.2s; margin: 5px; }
-        .btn-safe { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid var(--accent-green); }
-        .btn-safe:hover { background: var(--accent-green); color: #fff; }
-        .btn-phish { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); border: 1px solid var(--accent-red); }
-        .btn-phish:hover { background: var(--accent-red); color: #fff; }
-        #feedback { margin-top: 20px; font-size: 1.1em; font-weight: 600; min-height: 30px; }
-        @media (max-width: 480px) { .choice-btn { width: 100%; margin: 8px 0; } }
-        /* 🎚️ CUSTOM CYBER SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 8px; /* Scrollbar ki motai */
+        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; gap: 8px; }
+        .nav-btn {
+            background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); padding: 8px 18px;
+            border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); text-decoration: none;
+            font-size: 14px; font-weight: 600; transition: all 0.3s ease;
+        }
+        .nav-btn:hover { background: var(--brand-primary); color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+
+        /* Game Layout */
+        .app-layout { max-width: 750px; margin: 0 auto; padding: 20px; }
+        
+        .detective-workspace {
+            background: var(--surface-main); border: 1px solid var(--surface-border);
+            border-radius: var(--radius-lg); padding: 35px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            text-align: left;
+        }
+
+        /* Cyber Scoreboard */
+        .score-board {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(2, 6, 23, 0.8); padding: 15px 20px;
+            border: 1px solid var(--surface-border); border-radius: var(--radius-md);
+            margin-bottom: 25px; font-family: 'Fira Code', monospace;
+        }
+        .score-item { font-size: 14px; color: var(--text-muted); display: flex; flex-direction: column; gap: 5px; }
+        .score-value { font-size: 24px; font-weight: 700; color: var(--status-success); }
+        .score-item:last-child .score-value { color: var(--brand-primary); text-align: right; }
+
+        /* The Case Card (Email Simulation) */
+        .case-card {
+            background: var(--bg-base); border: 1px dashed var(--surface-border);
+            border-radius: var(--radius-md); padding: 25px; margin-bottom: 25px;
+            position: relative; overflow: hidden; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .case-card::before {
+            content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 100%;
+            background: var(--brand-primary);
         }
         
-        ::-webkit-scrollbar-track {
-            background: #0f172a; /* Dark background */
+        .sender-info {
+            color: var(--text-muted); font-size: 13px; font-family: 'Fira Code', monospace;
+            margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--surface-border);
+            display: flex; flex-direction: column; gap: 8px;
         }
+        .sender-info span { color: var(--text-primary); font-weight: 600; }
         
-        ::-webkit-scrollbar-thumb {
-            background: rgba(14, 165, 233, 0.5); /* Neon Blue semi-transparent */
-            border-radius: 10px;
+        .email-body { font-size: 15px; line-height: 1.7; color: var(--text-main); margin-bottom: 20px; }
+        
+        .url-box {
+            background: rgba(14, 165, 233, 0.05); padding: 15px; border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: var(--radius-sm); font-size: 14px; color: var(--brand-primary);
+            word-break: break-all; font-family: 'Fira Code', monospace; cursor: help;
         }
+
+        /* Action Buttons */
+        .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
         
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(14, 165, 233, 1); /* Hover par full bright Neon Blue */
+        .btn-decision {
+            padding: 18px; font-size: 15px; font-weight: 700; border-radius: var(--radius-sm);
+            cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;
+            font-family: 'Poppins', sans-serif; letter-spacing: 1px;
+        }
+        .btn-safe {
+            background: rgba(16, 185, 129, 0.1); color: var(--status-success);
+            border: 1px solid var(--status-success);
+        }
+        .btn-safe:hover { background: var(--status-success); color: #020617; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); transform: translateY(-2px); }
+        
+        .btn-phish {
+            background: rgba(239, 68, 68, 0.1); color: var(--status-danger);
+            border: 1px solid var(--status-danger);
+        }
+        .btn-phish:hover { background: var(--status-danger); color: #fff; box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); transform: translateY(-2px); }
+
+        /* Feedback Panel */
+        #feedback {
+            font-size: 14px; font-weight: 600; line-height: 1.6; min-height: 45px;
+            padding: 15px; border-radius: var(--radius-sm); text-align: center;
+            display: none; font-family: 'Fira Code', monospace;
+        }
+
+        @media (max-width: 600px) {
+            .phantomix-navbar { padding: 0 15px; height: 60px; }
+            .nav-logo { font-size: 16px; }
+            .nav-btn { padding: 6px 12px; font-size: 12px; }
+            .action-row { grid-template-columns: 1fr; gap: 10px; }
         }
     </style>
 </head>
 <body>
-    <style>
-    body { padding-top: 80px; } /* Navbar ke liye space */
-    .phantomix-top-nav {
-        position: fixed; top: 0; left: 0; width: 100%; height: 60px;
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 0 20px; box-sizing: border-box;
-        background: rgba(11, 18, 33, 0.85); backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(59, 130, 246, 0.2); z-index: 9999;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    .nav-brand { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .nav-brand span { color: #3B82F6; }
-    .nav-back {
-        background: rgba(59, 130, 246, 0.1); color: #3B82F6;
-        padding: 6px 14px; border: 1px solid #3B82F6; border-radius: 6px;
-        text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s;
-    }
-    .nav-back:hover { background: #3B82F6; color: #fff; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
-</style>
-<nav class="phantomix-top-nav">
-    <a href="apps.html" class="nav-brand"><span>✦</span> Phantomix</a>
-    <a href="apps.html" class="nav-back">← Hub</a>
-</nav>
 
-    <div class="game-container">
-        <h1>🎣 Phishing Detective</h1>
-        <p style="color: var(--text-muted); margin: 0; font-size: 0.9em;">SYSTEM ANALYSIS INTERFACE v1.0.4</p>
-        <div class="score-board">
-            <div>LEVEL: <span id="current-level">1</span>/3</div>
-            <div>SCORE: <span id="current-score">0</span></div>
+    <!-- GLOBAL NAVBAR -->
+    <nav class="phantomix-navbar">
+        <a href="index.html" class="nav-logo">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
+        </a>
+        <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Back to Hub</a>
+    </nav>
+
+    <div class="app-layout">
+        
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="font-size: 32px; margin-bottom: 10px;">Phishing <span style="color: var(--brand-primary);">Detective</span></h1>
+            <p style="color: var(--text-secondary); font-size: 15px; max-width: 600px; margin: 0 auto;">
+                Analyze incoming data packets, inspect fake URLs, and identify spoofed headers. Can you spot the cyber trap?
+            </p>
         </div>
-        <div class="case-card">
-            <div class="sender-info" id="case-sender">FROM: loading...</div>
-            <div class="email-body" id="case-body">Loading simulation vector...</div>
-            <div class="url-box" id="case-url">URL: loading...</div>
-        </div>
-        <button class="choice-btn btn-safe" onclick="submitDecision(true)">VERIFIED SAFE</button>
-        <button class="choice-btn btn-phish" onclick="submitDecision(false)">PHISHING TRAP</button>
-        <div id="feedback"></div>
+
+        <section class="detective-workspace">
+            
+            <div class="score-board">
+                <div class="score-item">
+                    ANALYSIS STAGE
+                    <span class="score-value"><span id="current-level">1</span><span style="color: var(--text-muted); font-size: 16px;">/3</span></span>
+                </div>
+                <div class="score-item">
+                    THREATS NEUTRALIZED
+                    <span class="score-value" id="current-score">0</span>
+                </div>
+            </div>
+
+            <div class="case-card" id="case-card">
+                <div class="sender-info">
+                    <div id="case-sender"><strong>FROM:</strong> Loading packet...</div>
+                    <div><strong>SUBJECT:</strong> Urgent Security Alert</div>
+                </div>
+                <div class="email-body" id="case-body">
+                    Loading simulation vector...
+                </div>
+                <div class="url-box">
+                    <i class="fas fa-link" style="margin-right: 8px;"></i>
+                    <span id="case-url">TARGET LINK: loading...</span>
+                </div>
+            </div>
+
+            <div class="action-row" id="action-row">
+                <button class="btn-decision btn-safe" onclick="submitDecision(true)">
+                    <i class="fas fa-shield-check"></i> VERIFIED SAFE
+                </button>
+                <button class="btn-decision btn-phish" onclick="submitDecision(false)">
+                    <i class="fas fa-biohazard"></i> PHISHING TRAP
+                </button>
+            </div>
+
+            <div id="feedback"></div>
+
+        </section>
     </div>
+
     <script>
         const cases = [
-            { sender: "security@netflix-billing.com", body: "Your subscription renewal failed. Please update your payment details within 24 hours to avoid account suspension.", url: "http://netflx-account-update.com/login", isSafe: false, reason: "🚨 TRAP! Sender domain is 'netflx' (missing 'i') and uses insecure http protocol." },
-            { sender: "no-reply@github.com", body: "Someone recently logged into your account from a new IP address in Berlin, Germany. If this wasn't you, verify the activity details.", url: "https://github.com/settings/security/audit-log", isSafe: true, reason: "🟢 SAFE! Genuine HTTPS encryption routing straight to official GitHub security sub-domains." },
-            { sender: "support@lndia-post-tracking.in", body: "Your package could not be delivered due to an incorrect house number. Please track your parcel and update the address immediately.", url: "https://india-post.tracking-delivery-portal.xyz/track", isSafe: false, reason: "🚨 TRAP! Look closely: 'lndia' starts with a lowercase L instead of an uppercase I, and the domain ends in .xyz!" }
+            { sender: "security@netflix-billing.com", body: "Your subscription renewal failed. Please update your payment details within 24 hours to avoid account suspension.", url: "http://netflx-account-update.com/login", isSafe: false, reason: "🚨 TRAP DETECTED! Sender domain is 'netflx' (missing 'i') and uses insecure HTTP protocol instead of HTTPS." },
+            { sender: "no-reply@github.com", body: "Someone recently logged into your account from a new IP address in Berlin, Germany. If this wasn't you, verify the activity details immediately.", url: "https://github.com/settings/security/audit-log", isSafe: true, reason: "🟢 VERIFIED SAFE! Genuine HTTPS encryption routing straight to official GitHub security sub-domains." },
+            { sender: "support@lndia-post-tracking.in", body: "Your package could not be delivered due to an incorrect house number. Please track your parcel and update the address immediately.", url: "https://india-post.tracking-delivery-portal.xyz/track", isSafe: false, reason: "🚨 TRAP DETECTED! Look closely: 'lndia' starts with a lowercase L instead of an uppercase I, and the target domain ends in a suspicious .xyz extension!" }
         ];
-        let index = 0; let score = 0;
+        
+        let index = 0; 
+        let score = 0;
+
         function loadCase() {
             if(index >= cases.length) {
-                document.querySelector('.case-card').innerHTML = `<h2 style='color:var(--accent-green); text-align:center;'>🏆 CASE CLOSED</h2><p style='text-align:center;'>Excellent work, Detective! Final Score: ${score}/${cases.length}</p>`;
-                document.querySelectorAll('.choice-btn').forEach(b => b.style.display = 'none');
+                document.getElementById('case-card').innerHTML = `
+                    <div style="text-align: center; padding: 20px 0;">
+                        <i class="fas fa-medal" style="font-size: 60px; color: var(--brand-primary); margin-bottom: 15px;"></i>
+                        <h2 style='color:var(--text-primary); margin-top:0;'>SIMULATION COMPLETE</h2>
+                        <p style='color:var(--text-muted); font-size:15px;'>Excellent work, Detective! You neutralized ${score} out of ${cases.length} threats.</p>
+                        <button onclick="location.reload()" style="margin-top: 20px; padding: 12px 25px; background: rgba(14,165,233,0.1); color: var(--brand-primary); border: 1px solid var(--brand-primary); border-radius: 8px; cursor: pointer; font-weight: bold;">Run New Simulation</button>
+                    </div>
+                `;
+                document.getElementById('action-row').style.display = 'none';
+                document.getElementById('feedback').style.display = 'none';
                 return;
             }
-            document.getElementById('case-sender').innerText = "FROM: " + cases[index].sender;
+
+            // Load Content
+            document.getElementById('case-sender').innerHTML = "<strong>FROM:</strong> " + cases[index].sender;
             document.getElementById('case-body').innerText = cases[index].body;
-            document.getElementById('case-url').innerText = "TARGET LINK: " + cases[index].url;
+            document.getElementById('case-url').innerText = cases[index].url;
             document.getElementById('current-level').innerText = index + 1;
-            document.getElementById('feedback').innerText = "";
+            
+            // Hide feedback for new question
+            document.getElementById('feedback').style.display = 'none';
         }
+
         function submitDecision(userSaidSafe) {
-            const currentCase = cases[index]; const feedbackBox = document.getElementById('feedback');
+            const currentCase = cases[index]; 
+            const feedbackBox = document.getElementById('feedback');
+            
+            feedbackBox.style.display = 'block';
+
             if(userSaidSafe === currentCase.isSafe) {
-                score++; document.getElementById('current-score').innerText = score;
-                feedbackBox.innerHTML = "<span style='color:var(--accent-green);'>✔️ ACCESS GRANTED: Correct Assessment!</span>";
+                score++; 
+                document.getElementById('current-score').innerText = score;
+                feedbackBox.style.background = 'rgba(16, 185, 129, 0.1)';
+                feedbackBox.style.border = '1px solid var(--status-success)';
+                feedbackBox.style.color = 'var(--status-success)';
+                feedbackBox.innerHTML = "<i class='fas fa-check-circle'></i> ACCESS GRANTED: Correct Assessment! <br><br> <span style='color: var(--text-muted); font-size: 12px;'>" + currentCase.reason + "</span>";
             } else {
-                feedbackBox.innerHTML = "<span style='color:var(--accent-red);'>❌ PROTOCOL COMPROMISED! " + currentCase.reason + "</span>";
+                feedbackBox.style.background = 'rgba(239, 68, 68, 0.1)';
+                feedbackBox.style.border = '1px solid var(--status-danger)';
+                feedbackBox.style.color = 'var(--status-danger)';
+                feedbackBox.innerHTML = "<i class='fas fa-times-circle'></i> PROTOCOL COMPROMISED! Incorrect Assessment! <br><br> <span style='color: var(--text-main); font-size: 12px;'>" + currentCase.reason + "</span>";
             }
-            index++; setTimeout(loadCase, 3500);
+
+            index++; 
+            
+            // Disable buttons temporarily while showing feedback
+            const btns = document.querySelectorAll('.btn-decision');
+            btns.forEach(btn => { btn.style.pointerEvents = 'none'; btn.style.opacity = '0.5'; });
+
+            setTimeout(() => {
+                loadCase();
+                btns.forEach(btn => { btn.style.pointerEvents = 'auto'; btn.style.opacity = '1'; });
+            }, 3500); // Wait 3.5s to read feedback before next case
         }
+
         window.onload = loadCase;
     </script>
 </body>
