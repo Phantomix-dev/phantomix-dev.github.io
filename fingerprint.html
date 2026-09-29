@@ -2,146 +2,216 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Digital Fingerprint Scanner | Hardware Privacy Auditor</title>
+    <title>Digital Fingerprint Scanner | Hardware Privacy Auditor</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <meta name="description" content="Discover how websites track you without your IP address. Extract your unique browser hardware footprint including CPU, RAM, and GPU engine tokens.">
     <meta name="keywords" content="digital fingerprint scanner, browser fingerprinting test, hardware tracking tool, device signature checker, online privacy audit, phantomix ghost tracker">
-    
+
     <meta property="og:title" content="Digital Fingerprint Scanner | Phantomix">
     <meta property="og:description" content="Incognito mode is an illusion. Extract your browser's unique hardware footprint to see how you are being tracked.">
     <meta property="og:url" content="https://phantomix-dev.github.io/fingerprint.html">
     <meta property="og:image" content="https://raw.githubusercontent.com/Phantomix-dev/phantomix-dev.github.io/refs/heads/main/%E2%80%8Bdiamondmax-logo.png">
-    <meta name="theme-color" content="#0B1221">
+    <meta name="theme-color" content="#020617">
+
+    <!-- Link to our global Design System -->
+    <link rel="stylesheet" href="core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
-        ::selection {
-            background-color: #0ea5e9; /* Neon Blue */
-            color: #ffffff; /* White Text */
-        }
-        
-        /* Firefox browser ke liye */
-        ::-moz-selection {
-            background-color: #0ea5e9;
-            color: #ffffff;
-        }
+        ::selection { background-color: var(--brand-primary); color: #ffffff; }
+        ::-moz-selection { background-color: var(--brand-primary); color: #ffffff; }
+
         /* ✨ PREMIUM FADE-IN ANIMATION */
         body {
             animation: appLoad 0.8s ease-out forwards;
+            margin: 0; padding: 0; padding-top: 90px;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-base); color: var(--text-primary);
+            text-align: center; overflow-x: hidden; position: relative;
         }
 
         @keyframes appLoad {
-            0% {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-        :root {
-            --bg-main: #0B1221;
-            --card-bg: #151E32;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
-            --accent-blue: #3B82F6;
-            --accent-red: #EF4444;
+
+        /* Custom Cyber Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary); }
+
+        /* GLOBAL NAVBAR */
+        .phantomix-navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--surface-border);
+            z-index: 1000; box-sizing: border-box;
         }
-        body { background-color: var(--bg-main); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-align: center; padding: 20px 15px; margin: 0; display: flex; justify-content: center; }
-        .scanner-container { width: 100%; max-width: 650px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); text-align: left; box-sizing: border-box; }
-        h1 { font-size: 1.6em; margin-top: 0; margin-bottom: 5px; font-weight: 700; text-align: center; }
-        p.subtitle { text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 0.9em; }
-        
-        .scan-btn { width: 100%; background: var(--accent-blue); color: #fff; padding: 16px; font-size: 1.1em; font-weight: 600; border: none; cursor: pointer; border-radius: 8px; margin-bottom: 20px; transition: 0.3s; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
-        .scan-btn:hover { background: #2563EB; transform: translateY(-1px); }
-        
-        .data-grid { display: none; grid-template-columns: 1fr; gap: 12px; }
-        .data-row { background: rgba(0,0,0,0.2); padding: 15px; border-left: 4px solid var(--accent-blue); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 0.95em; }
-        .label { color: var(--text-muted); font-weight: 600; }
-        .value { color: var(--text-main); font-family: 'Courier New', monospace; font-weight: bold; text-align: right; max-width: 60%; word-break: break-all; }
-        
-        #loading { display: none; color: var(--accent-blue); text-align: center; font-size: 1.1em; font-weight: 600; margin: 20px 0; }
-        .warning { text-align: center; color: var(--accent-red); background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 0.9em; font-weight: 500; display: none; line-height: 1.5; }
-    /* 🎚️ CUSTOM CYBER SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 8px; /* Scrollbar ki motai */
+        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; gap: 8px; }
+        .nav-btn {
+            background: rgba(14, 165, 233, 0.1); color: var(--brand-primary); padding: 8px 18px;
+            border: 1px solid var(--brand-primary); border-radius: var(--radius-sm); text-decoration: none;
+            font-size: 14px; font-weight: 600; transition: all 0.3s ease;
         }
+        .nav-btn:hover { background: var(--brand-primary); color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+
+        /* Scanner Workspace UI */
+        .app-layout { max-width: 800px; margin: 0 auto; padding: 20px; }
         
-        ::-webkit-scrollbar-track {
-            background: #0f172a; /* Dark background */
+        .scanner-workspace {
+            background: var(--surface-main); border: 1px solid var(--surface-border);
+            border-radius: var(--radius-lg); padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            position: relative; overflow: hidden;
         }
-        
-        ::-webkit-scrollbar-thumb {
-            background: rgba(14, 165, 233, 0.5); /* Neon Blue semi-transparent */
-            border-radius: 10px;
+
+        /* Fingerprint Radar Animation */
+        .radar-box {
+            position: relative; width: 120px; height: 120px; margin: 0 auto 30px auto;
+            display: flex; justify-content: center; align-items: center;
+            background: rgba(14, 165, 233, 0.05); border-radius: 50%;
+            border: 1px dashed var(--brand-primary);
         }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(14, 165, 233, 1); /* Hover par full bright Neon Blue */
+        .radar-box i { font-size: 60px; color: var(--brand-primary); z-index: 2; }
+        .scan-line {
+            position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+            background: var(--brand-primary); box-shadow: 0 0 15px var(--brand-primary);
+            animation: scan 2s infinite linear; display: none; z-index: 3;
+            border-radius: 50%;
+        }
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* Action Button */
+        .btn-extract {
+            width: 100%; padding: 16px; background: linear-gradient(135deg, var(--brand-primary), #3b82f6);
+            color: #fff; border: none; border-radius: var(--radius-sm); font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;
+            letter-spacing: 1px; font-family: 'Fira Code', monospace;
+        }
+        .btn-extract:hover { box-shadow: 0 0 25px rgba(14, 165, 233, 0.4); transform: translateY(-2px); }
+
+        #status-text {
+            font-family: 'Fira Code', monospace; color: var(--text-secondary);
+            font-size: 14px; margin-top: 20px; font-weight: 600; display: none;
+        }
+
+        /* Results Grid */
+        .results-grid {
+            display: none; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 30px;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .data-card {
+            background: rgba(2, 6, 23, 0.8); border: 1px solid var(--surface-border);
+            border-left: 4px solid var(--brand-primary); border-radius: var(--radius-sm);
+            padding: 20px; text-align: left; transition: 0.3s;
+        }
+        .data-card:hover { border-color: var(--brand-primary); transform: translateX(5px); }
+        .data-label { color: var(--text-muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: block; }
+        .data-value { color: var(--status-success); font-family: 'Fira Code', monospace; font-size: 15px; font-weight: bold; word-break: break-word; }
+
+        /* Warning Box */
+        .warning-box {
+            display: none; background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 20px; border-radius: var(--radius-sm); margin-top: 30px; text-align: left;
+            animation: fadeIn 0.8s ease-out;
+        }
+        .warning-box p { margin: 0; color: var(--status-danger); font-size: 13px; line-height: 1.6; font-weight: 600; font-family: 'Fira Code', monospace; }
+
+        @media (max-width: 600px) {
+            .results-grid { grid-template-columns: 1fr; }
+            .phantomix-navbar { padding: 0 15px; height: 60px; }
+            .nav-logo { font-size: 16px; }
+            .nav-btn { padding: 6px 12px; font-size: 12px; }
         }
     </style>
 </head>
 <body>
-    <style>
-    body { padding-top: 80px; } /* Navbar ke liye space */
-    .phantomix-top-nav {
-        position: fixed; top: 0; left: 0; width: 100%; height: 60px;
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 0 20px; box-sizing: border-box;
-        background: rgba(11, 18, 33, 0.85); backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(59, 130, 246, 0.2); z-index: 9999;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    .nav-brand { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .nav-brand span { color: #3B82F6; }
-    .nav-back {
-        background: rgba(59, 130, 246, 0.1); color: #3B82F6;
-        padding: 6px 14px; border: 1px solid #3B82F6; border-radius: 6px;
-        text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s;
-    }
-    .nav-back:hover { background: #3B82F6; color: #fff; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
-</style>
-<nav class="phantomix-top-nav">
-    <a href="apps.html" class="nav-brand"><span>✦</span> Phantomix</a>
-    <a href="apps.html" class="nav-back">← Hub</a>
-</nav>
 
+    <!-- GLOBAL NAVBAR -->
+    <nav class="phantomix-navbar">
+        <a href="index.html" class="nav-logo">
+            <i class="fa-solid fa-gem" style="color: var(--brand-primary);"></i> PHANTOMIX
+        </a>
+        <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Back to Hub</a>
+    </nav>
 
-    <div class="scanner-container">
-        <h1>🕵️‍♂️ Hardware Fingerprint</h1>
-        <p class="subtitle">Extract your browser's unique hardware footprint.</p>
-
-        <button class="scan-btn" id="start-btn" onclick="runScan()">EXTRACT HARDWARE DATA</button>
+    <div class="app-layout">
         
-        <div id="loading">Scanning system parameters... Please wait.</div>
-
-        <div class="data-grid" id="results">
-            <div class="data-row"><span class="label">OS PLATFORM:</span><span class="value" id="res-os">Loading...</span></div>
-            <div class="data-row"><span class="label">CPU CORES:</span><span class="value" id="res-cpu">Loading...</span></div>
-            <div class="data-row"><span class="label">SYSTEM RAM:</span><span class="value" id="res-ram">Loading...</span></div>
-            <div class="data-row"><span class="label">GPU ENGINE:</span><span class="value" id="res-gpu">Loading...</span></div>
-            <div class="data-row"><span class="label">RESOLUTION:</span><span class="value" id="res-screen">Loading...</span></div>
-            <div class="data-row"><span class="label">TIMEZONE:</span><span class="value" id="res-tz">Loading...</span></div>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="font-size: 32px; margin-bottom: 10px;">Hardware <span style="color: var(--brand-primary);">Fingerprint</span></h1>
+            <p style="color: var(--text-secondary); font-size: 15px; max-width: 600px; margin: 0 auto;">
+                Incognito mode is an illusion. Websites track you by extracting your unique browser and hardware signatures.
+            </p>
         </div>
 
-        <div class="warning" id="warning-text">
-            [!] Browser and device characteristics can contribute to fingerprinting and may increase the ability of websites to distinguish one browsing does not make a device completely unidentifiable.
-        </div>
+        <section class="scanner-workspace">
+            
+            <div class="radar-box" id="radar">
+                <i class="fas fa-fingerprint"></i>
+                <div class="scan-line" id="scan-line"></div>
+            </div>
+
+            <button class="btn-extract" id="start-btn" onclick="runScan()">
+                <i class="fas fa-search"></i> EXTRACT HARDWARE DATA
+            </button>
+
+            <div id="status-text"><i class="fas fa-circle-notch fa-spin"></i> Bypassing cloak... Extracting tokens...</div>
+
+            <!-- Extracted Data -->
+            <div class="results-grid" id="results">
+                <div class="data-card">
+                    <span class="data-label"><i class="fab fa-windows"></i> OS Platform</span>
+                    <span class="data-value" id="res-os">Loading...</span>
+                </div>
+                <div class="data-card">
+                    <span class="data-label"><i class="fas fa-microchip"></i> CPU Engine</span>
+                    <span class="data-value" id="res-cpu">Loading...</span>
+                </div>
+                <div class="data-card">
+                    <span class="data-label"><i class="fas fa-memory"></i> System RAM</span>
+                    <span class="data-value" id="res-ram">Loading...</span>
+                </div>
+                <div class="data-card">
+                    <span class="data-label"><i class="fas fa-vr-cardboard"></i> WebGL GPU Token</span>
+                    <span class="data-value" id="res-gpu">Loading...</span>
+                </div>
+                <div class="data-card">
+                    <span class="data-label"><i class="fas fa-desktop"></i> Screen Resolution</span>
+                    <span class="data-value" id="res-screen">Loading...</span>
+                </div>
+                <div class="data-card">
+                    <span class="data-label"><i class="fas fa-globe"></i> Local Timezone</span>
+                    <span class="data-value" id="res-tz">Loading...</span>
+                </div>
+            </div>
+
+            <div class="warning-box" id="warning-text">
+                <p><i class="fas fa-triangle-exclamation"></i> [ALERT] Your hardware configuration is highly unique. Changing your IP via VPN does not hide these WebGL and CPU signatures from advanced tracking algorithms.</p>
+            </div>
+
+        </section>
     </div>
 
+    <!-- ORIGINAL HARDWARE EXTRACTION LOGIC -->
     <script>
         function getGPU() {
             try {
@@ -155,9 +225,16 @@
         }
 
         function runScan() {
+            // UI State Change
             document.getElementById('start-btn').style.display = 'none';
-            document.getElementById('loading').style.display = 'block';
+            document.getElementById('status-text').style.display = 'block';
+            document.getElementById('scan-line').style.display = 'block';
+            document.getElementById('radar').style.borderColor = 'var(--status-danger)';
+            document.querySelector('.radar-box i').style.color = 'var(--status-danger)';
+            document.querySelector('.scan-line').style.background = 'var(--status-danger)';
+            document.querySelector('.scan-line').style.boxShadow = '0 0 15px var(--status-danger)';
 
+            // Data Extraction (Original Logic)
             const os = navigator.platform || "Unknown OS";
             const cpu = navigator.hardwareConcurrency ? navigator.hardwareConcurrency + " Logical Cores" : "Unknown";
             const ram = navigator.deviceMemory ? navigator.deviceMemory + " GB+" : "Unknown";
@@ -165,11 +242,21 @@
             const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
             const gpu = getGPU();
 
+            // Simulate deep scan delay
             setTimeout(() => {
-                document.getElementById('loading').style.display = 'none';
+                // Stop UI Animation
+                document.getElementById('scan-line').style.display = 'none';
+                document.getElementById('status-text').innerText = "[+] Hardware Footprint Extracted Successfully.";
+                document.getElementById('status-text').style.color = "var(--status-success)";
+                
+                document.getElementById('radar').style.borderColor = 'var(--status-success)';
+                document.querySelector('.radar-box i').style.color = 'var(--status-success)';
+
+                // Show Results
                 document.getElementById('results').style.display = 'grid';
                 document.getElementById('warning-text').style.display = 'block';
 
+                // Populate Data
                 document.getElementById('res-os').innerText = os;
                 document.getElementById('res-cpu').innerText = cpu;
                 document.getElementById('res-ram').innerText = ram;
@@ -179,6 +266,6 @@
             }, 1800);
         }
     </script>
-    
+
 </body>
 </html>
