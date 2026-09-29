@@ -95,7 +95,7 @@
     <link rel="stylesheet" href="chatbot.css">
 
     <style>
-                /* 🚀 THE ULTIMATE GHOST SPACE FIX */
+        /* 🚀 THE ULTIMATE GHOST SPACE FIX */
         html, body {
             width: 100%;
             max-width: 100vw;
@@ -108,282 +108,114 @@
 
         /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
         ::selection {
-            background-color: #0ea5e9; /* Neon Blue */
-            color: #ffffff; /* White Text */
+            background-color: #0ea5e9;
+            color: #ffffff;
         }
         
-        /* Firefox browser ke liye */
         ::-moz-selection {
             background-color: #0ea5e9;
             color: #ffffff;
         }
+        
         /* ✨ PREMIUM FADE-IN ANIMATION */
         body {
             animation: appLoad 0.8s ease-out forwards;
-        }
-
-        @keyframes appLoad {
-            0% {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* --- Premium Custom Scrollbar --- */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #020617; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155; 
-            border-radius: 10px; 
-            border: 2px solid #020617; 
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0ea5e9; 
-        }
-
-        /* Base Styling */
-        body {
             margin: 0;
             padding: 0;
-            padding-top: 115px; /* Navbar Overlap Fix */
+            padding-top: 115px; 
             font-family: 'Poppins', sans-serif;
-            background-color: #0f172a; /* Premium Dark Slate */
+            background-color: #0f172a; 
             color: #ffffff;
             text-align: center;
             overflow-x: hidden;
             position: relative;
         }
 
+        @keyframes appLoad {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        html { scroll-behavior: smooth; }
+
+        /* --- Premium Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; border: 2px solid #020617; }
+        ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+
         /* PREMIUM ANIMATED GLOWING BACKGROUND */
         .bg-animation {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: #0f172a;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; overflow: hidden; background: #0f172a;
         }
         .glow-shape {
-            position: absolute;
-            filter: blur(80px);
-            opacity: 0.5;
-            animation: float 10s infinite alternate ease-in-out;
-            border-radius: 50%;
+            position: absolute; filter: blur(80px); opacity: 0.5;
+            animation: float 10s infinite alternate ease-in-out; border-radius: 50%;
         }
-        .shape1 {
-            width: 400px; height: 400px;
-            background: #0ea5e9;
-            top: -10%; left: -10%;
-            animation-duration: 12s;
-        }
-        .shape2 {
-            width: 500px; height: 500px;
-            background: #8b5cf6;
-            bottom: -20%; right: -10%;
-            animation-duration: 15s;
-        }
-        .shape3 {
-            width: 300px; height: 300px;
-            background: #3b82f6;
-            top: 40%; left: 40%;
-            animation-duration: 18s;
-        }
+        .shape1 { width: 400px; height: 400px; background: #0ea5e9; top: -10%; left: -10%; animation-duration: 12s; }
+        .shape2 { width: 500px; height: 500px; background: #8b5cf6; bottom: -20%; right: -10%; animation-duration: 15s; }
+        .shape3 { width: 300px; height: 300px; background: #3b82f6; top: 40%; left: 40%; animation-duration: 18s; }
         @keyframes float {
             0% { transform: translateY(0px) scale(1); }
             100% { transform: translateY(-50px) scale(1.1); }
         }
 
         /* Top Left Navigation */
-        .top-left-nav {
-            position: absolute;
-            top: 78px;
-            left: 10px;
-            z-index: 990;
-        }
+        .top-left-nav { position: absolute; top: 78px; left: 10px; z-index: 990; }
         .nav-link {
-            color: #0ea5e9;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            border: 1px solid #0ea5e9;
-            padding: 8px 18px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            background-color: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(5px);
+            color: #0ea5e9; text-decoration: none; font-size: 15px; font-weight: 600;
+            border: 1px solid #0ea5e9; padding: 8px 18px; border-radius: 6px; transition: all 0.3s ease;
+            background-color: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px);
         }
-        .nav-link:hover {
-            background-color: #0ea5e9;
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
-        }
+        .nav-link:hover { background-color: #0ea5e9; color: #ffffff; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); }
 
         /* Hero Section */
-        .hero-section {
-            padding: 100px 20px 50px;
-        }
-        .logo-img {
-            width: 120px;
-            border-radius: 50%;
-            box-shadow: 0 0 30px rgba(14, 165, 233, 0.6);
-            margin-bottom: 20px;
-            border: 2px solid #0ea5e9;
-        }
+        .hero-section { padding: 100px 20px 50px; }
+        .logo-img { width: 120px; border-radius: 50%; box-shadow: 0 0 30px rgba(14, 165, 233, 0.6); margin-bottom: 20px; border: 2px solid #0ea5e9; }
         h1 { font-size: 36px; margin: 0 0 10px 0; letter-spacing: 1px; }
         .tagline { color: #cbd5e1; font-size: 16px; margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase;}
-        
         h2 { color: #38bdf8; font-size: 28px; margin-top: 40px; }
 
         /* Countdown */
-        #timer {
-            font-size: 26px;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 15px 0 30px;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
-        }
+        #timer { font-size: 26px; font-weight: 700; color: #ffffff; margin: 15px 0 30px; letter-spacing: 2px; text-shadow: 0 0 10px rgba(14, 165, 233, 0.5); }
 
         /* Social Icons */
         .social { margin-top: 40px; margin-bottom: 20px; }
-        .social a {
-            color: #38bdf8;
-            margin: 0 15px;
-            font-size: 28px;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-        .social a:hover {
-            color: #ffffff;
-            transform: scale(1.2) translateY(-3px);
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
-        }
+        .social a { color: #38bdf8; margin: 0 15px; font-size: 28px; transition: 0.3s; text-decoration: none; }
+        .social a:hover { color: #ffffff; transform: scale(1.2) translateY(-3px); text-shadow: 0 0 15px rgba(56, 189, 248, 0.8); }
 
         /* Features Section */
         .phantomix-section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; position: relative; z-index: 10; }
         .features-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 30px; }
         .feature-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 12px;
-            width: 280px;
-            border: 1px solid rgba(51, 65, 85, 0.8);
-            transition: all 0.3s ease;
+            background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; width: 280px;
+            border: 1px solid rgba(51, 65, 85, 0.8); transition: all 0.3s ease;
         }
-        .feature-card:hover {
-            border-color: #0ea5e9;
-            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
-            transform: translateY(-5px);
-            background: rgba(30, 41, 59, 0.9);
-        }
+        .feature-card:hover { border-color: #0ea5e9; box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2); transform: translateY(-5px); background: rgba(30, 41, 59, 0.9); }
         .feature-icon { font-size: 40px; margin-bottom: 15px; }
         .feature-card h3 { margin-bottom: 10px; color: #f8fafc; }
         .feature-card p { color: #cbd5e1; font-size: 14px; line-height: 1.6; margin: 0; }
 
         /* Waitlist Container */
-        .waitlist-container {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(15px);
-            padding: 50px 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(14, 165, 233, 0.5);
-            box-shadow: 0 0 40px rgba(14, 165, 233, 0.15);
-            margin-top: 40px;
-        }
-        .waitlist-input {
-            padding: 15px 20px;
-            width: 300px;
-            max-width: 90%;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            background: rgba(15, 23, 42, 0.9);
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-            outline: none;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
+        .waitlist-container { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(15px); padding: 50px 30px; border-radius: 15px; border: 1px solid rgba(14, 165, 233, 0.5); box-shadow: 0 0 40px rgba(14, 165, 233, 0.15); margin-top: 40px; }
+        .waitlist-input { padding: 15px 20px; width: 300px; max-width: 90%; border-radius: 8px; border: 1px solid #334155; background: rgba(15, 23, 42, 0.9); color: #ffffff; font-family: 'Poppins', sans-serif; outline: none; margin-right: 10px; margin-bottom: 10px; }
         .waitlist-input:focus { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.3); }
-        .btn {
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 15px;
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
-        }
+        .btn { padding: 15px 30px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: #fff; border: none; border-radius: 8px; font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 15px; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3); }
         .btn:hover { box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6); transform: translateY(-2px); }
-        
-        /* Investor Section Styling Fix */
-        .investor-container {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(15px);
-            padding: 40px 15px; 
-            border-radius: 15px;
-            border: 1px solid #8b5cf6;
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
-            margin-top: 40px;
-            box-sizing: border-box;
-            width: 100%;
-        }
-        
-        .investor-stats .stat-box h3 {
-            font-size: 20px !important; 
-            text-shadow: none !important; 
-            color: #ffffff !important;
-            letter-spacing: 0.5px;
-        }
-        
-        .investor-stats {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .investor-stats .stat-box {
-            background: rgba(15, 23, 42, 0.8);
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            flex: 1;
-        }
 
-        .btn-investor {
-            background: linear-gradient(135deg, #8b5cf6, #c084fc);
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-            display: inline-block;
-            text-decoration: none;
-            color: #ffffff;
-        }
-        .btn-investor:hover {
-            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            color: #ffffff;
-        }
+        /* Investor Section */
+        .investor-container { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(15px); padding: 40px 15px; border-radius: 15px; border: 1px solid #8b5cf6; box-shadow: 0 0 30px rgba(139, 92, 246, 0.15); margin-top: 40px; box-sizing: border-box; width: 100%; }
+        .investor-stats .stat-box h3 { font-size: 20px !important; text-shadow: none !important; color: #ffffff !important; letter-spacing: 0.5px; }
+        .investor-stats { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+        .investor-stats .stat-box { background: rgba(15, 23, 42, 0.8); padding: 15px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.3); flex: 1; }
+        .btn-investor { background: linear-gradient(135deg, #8b5cf6, #c084fc); box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); display: inline-block; text-decoration: none; color: #ffffff; }
+        .btn-investor:hover { box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6); background: linear-gradient(135deg, #7c3aed, #a855f7); color: #ffffff; }
 
-        /* Floating Support Button (Email) */
+        /* 🔥 FLOATING SUPPORT BUTTON FIXED - Now forced to stay on screen 🔥 */
         .floating-support {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
             background: #0ea5e9;
             color: white;
             width: 60px;
@@ -394,7 +226,7 @@
             align-items: center;
             font-size: 26px;
             box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
-            z-index: 9999;
+            z-index: 999999 !important; /* Force it to the top layer */
             transition: all 0.3s ease;
             text-decoration: none;
         }
@@ -404,348 +236,76 @@
             color: white;
         }
 
-        /* Founder & Updates Section Styling (MODIFIED FOR NEW TEAM GRID) */
-        .live-updates {
-            width: 100%;
-        }
-        .update-feed {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .update-item {
-            display: flex;
-            gap: 15px;
-            background: rgba(30, 41, 59, 0.5);
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 3px solid #0ea5e9;
-            transition: all 0.3s ease;
-        }
-        .update-item:hover {
-            background: rgba(30, 41, 59, 0.8);
-            transform: translateX(5px);
-        }
-        .update-date {
-            font-size: 12px;
-            color: #0ea5e9;
-            font-weight: 700;
-            white-space: nowrap;
-            min-width: 70px;
-        }
-
         /* Development Roadmap Styling */
-        .roadmap-container {
-            position: relative;
-            padding-left: 30px;
-            text-align: left;
-            margin: 0 auto;
-        }
-        .roadmap-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 14px;
-            height: 100%;
-            width: 2px;
-            background: rgba(51, 65, 85, 0.8);
-            z-index: 1;
-        }
-        .roadmap-item {
-            position: relative;
-            padding-bottom: 40px;
-            padding-left: 30px;
-        }
-        .roadmap-item:last-child {
-            padding-bottom: 0;
-        }
-        .roadmap-marker {
-            position: absolute;
-            left: -30px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #0f172a;
-            border: 2px solid #334155;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .roadmap-content {
-            background: rgba(30, 41, 59, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(51, 65, 85, 0.5);
-            transition: all 0.3s ease;
-        }
-        .roadmap-item:hover .roadmap-content {
-            background: rgba(30, 41, 59, 0.8);
-            transform: translateX(5px);
-        }
-        .roadmap-date {
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #94a3b8;
-        }
-        .roadmap-item.completed .roadmap-marker {
-            border-color: #10b981;
-            background: #10b981;
-            color: #fff;
-            font-size: 12px;
-        }
-        .roadmap-item.completed .roadmap-content {
-            border-left: 3px solid #10b981;
-        }
-        .roadmap-item.current .roadmap-marker {
-            border-color: #0ea5e9;
-        }
-        .roadmap-item.current .roadmap-content {
-            border-left: 3px solid #0ea5e9;
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
-        }
-        .pulse-dot {
-            width: 10px;
-            height: 10px;
-            background: #0ea5e9;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
+        .roadmap-container { position: relative; padding-left: 30px; text-align: left; margin: 0 auto; }
+        .roadmap-container::before { content: ''; position: absolute; top: 0; left: 14px; height: 100%; width: 2px; background: rgba(51, 65, 85, 0.8); z-index: 1; }
+        .roadmap-item { position: relative; padding-bottom: 40px; padding-left: 30px; }
+        .roadmap-item:last-child { padding-bottom: 0; }
+        .roadmap-marker { position: absolute; left: -30px; top: 0; width: 30px; height: 30px; border-radius: 50%; background: #0f172a; border: 2px solid #334155; z-index: 2; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .roadmap-content { background: rgba(30, 41, 59, 0.5); padding: 20px; border-radius: 10px; border: 1px solid rgba(51, 65, 85, 0.5); transition: all 0.3s ease; }
+        .roadmap-item:hover .roadmap-content { background: rgba(30, 41, 59, 0.8); transform: translateX(5px); }
+        .roadmap-date { font-size: 12px; font-weight: 600; margin-bottom: 10px; color: #94a3b8; }
+        .roadmap-item.completed .roadmap-marker { border-color: #10b981; background: #10b981; color: #fff; font-size: 12px; }
+        .roadmap-item.completed .roadmap-content { border-left: 3px solid #10b981; }
+        .roadmap-item.current .roadmap-marker { border-color: #0ea5e9; }
+        .roadmap-item.current .roadmap-content { border-left: 3px solid #0ea5e9; box-shadow: 0 0 20px rgba(14, 165, 233, 0.1); }
+        .pulse-dot { width: 10px; height: 10px; background: #0ea5e9; border-radius: 50%; animation: pulse 2s infinite; }
         @keyframes pulse {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
         }
-        .roadmap-item.upcoming .roadmap-content {
-            opacity: 0.7;
-        }
+        .roadmap-item.upcoming .roadmap-content { opacity: 0.7; }
 
         /* Tech Stack Section Styling */
-        .tech-stack-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            padding: 20px;
-            background: rgba(15, 23, 42, 0.4);
-            border-radius: 12px;
-            border: 1px solid rgba(51, 65, 85, 0.3);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .tech-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .tech-item i {
-            font-size: 36px;
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
-        }
-        .tech-item span {
-            font-size: 12px;
-            font-weight: 600;
-            color: #64748b;
-            transition: all 0.3s ease;
-        }
-        .tech-item:hover {
-            opacity: 1;
-            transform: translateY(-5px);
-        }
-        .tech-item:hover i {
-            filter: grayscale(0%);
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-        }
-        .tech-item:hover span {
-            color: #cbd5e1;
-        }
+        .tech-stack-container { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; padding: 20px; background: rgba(15, 23, 42, 0.4); border-radius: 12px; border: 1px solid rgba(51, 65, 85, 0.3); max-width: 800px; margin: 0 auto; }
+        .tech-item { display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.7; transition: all 0.3s ease; cursor: pointer; }
+        .tech-item i { font-size: 36px; filter: grayscale(100%); transition: all 0.3s ease; }
+        .tech-item span { font-size: 12px; font-weight: 600; color: #64748b; transition: all 0.3s ease; }
+        .tech-item:hover { opacity: 1; transform: translateY(-5px); }
+        .tech-item:hover i { filter: grayscale(0%); text-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
+        .tech-item:hover span { color: #cbd5e1; }
 
         /* FAQ Section Styling */
-        .faq-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            text-align: left;
-        }
-        .faq-item {
-            background: rgba(30, 41, 59, 0.5);
-            border: 1px solid rgba(51, 65, 85, 0.5);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .faq-item:hover {
-            border-color: #0ea5e9;
-            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.1);
-        }
-        .faq-question {
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            color: #ffffff;
-            transition: all 0.3s ease;
-        }
-        .faq-question:hover {
-            color: #0ea5e9;
-        }
-        .faq-icon {
-            color: #0ea5e9;
-            transition: transform 0.3s ease;
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease;
-            padding: 0 20px;
-            background: rgba(15, 23, 42, 0.3);
-        }
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding-bottom: 20px;
-        }
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-        .faq-item.active {
-            border-color: #0ea5e9;
-        }
+        .faq-container { display: flex; flex-direction: column; gap: 15px; text-align: left; }
+        .faq-item { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(51, 65, 85, 0.5); border-radius: 10px; overflow: hidden; transition: all 0.3s ease; }
+        .faq-item:hover { border-color: #0ea5e9; box-shadow: 0 5px 15px rgba(14, 165, 233, 0.1); }
+        .faq-question { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: #ffffff; transition: all 0.3s ease; }
+        .faq-question:hover { color: #0ea5e9; }
+        .faq-icon { color: #0ea5e9; transition: transform 0.3s ease; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease; padding: 0 20px; background: rgba(15, 23, 42, 0.3); }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 20px; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        .faq-item.active { border-color: #0ea5e9; }
 
         /* Scroll Reveal Animation */
         .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
         .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* --- Premium Sticky Navbar --- */
-        .phantomix-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        .nav-logo {
-            font-size: 20px;
-            font-weight: 700;
-            color: white;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-        .nav-links li a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-        .nav-links li a:hover {
-            color: #0ea5e9;
-        }
-        .nav-btn {
-            background: rgba(14, 165, 233, 0.1);
-            color: #0ea5e9;
-            padding: 8px 18px;
-            border: 1px solid #0ea5e9;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .nav-btn:hover {
-            background: #0ea5e9;
-            color: white;
-            box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
-        }
+        .phantomix-navbar { position: fixed; top: 0; left: 0; width: 100%; height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14, 165, 233, 0.2); z-index: 1000; transition: all 0.3s ease; }
+        .nav-logo { font-size: 20px; font-weight: 700; color: white; letter-spacing: 1px; display: flex; align-items: center; }
+        .nav-links { display: flex; list-style: none; gap: 30px; margin: 0; padding: 0; }
+        .nav-links li a { color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.3s ease; cursor: pointer; }
+        .nav-links li a:hover { color: #0ea5e9; }
+        .nav-btn { background: rgba(14, 165, 233, 0.1); color: #0ea5e9; padding: 8px 18px; border: 1px solid #0ea5e9; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.3s ease; }
+        .nav-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
 
-        /* Mobile View Adjustments */
         @media (max-width: 768px) {
-            .phantomix-navbar {
-                padding: 0 15px; 
-                height: 60px;
-            }
+            .phantomix-navbar { padding: 0 15px; height: 60px; }
             .nav-logo { font-size: 16px; }
             .nav-links { display: none; }
-            .nav-btn {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
+            .nav-btn { padding: 6px 12px; font-size: 12px; }
             body { padding-top: 70px; }
         }
 
         /* --- Mobile Menu & Hamburger Styling --- */
-        .hamburger-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 24px;
-            cursor: pointer;
-            margin-left: 25px;
-        }
-        .mobile-menu {
-            position: fixed;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(14, 165, 233, 0.3);
-            display: flex;
-            flex-direction: column;
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-            z-index: 999;
-        }
-        .mobile-menu.active {
-            max-height: 300px;
-            padding: 20px 0;
-        }
-        .mobile-menu a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            padding: 15px 5%;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(51, 65, 85, 0.3);
-        }
+        .hamburger-btn { display: none; background: none; border: none; color: #ffffff; font-size: 24px; cursor: pointer; margin-left: 25px; }
+        .mobile-menu { position: fixed; top: 70px; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(14, 165, 233, 0.3); display: flex; flex-direction: column; padding: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out; z-index: 999; }
+        .mobile-menu.active { max-height: 300px; padding: 20px 0; }
+        .mobile-menu a { color: #94a3b8; text-decoration: none; font-size: 16px; font-weight: 600; padding: 15px 5%; transition: all 0.3s ease; border-bottom: 1px solid rgba(51, 65, 85, 0.3); }
         .mobile-menu a:last-child { border-bottom: none; }
-        .mobile-menu a:hover {
-            color: #0ea5e9;
-            background: rgba(14, 165, 233, 0.1);
-            padding-left: 8%;
-        }
+        .mobile-menu a:hover { color: #0ea5e9; background: rgba(14, 165, 233, 0.1); padding-left: 8%; }
         @media (max-width: 768px) {
             .phantomix-navbar { padding: 0 15px; height: 70px; }
             .nav-links { display: none; }
@@ -753,614 +313,172 @@
             .hamburger-btn { display: block; }
         }
 
-        /* --- Viral Share Buttons Styling --- */
-        .share-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .share-btn.whatsapp {
-            background: rgba(37, 211, 102, 0.1);
-            color: #25d366;
-            border: 1px solid rgba(37, 211, 102, 0.3);
-        }
-        .share-btn.whatsapp:hover {
-            background: #25d366;
-            color: white;
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
-        }
-        .share-btn.twitter {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .share-btn.twitter:hover {
-            background: #ffffff;
-            color: black;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-        }
-
         /* --- Live Stats Counter Styling --- */
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-        }
-        .stat-box {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            padding: 15px 25px;
-            border-radius: 12px;
-            text-align: center;
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s ease;
-        }
-        .stat-box:hover {
-            transform: translateY(-5px);
-            border-color: rgba(14, 165, 233, 0.6);
-        }
-        .stat-box h3 {
-            font-size: 32px;
-            color: #0ea5e9;
-            margin: 0;
-            text-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
-            font-family: 'Poppins', sans-serif;
-        }
-        .stat-box p {
-            color: #94a3b8;
-            font-size: 14px;
-            margin: 5px 0 0 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        @media (max-width: 600px) {
-            .hero-stats { flex-direction: column; gap: 15px; }
-        }
+        .hero-stats { display: flex; justify-content: center; gap: 40px; margin-top: 40px; }
+        .stat-box { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(14, 165, 233, 0.2); padding: 15px 25px; border-radius: 12px; text-align: center; backdrop-filter: blur(5px); transition: transform 0.3s ease; }
+        .stat-box:hover { transform: translateY(-5px); border-color: rgba(14, 165, 233, 0.6); }
+        .stat-box h3 { font-size: 32px; color: #0ea5e9; margin: 0; text-shadow: 0 0 15px rgba(14, 165, 233, 0.5); font-family: 'Poppins', sans-serif; }
+        .stat-box p { color: #94a3b8; font-size: 14px; margin: 5px 0 0 0; text-transform: uppercase; letter-spacing: 1px; }
+        @media (max-width: 600px) { .hero-stats { flex-direction: column; gap: 15px; } }
 
         /* --- Premium Interactive Footer Styling --- */
-        .phantomix-footer {
-            background: #020617;
-            border-top: 1px solid rgba(14, 165, 233, 0.2);
-            padding: 50px 5% 20px 5%;
-            margin-top: 50px;
-            font-family: 'Poppins', sans-serif;
-        }
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 40px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        .phantomix-footer { background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2); padding: 50px 5% 20px 5%; margin-top: 50px; font-family: 'Poppins', sans-serif; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; max-width: 1200px; margin-left: auto; margin-right: auto; }
         .footer-brand { flex: 1; min-width: 250px; }
-        .footer-brand h3 {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .footer-brand h3 { color: white; font-size: 24px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
         .footer-brand p { color: #94a3b8; font-size: 14px; line-height: 1.6; }
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            min-width: 150px;
-        }
-        .footer-links h4, .footer-social h4 {
-            color: white;
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        .footer-links a:hover {
-            color: #0ea5e9;
-            padding-left: 8px;
-        }
+        .footer-links { display: flex; flex-direction: column; gap: 12px; min-width: 150px; }
+        .footer-links h4, .footer-social h4 { color: white; margin-bottom: 15px; font-size: 18px; }
+        .footer-links a { color: #94a3b8; text-decoration: none; font-size: 14px; transition: all 0.3s ease; }
+        .footer-links a:hover { color: #0ea5e9; padding-left: 8px; }
         .social-icons { display: flex; gap: 15px; }
-        .social-icons a {
-            color: #94a3b8;
-            font-size: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-        }
-        .social-icons a:hover {
-            color: white;
-            background: #0ea5e9;
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4);
-        }
-        .footer-bottom {
-            border-top: 1px solid rgba(51, 65, 85, 0.5);
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            color: #64748b;
-            font-size: 13px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        @media (max-width: 768px) {
-            .footer-content { flex-direction: column; }
-            .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
-        }
+        .social-icons a { color: #94a3b8; font-size: 20px; background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; }
+        .social-icons a:hover { color: white; background: #0ea5e9; transform: translateY(-5px); box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4); }
+        .footer-bottom { border-top: 1px solid rgba(51, 65, 85, 0.5); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; color: #64748b; font-size: 13px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        @media (max-width: 768px) { .footer-content { flex-direction: column; } .footer-bottom { flex-direction: column; text-align: center; justify-content: center; } }
+        
         /* --- Live Network Status Styling --- */
-        .status-container {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: left;
-            backdrop-filter: blur(10px);
-        }
-        .status-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-        }
-        .status-label {
-            color: #64748b;
-        }
-        .status-value {
-            font-weight: 600;
-        }
-        .status-value.operational {
-            color: #10b981;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .dot-green {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 8px #10b981;
-            animation: blink 1.5s infinite;
-        }
-        @keyframes blink {
-            0% { opacity: 0.4; }
-            50% { opacity: 1; }
-            100% { opacity: 0.4; }
-        }
+        .status-container { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(14, 165, 233, 0.2); padding: 20px; border-radius: 12px; text-align: left; backdrop-filter: blur(10px); }
+        .status-item { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+        .status-label { color: #64748b; }
+        .status-value { font-weight: 600; }
+        .status-value.operational { color: #10b981; display: flex; align-items: center; gap: 6px; }
+        .dot-green { width: 8px; height: 8px; background: #10b981; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #10b981; animation: blink 1.5s infinite; }
+        @keyframes blink { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
         
         /* --- Milestone Rewards Styling --- */
-        .milestone-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            text-align: left;
-        }
-        .milestone-step {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(30, 41, 59, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px 25px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .milestone-badge {
-            font-size: 22px;
-            color: #64748b;
-            background: rgba(255, 255, 255, 0.05);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .milestone-info {
-            flex: 1;
-            margin-left: 20px;
-        }
-        .milestone-info h4 {
-            margin: 0 0 5px 0;
-            color: #f8fafc;
-            font-size: 16px;
-        }
-        .milestone-info p {
-            margin: 0;
-            color: #94a3b8;
-            font-size: 13px;
-        }
-        .milestone-status {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #64748b;
-        }
-        .milestone-step.achieved {
-            border-color: rgba(16, 185, 129, 0.3);
-            background: rgba(16, 185, 129, 0.05);
-        }
-        .milestone-step.achieved .milestone-badge {
-            color: #10b981;
-            background: rgba(16, 185, 129, 0.1);
-        }
-        .milestone-step.achieved .milestone-status {
-            color: #10b981;
-        }
-        .milestone-step.active {
-            border-color: rgba(139, 92, 246, 0.5);
-            background: rgba(139, 92, 246, 0.1);
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
-        }
-        .milestone-step.active .milestone-badge {
-            color: #a78bfa;
-            background: rgba(139, 92, 246, 0.2);
-        }
-        .milestone-step.active .milestone-status {
-            color: #a78bfa;
-            animation: pulse 2s infinite;
-        }
-        @media (max-width: 600px) {
-            .milestone-step { flex-direction: column; text-align: center; gap: 10px; }
-            .milestone-info { margin: 0; }
-        }
+        .milestone-container { display: flex; flex-direction: column; gap: 20px; text-align: left; }
+        .milestone-step { display: flex; align-items: center; justify-content: space-between; background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); padding: 15px 25px; border-radius: 12px; transition: all 0.3s ease; position: relative; }
+        .milestone-badge { font-size: 22px; color: #64748b; background: rgba(255, 255, 255, 0.05); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .milestone-info { flex: 1; margin-left: 20px; }
+        .milestone-info h4 { margin: 0 0 5px 0; color: #f8fafc; font-size: 16px; }
+        .milestone-info p { margin: 0; color: #94a3b8; font-size: 13px; }
+        .milestone-status { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; }
+        .milestone-step.achieved { border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.05); }
+        .milestone-step.achieved .milestone-badge { color: #10b981; background: rgba(16, 185, 129, 0.1); }
+        .milestone-step.achieved .milestone-status { color: #10b981; }
+        .milestone-step.active { border-color: rgba(139, 92, 246, 0.5); background: rgba(139, 92, 246, 0.1); box-shadow: 0 0 15px rgba(139, 92, 246, 0.15); }
+        .milestone-step.active .milestone-badge { color: #a78bfa; background: rgba(139, 92, 246, 0.2); }
+        .milestone-step.active .milestone-status { color: #a78bfa; animation: pulse 2s infinite; }
+        @media (max-width: 600px) { .milestone-step { flex-direction: column; text-align: center; gap: 10px; } .milestone-info { margin: 0; } }
 
         /* --- Performance Analytics Styling --- */
-        .analytics-container {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(51, 65, 85, 0.5);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: left;
-        }
-        .analytics-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            color: #94a3b8;
-            border-bottom: 1px dashed rgba(51, 65, 85, 0.5);
-            padding-bottom: 12px;
-            margin-bottom: 15px;
-        }
-        .analytics-grid {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .analytics-card {
-            flex: 1;
-            min-width: 150px;
-            background: rgba(2, 6, 23, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            padding: 15px;
-            border-radius: 8px;
-        }
-        .analytics-card h5 {
-            margin: 0 0 5px 0;
-            color: #64748b;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .analytics-card p {
-            margin: 0;
-            font-size: 18px;
-            font-weight: bold;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .ping-good {
-            color: #10b981;
-            font-size: 12px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .ping-dot {
-            width: 6px;
-            height: 6px;
-            background: #10b981;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #10b981;
-        }
+        .analytics-container { background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(51, 65, 85, 0.5); border-radius: 12px; padding: 20px; text-align: left; }
+        .analytics-header { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #94a3b8; border-bottom: 1px dashed rgba(51, 65, 85, 0.5); padding-bottom: 12px; margin-bottom: 15px; }
+        .analytics-grid { display: flex; gap: 15px; flex-wrap: wrap; }
+        .analytics-card { flex: 1; min-width: 150px; background: rgba(2, 6, 23, 0.4); border: 1px solid rgba(255, 255, 255, 0.02); padding: 15px; border-radius: 8px; }
+        .analytics-card h5 { margin: 0 0 5px 0; color: #64748b; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .analytics-card p { margin: 0; font-size: 18px; font-weight: bold; font-family: 'Courier New', Courier, monospace; }
+        .ping-good { color: #10b981; font-size: 12px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+        .ping-dot { width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; }
 
         /* --- Mobile Share Card Styling --- */
-        .mobile-share-card {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .native-share-btn {
-            width: 100%;
-            background: rgba(14, 165, 233, 0.1);
-            color: #0ea5e9;
-            border: 1px solid #0ea5e9;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .native-share-btn:hover {
-            background: #0ea5e9;
-            color: white;
-            box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
-        }
-        @media (max-width: 768px) {
-            .qr-desktop-only {
-                display: none !important;
-            }
-        }
+        .mobile-share-card { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(14, 165, 233, 0.2); padding: 20px; border-radius: 12px; text-align: center; }
+        .native-share-btn { width: 100%; background: rgba(14, 165, 233, 0.1); color: #0ea5e9; border: 1px solid #0ea5e9; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .native-share-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+        @media (max-width: 768px) { .qr-desktop-only { display: none !important; } }
 
         /* --- Monetization & Ad Slots Styling --- */
-        .ad-placeholder-box {
-            background: rgba(2, 6, 23, 0.4);
-            border: 1px dashed rgba(14, 165, 233, 0.3);
-            border-radius: 8px;
-            padding: 20px;
-            position: relative;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .ad-tag {
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            background: #0f172a;
-            color: #64748b;
-            font-size: 9px;
-            font-family: monospace;
-            padding: 2px 8px;
-            border: 1px solid rgba(51, 65, 85, 0.5);
-            border-radius: 4px;
-            letter-spacing: 1px;
-        }
+        .ad-placeholder-box { background: rgba(2, 6, 23, 0.4); border: 1px dashed rgba(14, 165, 233, 0.3); border-radius: 8px; padding: 20px; position: relative; text-align: center; margin-top: 20px; }
+        .ad-tag { position: absolute; top: -10px; left: 20px; background: #0f172a; color: #64748b; font-size: 9px; font-family: monospace; padding: 2px 8px; border: 1px solid rgba(51, 65, 85, 0.5); border-radius: 4px; letter-spacing: 1px; }
 
         /* --- Presale Tiers Styling --- */
-        .tier-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(51, 65, 85, 0.5);
-            padding: 30px;
-            border-radius: 16px;
-            width: 280px;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .tier-card:hover {
-            border-color: #0ea5e9;
-            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15);
-            transform: translateY(-5px);
-        }
-        .tier-badge {
-            position: absolute;
-            top: -12px;
-            left: 25px;
-            font-size: 10px;
-            font-weight: bold;
-            padding: 4px 12px;
-            border: 1px solid;
-            border-radius: 20px;
-            letter-spacing: 1px;
-            font-family: monospace;
-        }
-        .tier-price {
-            font-size: 36px;
-            margin: 15px 0 5px 0;
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-        }
-        .tier-desc {
-            color: #94a3b8;
-            font-size: 13px;
-            margin: 0 0 20px 0;
-            line-height: 1.5;
-        }
-        .tier-features {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            font-size: 13px;
-            color: #cbd5e1;
-            flex: 1;
-        }
-        .tier-features i {
-            margin-right: 8px;
-        }
-        @media (max-width: 768px) {
-            .feature-tier { transform: scale(1) !important; margin-top: 10px; }
-        }
+        .tier-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(51, 65, 85, 0.5); padding: 30px; border-radius: 16px; width: 280px; display: flex; flex-direction: column; transition: all 0.3s ease; position: relative; }
+        .tier-card:hover { border-color: #0ea5e9; box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15); transform: translateY(-5px); }
+        .tier-badge { position: absolute; top: -12px; left: 25px; font-size: 10px; font-weight: bold; padding: 4px 12px; border: 1px solid; border-radius: 20px; letter-spacing: 1px; font-family: monospace; }
+        .tier-price { font-size: 36px; margin: 15px 0 5px 0; color: #fff; font-family: 'Poppins', sans-serif; }
+        .tier-desc { color: #94a3b8; font-size: 13px; margin: 0 0 20px 0; line-height: 1.5; }
+        .tier-features { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 13px; color: #cbd5e1; flex: 1; }
+        .tier-features i { margin-right: 8px; }
+        @media (max-width: 768px) { .feature-tier { transform: scale(1) !important; margin-top: 10px; } }
 
         /* --- Crowdfunding & FOMO Engine Styling --- */
-        .fomo-container {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            padding: 25px;
-            border-radius: 16px;
-            text-align: left;
-            box-shadow: 0 0 25px rgba(139, 92, 246, 0.05);
-        }
-        .progress-bar-bg {
-            width: 100%;
-            height: 10px;
-            background: #020617;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-        }
-        .progress-bar-fill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #0ea5e9, #8b5cf6);
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
-            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .live-activity-box {
-            margin-top: 20px;
-            background: rgba(2, 6, 23, 0.5);
-            border: 1px dashed rgba(16, 185, 129, 0.2);
-            padding: 12px 15px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .fomo-container { background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(139, 92, 246, 0.2); padding: 25px; border-radius: 16px; text-align: left; box-shadow: 0 0 25px rgba(139, 92, 246, 0.05); }
+        .progress-bar-bg { width: 100%; height: 10px; background: #020617; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.02); }
+        .progress-bar-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #0ea5e9, #8b5cf6); border-radius: 20px; box-shadow: 0 0 15px rgba(139, 92, 246, 0.6); transition: width 2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .live-activity-box { margin-top: 20px; background: rgba(2, 6, 23, 0.5); border: 1px dashed rgba(16, 185, 129, 0.2); padding: 12px 15px; border-radius: 8px; display: flex; align-items: center; gap: 12px; }
 
         /* 🖱️ CUSTOM NEON CURSOR STYLING */
-        .glow-cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(14, 165, 233, 0.4);
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.8), 0 0 40px rgba(14, 165, 233, 0.4);
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 99999;
-            transition: width 0.2s, height 0.2s, background 0.2s, box-shadow 0.2s;
-            display: none;
-        }
-        @media (max-width: 768px) {
-            .glow-cursor { display: none !important; }
-        }
+        .glow-cursor { position: fixed; top: 0; left: 0; width: 20px; height: 20px; border-radius: 50%; background: rgba(14, 165, 233, 0.4); box-shadow: 0 0 20px rgba(14, 165, 233, 0.8), 0 0 40px rgba(14, 165, 233, 0.4); pointer-events: none; transform: translate(-50%, -50%); z-index: 99999; transition: width 0.2s, height 0.2s, background 0.2s, box-shadow 0.2s; display: none; }
+        @media (max-width: 768px) { .glow-cursor { display: none !important; } }
 
-        .vault-gate-card {
-            display: flex;
-            align-items: center;
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
-            border: 1px solid rgba(14, 165, 233, 0.3);
-            border-radius: 16px;
-            padding: 20px 25px;
-            max-width: 600px;
-            margin: 40px auto;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            position: relative;
+        .vault-gate-card { display: flex; align-items: center; background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 16px; padding: 20px 25px; max-width: 600px; margin: 40px auto; text-decoration: none; transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; overflow: hidden; backdrop-filter: blur(10px); }
+        .vault-gate-card:hover { transform: translateY(-5px) scale(1.02); border-color: #0ea5e9; box-shadow: 0 15px 40px rgba(14, 165, 233, 0.25); }
+        .vault-icon { background: rgba(14, 165, 233, 0.1); color: #0ea5e9; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; flex-shrink: 0; transition: transform 0.4s ease; }
+        .vault-gate-card:hover .vault-icon { transform: rotate(10deg) scale(1.1); }
+        .vault-content { margin-left: 20px; text-align: left; flex-grow: 1; }
+        .vault-content h3 { margin: 0 0 6px 0; color: #ffffff; font-size: 18px; font-weight: 700; font-family: 'Poppins', sans-serif; }
+        .vault-content .badge { background: #10b981; color: #ffffff; font-size: 10px; padding: 3px 8px; border-radius: 12px; vertical-align: middle; margin-left: 8px; letter-spacing: 0.5px; font-weight: 600; }
+        .vault-content p { margin: 0; color: #94a3b8; font-size: 13px; font-family: 'Poppins', sans-serif; line-height: 1.5; }
+        .vault-arrow { color: #334155; font-size: 20px; transition: all 0.4s ease; }
+        .vault-gate-card:hover .vault-arrow { color: #0ea5e9; transform: translateX(6px); }
+        @media (max-width: 600px) { .vault-gate-card { flex-direction: column; text-align: center; padding: 25px 20px; margin: 25px 15px; } .vault-content { margin-left: 0; margin-top: 15px; text-align: center; } .vault-arrow { display: none; } }
+
+        /* 🔥 TEAM INFINITE MARQUEE (BIG CARDS & SLOGANS) 🔥 */
+        .team-marquee-container {
+            width: 100%;
             overflow: hidden;
+            padding: 40px 0;
+            white-space: nowrap;
+            position: relative;
+        }
+        /* Fade edges for smooth enter/exit */
+        .team-marquee-container::before, .team-marquee-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .team-marquee-container::before {
+            left: 0;
+            background: linear-gradient(to right, #0f172a 0%, transparent 100%);
+        }
+        .team-marquee-container::after {
+            right: 0;
+            background: linear-gradient(to left, #0f172a 0%, transparent 100%);
+        }
+        .team-marquee-track {
+            display: inline-flex;
+            gap: 25px;
+            /* Adjust time here to make it faster/slower */
+            animation: teamMarqueeScroll 20s linear infinite; 
+        }
+        .team-marquee-track:hover {
+            animation-play-state: paused;
+        }
+        
+        .team-big-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 16px;
+            padding: 30px 25px;
+            width: 300px; /* Fixed width so it looks good on mobile too */
+            text-align: center;
             backdrop-filter: blur(10px);
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            white-space: normal; /* Allow text inside to wrap */
+            display: inline-block;
         }
-        .vault-gate-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: #0ea5e9;
-            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.25);
+        .team-big-card:hover {
+            transform: translateY(-8px);
         }
-        .vault-icon {
-            background: rgba(14, 165, 233, 0.1);
-            color: #0ea5e9;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            flex-shrink: 0;
-            transition: transform 0.4s ease;
-        }
-        .vault-gate-card:hover .vault-icon {
-            transform: rotate(10deg) scale(1.1);
-        }
-        .vault-content {
-            margin-left: 20px;
-            text-align: left;
-            flex-grow: 1;
-        }
-        .vault-content h3 {
-            margin: 0 0 6px 0;
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-        }
-        .vault-content .badge {
-            background: #10b981;
-            color: #ffffff;
-            font-size: 10px;
-            padding: 3px 8px;
-            border-radius: 12px;
-            vertical-align: middle;
-            margin-left: 8px;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-        .vault-content p {
-            margin: 0;
-            color: #94a3b8;
+        .team-quote {
+            color: #cbd5e1;
             font-size: 13px;
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.5;
-        }
-        .vault-arrow {
-            color: #334155;
-            font-size: 20px;
-            transition: all 0.4s ease;
-        }
-        .vault-gate-card:hover .vault-arrow {
-            color: #0ea5e9;
-            transform: translateX(6px);
-        }
-        @media (max-width: 600px) {
-            .vault-gate-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 25px 20px;
-                margin: 25px 15px;
-            }
-            .vault-content {
-                margin-left: 0;
-                margin-top: 15px;
-                text-align: center;
-            }
-            .vault-arrow { display: none; }
+            line-height: 1.6;
+            margin-top: 15px;
+            font-style: italic;
         }
 
+        @keyframes teamMarqueeScroll {
+            0% { transform: translateX(0); }
+            /* Moving exactly half the width since we duplicate the 3 cards */
+            100% { transform: translateX(calc(-50% - 12.5px)); } 
+        }
     </style>
 </head>
 
@@ -1461,57 +579,67 @@
 
     </div>
 
-    <a href="gallery.html" class="vault-gate-card">
-        <div class="vault-icon">
-            <i class="fa-solid fa-photo-film"></i>
-        </div>
-        <div class="vault-content">
-            <h3>Phantomix Media Vault <span class="badge">NEW</span></h3>
-            <p>Explore high-res app UI, team behind the scenes, and official ecosystem updates.</p>
-        </div>
-        <div class="vault-arrow">
-            <i class="fas fa-arrow-right"></i>
-        </div>
-    </a>
-
-
-    <div class="social" style="text-align: center; margin-bottom: 40px;">
-        <a href="https://instagram.com/phantomix.in" target="_blank" aria-label="Visit Phantomix Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-        <a href="https://www.youtube.com/@Phantomix_SP" target="_blank" aria-label="Visit Phantomix YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-        <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank" aria-label="Join Phantomix WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-        <a href="https://t.me/diamondmax_india" target="_blank" aria-label="Join Phantomix Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
-    </div>
-
-    <!-- 🌟 THE NEW PREMIUM TEAM SECTION (Replaces old split-view profile) -->
-    <section class="phantomix-section scroll-reveal" style="max-width: 1100px; padding-top: 0;">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <p style="color: #0ea5e9; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">⚡ The Minds Behind The Mainframe</p>
-            <h2 style="color: #fff; font-size: 32px; margin-top: 0;">Engineered for Excellence</h2>
-        </div>
+    <!-- 🔥 THE NEW PREMIUM TEAM INFINITE MARQUEE SECTION 🔥 -->
+    <section style="padding: 40px 0; text-align: center;">
+        <p style="color: #0ea5e9; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">⚡ The Minds Behind The Mainframe</p>
+        <h2 style="color: #fff; font-size: 32px; margin-top: 0; margin-bottom: 10px;">Engineered for Excellence</h2>
         
-        <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 40px;">
-            <!-- CEO -->
-            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 16px; padding: 30px 25px; width: 280px; text-align: center; backdrop-filter: blur(10px); transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#0ea5e9';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(14, 165, 233, 0.3)';">
-                <img src="your-real-photo.jpg" alt="Shrikant Prajapati" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #0ea5e9; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Shrikant+Prajapati&background=0f172a&color=0ea5e9'">
-                <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Shrikant Prajapati</h3>
-                <p style="font-size: 13px; font-weight: 600; color: #0ea5e9; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Founder & CEO</p>
-            </div>
-            <!-- Co-Founder -->
-            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 16px; padding: 30px 25px; width: 280px; text-align: center; backdrop-filter: blur(10px); transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#8b5cf6';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(139, 92, 246, 0.3)';">
-                <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #8b5cf6; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Ranjan+Gupta&background=0f172a&color=8b5cf6'">
-                <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Ranjan Gupta</h3>
-                <p style="font-size: 13px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Co-Founder & Lead Architect</p>
-            </div>
-            <!-- VP -->
-            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px; padding: 30px 25px; width: 280px; text-align: center; backdrop-filter: blur(10px); transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='#10b981';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(16, 185, 129, 0.3)';">
-                <img src="vp.jpg" alt="Nancy Raghav" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #10b981; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Nancy+Raghav&background=0f172a&color=10b981'">
-                <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Nancy Raghav</h3>
-                <p style="font-size: 13px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 1px; margin: 0;">VP of Brand Experience</p>
+        <div class="team-marquee-container">
+            <div class="team-marquee-track">
+                
+                <!-- Group 1 -->
+                <!-- CEO -->
+                <div class="team-big-card" style="border-color: rgba(14, 165, 233, 0.3);" onmouseover="this.style.borderColor='#0ea5e9';" onmouseout="this.style.borderColor='rgba(14, 165, 233, 0.3)';">
+                    <img src="your-real-photo.jpg" alt="Shrikant Prajapati" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #0ea5e9; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Shrikant+Prajapati&background=0f172a&color=0ea5e9'">
+                    <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Shrikant Prajapati</h3>
+                    <p style="font-size: 13px; font-weight: 600; color: #0ea5e9; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Founder & CEO</p>
+                    <p class="team-quote">"My mission with Phantomix is to build digital experiences that feel premium, fast, and completely secure."</p>
+                </div>
+                <!-- Co-Founder -->
+                <div class="team-big-card" style="border-color: rgba(139, 92, 246, 0.3);" onmouseover="this.style.borderColor='#8b5cf6';" onmouseout="this.style.borderColor='rgba(139, 92, 246, 0.3)';">
+                    <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #8b5cf6; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Ranjan+Gupta&background=0f172a&color=8b5cf6'">
+                    <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Ranjan Gupta</h3>
+                    <p style="font-size: 13px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Co-Founder & Lead Architect</p>
+                    <p class="team-quote">"Engineering a robust PostgreSQL backend and scaling the ecosystem architecture for the ultimate 2028 launch."</p>
+                </div>
+                <!-- VP -->
+                <div class="team-big-card" style="border-color: rgba(16, 185, 129, 0.3);" onmouseover="this.style.borderColor='#10b981';" onmouseout="this.style.borderColor='rgba(16, 185, 129, 0.3)';">
+                    <img src="vp.jpg" alt="Nancy Raghav" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #10b981; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Nancy+Raghav&background=0f172a&color=10b981'">
+                    <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Nancy Raghav</h3>
+                    <p style="font-size: 13px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 1px; margin: 0;">VP of Brand Experience</p>
+                    <p class="team-quote">"Crafting a brand identity that connects deeply with everyday humans and elevates the entire digital ecosystem."</p>
+                </div>
+
+                <!-- Group 2 (Duplicate for Infinite Loop Effect) -->
+                <!-- CEO -->
+                <div class="team-big-card" style="border-color: rgba(14, 165, 233, 0.3);" onmouseover="this.style.borderColor='#0ea5e9';" onmouseout="this.style.borderColor='rgba(14, 165, 233, 0.3)';">
+                    <img src="your-real-photo.jpg" alt="Shrikant Prajapati" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #0ea5e9; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Shrikant+Prajapati&background=0f172a&color=0ea5e9'">
+                    <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Shrikant Prajapati</h3>
+                    <p style="font-size: 13px; font-weight: 600; color: #0ea5e9; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Founder & CEO</p>
+                    <p class="team-quote">"My mission with Phantomix is to build digital experiences that feel premium, fast, and completely secure."</p>
+                </div>
+                <!-- Co-Founder -->
+                <div class="team-big-card" style="border-color: rgba(139, 92, 246, 0.3);" onmouseover="this.style.borderColor='#8b5cf6';" onmouseout="this.style.borderColor='rgba(139, 92, 246, 0.3)';">
+                    <img src="ranjan-kumar-photo.jpg" alt="Ranjan Gupta" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #8b5cf6; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Ranjan+Gupta&background=0f172a&color=8b5cf6'">
+                    <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Ranjan Gupta</h3>
+                    <p style="font-size: 13px; font-weight: 600; color: #8b5cf6; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Co-Founder & Lead Architect</p>
+                    <p class="team-quote">"Engineering a robust PostgreSQL backend and scaling the ecosystem architecture for the ultimate 2028 launch."</p>
+                </div>
+                <!-- VP -->
+                <div class="team-big-card" style="border-color: rgba(16, 185, 129, 0.3);" onmouseover="this.style.borderColor='#10b981';" onmouseout="this.style.borderColor='rgba(16, 185, 129, 0.3)';">
+                    <img src="vp.jpg" alt="Nancy Raghav" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #10b981; margin: 0 auto 15px auto; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);" onerror="this.src='https://ui-avatars.com/api/?name=Nancy+Raghav&background=0f172a&color=10b981'">
+                    <h3 style="font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 5px 0;">Nancy Raghav</h3>
+                    <p style="font-size: 13px; font-weight: 600; color: #10b981; text-transform: uppercase; letter-spacing: 1px; margin: 0;">VP of Brand Experience</p>
+                    <p class="team-quote">"Crafting a brand identity that connects deeply with everyday humans and elevates the entire digital ecosystem."</p>
+                </div>
+
             </div>
         </div>
+    </section>
 
-        <!-- 📡 Live System Updates Section (Kept intact from your original code) -->
-        <div class="live-updates" style="width: 100%; max-width: 800px; margin: 0 auto; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px); border-radius: 15px; border: 1px solid rgba(51, 65, 85, 0.8); padding: 40px; text-align: left;">
+    <!-- Update Feed Section -->
+    <section class="phantomix-section scroll-reveal" style="max-width: 800px; padding-top: 0;">
+        <div class="live-updates" style="width: 100%; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px); border-radius: 15px; border: 1px solid rgba(51, 65, 85, 0.8); padding: 40px; text-align: left;">
             <h3 style="margin: 0 0 20px; color: #ffffff; text-align: left; display: flex; align-items: center; gap: 10px;">
                 <i class="fas fa-satellite-dish" style="color: #0ea5e9;"></i> Live System Updates
             </h3>
@@ -1548,6 +676,27 @@
             </div>
         </div>
     </section>
+
+    <a href="gallery.html" class="vault-gate-card">
+        <div class="vault-icon">
+            <i class="fa-solid fa-photo-film"></i>
+        </div>
+        <div class="vault-content">
+            <h3>Phantomix Media Vault <span class="badge">NEW</span></h3>
+            <p>Explore high-res app UI, team behind the scenes, and official ecosystem updates.</p>
+        </div>
+        <div class="vault-arrow">
+            <i class="fas fa-arrow-right"></i>
+        </div>
+    </a>
+
+
+    <div class="social" style="text-align: center; margin-bottom: 40px;">
+        <a href="https://instagram.com/phantomix.in" target="_blank" aria-label="Visit Phantomix Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://www.youtube.com/@Phantomix_SP" target="_blank" aria-label="Visit Phantomix YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://whatsapp.com/channel/0029VaAQ8ww7dmei9QiQVd2m" target="_blank" aria-label="Join Phantomix WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://t.me/diamondmax_india" target="_blank" aria-label="Join Phantomix Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
+    </div>
 
     <section class="phantomix-section scroll-reveal" style="max-width: 1000px; padding-top: 0;">
         <h3 style="color: #ffffff; font-size: 22px; margin-bottom: 25px;">🔥 Explore The Arsenal</h3>
@@ -1843,13 +992,12 @@
         </div>
     </section>
 
-    <section class="phantomix-section scroll-reveal" style="max-width: 900px;">
+    <section class="phantomix-section scroll-reveal" style="max-width: 900px;" id="funding-nodes">
         <h2 style="color: #ffffff; margin-bottom: 5px;">Fund the <span style="color: #0ea5e9;">Mainframe</span></h2>
         <p style="color: #94a3b8; margin-bottom: 40px;">Support development & secure lifetime elite privileges before the global launch.</p>
         
         <div class="tier-grid" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; text-align: left;">
             
-            <!-- FIXED DUPLICATE ID HERE: Changed id="funding-nodes" to id="alpha-node" -->
             <div class="tier-card" id="alpha-node">
                 <span class="tier-badge" style="background: rgba(14, 165, 233, 0.1); color: #0ea5e9; border-color: #0ea5e9;">ALPHA NODE</span>
                 <h3 class="tier-price">₹29 <span style="font-size: 14px; color: #64748b; font-weight: normal;">/ lifetime</span></h3>
@@ -1897,6 +1045,7 @@
                 </div>
     </section>
 
+    <!-- 🔥 FLOATING SUPPORT BUTTON FIXED - Now forced to stay on screen outside footer 🔥 -->
     <a href="mailto:phantomix.00@gmail.com?subject=Support%20Request%20-%20Phantomix" class="floating-support" target="_blank" title="Email Support">
         <i class="fas fa-envelope"></i>
     </a>
