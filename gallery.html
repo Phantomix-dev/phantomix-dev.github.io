@@ -2,178 +2,203 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX3YH0GSZG');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Gallery | Phantomix</title>
+    <title>Media Vault | Phantomix</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/phantomix-dev/phantomix-dev.github.io/main/logo.png">
-<meta name="description" content="Phantomix Media Vault. Explore high-res app screenshots, team behind the scenes, and official ecosystem updates.">
-<meta name="keywords" content="Phantomix Gallery, UI Designs, Behind the Scenes, Media Vault">
-<meta name="author" content="Shrikant Prajapati & Ranjan Gupta">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://phantomix-dev.github.io/gallery.html">
-<meta property="og:title" content="Media Vault | Phantomix">
-<meta property="og:description" content="Zero cropping. Zero clicks. Dive into our exclusive masonry feed.">
-<meta property="og:image" content="https://raw.githubusercontent.com/phantomix-dev/phantomix-dev.github.io/main/logo.png">
-
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://phantomix-dev.github.io/gallery.html">
-<meta property="twitter:title" content="Media Vault | Phantomix">
-<meta property="twitter:description" content="Zero cropping. Zero clicks. Dive into our exclusive masonry feed.">
-<meta property="twitter:image" content="https://raw.githubusercontent.com/phantomix-dev/phantomix-dev.github.io/main/logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     
     <style>
+        /* 🎨 CUSTOM SELECTION & SCROLLBAR */
         ::selection { background-color: #0ea5e9; color: #ffffff; }
-        
-        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: rgba(14, 165, 233, 0.5); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
 
+        /* ✨ BASE STYLES */
         body {
-            margin: 0; padding: 0; padding-top: 100px;
+            margin: 0; padding: 0; padding-top: 90px;
             font-family: 'Poppins', sans-serif;
-            background-color: #0f172a; color: #ffffff;
-            text-align: center; overflow-x: hidden; position: relative;
+            background-color: #020617; color: #ffffff;
+            text-align: center; overflow-x: hidden;
             display: flex; flex-direction: column; min-height: 100vh;
+            background-image: radial-gradient(circle at 50% 10%, rgba(14, 165, 233, 0.05) 0%, transparent 60%);
         }
 
-        /* Glowing Background */
-        .bg-animation {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1; overflow: hidden; background: #0f172a;
-        }
-        .glow-shape {
-            position: absolute; filter: blur(80px); opacity: 0.5;
-            animation: float 10s infinite alternate ease-in-out; border-radius: 50%;
-        }
-        .shape1 { width: 400px; height: 400px; background: #0ea5e9; top: -10%; left: -10%; animation-duration: 12s; }
-        .shape2 { width: 500px; height: 500px; background: #8b5cf6; bottom: -20%; right: -10%; animation-duration: 15s; }
-        
-        @keyframes float { 0% { transform: translateY(0px) scale(1); } 100% { transform: translateY(-50px) scale(1.1); } }
-
-        /* Navbar */
+        /* 🌌 NAVBAR */
         .phantomix-navbar {
             position: fixed; top: 0; left: 0; width: 100%; height: 70px;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px); border-bottom: 1px solid rgba(14, 165, 233, 0.2);
-            z-index: 1000; box-sizing: border-box;
+            padding: 0 5%; box-sizing: border-box;
+            background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2); z-index: 1000;
         }
-        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; }
+        .nav-logo { font-size: 20px; font-weight: 700; color: white; display: flex; align-items: center; text-decoration: none; letter-spacing: 1px;}
+        .nav-logo i { color: #0ea5e9; margin-right: 10px; font-size: 24px; filter: drop-shadow(0 0 10px rgba(14,165,233,0.5)); }
+        
         .nav-btn {
-            background: rgba(14, 165, 233, 0.1); color: #0ea5e9; padding: 8px 18px;
-            border: 1px solid #0ea5e9; border-radius: 6px; text-decoration: none;
-            font-size: 14px; font-weight: 600; transition: all 0.3s ease;
+            background: rgba(14, 165, 233, 0.1); color: #0ea5e9;
+            padding: 8px 18px; border: 1px solid #0ea5e9; border-radius: 8px;
+            text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s;
         }
-        .nav-btn:hover { background: #0ea5e9; color: white; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+        .nav-btn:hover { background: #0ea5e9; color: #fff; box-shadow: 0 0 15px rgba(14, 165, 233, 0.5); transform: translateY(-2px); }
 
-        /* Header */
-        .gallery-header { max-width: 800px; margin: 20px auto 40px; padding: 0 20px; }
-        h1 { font-size: 36px; margin: 0 0 10px 0; color: #fff; }
+        /* 🏷️ HEADER */
+        .gallery-header { max-width: 800px; margin: 20px auto 30px; padding: 0 20px; animation: fadeIn 0.8s ease-out; }
+        h1 { font-size: 40px; margin: 0 0 10px 0; color: #f8fafc; font-weight: 700; }
         h1 span { color: #0ea5e9; }
-        p { color: #94a3b8; font-size: 15px; line-height: 1.6; }
+        .gallery-header p { color: #94a3b8; font-size: 15px; line-height: 1.6; margin: 0; }
 
-        /* Filter Buttons */
-        .filter-container { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; padding: 0 20px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 🎛️ FILTERS */
+        .filter-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 40px; padding: 0 20px; }
         .filter-btn {
-            background: rgba(30, 41, 59, 0.6); color: #94a3b8; border: 1px solid rgba(51, 65, 85, 0.6);
-            padding: 8px 20px; border-radius: 20px; font-family: 'Poppins', sans-serif;
-            font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+            background: rgba(15, 23, 42, 0.6); color: #94a3b8; border: 1px solid rgba(51, 65, 85, 0.8);
+            padding: 10px 24px; border-radius: 30px; font-family: 'Fira Code', monospace;
+            font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.3s;
+            backdrop-filter: blur(5px);
         }
-        .filter-btn:hover, .filter-btn.active {
-            background: #0ea5e9; color: #ffffff; border-color: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
-        }
+        .filter-btn:hover { border-color: #0ea5e9; color: #fff; }
+        .filter-btn.active { background: #0ea5e9; color: #ffffff; border-color: #0ea5e9; box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); }
 
-        /* 🚀 MASONRY FEED LAYOUT (Instagram/Pinterest Style) */
+        /* 📸 MASONRY GALLERY */
         .gallery-grid {
-            column-count: 3; /* Desktop par 3 columns */
-            column-gap: 25px;
-            max-width: 1200px; margin: 0 auto 60px; padding: 0 20px;
-            box-sizing: border-box;
+            column-count: 3; column-gap: 20px; max-width: 1200px; margin: 0 auto 60px; 
+            padding: 0 20px; box-sizing: border-box; width: 100%;
         }
         
         .gallery-item {
-            background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(51, 65, 85, 0.5);
-            border-radius: 14px; overflow: hidden; transition: all 0.4s ease;
-            display: block; 
-            break-inside: avoid; /* Ensure card doesn't cut in half between columns */
-            margin-bottom: 25px;
+            position: relative; break-inside: avoid; margin-bottom: 20px;
+            border-radius: 16px; overflow: hidden; background: #0f172a;
+            border: 1px solid rgba(51, 65, 85, 0.4); cursor: pointer;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeIn 0.5s ease-out backwards;
         }
-        .gallery-item:hover { border-color: #0ea5e9; box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2); }
         
-        /* Auto-Resizing Image Wrapper */
-        .gallery-img-wrapper { width: 100%; height: auto; background: #020617; }
-        .gallery-img-wrapper img { width: 100%; height: auto; display: block; }
-        
-        .gallery-info { padding: 18px; text-align: left; }
-        .gallery-tag { font-size: 10px; font-weight: 700; color: #0ea5e9; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; display: block; }
-        .gallery-title { font-size: 16px; color: #f8fafc; margin: 0 0 6px 0; font-weight: 600; }
-        .gallery-desc { color: #94a3b8; font-size: 12px; margin: 0; line-height: 1.5; }
+        .gallery-item:hover {
+            transform: translateY(-5px); border-color: #0ea5e9;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(14, 165, 233, 0.2);
+        }
+
+        .gallery-img-wrapper { width: 100%; height: auto; overflow: hidden; position: relative; }
+        .gallery-img-wrapper img { 
+            width: 100%; display: block; transition: transform 0.5s ease;
+            background: #1e293b; /* Placeholder color before load */
+        }
+        .gallery-item:hover .gallery-img-wrapper img { transform: scale(1.08); }
+
+        /* Glassmorphism Info Overlay */
+        .gallery-info {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.95) 20%, rgba(2, 6, 23, 0.6) 80%, transparent);
+            padding: 40px 20px 20px; text-align: left; box-sizing: border-box;
+            transform: translateY(10px); opacity: 0.9; transition: 0.3s;
+        }
+        .gallery-item:hover .gallery-info { transform: translateY(0); opacity: 1; }
+
+        .gallery-tag { 
+            font-size: 10px; font-weight: 700; color: #0ea5e9; font-family: 'Fira Code', monospace;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; display: inline-block;
+            background: rgba(14, 165, 233, 0.1); padding: 4px 8px; border-radius: 4px;
+        }
+        .gallery-title { font-size: 16px; color: #f8fafc; margin: 0 0 5px 0; font-weight: 600; }
+        .gallery-desc { color: #94a3b8; font-size: 12px; margin: 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* 🔍 LIGHTBOX (Modal) */
+        .lightbox {
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(10px); z-index: 9999;
+            justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .lightbox.active { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 90vw; max-height: 85vh; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.8); border: 1px solid rgba(14, 165, 233, 0.3); }
+        .lightbox-close {
+            position: absolute; top: 25px; right: 35px; color: #94a3b8; font-size: 30px; 
+            cursor: pointer; transition: 0.2s; background: rgba(15, 23, 42, 0.5);
+            width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 1px solid #334155;
+        }
+        .lightbox-close:hover { color: #ef4444; border-color: #ef4444; background: rgba(239, 68, 68, 0.1); transform: rotate(90deg); }
+        .lightbox-caption { position: absolute; bottom: 25px; left: 0; width: 100%; text-align: center; color: #fff; font-size: 16px; font-weight: 600; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+
+        /* Loader */
+        .loader-container { padding: 50px 0; display: flex; flex-direction: column; align-items: center; grid-column: 1 / -1; }
+        .cyber-spinner { width: 40px; height: 40px; border: 3px solid rgba(14, 165, 233, 0.2); border-top-color: #0ea5e9; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 15px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* Footer */
-        .phantomix-footer { background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2); padding: 30px 5%; margin-top: auto; font-size: 13px; color: #64748b; text-align: center; }
+        .phantomix-footer { background: #020617; border-top: 1px solid rgba(14, 165, 233, 0.2); padding: 30px 5%; margin-top: auto; font-size: 13px; color: #64748b; font-family: 'Fira Code', monospace;}
 
-        /* 📱 Responsive Mobile Feed (1 Column like Instagram) */
-        @media (max-width: 900px) {
-            .gallery-grid { column-count: 2; }
-        }
+        /* 📱 RESPONSIVE */
+        @media (max-width: 900px) { .gallery-grid { column-count: 2; } }
         @media (max-width: 600px) {
             body { padding-top: 80px; }
-            .phantomix-navbar { height: 60px; padding: 0 15px; }
-            .nav-logo { font-size: 16px; }
-            .gallery-header h1 { font-size: 26px; }
-            
-            /* Pure 1-column vertical feed for mobile */
+            .phantomix-navbar { height: 65px; padding: 0 15px; }
+            .nav-logo { font-size: 18px; }
+            .gallery-header h1 { font-size: 30px; }
             .gallery-grid { column-count: 1; padding: 0 15px; }
-            .gallery-item { margin-bottom: 20px; }
-            
-            .filter-container { gap: 8px; }
-            .filter-btn { padding: 6px 14px; font-size: 12px; }
+            .filter-container { gap: 10px; }
+            .filter-btn { padding: 8px 16px; font-size: 12px; }
+            .lightbox-close { top: 15px; right: 15px; width: 35px; height: 35px; font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-animation"><div class="glow-shape shape1"></div><div class="glow-shape shape2"></div></div>
-
+    <!-- NAVBAR -->
     <nav class="phantomix-navbar">
-        <a href="index.html" class="nav-logo"><i class="fa-solid fa-gem" style="color: #0ea5e9; margin-right: 8px;"></i> Phantomix</a>
-        <a href="apps.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Back to Hub</a>
+        <a href="index.html" class="nav-logo">
+            <i class="fa-solid fa-gem"></i> PHANTOMIX
+        </a>
+        <a href="apps.html" class="nav-btn"><i class="fas fa-th-large"></i> App Hub</a>
     </nav>
 
+    <!-- HEADER -->
     <div class="gallery-header">
-        <h1>Phantomix <span>Media Vault</span></h1>
-        <p>Explore high-res app screenshots, team behind the scenes, and official ecosystem updates.</p>
+        <h1>Media <span>Vault</span></h1>
+        <p>Zero cropping. Zero clicks. Dive into our exclusive visual architecture, app UI, and behind-the-scenes.</p>
     </div>
 
+    <!-- FILTERS -->
     <div class="filter-container">
-        <button class="filter-btn active" onclick="filterGallery('all', event)">All Media</button>
-        <button class="filter-btn" onclick="filterGallery('apps', event)">Apps & UI</button>
-        <button class="filter-btn" onclick="filterGallery('team', event)">Team & Behind Scenes</button>
-        <button class="filter-btn" onclick="filterGallery('updates', event)">Posters & Socials</button>
+        <button class="filter-btn active" onclick="filterGallery('all', event)"><i class="fas fa-layer-group"></i> All Records</button>
+        <button class="filter-btn" onclick="filterGallery('apps', event)"><i class="fas fa-mobile-screen"></i> Apps & UI</button>
+        <button class="filter-btn" onclick="filterGallery('team', event)"><i class="fas fa-users"></i> Team</button>
+        <button class="filter-btn" onclick="filterGallery('updates', event)"><i class="fas fa-bullhorn"></i> Posters</button>
     </div>
 
-    <div class="gallery-grid" id="galleryGrid"><p style="color: #0ea5e9;">Connecting to Mainframe Vault...</p></div>
+    <!-- GALLERY GRID -->
+    <div class="gallery-grid" id="galleryGrid">
+        <div class="loader-container">
+            <div class="cyber-spinner"></div>
+            <span style="color: #0ea5e9; font-family: 'Fira Code', monospace; font-size: 13px;">Syncing with Mainframe...</span>
+        </div>
+    </div>
 
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-close" onclick="closeLightbox(event)"><i class="fas fa-times"></i></div>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Fullscreen Image">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- FOOTER -->
     <footer class="phantomix-footer">
-        <p>&copy; 2026 Phantomix. All rights reserved. Built with passion by Shrikant Prajapati & Ranjan Gupta.</p>
+        <p>&copy; 2026 Phantomix Network. Secured by Supabase RLS.</p>
     </footer>
 
+    <!-- CORE LOGIC -->
     <script>
+        // Supabase DB Connection (Public read is allowed by RLS)
         const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
 
@@ -186,10 +211,12 @@
                     headers: { "apikey": SUPABASE_KEY, "Authorization": `Bearer ${SUPABASE_KEY}` }
                 });
                 
+                if (!resp.ok) throw new Error("Network response was not ok");
+                
                 allGalleryData = await resp.json();
                 renderGallery('all');
             } catch (err) {
-                grid.innerHTML = "<p style='color:#ef4444;'>Failed to load media vault.</p>";
+                grid.innerHTML = `<div style="grid-column: 1/-1; color: #ef4444; font-family: 'Fira Code', monospace;"><i class="fas fa-triangle-exclamation"></i> Error: Database connection failed.</div>`;
             }
         }
 
@@ -202,21 +229,28 @@
                 : allGalleryData.filter(item => item.category === filter);
 
             if(filteredItems.length === 0) {
-                grid.innerHTML = "<p style='color:#94a3b8;'>No media found in this category.</p>";
+                grid.innerHTML = `<div style="grid-column: 1/-1; color: #94a3b8; font-family: 'Fira Code', monospace; padding: 40px 0;"><i class="fas fa-ghost"></i> No assets classified under this category.</div>`;
                 return;
             }
 
-            filteredItems.forEach(item => {
-                // Yahan a tag hata kar wapas div kar diya hai kyunki ab click ki zaroorat nahi
+            filteredItems.forEach((item, index) => {
                 const card = document.createElement('div');
                 card.className = 'gallery-item';
+                card.style.animationDelay = `${index * 0.05}s`; // Staggered loading animation
+                
+                // Onclick opens Lightbox
+                card.onclick = () => openLightbox(item.image_url, item.title);
+
+                // Category Icon Map
+                const iconMap = { 'apps': 'fa-mobile-screen', 'team': 'fa-users', 'updates': 'fa-bullhorn' };
+                const icon = iconMap[item.category] || 'fa-layer-group';
 
                 card.innerHTML = `
                     <div class="gallery-img-wrapper">
                         <img src="${item.image_url}" alt="${item.title}" loading="lazy">
                     </div>
                     <div class="gallery-info">
-                        <span class="gallery-tag"><i class="fas fa-layer-group"></i> ${item.category.toUpperCase()}</span>
+                        <span class="gallery-tag"><i class="fas ${icon}"></i> ${item.category}</span>
                         <h3 class="gallery-title">${item.title}</h3>
                         <p class="gallery-desc">${item.description || ''}</p>
                     </div>
@@ -231,6 +265,40 @@
             renderGallery(category);
         }
 
+        // --- LIGHTBOX LOGIC ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        function openLightbox(imgSrc, caption) {
+            lightboxImg.src = imgSrc;
+            lightboxCaption.innerText = caption;
+            lightbox.style.display = 'flex';
+            // Small delay to allow CSS transition to work
+            setTimeout(() => lightbox.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeLightbox(e) {
+            // Close if clicking the background or the close button
+            if (e.target === lightbox || e.target.closest('.lightbox-close')) {
+                lightbox.classList.remove('active');
+                setTimeout(() => {
+                    lightbox.style.display = 'none';
+                    lightboxImg.src = '';
+                }, 300); // Wait for fade out
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        }
+
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox({ target: lightbox });
+            }
+        });
+
+        // Initialize
         window.onload = fetchGalleryFromSupabase;
     </script>
 </body>
