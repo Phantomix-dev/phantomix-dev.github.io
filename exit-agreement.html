@@ -129,13 +129,10 @@
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         // 🕒 TIMER CONFIGURATION (Oct 5, 2026, 11:00 AM to 11:30 AM IST)
-        const START_TIME = new Date("2026-10-01T11:00:00+05:30").getTime();
+        const START_TIME = new Date("2026-01-05T11:00:00+05:30").getTime();
         const END_TIME = new Date("2026-10-05T11:30:00+05:30").getTime();
         
-        // 🚨 FOR TESTING ONLY (Uncomment below to test UI right now, but remove before sending)
-        // const START_TIME = new Date().getTime() - 60000; // 1 min ago
-        // const END_TIME = new Date().getTime() + 86400000; // 1 day ahead
-
+        
         const statusScreen = document.getElementById('status-screen');
         const legalForm = document.getElementById('legal-form');
         const statusTitle = document.getElementById('status-title');
