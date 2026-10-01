@@ -80,7 +80,7 @@
                 </div>
                 <div class="input-group">
                     <label>Phantomix Registered Email</label>
-                    <input type="email" id="emailAdd" placeholder="nainargv2612@gmail.com">
+                    <input type="email" id="emailAdd" placeholder="example-name@gmail.com">
                 </div>
                 <div class="input-group">
                     <label>Position Resigned From</label>
@@ -139,14 +139,10 @@
     const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    // ==========================================
-    // 🕒 TIME VALIDATION & TESTING SWITCH
-    // ==========================================
-    // 💡 Jab test karna ho toh isko 'true' rakhein.
-    // 🚀 Jab final link unhe bhejna ho, toh isko 'false' kar dein taaki ye sirf 5 Oct ko khule!
-    const IS_TESTING = false; 
+    const IS_TESTING = false; // Testing ke liye true rakhein, live bhejne par false kar dein
 
-    const START_TIME = new Date("2026-10-01T11:00:00+05:30").getTime();
+    // Exact Target Window (IST Timezone handled via +05:30 offset)
+    const START_TIME = new Date("2026-10-05T11:00:00+05:30").getTime();
     const END_TIME = new Date("2026-10-05T11:30:00+05:30").getTime();
 
     const statusScreen = document.getElementById('status-screen');
@@ -154,13 +150,7 @@
     const timerDisplay = document.getElementById('timer-display');
 
     function checkTimeValidity() {
-        // Force IST Timezone check regardless of server/browser location
-        const options = { timeZone: 'Asia/Kolkata', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
-        const formatter = new Intl.DateTimeFormat([], options);
-        
-        // Get current exact time in IST string and convert to timestamp
-        const nowISTString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-        const now = new Date(nowISTString).getTime();
+        const now = Date.now(); // Universal absolute timestamp
 
         if (IS_TESTING) {
             statusScreen.style.display = 'none';
@@ -174,7 +164,7 @@
             legalForm.style.display = 'none';
             statusScreen.style.display = 'block';
             document.getElementById('status-icon').className = "fas fa-clock";
-            document.getElementById('status-iconstyle.color" = "#eab308"; // Syntax fix
+            document.getElementById('status-icon').style.color = "#eab308";
             document.getElementById('status-title').innerText = "PORTAL PENDING";
             document.getElementById('status-title').style.color = "#eab308";
             document.getElementById('status-message').innerHTML = "This legal form is securely locked and will open on <br><strong>Monday, October 5, 2026 at 11:00 AM (IST)</strong>.";
@@ -189,12 +179,16 @@
             legalForm.style.display = 'none';
             statusScreen.style.display = 'block';
             document.getElementById('status-title').innerText = "AGREEMENT EXPIRED";
-            document.getElementById('status-message').innerText = "The strict timeframe to sign this separation agreement has permanently closed.";
+document.getElementById('status-message').innerHTML = `
+    <span style="color: #f87171; display: block; margin-bottom: 10px;">The strict timeframe to sign this separation agreement has closed.</span>
+    <span style="color: #94a3b8; display: block; margin-bottom: 10px;">Please contact the CEO immediately for any resolution.</span>
+    <span style="color: #eab308; font-weight: 600;">⚠️ Next form will be provided in the next 3 days as per request.</span>
+`;
         }
     }
+
     checkTimeValidity();
     setInterval(checkTimeValidity, 30000);
-
     // ==========================================
     // SUBMISSION LOGIC
     // ==========================================
