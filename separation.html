@@ -144,7 +144,7 @@
     // ==========================================
     // 💡 Jab test karna ho toh isko 'true' rakhein.
     // 🚀 Jab final link unhe bhejna ho, toh isko 'false' kar dein taaki ye sirf 5 Oct ko khule!
-    const IS_TESTING = true; 
+    const IS_TESTING = false; 
 
     const START_TIME = new Date("2026-10-01T11:00:00+05:30").getTime();
     const END_TIME = new Date("2026-10-05T11:30:00+05:30").getTime();
@@ -154,10 +154,15 @@
     const timerDisplay = document.getElementById('timer-display');
 
     function checkTimeValidity() {
-        const now = new Date().getTime();
+        // Force IST Timezone check regardless of server/browser location
+        const options = { timeZone: 'Asia/Kolkata', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+        const formatter = new Intl.DateTimeFormat([], options);
+        
+        // Get current exact time in IST string and convert to timestamp
+        const nowISTString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+        const now = new Date(nowISTString).getTime();
 
         if (IS_TESTING) {
-            // Testing Mode Active: Form open rahega
             statusScreen.style.display = 'none';
             legalForm.style.display = 'block';
             timerDisplay.innerHTML = `<i class="fas fa-wrench"></i> TESTING MODE ACTIVE`;
@@ -169,10 +174,10 @@
             legalForm.style.display = 'none';
             statusScreen.style.display = 'block';
             document.getElementById('status-icon').className = "fas fa-clock";
-            document.getElementById('status-icon').style.color = "#eab308";
+            document.getElementById('status-iconstyle.color" = "#eab308"; // Syntax fix
             document.getElementById('status-title').innerText = "PORTAL PENDING";
             document.getElementById('status-title').style.color = "#eab308";
-            document.getElementById('status-message শক্তিরinnerHTML = "This legal form is securely locked and will open on <br><strong>Monday, October 5, 2026 at 11:00 AM (IST)</strong>.";
+            document.getElementById('status-message').innerHTML = "This legal form is securely locked and will open on <br><strong>Monday, October 5, 2026 at 11:00 AM (IST)</strong>.";
         } else if (now >= START_TIME && now <= END_TIME) {
             // Active Window
             statusScreen.style.display = 'none';
@@ -187,7 +192,6 @@
             document.getElementById('status-message').innerText = "The strict timeframe to sign this separation agreement has permanently closed.";
         }
     }
-
     checkTimeValidity();
     setInterval(checkTimeValidity, 30000);
 
