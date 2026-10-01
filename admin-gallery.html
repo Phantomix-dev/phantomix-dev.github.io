@@ -196,7 +196,7 @@
         const TEAM_MEMBERS = {
             "gk2929913@gmail.com": { name: "Shrikant Prajapati", role: "CEO & Co-Founder" },
             "ranjankumarcpt@gmail.com": { name: "Ranjan Gupta", role: "Co-Founder & Lead Architect" },
-            "nainargv2612@gmail.com": { name: "Naina", role: "VP of Brand Experience" }
+            "nainargv2612@gmail.com": { name: "Nancy Raghav", role: "VP of Brand Experience" }
         };
 
         // UI Helpers
@@ -274,26 +274,28 @@
         }
 
         // Step 2: Verify OTP
-        async function verifyOTP() {
-            const email = document.getElementById('adminEmail').value.trim();
-            const otp = document.getElementById('adminOTP').value.trim();
-            const btn = document.getElementById('btn-verify');
+async function verifyOTP() {
+    const email = document.getElementById('adminEmail').value.trim();
+    const otp = document.getElementById('adminOTP').value.trim();
+    const btn = document.getElementById('btn-verify');
 
-            if (!otp || otp.length < 6) return showAuthMsg("Invalid OTP Format.", "error");
+    if (!otp || otp.length < 6) return showAuthMsg("Invalid OTP Format.", "error");
 
-            btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+    btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
 
-            const { error } = await supabaseClient.auth.verifyOtp({ email: email, token: otp, type: 'magiclink' });
+    // 🔴 YAHAN CHANGE KIYA HAI: type: 'email' kar diya gaya hai 6-digit code ke liye
+    const { error } = await supabaseClient.auth.verifyOtp({ 
+        email: email, 
+        token: otp, 
+        type: 'email' 
+    });
 
-            if (error) {
-                showAuthMsg("Authentication Failed: " + error.message, "error");
-                btn.disabled = false; btn.innerHTML = '<i class="fas fa-unlock"></i> Authenticate Connection';
-            }
-            // If successful, onAuthStateChange listener handles the UI swap.
-        }
-
-        async function logoutAdmin() { await supabaseClient.auth.signOut(); }
-
+    if (error) {
+        showAuthMsg("Authentication Failed: " + error.message, "error");
+        btn.disabled = false; btn.innerHTML = '<i class="fas fa-unlock"></i> Authenticate Connection';
+    }
+    // Agar success hua toh onAuthStateChange automatically dashboard khol dega!
+}
         // ==========================================
         // 2. DASHBOARD LOGIC (IMAGE UPLOAD & GALLERY)
         // ==========================================
