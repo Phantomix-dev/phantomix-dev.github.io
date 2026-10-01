@@ -458,7 +458,17 @@
             /* Moving exactly half the width since we duplicate the 3 cards */
             100% { transform: translateX(calc(-50% - 12.5px)); } 
         }
+        
     </style>
+    <style>
+    /* Tidio bot ko force fixed karne ka code */
+    #tidio-chat-iframe, #tidio-chat {
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        z-index: 999999999 !important;
+    }
+</style>
 </head>
 
 <body>
