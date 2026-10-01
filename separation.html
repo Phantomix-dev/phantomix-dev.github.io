@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Supabase Core -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 
     <style>
         body {
@@ -19,12 +19,12 @@
         .form-container {
             background: rgba(15, 23, 42, 0.95); border: 1px solid #334155; border-radius: 12px;
             padding: 40px; max-width: 800px; width: 100%; box-shadow: 0 10px 50px rgba(0,0,0,0.7);
+            display: none; /* Hidden by default until time validity passes */
         }
         .status-container {
             background: rgba(15, 23, 42, 0.95); border: 1px solid #ef4444; border-radius: 12px;
             padding: 50px 30px; max-width: 500px; width: 100%; text-align: center; margin: auto;
             box-shadow: 0 10px 40px rgba(239, 68, 68, 0.1);
-            display: none; /* Hidden by default */
         }
         .header { text-align: center; border-bottom: 1px solid #334155; padding-bottom: 25px; margin-bottom: 30px; }
         .header h2 { font-size: 26px; margin: 0; color: #f8fafc; font-family: 'Fira Code', monospace; }
@@ -56,14 +56,14 @@
 </head>
 <body>
 
-    <!-- 🛑 STATUS SCREEN (Shows when Locked, Expired, or Successful) -->
+    <!-- STATUS SCREEN (Lock / Expired / Success) -->
     <div class="status-container" id="status-screen">
-        <i class="fas fa-lock" id="status-icon" style="font-size: 45px; color: #ef4444; margin-bottom: 20px;"></i>
-        <h2 id="status-title" style="margin: 0 0 10px 0; font-family: 'Fira Code', monospace;">RESTRICTED PORTAL</h2>
+        <i class="fas fa-lock" id="status-icon" style="font-size: 50px; color: #ef4444; margin-bottom: 20px;"></i>
+        <h2 id="status-title" style="margin: 0 0 10px 0; font-family: 'Fira Code', monospace; color: #ef4444;">RESTRICTED PORTAL</h2>
         <p id="status-message" style="color: #94a3b8; font-size: 14px; line-height: 1.6;">Authenticating secure timeline... Please wait.</p>
     </div>
 
-    <!-- 📝 MAIN LEGAL FORM -->
+    <!-- MAIN FORM -->
     <div class="form-container" id="legal-form">
         <div class="header">
             <h2>PHANTOMIX SEPARATION AGREEMENT</h2>
@@ -71,31 +71,31 @@
             <div id="timer-display" style="font-family: 'Fira Code', monospace; color: #eab308; font-size: 13px; margin-top: 10px; background: rgba(234, 179, 8, 0.1); padding: 5px; display: inline-block;"></div>
         </div>
 
-        <form id="exitForm">
+        <div id="exitForm">
             <div class="legal-section">
                 <h4><i class="fas fa-id-badge"></i> SECTION 1: PERSONNEL IDENTIFICATION</h4>
                 <div class="input-group">
                     <label>Full Legal Name</label>
-                    <input type="text" id="fullName" required placeholder="e.g. Naina ...">
+                    <input type="text" id="fullName" placeholder="Enter full legal name...">
                 </div>
                 <div class="input-group">
                     <label>Phantomix Registered Email</label>
-                    <input type="email" id="emailAdd" required placeholder="nainargv2612@gmail.com">
+                    <input type="email" id="emailAdd" placeholder="nainargv2612@gmail.com">
                 </div>
                 <div class="input-group">
                     <label>Position Resigned From</label>
-                    <input type="text" id="roleHeld" required placeholder="VP of Brand Experience" value="VP of Brand Experience" readonly style="color: #94a3b8; background: #0f172a; cursor: not-allowed;">
+                    <input type="text" id="roleHeld" value="VP of Brand Experience" readonly style="color: #94a3b8; background: #0f172a; cursor: not-allowed;">
                 </div>
             </div>
 
             <div class="legal-section">
                 <h4><i class="fas fa-shield-alt"></i> SECTION 2: INTELLECTUAL PROPERTY & ASSET SURRENDER</h4>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="ipCheck" required>
+                    <input type="checkbox" id="ipCheck">
                     <label for="ipCheck"><strong>Complete IP Relinquishment</strong> I hereby permanently waive and surrender all rights to any designs, ideas, source code, workflows, or assets created during my tenure.</label>
                 </div>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="assetCheck" required>
+                    <input type="checkbox" id="assetCheck">
                     <label for="assetCheck"><strong>Destruction of Digital Assets</strong> I confirm that I have permanently deleted and destroyed all confidential files and internal documents belonging to Phantomix from my personal devices.</label>
                 </div>
             </div>
@@ -103,15 +103,15 @@
             <div class="legal-section">
                 <h4><i class="fas fa-user-secret"></i> SECTION 3: CONFIDENTIALITY & CORPORATE CONDUCT</h4>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="ndaCheck" required>
+                    <input type="checkbox" id="ndaCheck">
                     <label for="ndaCheck"><strong>Non-Disclosure Agreement (NDA)</strong> I agree to strictly maintain the confidentiality of all business strategies, internal operations, and product roadmaps.</label>
                 </div>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="competeCheck" required>
+                    <input type="checkbox" id="competeCheck">
                     <label for="competeCheck"><strong>Non-Compete Clause</strong> I agree that for a period of twelve (12) months following my resignation, I will not engage with or join any competing application or platform.</label>
                 </div>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="disparageCheck" required>
+                    <input type="checkbox" id="disparageCheck">
                     <label for="disparageCheck"><strong>Non-Disparagement Clause</strong> I agree to refrain from making any negative or disparaging statements regarding Phantomix, its Founders, or its products in any public or private forum.</label>
                 </div>
             </div>
@@ -119,7 +119,7 @@
             <div class="legal-section">
                 <h4><i class="fas fa-database"></i> SECTION 4: DATA ERASURE ACKNOWLEDGMENT</h4>
                 <div class="checkbox-group" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.05);">
-                    <input type="checkbox" id="dataCheck" required>
+                    <input type="checkbox" id="dataCheck">
                     <label for="dataCheck"><strong>Authorization for Data Wiping</strong> I acknowledge my access is revoked and grant full authorization to completely erase my digital footprint and personal data from Phantomix.</label>
                 </div>
             </div>
@@ -127,123 +127,132 @@
             <div class="signature-box">
                 <label style="color: #0ea5e9;">ELECTRONIC SIGNATURE</label>
                 <p style="font-size: 11px; color: #64748b; margin-top: 0;">By typing your full name below, you consent this is a legally binding signature.</p>
-                <input type="text" id="digiSignature" class="signature-input" required placeholder="Sign your full name here...">
+                <input type="text" id="digiSignature" class="signature-input" placeholder="Sign your full legal name here...">
             </div>
 
-            <button type="submit" class="submit-btn" id="btn-submit"><i class="fas fa-file-signature"></i> EXECUTE & SUBMIT AGREEMENT</button>
-        </form>
+            <button type="button" class="submit-btn" id="btn-submit" onclick="executeSubmission()"><i class="fas fa-file-signature"></i> EXECUTE & SUBMIT AGREEMENT</button>
+        </div>
     </div>
 
-    <!-- ⚙️ THE CORE LOGIC -->
-    <script>
-        // ==========================================
-        // 1. SUPABASE CONNECTION
-        // ==========================================
-        const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
-        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+<script>
+    const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // ==========================================
-        // 2. MASTER TIME & TESTING SWITCH
-        // ==========================================
-        const IS_TESTING = true; // YEH TRUE HAI TOH FORM TURANT KHULEGA
-        
-        let START_TIME, END_TIME;
+    // ==========================================
+    // 🕒 TIME VALIDATION & TESTING SWITCH
+    // ==========================================
+    // 💡 Jab test karna ho toh isko 'true' rakhein.
+    // 🚀 Jab final link unhe bhejna ho, toh isko 'false' kar dein taaki ye sirf 5 Oct ko khule!
+    const IS_TESTING = false; 
+
+    const START_TIME = new Date("2026-10-05T11:00:00+05:30").getTime();
+    const END_TIME = new Date("2026-10-05T11:30:00+05:30").getTime();
+
+    const statusScreen = document.getElementById('status-screen');
+    const legalForm = document.getElementById('legal-form');
+    const timerDisplay = document.getElementById('timer-display');
+
+    function checkTimeValidity() {
+        const now = new Date().getTime();
+
         if (IS_TESTING) {
-            START_TIME = new Date().getTime() - 60000;
-            END_TIME = new Date().getTime() + 86400000; // Open for 24 hours
+            // Testing Mode Active: Form open rahega
+            statusScreen.style.display = 'none';
+            legalForm.style.display = 'block';
+            timerDisplay.innerHTML = `<i class="fas fa-wrench"></i> TESTING MODE ACTIVE`;
+            return;
+        }
+
+        if (now < START_TIME) {
+            // Too Early
+            legalForm.style.display = 'none';
+            statusScreen.style.display = 'block';
+            document.getElementById('status-icon').className = "fas fa-clock";
+            document.getElementById('status-icon').style.color = "#eab308";
+            document.getElementById('status-title').innerText = "PORTAL PENDING";
+            document.getElementById('status-title').style.color = "#eab308";
+            document.getElementById('status-message শক্তিরinnerHTML = "This legal form is securely locked and will open on <br><strong>Monday, October 5, 2026 at 11:00 AM (IST)</strong>.";
+        } else if (now >= START_TIME && now <= END_TIME) {
+            // Active Window
+            statusScreen.style.display = 'none';
+            legalForm.style.display = 'block';
+            let minutesLeft = Math.floor((END_TIME - now) / (1000 * 60));
+            timerDisplay.innerHTML = `<i class="fas fa-hourglass-half"></i> Portal expires in ${minutesLeft} minutes.`;
         } else {
-            // LIVE LAUNCH: Oct 5, 2026, 11:00 AM to 11:30 AM IST
-            START_TIME = new Date("2026-10-05T11:00:00+05:30").getTime();
-            END_TIME = new Date("2026-10-05T11:30:00+05:30").getTime();
+            // Expired
+            legalForm.style.display = 'none';
+            statusScreen.style.display = 'block';
+            document.getElementById('status-title').innerText = "AGREEMENT EXPIRED";
+            document.getElementById('status-message').innerText = "The strict timeframe to sign this separation agreement has permanently closed.";
+        }
+    }
+
+    checkTimeValidity();
+    setInterval(checkTimeValidity, 30000);
+
+    // ==========================================
+    // SUBMISSION LOGIC
+    // ==========================================
+    async function executeSubmission() {
+        const name = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('emailAdd').value.trim();
+        const signature = document.getElementById('digiSignature').value.trim();
+        
+        if(!name || !email || !signature) {
+            alert("Please fill in your Full Legal Name, Email, and Electronic Signature.");
+            return;
         }
 
-        const statusScreen = document.getElementById('status-screen');
-        const legalForm = document.getElementById('legal-form');
-        const timerDisplay = document.getElementById('timer-display');
-
-        // Check if Form should be open or locked
-        function checkTimeValidity() {
-            const now = new Date().getTime();
-
-            if (now < START_TIME) {
-                legalForm.style.display = 'none';
-                statusScreen.style.display = 'block';
-                document.getElementById('status-icon').className = "fas fa-clock";
-                document.getElementById('status-icon').style.color = "#eab308";
-                document.getElementById('status-title').innerText = "PORTAL PENDING";
-                document.getElementById('status-title').style.color = "#eab308";
-                document.getElementById('status-message').innerHTML = "This legal form is securely locked and will open on <br><strong>Monday, October 5, 2026 at 11:00 AM (IST)</strong>.";
-            } else if (now >= START_TIME && now <= END_TIME) {
-                statusScreen.style.display = 'none';
-                legalForm.style.display = 'block';
-                
-                if (IS_TESTING) {
-                    timerDisplay.innerHTML = `<i class="fas fa-wrench"></i> TESTING MODE ACTIVE`;
-                } else {
-                    let minutesLeft = Math.floor((END_TIME - now) / (1000 * 60));
-                    timerDisplay.innerHTML = `<i class="fas fa-hourglass-half"></i> Portal expires in ${minutesLeft} minutes.`;
-                }
-            } else {
-                legalForm.style.display = 'none';
-                statusScreen.style.display = 'block';
-                document.getElementById('status-title').innerText = "AGREEMENT EXPIRED";
-                document.getElementById('status-message').innerText = "The strict timeframe to sign this separation agreement has permanently closed.";
-            }
+        // Check if all legal boxes are checked
+        if(!document.getElementById('ipCheck').checked || 
+           !document.getElementById('assetCheck').checked || 
+           !document.getElementById('ndaCheck').checked || 
+           !document.getElementById('competeCheck').checked || 
+           !document.getElementById('disparageCheck').checked || 
+           !document.getElementById('dataCheck').checked) {
+            alert("You must agree to all sections and check all boxes to execute this agreement.");
+            return;
         }
 
-        // Run check on page load
-        checkTimeValidity();
-        setInterval(checkTimeValidity, 30000); 
+        const btn = document.getElementById('btn-submit');
+        btn.disabled = true;
+        btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> SECURING IN MAINFRAME...";
 
-        // ==========================================
-        // 3. BULLETPROOF FORM SUBMISSION
-        // ==========================================
-        document.getElementById('exitForm').addEventListener('submit', async function(e) {
-            e.preventDefault(); // 🛑 BROWSER PAGE RELOAD KO BLOCK KAR DIYA
+        const payload = {
+            full_name: name,
+            email: email,
+            role: document.getElementById('roleHeld').value,
+            agreed_to_ip_release: true,
+            agreed_to_asset_destruction: true,
+            agreed_to_nda: true,
+            agreed_to_non_compete: true,
+            agreed_to_non_disparagement: true,
+            agreed_to_data_erasure: true,
+            digital_signature: signature
+        };
 
-            const btn = document.getElementById('btn-submit');
-            btn.disabled = true;
-            btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> ENCRYPTING TO MAINFRAME...";
+        try {
+            const { error } = await supabaseClient.from('exit_agreements').insert([payload]);
 
-            const payload = {
-                full_name: document.getElementById('fullName').value.trim(),
-                email: document.getElementById('emailAdd').value.trim(),
-                role: document.getElementById('roleHeld').value,
-                agreed_to_ip_release: document.getElementById('ipCheck').checked,
-                agreed_to_asset_destruction: document.getElementById('assetCheck').checked,
-                agreed_to_nda: document.getElementById('ndaCheck').checked,
-                agreed_to_non_compete: document.getElementById('competeCheck').checked,
-                agreed_to_non_disparagement: document.getElementById('disparageCheck').checked,
-                agreed_to_data_erasure: document.getElementById('dataCheck').checked,
-                digital_signature: document.getElementById('digiSignature').value.trim()
-            };
+            if (error) throw error;
 
-            try {
-                // Send data to Supabase
-                const { error } = await supabase.from('exit_agreements').insert([payload]);
+            // Success View
+            legalForm.style.display = 'none';
+            statusScreen.style.display = 'block';
+            statusScreen.style.borderColor = "#10b981";
+            document.getElementById('status-icon').className = "fas fa-shield-check";
+            document.getElementById('status-icon').style.color = "#10b981";
+            document.getElementById('status-title').innerText = "AGREEMENT SECURED";
+            document.getElementById('status-title').style.color = "#10b981";
+            document.getElementById('status-message').innerHTML = "Your resignation and legal acknowledgments have been successfully recorded in the Phantomix Database. <br><br>All system access, IP claims, and associations have now been officially terminated.";
 
-                if (error) {
-                    console.error("Supabase Error Details:", error);
-                    throw error;
-                }
-
-                // 🎉 SUCCESS UI
-                legalForm.style.display = 'none';
-                statusScreen.style.display = 'block';
-                statusScreen.style.borderColor = "#10b981";
-                document.getElementById('status-icon').className = "fas fa-shield-check";
-                document.getElementById('status-icon').style.color = "#10b981";
-                document.getElementById('status-title').innerText = "AGREEMENT SECURED";
-                document.getElementById('status-title').style.color = "#10b981";
-                document.getElementById('status-message').innerHTML = "Your resignation and legal acknowledgments have been successfully recorded in the Phantomix Database. <br><br>All system access, IP claims, and associations have now been officially terminated.";
-
-            } catch (err) {
-                alert("Database Error: " + err.message + "\n\n(Ensure you ran the fresh SQL script in Supabase!)");
-                btn.disabled = false;
-                btn.innerHTML = "<i class='fas fa-file-signature'></i> EXECUTE & SUBMIT AGREEMENT";
-            }
-        });
-    </script>
+        } catch (err) {
+            alert("SUPABASE ERROR: " + err.message);
+            btn.disabled = false;
+            btn.innerHTML = "<i class='fas fa-file-signature'></i> EXECUTE & SUBMIT AGREEMENT";
+        }
+    }
+</script>
 </body>
 </html>
