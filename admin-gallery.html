@@ -246,34 +246,39 @@
         });
 
         // Step 1: Send OTP
-        async function requestOTP() {
-            const email = document.getElementById('adminEmail').value.trim();
-            const btn = document.getElementById('btn-request');
-            
-            if (!email) return showAuthMsg("Corporate Email required.", "error");
-            
-            // Client-side quick check to prevent spamming OTPs to non-team members
-            if(!TEAM_MEMBERS[email]) return showAuthMsg("Access Denied: Email not in authorized personnel registry.", "error");
+async function requestOTP() {
+    const email = document.getElementById('adminEmail').value.trim();
+    const btn = document.getElementById('btn-request');
+    
+    if (!email) return showAuthMsg("Corporate Email required.", "error");
+    
+    // Client-side quick check
+    if(!TEAM_MEMBERS[email]) return showAuthMsg("Access Denied: Email not in authorized personnel registry.", "error");
 
-            btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Transmitting...';
+    btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Transmitting...';
 
-            const { error } = await supabaseClient.auth.signInWithOtp({ 
-                email: email,
-                options: { shouldCreateUser: false } // Crucial for security
-            });
-
-            if (error) {
-                showAuthMsg("Transmission Failed: " + error.message, "error");
-                btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Request Access Code';
-            } else {
-                stepEmail.style.display = 'none';
-                stepOTP.style.display = 'block';
-                loginMsg.className = 'status-msg'; // hide msg
-                btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Request Access Code';
-            }
+    // 🔴 THE FIX: Use signInWithOtp but explicitly ask for OTP template, not Magic Link
+    const { error } = await supabaseClient.auth.signInWithOtp({ 
+        email: email,
+        options: { 
+            shouldCreateUser: false 
+            // Hum explicitly emailRedirectTo pass NAHI karenge, 
+            // taaki backend samajh jaye ki link ki jagah code bhejna hai.
         }
+    });
 
-        // Step 2: Verify OTP
+    if (error) {
+        showAuthMsg("Transmission Failed: " + error.message, "error");
+        btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Request Access Code';
+    } else {
+        stepEmail.style.display = 'none';
+        stepOTP.style.display = 'block';
+        loginMsg.className = 'status-msg';
+        btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Request Access Code';
+    }
+}
+
+// Step 2: Verify OTP
 async function verifyOTP() {
     const email = document.getElementById('adminEmail').value.trim();
     const otp = document.getElementById('adminOTP').value.trim();
@@ -283,7 +288,7 @@ async function verifyOTP() {
 
     btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
 
-    // 🔴 YAHAN CHANGE KIYA HAI: type: 'email' kar diya gaya hai 6-digit code ke liye
+    // 🔴 THE FIX: Type MUST be 'email' (not magiclink) to accept the 6-digit code
     const { error } = await supabaseClient.auth.verifyOtp({ 
         email: email, 
         token: otp, 
@@ -294,7 +299,6 @@ async function verifyOTP() {
         showAuthMsg("Authentication Failed: " + error.message, "error");
         btn.disabled = false; btn.innerHTML = '<i class="fas fa-unlock"></i> Authenticate Connection';
     }
-    // Agar success hua toh onAuthStateChange automatically dashboard khol dega!
 }
         // ==========================================
         // 2. DASHBOARD LOGIC (IMAGE UPLOAD & GALLERY)
