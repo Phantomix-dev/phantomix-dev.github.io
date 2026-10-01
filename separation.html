@@ -149,7 +149,7 @@
 
     <script>
         // ==========================================
-        // DATABASE SUBMISSION (Direct Code)
+        // DATABASE SUBMISSION (Bulletproof Version)
         // ==========================================
         const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
@@ -157,13 +157,14 @@
         let supabase;
         try {
             supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            console.log("Supabase Mainframe Connected.");
         } catch(e) {
-            console.error("Supabase script is blocked by browser.");
-            alert("⚠️ WARNING: Your browser's Adblocker is blocking the database connection. Form submission will fail. Please turn off Shields/Adblocker for this site.");
+            console.error("Supabase Connection Failed.");
         }
 
-        async function submitAgreement(e) {
-            e.preventDefault();
+        // Intercepting form submission to STOP page reload
+        document.getElementById('exitForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // 🛑 BROWSER REFRESH KO YAHAN ROKA GAYA HAI
 
             if(!supabase) {
                 alert("Submission Failed: Cannot connect to Phantomix Mainframe. Check your Adblocker or Internet Connection.");
@@ -188,11 +189,13 @@
             };
 
             try {
-                const { error } = await supabase.from('exit_agreements').insert([payload]);
+                const { data, error } = await supabase.from('exit_agreements').insert([payload]);
 
-                if (error) throw error;
+                if (error) {
+                    throw error;
+                }
 
-                // Success Message
+                // Success Message UI Update
                 document.getElementById('legal-form').style.setProperty('display', 'none', 'important');
                 const statusScreen = document.getElementById('status-screen');
                 statusScreen.style.setProperty('display', 'block', 'important');
@@ -200,11 +203,13 @@
                 document.getElementById('status-message').innerHTML = "Your resignation and legal acknowledgments have been securely recorded in the Phantomix Database. <br><br>All system access, IP claims, and associations have now been officially terminated.";
 
             } catch (err) {
-                alert("Database Error: " + err.message + "\n\n(Did you run the SQL query to update the table columns?)");
+                // Agar database mein naye columns (non-compete etc) nahi banaye hain toh yahan error dikhega
+                console.error("Supabase Error:", err);
+                alert("Database Error: " + err.message + "\n\n(Did you run the SQL query in Supabase to add the new columns?)");
                 btn.disabled = false;
                 btn.innerHTML = "<i class='fas fa-file-signature'></i> EXECUTE & SUBMIT AGREEMENT";
             }
-        }
+        });
     </script>
 </body>
 </html>
