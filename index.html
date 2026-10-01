@@ -236,27 +236,6 @@
             color: white;
         }
 
-        /* Development Roadmap Styling */
-        .roadmap-container { position: relative; padding-left: 30px; text-align: left; margin: 0 auto; }
-        .roadmap-container::before { content: ''; position: absolute; top: 0; left: 14px; height: 100%; width: 2px; background: rgba(51, 65, 85, 0.8); z-index: 1; }
-        .roadmap-item { position: relative; padding-bottom: 40px; padding-left: 30px; }
-        .roadmap-item:last-child { padding-bottom: 0; }
-        .roadmap-marker { position: absolute; left: -30px; top: 0; width: 30px; height: 30px; border-radius: 50%; background: #0f172a; border: 2px solid #334155; z-index: 2; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
-        .roadmap-content { background: rgba(30, 41, 59, 0.5); padding: 20px; border-radius: 10px; border: 1px solid rgba(51, 65, 85, 0.5); transition: all 0.3s ease; }
-        .roadmap-item:hover .roadmap-content { background: rgba(30, 41, 59, 0.8); transform: translateX(5px); }
-        .roadmap-date { font-size: 12px; font-weight: 600; margin-bottom: 10px; color: #94a3b8; }
-        .roadmap-item.completed .roadmap-marker { border-color: #10b981; background: #10b981; color: #fff; font-size: 12px; }
-        .roadmap-item.completed .roadmap-content { border-left: 3px solid #10b981; }
-        .roadmap-item.current .roadmap-marker { border-color: #0ea5e9; }
-        .roadmap-item.current .roadmap-content { border-left: 3px solid #0ea5e9; box-shadow: 0 0 20px rgba(14, 165, 233, 0.1); }
-        .pulse-dot { width: 10px; height: 10px; background: #0ea5e9; border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
-        }
-        .roadmap-item.upcoming .roadmap-content { opacity: 0.7; }
-
         /* Tech Stack Section Styling */
         .tech-stack-container { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; padding: 20px; background: rgba(15, 23, 42, 0.4); border-radius: 12px; border: 1px solid rgba(51, 65, 85, 0.3); max-width: 800px; margin: 0 auto; }
         .tech-item { display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.7; transition: all 0.3s ease; cursor: pointer; }
@@ -776,49 +755,145 @@
         </div>
     </section>
 
-    <section class="phantomix-section scroll-reveal" style="max-width: 900px;" id="roadmap-section">
-        <h2 style="margin-bottom: 5px;">The <span style="color: #0ea5e9;">DiamondMax</span> Journey</h2>
-        <p style="color: #94a3b8; margin-bottom: 40px;">Our strategic roadmap to launch.</p>
+    <!-- 🚀 ROADMAP SECTION START -->
+<style>
+    /* TIMELINE STYLES */
+    #roadmap-section {
+        padding: 60px 20px;
+        text-align: left;
+    }
+    
+    .roadmap-header { text-align: center; margin-bottom: 50px; }
+    .roadmap-header h2 { font-size: 32px; font-weight: 700; color: #f8fafc; margin-bottom: 10px; }
+    .roadmap-header p { color: #94a3b8; font-size: 15px; font-family: 'Fira Code', monospace; }
+
+    .roadmap-container {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        padding-left: 45px;
+    }
+
+    /* THE GLOWING NEON LINE */
+    .roadmap-container::before {
+        content: ''; position: absolute; left: 14px; top: 0; width: 3px; height: 100%;
+        background: linear-gradient(to bottom, #10b981 0%, #0ea5e9 50%, #334155 100%);
+        border-radius: 5px; box-shadow: 0 0 10px rgba(14, 165, 233, 0.3);
+    }
+
+    .roadmap-item { position: relative; margin-bottom: 40px; opacity: 0; animation: slideInUp 0.6s forwards ease-out; }
+    .roadmap-item:nth-child(1) { animation-delay: 0.1s; }
+    .roadmap-item:nth-child(2) { animation-delay: 0.3s; }
+    .roadmap-item:nth-child(3) { animation-delay: 0.5s; }
+
+    @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* MARKERS (NODES) */
+    .roadmap-marker {
+        position: absolute; left: -45px; top: 0; width: 32px; height: 32px;
+        border-radius: 50%; display: flex; justify-content: center; align-items: center;
+        background: #020617; z-index: 2; transition: 0.3s;
+    }
+
+    /* COMPLETED NODE */
+    .roadmap-item.completed .roadmap-marker {
+        border: 2px solid #10b981; color: #10b981; font-size: 14px;
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+    
+    /* CURRENT NODE (PULSING) */
+    .roadmap-item.current .roadmap-marker { border: 2px solid #0ea5e9; }
+    .pulse-dot {
+        width: 12px; height: 12px; background: #0ea5e9; border-radius: 50%;
+        box-shadow: 0 0 15px #0ea5e9; animation: pulseNode 1.5s infinite;
+    }
+    @keyframes pulseNode { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
+
+    /* UPCOMING NODE */
+    .roadmap-item.upcoming .roadmap-marker { border: 2px dashed #475569; }
+    .roadmap-item.upcoming .roadmap-marker::after {
+        content: ''; width: 8px; height: 8px; background: #475569; border-radius: 50%;
+    }
+
+    /* GLASSMORPHISM CARDS */
+    .roadmap-content {
+        background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(51, 65, 85, 0.5);
+        border-radius: 12px; padding: 25px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        backdrop-filter: blur(10px); position: relative; overflow: hidden;
+    }
+    
+    .roadmap-item:hover .roadmap-content {
+        transform: translateX(10px); border-color: rgba(14, 165, 233, 0.5);
+        box-shadow: -5px 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Subtle left glow on hover */
+    .roadmap-item:hover .roadmap-content::before {
+        content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 4px;
+        background: #0ea5e9; box-shadow: 0 0 15px #0ea5e9;
+    }
+    .roadmap-item.completed:hover .roadmap-content::before { background: #10b981; box-shadow: 0 0 15px #10b981; }
+
+    /* TYPOGRAPHY */
+    .roadmap-date { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+    .completed .roadmap-date { color: #10b981; }
+    .current .roadmap-date { color: #0ea5e9; }
+    .upcoming .roadmap-date { color: #64748b; }
+
+    .roadmap-content h4 { font-size: 18px; color: #f8fafc; margin: 0 0 8px 0; font-weight: 600; }
+    .roadmap-content p { font-size: 14px; color: #94a3b8; margin: 0; line-height: 1.6; }
+
+    @media (max-width: 600px) {
+        .roadmap-container { padding-left: 35px; }
+        .roadmap-container::before { left: 9px; }
+        .roadmap-marker { left: -35px; width: 28px; height: 28px; }
+        .roadmap-content { padding: 20px; }
+        .roadmap-content h4 { font-size: 16px; }
+        .roadmap-item:hover .roadmap-content { transform: translateX(5px); }
+    }
+</style>
+
+<section class="phantomix-section scroll-reveal" id="roadmap-section">
+    <div class="roadmap-header">
+        <h2>The <span style="color: #0ea5e9;">DiamondMax</span> Journey</h2>
+        <p><i class="fas fa-route" style="margin-right: 5px;"></i> Strategic Masterplan & Milestones</p>
+    </div>
+    
+    <div class="roadmap-container">
         
-        <div class="roadmap-container">
-                        <div class="roadmap-container">
-                
-                <!-- Phase 1: Completed -->
-                <div class="roadmap-item completed">
-                    <div class="roadmap-marker"><i class="fas fa-check"></i></div>
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">Phase 1: Architecture</div>
-                        <h4>Core Concept & Ecosystem Design</h4>
-                        <p style="font-size: 13px; color: #94a3b8; margin-top: 5px;">Finalized the reward mechanics, UI/UX wireframes, and strict security protocols.</p>
-                    </div>
-                </div>
-
-                <!-- Phase 2: Current (In Active R&D) -->
-                <div class="roadmap-item current">
-                    <div class="roadmap-marker"><div class="pulse-dot"></div></div>
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">Phase 2: R&D & Engineering</div>
-                        <h4>Advanced System Development</h4>
-                        <p style="font-size: 13px; color: #94a3b8; margin-top: 5px;">Currently building highly secure backend tunnels and immersive frontend experiences. Timeline extended for ultimate quality assurance.</p>
-                    </div>
-                </div>
-
-                <!-- Phase 3: Upcoming -->
-                <div class="roadmap-item upcoming">
-                    <div class="roadmap-marker"></div>
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">Phase 3: Closed Alpha</div>
-                        <h4>Private Testing Phase</h4>
-                        <p style="font-size: 13px; color: #94a3b8; margin-top: 5px;">Waitlist members will receive exclusive early access to hunt bugs and test features before the public launch.</p>
-                    </div>
-                </div>
-
-            </div>
-
+        <!-- Phase 1: Completed -->
+        <div class="roadmap-item completed">
+            <div class="roadmap-marker"><i class="fas fa-check"></i></div>
+            <div class="roadmap-content">
+                <div class="roadmap-date">Phase 1: Architecture</div>
+                <h4>Core Concept & Ecosystem Design</h4>
+                <p>Finalized the reward mechanics, Apple-tier UI/UX wireframes, and enterprise-grade strict security protocols.</p>
             </div>
         </div>
-    </section>
 
+        <!-- Phase 2: Current (In Active R&D) -->
+        <div class="roadmap-item current">
+            <div class="roadmap-marker"><div class="pulse-dot"></div></div>
+            <div class="roadmap-content">
+                <div class="roadmap-date">Phase 2: R&D & Engineering</div>
+                <h4>Advanced System Development</h4>
+                <p>Currently building highly secure backend tunnels and immersive frontend experiences. Timeline extended for ultimate quality assurance.</p>
+            </div>
+        </div>
+
+        <!-- Phase 3: Upcoming -->
+        <div class="roadmap-item upcoming">
+            <div class="roadmap-marker"></div>
+            <div class="roadmap-content">
+                <div class="roadmap-date">Phase 3: Closed Alpha</div>
+                <h4>Private Testing Phase</h4>
+                <p>Waitlist members will receive exclusive early access to hunt bugs and stress-test core features before the public launch.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- 🚀 ROADMAP SECTION END -->
     <section class="phantomix-section scroll-reveal" id="features-section">
         <h2>Why <span style="color: #0ea5e9;">Phantomix</span>?</h2>
         <p style="color: #94a3b8;">A revolutionary digital ecosystem built for the modern tech landscape.</p>
