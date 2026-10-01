@@ -1,153 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LX3YH0GSZG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LX3YH0GSZG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phantomix | Core Team Vault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Supabase JS Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #0f172a; color: #ffffff; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 90vh; }
-        .admin-card { width: 100%; max-width: 500px; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 15px; padding: 30px; box-sizing: border-box; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h2 { text-align: center; color: #0ea5e9; margin-top: 0; }
-        .input-group { margin-bottom: 18px; }
-        label { display: block; font-size: 13px; color: #cbd5e1; margin-bottom: 6px; font-weight: 600; }
-        input[type="text"], input[type="password"], input[type="email"], select, input[type="file"] { width: 100%; padding: 12px; background: #020617; color: #fff; border: 1px solid #334155; border-radius: 8px; box-sizing: border-box; font-family: inherit; }
-        .action-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 10px; }
-        .action-btn:hover { opacity: 0.9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
-        .logout-btn { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; margin-top: 15px; }
-        .logout-btn:hover { background: #ef4444; color: #fff; }
-        .status-msg { text-align: center; font-size: 13px; margin-top: 15px; font-weight: 600; }
-        .photo-list { margin-top: 30px; border-top: 1px solid #334155; padding-top: 20px; }
-        .item-row { display: flex; align-items: center; justify-content: space-between; background: #020617; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
-        .item-row img { width: 45px; height: 45px; object-fit: cover; border-radius: 6px; }
-        .item-info { flex: 1; margin-left: 12px; text-align: left; }
-        .item-info h4 { margin: 0; font-size: 13px; color: #fff; }
-        .item-info p { margin: 0; font-size: 11px; color: #94a3b8; }
-        .delete-btn { background: #ef4444; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+        /* 🎨 CUSTOM PHANTOMIX TEXT SELECTION */
+        ::selection { background-color: #10b981; color: #ffffff; }
+
+        body { 
+            font-family: 'Poppins', sans-serif; background-color: #020617; color: #ffffff; 
+            margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; 
+            min-height: 95vh; background-image: radial-gradient(circle at 50% 10%, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+        }
+
+        /* 🎚️ CUSTOM CYBER SCROLLBAR */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: rgba(16, 185, 129, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+        /* CONTAINERS */
+        .admin-card { 
+            width: 100%; max-width: 550px; background: rgba(15, 23, 42, 0.85); 
+            border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px; padding: 40px 35px; 
+            box-sizing: border-box; box-shadow: 0 15px 40px rgba(0,0,0,0.6); backdrop-filter: blur(15px);
+            position: relative; overflow: hidden;
+        }
+
+        .admin-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, #10b981, transparent);
+            background-size: 200% auto; animation: shine 3s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* TYPOGRAPHY */
+        h2 { text-align: center; color: #10b981; margin: 0 0 5px 0; font-family: 'Fira Code', monospace; font-size: 24px; letter-spacing: 1px;}
+        .subtitle { text-align: center; font-size: 13px; color: #94a3b8; margin-bottom: 30px; font-family: 'Fira Code', monospace;}
+
+        /* FORMS */
+        .input-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; font-size: 12px; color: #94a3b8; margin-bottom: 8px; font-weight: 600; font-family: 'Fira Code', monospace; letter-spacing: 1px;}
+        input[type="text"], input[type="email"], select, input[type="file"] { 
+            width: 100%; padding: 14px 15px; background: rgba(2, 6, 23, 0.8); color: #fff; 
+            border: 1px solid #334155; border-radius: 8px; box-sizing: border-box; 
+            font-family: 'Poppins', sans-serif; font-size: 14px; outline: none; transition: 0.3s;
+        }
+        input:focus, select:focus { border-color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
+        
+        /* BUTTONS */
+        .action-btn { 
+            width: 100%; padding: 15px; background: linear-gradient(135deg, #10b981, #047857); 
+            color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; 
+            cursor: pointer; transition: 0.3s; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
+        .action-btn:hover:not(:disabled) { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); transform: translateY(-2px); }
+        .action-btn:disabled { background: #334155; color: #94a3b8; cursor: not-allowed; transform: none; box-shadow: none; }
+        
+        .logout-btn { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; margin-top: 25px; }
+        .logout-btn:hover { background: #ef4444; color: #fff; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+
+        /* STATUS MESSAGE */
+        .status-msg { text-align: center; font-size: 13px; margin-top: 20px; font-weight: 600; padding: 10px; border-radius: 6px; font-family: 'Fira Code', monospace; display: none;}
+        .msg-success { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); display: block;}
+        .msg-error { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); display: block;}
+        .msg-info { background: rgba(14, 165, 233, 0.1); color: #0ea5e9; border: 1px solid rgba(14, 165, 233, 0.3); display: block;}
+
+        /* DASHBOARD COMPONENTS */
+        .welcome-banner {
+            background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); 
+            border-radius: 12px; padding: 20px; margin-bottom: 30px; text-align: left;
+        }
+        
+        .photo-list { margin-top: 40px; border-top: 1px solid #334155; padding-top: 20px; }
+        .item-row { 
+            display: flex; align-items: center; justify-content: space-between; 
+            background: rgba(2, 6, 23, 0.6); padding: 12px; border-radius: 8px; 
+            border: 1px solid var(--surface-border, #334155); margin-bottom: 10px; transition: 0.2s;
+        }
+        .item-row:hover { border-color: #0ea5e9; }
+        .item-row img { width: 50px; height: 50px; object-fit: cover; border-radius: 6px; border: 1px solid #334155;}
+        .item-info { flex: 1; margin-left: 15px; text-align: left; }
+        .item-info h4 { margin: 0; font-size: 14px; color: #f8fafc; }
+        .item-info p { margin: 2px 0 0 0; font-size: 11px; color: #94a3b8; font-family: 'Fira Code', monospace;}
+        .delete-btn { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; padding: 8px 12px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .delete-btn:hover { background: #ef4444; color: #fff; }
+
+        /* Hidden initially */
+        #step-otp { display: none; }
+        #adminPanel { display: none; }
     </style>
 </head>
 <body>
 
+    <!-- 🔐 LOGIN / AUTH SCREEN -->
     <div class="admin-card" id="loginScreen">
-        <h2><i class="fas fa-lock"></i> Phantomix Core</h2>
-        <p style="text-align: center; font-size: 13px; color: #94a3b8; margin-bottom: 25px;">Encrypted Team Gateway</p>
+        <h2><i class="fas fa-fingerprint"></i> RESTRICTED ACCESS</h2>
+        <p class="subtitle">Phantomix Team Authentication</p>
         
-        <div class="input-group">
-            <input type="email" id="adminEmail" placeholder="Official Team Email">
+        <!-- STEP 1: Email Request -->
+        <div id="step-email">
+            <div class="input-group">
+                <label>TEAM EMAIL</label>
+                <input type="email" id="adminEmail" placeholder="team@phantomix.io" autocomplete="email">
+            </div>
+            <button class="action-btn" id="btn-request" onclick="requestOTP()"><i class="fas fa-paper-plane"></i> Request Access Code</button>
         </div>
-        <div class="input-group">
-            <input type="password" id="adminPassword" placeholder="Password">
+
+        <!-- STEP 2: OTP Verification -->
+        <div id="step-otp">
+            <p style="color: #10b981; font-size: 12px; margin-bottom: 20px; font-family: 'Fira Code', monospace;">
+                <i class="fas fa-check-circle"></i> OTP Dispatched to secure terminal.
+            </p>
+            <div class="input-group">
+                <label>ONE-TIME PASSWORD</label>
+                <input type="text" id="adminOTP" placeholder="000000" maxlength="6" style="text-align: center; font-size: 24px; letter-spacing: 10px; font-weight: bold;">
+            </div>
+            <button class="action-btn" id="btn-verify" onclick="verifyOTP()"><i class="fas fa-unlock"></i> Authenticate Connection</button>
+            <p style="font-size: 12px; color: #64748b; margin-top: 15px; cursor: pointer; text-decoration: underline;" onclick="resetAuthForm()">← Change Email</p>
         </div>
-        <button class="action-btn" onclick="loginAdmin()"><i class="fas fa-sign-in-alt"></i> Authenticate</button>
+
         <div id="loginMsg" class="status-msg"></div>
     </div>
 
-    <div class="admin-card" id="adminPanel" style="display: none;">
+    <!-- 🎛️ MAIN TEAM DASHBOARD -->
+    <div class="admin-card" id="adminPanel">
         
-        <div id="welcomeBanner" style="background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 12px; padding: 16px; margin-bottom: 25px; text-align: left;">
-            <h3 id="welcomeTitle" style="margin: 0 0 4px 0; color: #0ea5e9; font-size: 17px; font-weight: 700;"></h3>
-            <p id="welcomeRole" style="margin: 0 0 12px 0; font-size: 12px; color: #10b981; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;"></p>
-            <p style="margin: 0; font-size: 11px; color: #94a3b8; border-top: 1px dashed rgba(14, 165, 233, 0.2); padding-top: 10px; line-height: 1.5;">
-                🔒 <strong>Privacy Note:</strong> System vault me upload hone wali sabhi images public gallery me live render hoti hain. Security aur privacy ke liye kripya koi bhi personal ID, passwords, ya sensitive data upload na karein.
+        <div class="welcome-banner">
+            <h3 id="welcomeTitle" style="margin: 0 0 5px 0; color: #10b981; font-size: 18px; font-weight: 700;"></h3>
+            <p id="welcomeRole" style="margin: 0 0 15px 0; font-size: 12px; color: #0ea5e9; font-weight: 600; font-family: 'Fira Code', monospace;"></p>
+            <p style="margin: 0; font-size: 11px; color: #94a3b8; border-top: 1px dashed rgba(16, 185, 129, 0.3); padding-top: 12px; line-height: 1.6;">
+                <strong style="color:#ef4444;">[!] CLEARANCE NOTE:</strong> All assets uploaded to the vault are immediately synced to the public gallery. Ensure no sensitive credentials, API keys, or private IDs are exposed in screenshots.
             </p>
         </div>
 
-        <h2><i class="fas fa-cloud-upload-alt"></i> Upload Media</h2>
+        <h2 style="font-size: 20px; color: #fff; margin-bottom: 20px; text-align: left;"><i class="fas fa-cloud-upload-alt" style="color: #0ea5e9;"></i> Push Asset to Mainframe</h2>
         
-        <div class="input-group"><input type="file" id="photoInput" accept="image/*"></div>
-        <div class="input-group"><input type="text" id="titleInput" placeholder="Photo Title"></div>
         <div class="input-group">
+            <label>ASSET FILE (Image)</label>
+            <input type="file" id="photoInput" accept="image/*">
+        </div>
+        <div class="input-group">
+            <label>TITLE</label>
+            <input type="text" id="titleInput" placeholder="e.g. DiamondMax Dashboard UI">
+        </div>
+        <div class="input-group">
+            <label>CATEGORY</label>
             <select id="categoryInput">
                 <option value="apps">Apps & UI</option>
                 <option value="team">Team & Behind Scenes</option>
                 <option value="updates">Posters & Socials</option>
             </select>
         </div>
-        <div class="input-group"><input type="text" id="descInput" placeholder="Short description..."></div>
+        <div class="input-group">
+            <label>DESCRIPTION (Optional)</label>
+            <input type="text" id="descInput" placeholder="Short detail about the asset...">
+        </div>
 
-        <button class="action-btn" onclick="uploadPhoto()"><i class="fas fa-paper-plane"></i> Upload to Vault</button>
+        <button class="action-btn" id="btn-upload" style="background: linear-gradient(135deg, #0ea5e9, #3b82f6);" onclick="uploadPhoto()"><i class="fas fa-upload"></i> Execute Upload</button>
         
         <div id="statusMsg" class="status-msg"></div>
 
         <div class="photo-list">
-            <h3 style="font-size: 16px; color: #0ea5e9;">Manage Existing</h3>
-            <div id="manageList">Loading...</div>
+            <h3 style="font-size: 16px; color: #0ea5e9; margin: 0 0 15px 0; font-family: 'Fira Code', monospace;"><i class="fas fa-database"></i> Database Registry</h3>
+            <div id="manageList" style="color: #64748b; font-size: 13px; text-align: center;"><i class="fas fa-spinner fa-spin"></i> Syncing...</div>
         </div>
 
-        <button class="action-btn logout-btn" onclick="logoutAdmin()"><i class="fas fa-sign-out-alt"></i> Secure Logout</button>
+        <button class="action-btn logout-btn" onclick="logoutAdmin()"><i class="fas fa-power-off"></i> Terminate Session</button>
     </div>
 
+    <!-- ⚙️ CORE LOGIC & SUPABASE INTEGRATION -->
     <script>
-        // ⚙️ SUPABASE INITIALIZATION
+        // SUPABASE CREDENTIALS (KEEP YOUR REAL ONES HERE)
         const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // 🛡️ CORE TEAM DETAILS & ROLES MAPPING
+        // 🛡️ AUTHORIZED PERSONNEL ONLY (Frontend Check)
+        // Note: As per Master Plan, true security comes from RLS in backend. This stops unauthorized UI access.
         const TEAM_MEMBERS = {
-            "gk2929913@gmail.com": {
-                name: "Shrikant Prajapati",
-                role: "CEO & Co-Founder"
-            },
-            "ranjankumarcpt@gmail.com": {
-                name: "Ranjan Gupta",
-                role: "Co-Founder & Lead Architect"
-            },
-            "nainargv2612@gmail.com": {
-                name: "Naina",
-                role: "VP of Brand Experience"
-            }
+            "gk2929913@gmail.com": { name: "Shrikant Prajapati", role: "CEO & Co-Founder" },
+            "ranjankumarcpt@gmail.com": { name: "Ranjan Gupta", role: "Co-Founder & Lead Architect" },
+            "nainargv2612@gmail.com": { name: "Naina", role: "VP of Brand Experience" }
         };
 
-        // 🛡️ STRICT TEAM EMAIL CHECK & WELCOME DISPLAY
-        supabaseClient.auth.onAuthStateChange((event, session) => {
-            if (session && TEAM_MEMBERS[session.user.email]) {
-                const userObj = TEAM_MEMBERS[session.user.email];
-                
-                // Set Welcome Message
-                document.getElementById('welcomeTitle').innerHTML = `<i class="fas fa-user-shield" style="margin-right: 6px;"></i> Welcome back, ${userObj.name}!`;
-                document.getElementById('welcomeRole').innerHTML = `<i class="fas fa-id-badge" style="margin-right: 5px;"></i> ${userObj.role}`;
+        // UI Helpers
+        const loginScreen = document.getElementById('loginScreen');
+        const adminPanel = document.getElementById('adminPanel');
+        const stepEmail = document.getElementById('step-email');
+        const stepOTP = document.getElementById('step-otp');
+        const loginMsg = document.getElementById('loginMsg');
 
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('adminPanel').style.display = 'block';
-                fetchManageList();
-            } else if (session) {
-                // Unauthorized user handling
-                const msg = document.getElementById('loginMsg');
-                msg.style.color = "#ef4444";
-                msg.innerText = "❌ Access Denied: Unauthorized Personnel!";
-                setTimeout(() => { supabaseClient.auth.signOut(); }, 1500);
+        function showAuthMsg(text, type) {
+            loginMsg.innerText = text;
+            loginMsg.className = `status-msg msg-${type}`;
+        }
+
+        function resetAuthForm() {
+            stepEmail.style.display = 'block';
+            stepOTP.style.display = 'none';
+            loginMsg.className = 'status-msg';
+            document.getElementById('adminOTP').value = '';
+        }
+
+        // ==========================================
+        // 1. AUTHENTICATION (PASSWORDLESS)
+        // ==========================================
+        
+        // Listen for Auth State Changes
+        supabaseClient.auth.onAuthStateChange((event, session) => {
+            if (session) {
+                // Security Check: Is the logged-in email in our Team array?
+                if (TEAM_MEMBERS[session.user.email]) {
+                    const userObj = TEAM_MEMBERS[session.user.email];
+                    document.getElementById('welcomeTitle').innerHTML = `<i class="fas fa-user-shield"></i> Welcome back, ${userObj.name}`;
+                    document.getElementById('welcomeRole').innerHTML = `<i class="fas fa-terminal"></i> ROLE: [ ${userObj.role} ]`;
+
+                    loginScreen.style.display = 'none';
+                    adminPanel.style.display = 'block';
+                    fetchManageList();
+                } else {
+                    // Imposter detected! They verified OTP but aren't in TEAM_MEMBERS
+                    showAuthMsg("❌ SECURITY BREACH: Unauthorized Email Detected. Terminating.", "error");
+                    setTimeout(() => { supabaseClient.auth.signOut(); }, 2000);
+                }
             } else {
-                document.getElementById('loginScreen').style.display = 'block';
-                document.getElementById('adminPanel').style.display = 'none';
+                loginScreen.style.display = 'block';
+                adminPanel.style.display = 'none';
             }
         });
 
-        // 🔐 LOGIN FUNCTION
-        async function loginAdmin() {
+        // Step 1: Send OTP
+        async function requestOTP() {
             const email = document.getElementById('adminEmail').value.trim();
-            const password = document.getElementById('adminPassword').value;
-            const msg = document.getElementById('loginMsg');
+            const btn = document.getElementById('btn-request');
             
-            msg.style.color = "#0ea5e9";
-            msg.innerText = "Authenticating...";
+            if (!email) return showAuthMsg("Corporate Email required.", "error");
+            
+            // Client-side quick check to prevent spamming OTPs to non-team members
+            if(!TEAM_MEMBERS[email]) return showAuthMsg("Access Denied: Email not in authorized personnel registry.", "error");
 
-            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
-            
+            btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Transmitting...';
+
+            const { error } = await supabaseClient.auth.signInWithOtp({ 
+                email: email,
+                options: { shouldCreateUser: false } // Crucial for security
+            });
+
             if (error) {
-                msg.style.color = "#ef4444";
-                msg.innerText = "❌ Login Failed: " + error.message;
+                showAuthMsg("Transmission Failed: " + error.message, "error");
+                btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Request Access Code';
+            } else {
+                stepEmail.style.display = 'none';
+                stepOTP.style.display = 'block';
+                loginMsg.className = 'status-msg'; // hide msg
+                btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Request Access Code';
             }
         }
 
-        // 🚪 LOGOUT FUNCTION
-        async function logoutAdmin() {
-            await supabaseClient.auth.signOut();
+        // Step 2: Verify OTP
+        async function verifyOTP() {
+            const email = document.getElementById('adminEmail').value.trim();
+            const otp = document.getElementById('adminOTP').value.trim();
+            const btn = document.getElementById('btn-verify');
+
+            if (!otp || otp.length < 6) return showAuthMsg("Invalid OTP Format.", "error");
+
+            btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+
+            const { error } = await supabaseClient.auth.verifyOtp({ email: email, token: otp, type: 'magiclink' });
+
+            if (error) {
+                showAuthMsg("Authentication Failed: " + error.message, "error");
+                btn.disabled = false; btn.innerHTML = '<i class="fas fa-unlock"></i> Authenticate Connection';
+            }
+            // If successful, onAuthStateChange listener handles the UI swap.
         }
 
-        // 🖼️ AUTO-COMPRESS FUNCTION
+        async function logoutAdmin() { await supabaseClient.auth.signOut(); }
+
+        // ==========================================
+        // 2. DASHBOARD LOGIC (IMAGE UPLOAD & GALLERY)
+        // ==========================================
+
+        function showStatus(text, type) {
+            const msg = document.getElementById('statusMsg');
+            msg.innerText = text;
+            msg.className = `status-msg msg-${type}`;
+        }
+
+        // 🖼️ AUTO-COMPRESS FUNCTION (Unchanged)
         function compressImage(file, maxWidth = 1200, quality = 0.7) {
             return new Promise((resolve) => {
                 const reader = new FileReader();
@@ -174,48 +331,44 @@
             const title = document.getElementById('titleInput').value.trim();
             const category = document.getElementById('categoryInput').value;
             const desc = document.getElementById('descInput').value.trim();
-            const statusMsg = document.getElementById('statusMsg');
+            const btn = document.getElementById('btn-upload');
 
-            if (!fileInput.files[0] || !title) {
-                alert("Photo and Title are required!"); return;
-            }
+            if (!fileInput.files[0] || !title) return showStatus("Asset File and Title are strictly required.", "error");
 
+            btn.disabled = true;
             try {
-                statusMsg.style.color = "#0ea5e9";
-                statusMsg.innerText = "⏳ Compressing image on device...";
+                showStatus("⏳ Compressing asset on local machine...", "info");
                 const compressedBlob = await compressImage(fileInput.files[0]);
 
-                statusMsg.innerText = "🚀 Uploading File to Supabase...";
-                const fileName = `photo_${Date.now()}.jpg`;
+                showStatus("🚀 Transmitting payload to Supabase Bucket...", "info");
+                const fileName = `asset_${Date.now()}.jpg`;
 
                 const { data: storageData, error: storageError } = await supabaseClient
-                    .storage
-                    .from('gallery-images')
+                    .storage.from('gallery-images')
                     .upload(fileName, compressedBlob, { contentType: 'image/jpeg' });
 
                 if (storageError) throw storageError;
 
                 const { data: publicUrlData } = supabaseClient.storage.from('gallery-images').getPublicUrl(fileName);
-                const publicUrl = publicUrlData.publicUrl;
-
-                statusMsg.innerText = "📝 Saving record...";
                 
+                showStatus("📝 Updating Registry Database...", "info");
                 const { error: dbError } = await supabaseClient
                     .from('gallery')
-                    .insert([{ title: title, category: category, description: desc, image_url: publicUrl }]);
+                    .insert([{ title: title, category: category, description: desc, image_url: publicUrlData.publicUrl }]);
 
                 if (dbError) throw dbError;
 
-                statusMsg.style.color = "#10b981";
-                statusMsg.innerText = "✅ Upload Successful!";
+                showStatus("✅ Asset Upload & Registry Sync Successful!", "success");
                 
+                // Clear fields
                 fileInput.value = ""; document.getElementById('titleInput').value = ""; document.getElementById('descInput').value = "";
                 fetchManageList();
 
             } catch (err) {
                 console.error(err);
-                statusMsg.style.color = "#ef4444";
-                statusMsg.innerText = "❌ Failed: " + err.message;
+                showStatus("❌ System Failure: " + err.message, "error");
+            } finally {
+                btn.disabled = false;
             }
         }
 
@@ -225,17 +378,17 @@
             const { data, error } = await supabaseClient.from('gallery').select('*').order('created_at', { ascending: false });
             
             listDiv.innerHTML = "";
-            if (error || data.length === 0) { listDiv.innerText = "No photos found."; return; }
+            if (error || data.length === 0) { listDiv.innerHTML = "<div>No assets found in registry.</div>"; return; }
 
             data.forEach(item => {
                 listDiv.innerHTML += `
                     <div class="item-row">
-                        <img src="${item.image_url}">
+                        <img src="${item.image_url}" loading="lazy">
                         <div class="item-info">
                             <h4>${item.title}</h4>
-                            <p>${item.category}</p>
+                            <p>[${item.category.toUpperCase()}]</p>
                         </div>
-                        <button class="delete-btn" onclick="deletePhoto(${item.id})"><i class="fas fa-trash"></i></button>
+                        <button class="delete-btn" onclick="deletePhoto(${item.id})" title="Delete Asset"><i class="fas fa-trash"></i></button>
                     </div>
                 `;
             });
@@ -243,7 +396,7 @@
 
         // 🗑️ DELETE LOGIC
         async function deletePhoto(id) {
-            if(!confirm("Are you sure? This will permanently delete the record.")) return;
+            if(!confirm("⚠️ WARNING: This will permanently purge the asset from the live database. Proceed?")) return;
             await supabaseClient.from('gallery').delete().eq('id', id);
             fetchManageList();
         }
