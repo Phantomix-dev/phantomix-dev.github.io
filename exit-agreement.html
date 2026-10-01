@@ -128,11 +128,26 @@
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // 🕒 TIMER CONFIGURATION (Oct 5, 2026, 11:00 AM to 11:30 AM IST)
-        const START_TIME = new Date("2026-01-05T11:00:00+05:30").getTime();
-        const END_TIME = new Date("2026-10-05T11:30:00+05:30").getTime();
+        // ==========================================
+        // 🔧 MASTER SWITCH FOR TESTING
+        // ==========================================
+        // Abhi yeh 'true' hai, matlab form bina time check kiye khul jayega. 
+        // Jab final unko bhejna ho, toh isko 'false' kar dijiyega.
+        const IS_TESTING = true; 
         
-        
+        let START_TIME, END_TIME;
+
+        if (IS_TESTING) {
+            // Testing Mode: Opens immediately and valid for next 24 hours
+            START_TIME = new Date().getTime() - 60000;
+            END_TIME = new Date().getTime() + 86400000;
+        } else {
+            // Live Mode: Strictly locks it until October 5, 2026 (11:00 AM - 11:30 AM IST)
+            START_TIME = new Date("2026-10-05T11:00:00+05:30").getTime();
+            END_TIME = new Date("2026-10-05T11:30:00+05:30").getTime();
+        }
+        // ==========================================
+
         const statusScreen = document.getElementById('status-screen');
         const legalForm = document.getElementById('legal-form');
         const statusTitle = document.getElementById('status-title');
@@ -158,7 +173,12 @@
                 legalForm.style.display = 'block';
                 
                 let minutesLeft = Math.floor((END_TIME - now) / (1000 * 60));
-                timerDisplay.innerText = `⏳ Form expires in ${minutesLeft} minutes.`;
+                
+                if (IS_TESTING) {
+                    timerDisplay.innerText = `🛠️ [TESTING MODE IS ACTIVE]`;
+                } else {
+                    timerDisplay.innerText = `⏳ Form expires in ${minutesLeft} minutes.`;
+                }
             } else {
                 // Expired
                 statusScreen.style.display = 'block';
@@ -201,6 +221,9 @@
             };
 
             try {
+                // Testing Mode alert (optional, so you know DB is attempting insert)
+                if(IS_TESTING) console.log("Submitting Payload to DB: ", payload);
+
                 const { error } = await supabase.from('exit_agreements').insert([payload]);
 
                 if (error) throw error;
