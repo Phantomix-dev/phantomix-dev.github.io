@@ -7,6 +7,8 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Supabase Library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
@@ -14,15 +16,20 @@
             background-color: #020617; color: #f8fafc; font-family: 'Poppins', sans-serif;
             margin: 0; padding: 40px 20px; display: flex; justify-content: center; min-height: 100vh;
         }
+        
+        /* 🚀 GOD MODE BYPASS: Form ab by default open rahega */
         .form-container {
             background: rgba(15, 23, 42, 0.95); border: 1px solid #334155; border-radius: 12px;
             padding: 40px; max-width: 800px; width: 100%; box-shadow: 0 10px 50px rgba(0,0,0,0.7);
-            display: none; 
+            display: block !important; /* Yahan bypass kiya gaya hai */
         }
+        
+        /* Status screen by default hide kar di gayi hai */
         .status-container {
             background: rgba(15, 23, 42, 0.95); border: 1px solid #ef4444; border-radius: 12px;
             padding: 50px 30px; max-width: 500px; width: 100%; text-align: center; margin: auto;
-            display: block; box-shadow: 0 10px 40px rgba(239, 68, 68, 0.1);
+            display: none !important; 
+            box-shadow: 0 10px 40px rgba(239, 68, 68, 0.1);
         }
         
         .header { text-align: center; border-bottom: 1px solid #334155; padding-bottom: 25px; margin-bottom: 30px; }
@@ -56,22 +63,24 @@
         .submit-btn:hover { background: #0284c7; box-shadow: 0 5px 20px rgba(14, 165, 233, 0.3); }
         .submit-btn:disabled { background: #334155; color: #64748b; cursor: not-allowed; box-shadow: none; }
 
-        #timer-display { font-family: 'Fira Code', monospace; color: #ef4444; font-size: 14px; text-align: center; margin-top: 15px; background: rgba(239, 68, 68, 0.1); padding: 8px; border-radius: 4px; display: inline-block;}
+        .testing-badge { font-family: 'Fira Code', monospace; color: #eab308; font-size: 14px; text-align: center; margin-top: 15px; background: rgba(234, 179, 8, 0.1); padding: 8px; border-radius: 4px; display: inline-block;}
     </style>
 </head>
 <body>
 
+    <!-- SUCCESS / ERROR SCREEN -->
     <div class="status-container" id="status-screen">
-        <i class="fas fa-lock" id="status-icon" style="font-size: 45px; color: #ef4444; margin-bottom: 20px;"></i>
-        <h2 id="status-title" style="margin: 0 0 10px 0; font-family: 'Fira Code', monospace;">RESTRICTED PORTAL</h2>
-        <p id="status-message" style="color: #94a3b8; font-size: 14px; line-height: 1.6;">Authenticating secure timeline... Please wait.</p>
+        <i class="fas fa-shield-check" id="status-icon" style="font-size: 45px; color: #10b981; margin-bottom: 20px;"></i>
+        <h2 id="status-title" style="margin: 0 0 10px 0; font-family: 'Fira Code', monospace;">AGREEMENT EXECUTED</h2>
+        <p id="status-message" style="color: #94a3b8; font-size: 14px; line-height: 1.6;">Database successfully updated.</p>
     </div>
 
+    <!-- THE LEGAL FORM -->
     <div class="form-container" id="legal-form">
         <div class="header">
             <h2>PHANTOMIX SEPARATION AGREEMENT</h2>
             <p><i class="fas fa-balance-scale"></i> Confidential & Legally Binding Document</p>
-            <div id="timer-display"></div>
+            <div class="testing-badge"><i class="fas fa-unlock"></i> PORTAL FORCE UNLOCKED</div>
         </div>
 
         <form id="exitForm" onsubmit="submitAgreement(event)">
@@ -116,7 +125,7 @@
                 </div>
                 <div class="checkbox-group">
                     <input type="checkbox" id="disparageCheck" required>
-                    <label for="disparageCheck"><strong>Non-Disparagement Clause</strong> I agree to refrain from making any negative, defamatory, or disparaging statements regarding Phantomix, its Founders (Shrikant Prajapati & Ranjan Gupta), its team, or its products in any public forum, social media, or private communication.</label>
+                    <label for="disparageCheck"><strong>Non-Disparagement Clause</strong> I agree to refrain from making any negative, defamatory, or disparaging statements regarding Phantomix, its Founders, its team, or its products in any public forum, social media, or private communication.</label>
                 </div>
             </div>
 
@@ -124,7 +133,7 @@
                 <h4><i class="fas fa-database"></i> SECTION 4: DATA ERASURE ACKNOWLEDGMENT</h4>
                 <div class="checkbox-group" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.05);">
                     <input type="checkbox" id="dataCheck" required>
-                    <label for="dataCheck"><strong>Authorization for Data Wiping</strong> I acknowledge that my access to all Phantomix systems is immediately revoked. I grant full authorization to the core team to completely erase my digital footprint, personal data, and associations from the Phantomix public domain, databases, and search engine crawls.</label>
+                    <label for="dataCheck"><strong>Authorization for Data Wiping</strong> I acknowledge that my access to all Phantomix systems is immediately revoked. I grant full authorization to the core team to completely erase my digital footprint, personal data, and associations from the Phantomix databases and ecosystem.</label>
                 </div>
             </div>
 
@@ -140,86 +149,24 @@
 
     <script>
         // ==========================================
-        // 🔧 MASTER SWITCH
-        // ==========================================
-        const IS_TESTING = true; // YEH ABHI TRUE HAI, FORM TURANT KHULEGA
-        // ==========================================
-        
-        let START_TIME, END_TIME;
-
-        if (IS_TESTING) {
-            START_TIME = new Date().getTime() - 60000;
-            END_TIME = new Date().getTime() + 86400000;
-        } else {
-            // Live Window: Oct 5, 2026 (11:00 AM - 11:30 AM IST)
-            START_TIME = new Date("2026-10-05T11:00:00+05:30").getTime();
-            END_TIME = new Date("2026-10-05T11:30:00+05:30").getTime();
-        }
-
-        const statusScreen = document.getElementById('status-screen');
-        const legalForm = document.getElementById('legal-form');
-        const statusTitle = document.getElementById('status-title');
-        const statusMessage = document.getElementById('status-message');
-        const statusIcon = document.getElementById('status-icon');
-        const timerDisplay = document.getElementById('timer-display');
-
-        function checkTimeValidity() {
-            const now = new Date().getTime();
-
-            if (now < START_TIME) {
-                statusScreen.style.display = 'block';
-                legalForm.style.display = 'none';
-                statusIcon.className = "fas fa-clock";
-                statusIcon.style.color = "#eab308";
-                statusTitle.innerText = "PORTAL LOCKED";
-                statusTitle.style.color = "#eab308";
-                statusMessage.innerHTML = "This legal form is securely locked and will open on <br><strong>Monday, October 5, 2026 at 11:00 AM (IST)</strong>.";
-            } else if (now >= START_TIME && now <= END_TIME) {
-                statusScreen.style.display = 'none';
-                legalForm.style.display = 'block';
-                
-                let minutesLeft = Math.floor((END_TIME - now) / (1000 * 60));
-                
-                if (IS_TESTING) {
-                    timerDisplay.innerHTML = `<i class="fas fa-wrench"></i> [TESTING MODE ACTIVE]`;
-                } else {
-                    timerDisplay.innerHTML = `<i class="fas fa-hourglass-half"></i> Portal expires in ${minutesLeft} minutes.`;
-                }
-            } else {
-                statusScreen.style.display = 'block';
-                legalForm.style.display = 'none';
-                statusIcon.className = "fas fa-lock";
-                statusIcon.style.color = "#ef4444";
-                statusTitle.innerText = "AGREEMENT EXPIRED";
-                statusTitle.style.color = "#ef4444";
-                statusMessage.innerText = "The strict timeframe to sign this separation agreement has permanently closed. Contact the Founders directly for resolution.";
-            }
-        }
-
-        // Initialize Timer
-        checkTimeValidity();
-        setInterval(checkTimeValidity, 30000); 
-
-        // ==========================================
-        // DATABASE SUBMISSION
+        // DATABASE SUBMISSION (Direct Code)
         // ==========================================
         const SUPABASE_URL = "https://pekmsttmosuzcvielala.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBla21zdHRtb3N1emN2aWVsYWxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0MjY4NDUsImV4cCI6MjA5OTAwMjg0NX0.D0akjMO2d5sYhgbSy8IIFJT4sPHGO_Lm9r1YMWM_uUc";
-        let supabase;
         
+        let supabase;
         try {
             supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         } catch(e) {
-            console.error("Supabase CDN failed, but UI will load.");
+            console.error("Supabase script is blocked by browser.");
+            alert("⚠️ WARNING: Your browser's Adblocker is blocking the database connection. Form submission will fail. Please turn off Shields/Adblocker for this site.");
         }
 
         async function submitAgreement(e) {
             e.preventDefault();
-            
-            const exactNow = new Date().getTime();
-            if (exactNow > END_TIME) {
-                alert("Security Protocol: The form has expired. Submission rejected.");
-                window.location.reload();
+
+            if(!supabase) {
+                alert("Submission Failed: Cannot connect to Phantomix Mainframe. Check your Adblocker or Internet Connection.");
                 return;
             }
 
@@ -245,22 +192,15 @@
 
                 if (error) throw error;
 
-                legalForm.style.display = 'none';
-                statusScreen.style.display = 'block';
-                statusScreen.style.borderColor = "#10b981";
-                statusScreen.style.boxShadow = "0 10px 40px rgba(16, 185, 129, 0.1)";
-                statusIcon.className = "fas fa-shield-check";
-                statusIcon.style.color = "#10b981";
-                statusTitle.innerText = "AGREEMENT EXECUTED";
-                statusTitle.style.color = "#10b981";
-                statusMessage.innerHTML = "Your resignation and legal acknowledgments have been securely recorded in the Phantomix Database. <br><br>All system access, IP claims, and associations have now been officially terminated.<br><br><span style='font-size: 12px; color: #64748b;'><i class='fas fa-sync fa-spin'></i> Self-destructing and redirecting to public homepage in 5 seconds...</span>";
-
-                setTimeout(() => {
-                    window.location.href = "index.html"; 
-                }, 5000);
+                // Success Message
+                document.getElementById('legal-form').style.setProperty('display', 'none', 'important');
+                const statusScreen = document.getElementById('status-screen');
+                statusScreen.style.setProperty('display', 'block', 'important');
+                
+                document.getElementById('status-message').innerHTML = "Your resignation and legal acknowledgments have been securely recorded in the Phantomix Database. <br><br>All system access, IP claims, and associations have now been officially terminated.";
 
             } catch (err) {
-                alert("Database Error: " + err.message + "\n\nDid you run the SQL query to update the table columns?");
+                alert("Database Error: " + err.message + "\n\n(Did you run the SQL query to update the table columns?)");
                 btn.disabled = false;
                 btn.innerHTML = "<i class='fas fa-file-signature'></i> EXECUTE & SUBMIT AGREEMENT";
             }
