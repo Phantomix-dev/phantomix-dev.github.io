@@ -1659,6 +1659,21 @@
         VanillaTilt.init(document.querySelectorAll(".feature-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.15 });
         VanillaTilt.init(document.querySelectorAll(".tier-card"), { max: 10, speed: 400, glare: true, "max-glare": 0.1 });
     </script>   
+
+    <!-- TIDIO AI BOT MAIN SCRIPT -->
     <script src="//code.tidio.co/o7ji9nzhh58vm1tghwmz2ae2whzemkod.js" async></script>
+
+    <!-- JS FORCE FLOAT FIX FOR TIDIO BOT -->
+    <script>
+      setTimeout(function(){
+          var tidio = document.getElementById('tidio-chat-iframe');
+          if(tidio) {
+              tidio.style.setProperty('position', 'fixed', 'important');
+              tidio.style.setProperty('bottom', '20px', 'important');
+              tidio.style.setProperty('right', '20px', 'important');
+              tidio.style.setProperty('z-index', '999999999', 'important');
+          }
+      }, 2000); 
+    </script>
 </body>
 </html>
