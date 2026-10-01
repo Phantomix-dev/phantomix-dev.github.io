@@ -130,15 +130,19 @@
         // 🕒 EXACT TIME WINDOW CONFIGURATION (IST Timezone)
         // Format: YYYY-MM-DDTHH:MM:SS+05:30 (India Standard Time)
         // Form abhi turant khul jayega
-const START_TIME = new Date("2026-10-01T00:00:00+05:30").getTime(); 
-const END_TIME = new Date("2026-12-31T23:59:00+05:30").getTime();
+const START_TIME = new Date("2026-10-05T00:00:00+05:30").getTime(); 
+const END_TIME = new Date("2026-10-05T23:59:00+05:30").getTime();
         const statusScreen = document.getElementById('status-screen');
         const legalForm = document.getElementById('legal-form');
         const statusTitle = document.getElementById('status-title');
         const statusMessage = document.getElementById('status-message');
         const timerDisplay = document.getElementById('timer-display');
 
-        function checkTimeValidity() {
+        function checkTimeValidity()
+        // Force Open Form for Testing
+document.getElementById('status-screen').style.display = 'none';
+document.getElementById('legal-form').style.display = 'block';
+        {
             const now = new Date().getTime();
 
             if (now < START_TIME) {
